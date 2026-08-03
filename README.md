@@ -78,6 +78,24 @@ hay que re-calibrar con una pasada entre febrero y mayo. El fichero registra
 **GitHub Actions** (no "Deploy from a branch") para que este workflow sirva el
 sitio. El dominio personalizado se mantiene en la configuración de Pages.
 
+## Imágenes de marca (generación manual, no diaria)
+
+Los iconos y la imagen OG son assets estáticos versionados; se regeneran a
+mano, no en cada build:
+
+```bash
+node tools/generate-icons.mjs      # favicon.svg/png + apple-touch-icon.png
+
+# OG image (necesita fuentes estáticas; resvg no aplica woff2 variable):
+pip install fonttools brotli
+python3 tools/instance-fonts.py    # woff2 variable -> .cache/fonts/*.ttf
+node tools/generate-og-image.mjs   # src/og-image.png (1200×630)
+```
+
+La OG image de Fase 1 es una imagen de marca estática (Fraunces + IBM Plex,
+paleta salvia, sin afirmaciones no verificables). La OG por ciudad con el nivel
+del día es Fase 2 (después de noviembre).
+
 ## URLs
 
 Las URLs públicas son extensionless (`/polen-madrid`) y **no deben cambiar**.
