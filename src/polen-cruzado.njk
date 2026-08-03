@@ -1,0 +1,117 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: crossPageList
+  size: 1
+  alias: cross
+  addAllPagesToCollections: true
+permalink: "{{ cross.slug }}.html"
+ogType: article
+eleventyComputed:
+  title: "Polen de {{ cross.pollenName | lower }} en {{ cross.cityName }} hoy — Respira"
+  ogTitle: "Polen de {{ cross.pollenName | lower }} en {{ cross.cityName }} hoy"
+  description: "Nivel de polen de {{ cross.pollenName | lower }} en {{ cross.cityName }} hoy y previsión de los próximos días. Datos de Open-Meteo actualizados a diario."
+---
+{%- import "macros.njk" as m -%}
+{%- set POLLEN_TYPES = constants.pollen.POLLEN_TYPES -%}
+{%- set cal = constants.seasonalCalendar -%}
+{%- set data = pollenData.cities[cross.citySlug] -%}
+{%- set pid = cross.pollen -%}
+{%- set hoy = data.days[0].pollen[pid] -%}
+{%- set info = pollenInfo[pid] -%}
+{%- set months = cal.MONTHLY_POLLEN_INTENSITY[pid] -%}
+
+<main class="page">
+
+  <nav class="breadcrumbs" aria-label="Miga de pan">
+    <a href="/">Inicio</a> › <a href="/alergia-{{ info.slug }}">{{ cross.pollenName }}</a> › {{ cross.cityName }}
+  </nav>
+
+  <header class="hero-data">
+    <h1>Polen de {{ cross.pollenName | lower }} en {{ cross.cityName }} hoy</h1>
+    <p class="date-line">Máximo previsto para el <time datetime="{{ data.days[0].date }}">{{ data.days[0].date | fechaEs }}</time> · {{ cross.cityName }} ({{ cross.ccaa }})</p>
+    {%- if hoy.value == null %}
+    <p class="nivel-hero lv-low" style="--_lv: var(--border)"><span class="detail">Nivel</span><strong class="word">Sin dato hoy</strong></p>
+    {%- else %}
+    <p class="nivel-hero lv-{{ hoy.level | replace('_','-') }}">
+      <span class="detail">Polen de {{ cross.pollenName | lower }}</span>
+      <strong class="word">{{ ({low:'Bajo',moderate:'Moderado',high:'Alto',very_high:'Muy alto',extreme:'Extremo'})[hoy.level] }}</strong>
+      <span class="detail">{{ hoy.value }} granos/m³ · máximo previsto para hoy</span>
+    </p>
+    {%- endif %}
+    {{ m.updateLine(data.fetchedAt, data.stale) }}
+  </header>
+
+  <section class="section" aria-labelledby="prevision">
+    <h2 id="prevision">Previsión de {{ cross.pollenName | lower }} en {{ cross.cityName }}</h2>
+    <div class="scroller">
+      <table class="forecast">
+        <caption>Máximo diario previsto de {{ cross.pollenName | lower }} en {{ cross.cityName }}</caption>
+        <thead><tr>
+          {%- for day in data.days %}<th scope="col"><span>{{ day.date | diaSemana }}</span><br><time class="fc-date" datetime="{{ day.date }}">{{ day.date | diaMes }}</time></th>{% endfor %}
+        </tr></thead>
+        <tbody><tr>
+          {%- for day in data.days %}
+          {%- set p = day.pollen[pid] %}
+          {%- if p.level == null %}<td><span class="fc-word text-secondary">—</span></td>
+          {%- else %}
+          <td style="--_lv: var(--level-{{ p.level | replace('_','-') }})">
+            <div class="fc-bar" aria-hidden="true"><i style="block-size: {{ ({low:25,moderate:50,high:75,very_high:90,extreme:100})[p.level] }}%"></i></div>
+            <span class="fc-val num">{{ p.value }}</span><br>
+            <span class="fc-word">{{ ({low:'Bajo',moderate:'Mod.',high:'Alto',very_high:'M. alto',extreme:'Extremo'})[p.level] }}</span>
+          </td>
+          {%- endif %}
+          {%- endfor %}
+        </tr></tbody>
+      </table>
+    </div>
+    <p class="small text-secondary" style="margin-block-start: var(--sp-3)">Valores en granos/m³ (máximo horario del día). Umbrales de nivel: moderado ≥ {{ constants.pollen.POLLEN_THRESHOLDS[pid].moderate }}, alto ≥ {{ constants.pollen.POLLEN_THRESHOLDS[pid].high }}, muy alto ≥ {{ constants.pollen.POLLEN_THRESHOLDS[pid].veryHigh }}.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="sobre">
+    <h2 id="sobre">Sobre el polen de {{ cross.pollenName | lower }}</h2>
+    <p>{{ info.lead }}</p>
+    <p>{{ info.sintomas }}</p>
+    <p class="small text-secondary">Información divulgativa; no sustituye la valoración de un profesional médico.</p>
+  </section>
+
+  <section class="section" aria-labelledby="rel">
+    <h2 id="rel">Más sobre polen en {{ cross.cityName }}</h2>
+    <ul class="link-grid">
+      <li><a href="/polen-{{ cross.citySlug }}">Todos los pólenes en {{ cross.cityName }}</a></li>
+      <li><a href="/alergia-{{ info.slug }}">{{ info.h1 }} en España</a></li>
+      <li><a href="/mapa-polen-espana">Todas las ciudades</a></li>
+    </ul>
+  </section>
+
+  <section class="section">
+    {{ m.ctaApp("El polen de tu ciudad, cada día", "Respira te avisa de las subidas de cada tipo de polen en tu ubicación. Gratis, para iPhone y iPad.") }}
+  </section>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Dataset",
+      "name": "Polen de {{ cross.pollenName | lower }} en {{ cross.cityName }}",
+      "description": "Máximo diario previsto de polen de {{ cross.pollenName | lower }} en {{ cross.cityName }}, con previsión a varios días. Modelo CAMS de Copernicus vía Open-Meteo.",
+      "url": "https://respiraapp.fit/{{ cross.slug }}",
+      "inLanguage": "es-ES",
+      "dateModified": "{{ data.fetchedAt }}",
+      "creator": { "@type": "Organization", "name": "Respira", "url": "https://respiraapp.fit/" },
+      "isBasedOn": "https://open-meteo.com/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://respiraapp.fit/" },
+        { "@type": "ListItem", "position": 2, "name": {{ cross.pollenName | dump | safe }}, "item": "https://respiraapp.fit/alergia-{{ info.slug }}" },
+        { "@type": "ListItem", "position": 3, "name": {{ cross.cityName | dump | safe }} }
+      ]
+    }
+  ]
+}
+</script>

@@ -1,0 +1,109 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: pollenInfoList
+  size: 1
+  alias: info
+  addAllPagesToCollections: true
+permalink: "alergia-{{ info.slug }}.html"
+ogType: article
+eleventyComputed:
+  title: "{{ info.h1 }}: síntomas, temporada y niveles por ciudad — Respira"
+  ogTitle: "{{ info.h1 }}: síntomas, temporada y niveles por ciudad"
+  description: "{{ info.lead }}"
+---
+{%- import "macros.njk" as m -%}
+{%- set POLLEN_TYPES = constants.pollen.POLLEN_TYPES -%}
+{%- set cal = constants.seasonalCalendar -%}
+{%- set pid = info.id -%}
+{%- set months = cal.MONTHLY_POLLEN_INTENSITY[pid] -%}
+
+<main class="page">
+
+  <nav class="breadcrumbs" aria-label="Miga de pan">
+    <a href="/">Inicio</a> › {{ info.h1 }}
+  </nav>
+
+  <header class="flow">
+    <h1>{{ info.h1 }}</h1>
+    <p>{{ info.lead }}</p>
+  </header>
+
+  <section class="section flow" aria-labelledby="sintomas">
+    <h2 id="sintomas">Síntomas asociados</h2>
+    <p>{{ info.sintomas }}</p>
+    <p class="small text-secondary">Esta información es divulgativa y no sustituye la valoración de un profesional médico.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="temporada">
+    <h2 id="temporada">Temporada</h2>
+    <p>{{ info.donde }}</p>
+    <p>Periodo de polinización orientativo en España (mes actual recuadrado):</p>
+    <div class="scroller">
+      <table class="heatmap" style="min-inline-size: 32rem">
+        <caption class="visually-hidden">Intensidad mensual de {{ info.pollenName | lower }}</caption>
+        <thead><tr><td></td>
+          {%- for mo in cal.MONTH_NAMES_SHORT %}<th scope="col"{% if loop.index0 == build.month %} aria-current="date"{% endif %}>{{ mo }}</th>{% endfor %}
+        </tr></thead>
+        <tbody><tr>
+          <th scope="row">{{ info.pollenName }}</th>
+          {%- for lvl in months %}
+          <td class="hm-cell {% if lvl == 'none' %}hm-none{% endif %}{% if loop.index0 == build.month %} hm-now{% endif %}"{% if lvl != 'none' %} style="--_lv: var(--level-{{ lvl | replace('_','-') }})"{% endif %}>
+            <span class="visually-hidden">{{ cal.MONTH_NAMES_SHORT[loop.index0] }}: {{ cal.INTENSITY_LABELS[lvl] }}</span>
+          </td>
+          {%- endfor %}
+        </tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="mapa">
+    <h2 id="mapa">Niveles de {{ info.pollenName | lower }} por ciudad hoy</h2>
+    <p class="text-secondary">Máximo previsto para hoy en cada capital de provincia. Ordenado de mayor a menor.</p>
+    {%- set filas = [] %}
+    {%- for c in cities %}
+      {%- set cd = pollenData.cities[c.slug] %}
+      {%- set p = cd.days[0].pollen[pid] %}
+      {%- if p and p.value != null %}{% set _ = filas.push({ name: c.name, slug: c.slug, value: p.value, level: p.level }) %}{% endif %}
+    {%- endfor %}
+    <div class="scroller">
+      <table class="forecast" style="min-inline-size: 28rem; table-layout: auto">
+        <thead><tr><th scope="col" style="text-align:start">Ciudad</th><th scope="col">Máx. hoy</th><th scope="col">Nivel</th></tr></thead>
+        <tbody>
+          {%- for f in filas | sort(true, false, "value") %}
+          <tr>
+            <td style="text-align:start"><a href="/polen-{{ f.slug }}">{{ f.name }}</a></td>
+            <td class="num">{{ f.value }} <span class="small text-secondary">g/m³</span></td>
+            <td>{{ m.nivelBadge(f.level) }}</td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="otros">
+    <h2 id="otros">Otros pólenes</h2>
+    <ul class="link-grid">
+      {%- for other in pollenInfoList %}
+      {%- if other.id != pid %}<li><a href="/alergia-{{ other.slug }}">{{ other.h1 }}</a></li>{% endif %}
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="section">
+    {{ m.ctaApp("Sigue tu polen día a día", "Respira te muestra el nivel de cada tipo de polen en tu ubicación, la previsión y un diario de síntomas. Gratis, para iPhone y iPad.") }}
+  </section>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://respiraapp.fit/" },
+    { "@type": "ListItem", "position": 2, "name": {{ info.h1 | dump | safe }} }
+  ]
+}
+</script>
