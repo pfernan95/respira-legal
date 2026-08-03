@@ -1,9 +1,10 @@
 ---
 layout: layouts/base.njk
 pagination:
-  data: cityContent
+  data: cities
   size: 1
   alias: ciudad
+  addAllPagesToCollections: true
 permalink: "polen-{{ ciudad.slug }}.html"
 ogType: article
 eleventyComputed:
@@ -16,16 +17,26 @@ eleventyComputed:
 {%- set hoy = data.days[0] -%}
 {%- set POLLEN_TYPES = constants.pollen.POLLEN_TYPES -%}
 {%- set cal = constants.seasonalCalendar -%}
+{%- set predomNames = [] -%}
+{%- for id in ciudad.predominantes %}{% set _ = predomNames.push(POLLEN_TYPES[id].nameEs) %}{% endfor -%}
 
 <main class="page">
 
   <nav class="breadcrumbs" aria-label="Miga de pan">
-    <a href="/">Inicio</a> › Polen en {{ ciudad.name }}
+    <a href="/">Inicio</a> › <a href="/mapa-polen-espana">Ciudades</a> › Polen en {{ ciudad.name }}
   </nav>
 
+  {%- set sinCobertura = hoy.overallLevel == null %}
   <header class="hero-data">
     <h1>Polen en {{ ciudad.name }} hoy</h1>
     <p class="date-line">Máximo previsto para el <time datetime="{{ hoy.date }}">{{ hoy.date | fechaEs }}</time> · {{ ciudad.name }} ({{ ciudad.ccaa }})</p>
+    {%- if sinCobertura %}
+    <p class="nivel-hero lv-low" style="--_lv: var(--border)">
+      <span class="detail">Nivel general de polen</span>
+      <strong class="word">Sin previsión</strong>
+      <span class="detail">El modelo de Open-Meteo no ofrece datos de polen para esta ubicación</span>
+    </p>
+    {%- else %}
     {{ m.nivelHero(hoy.overallLevel, "máximo previsto para hoy") }}
     <div class="pollen-grid-wrap">
       <div class="pollen-grid">
@@ -34,9 +45,11 @@ eleventyComputed:
         {%- endfor %}
       </div>
     </div>
+    {%- endif %}
     {{ m.updateLine(data.fetchedAt, data.stale) }}
   </header>
 
+  {%- if not sinCobertura %}
   <section class="section" aria-labelledby="prevision">
     <h2 id="prevision">Previsión a {{ data.days.length }} días</h2>
     {%- set diasConNombre = [] %}
@@ -49,6 +62,7 @@ eleventyComputed:
     {%- endfor %}
     {{ m.forecastTable(diasConNombre, ciudad.name) }}
   </section>
+  {%- endif %}
 
   <section class="section" aria-labelledby="temporada">
     <h2 id="temporada">En temporada ahora mismo</h2>
@@ -83,15 +97,23 @@ eleventyComputed:
 
   <section class="section flow" aria-labelledby="sobre">
     <h2 id="sobre">Alergia al polen en {{ ciudad.name }}</h2>
-    {%- for parrafo in ciudad.intro %}
+    {%- if ciudad.intro.length %}
+      {%- for parrafo in ciudad.intro %}
     <p>{{ parrafo | safe }}</p>
-    {%- endfor %}
+      {%- endfor %}
+    {%- else %}
+    <p>{{ ciudad.name }} ({{ ciudad.provincia }}, {{ ciudad.ccaa }}) tiene su propio calendario polínico. El dato de esta página es el máximo previsto para hoy en la ciudad, con la previsión de los próximos días y el calendario mes a mes para anticipar los picos.</p>
+    {%- endif %}
+    {%- if predomNames.length %}
+    <p>Los pólenes de mayor relevancia local son {{ predomNames | join(", ") }}. Consulta también las páginas de <a href="/alergia-gramineas">gramíneas</a> y <a href="/alergia-olivo">olivo</a> para saber más sobre cada alérgeno.</p>
+    {%- endif %}
   </section>
 
   <section class="section faq" aria-labelledby="faq-title">
     <h2 id="faq-title">Preguntas frecuentes</h2>
-    {%- for item in ciudad.faq %}
-    <details>
+    {%- set faq = ciudad.name | cityFaq(predomNames) %}
+    {%- for item in faq %}
+    <details{% if loop.first %} open{% endif %}>
       <summary>{{ item.q }}</summary>
       <p>{{ item.a }}</p>
     </details>
@@ -99,12 +121,13 @@ eleventyComputed:
   </section>
 
   <section class="section" aria-labelledby="cerca">
-    <h2 id="cerca">Polen en otras ciudades</h2>
+    <h2 id="cerca">Polen en ciudades cercanas</h2>
     <ul class="link-grid">
       {%- for c in ciudad.nearby %}
       <li><a href="/polen-{{ c.slug }}">Polen en {{ c.name }}</a></li>
       {%- endfor %}
     </ul>
+    <p style="margin-block-start: var(--sp-4)"><a href="/mapa-polen-espana">Ver todas las ciudades →</a></p>
   </section>
 
   <section class="section">
@@ -113,6 +136,7 @@ eleventyComputed:
 
 </main>
 
+{%- set faqData = ciudad.name | cityFaq(predomNames) %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -120,7 +144,7 @@ eleventyComputed:
     {
       "@type": "Dataset",
       "name": "Niveles de polen en {{ ciudad.name }}",
-      "description": "Máximo diario previsto por tipo de polen y calidad del aire (EAQI, PM2.5, PM10, ozono) en {{ ciudad.name }}, con previsión a 7 días. Elaborado a partir del modelo CAMS de Copernicus vía Open-Meteo.",
+      "description": "Máximo diario previsto por tipo de polen y calidad del aire (EAQI, PM2.5, PM10, ozono) en {{ ciudad.name }}, con previsión a varios días. Elaborado a partir del modelo CAMS de Copernicus vía Open-Meteo.",
       "url": "https://respiraapp.fit/polen-{{ ciudad.slug }}",
       "inLanguage": "es-ES",
       "temporalCoverage": "{{ data.days[0].date }}/{{ data.days[data.days.length - 1].date }}",
@@ -137,13 +161,14 @@ eleventyComputed:
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://respiraapp.fit/" },
-        { "@type": "ListItem", "position": 2, "name": "Polen en {{ ciudad.name }}" }
+        { "@type": "ListItem", "position": 2, "name": "Ciudades", "item": "https://respiraapp.fit/mapa-polen-espana" },
+        { "@type": "ListItem", "position": 3, "name": "Polen en {{ ciudad.name }}" }
       ]
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
-        {%- for item in ciudad.faq %}
+        {%- for item in faqData %}
         {
           "@type": "Question",
           "name": {{ item.q | dump | safe }},

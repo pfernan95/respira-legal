@@ -27,6 +27,37 @@ POLLEN_SKIP_FETCH=1 npm run build   # build offline con el último dato cacheado
   reutiliza el último dato bueno de `.cache/pollen-data.json` marcado como
   `stale`, conservando su `fetchedAt` real.
 
+## Páginas
+
+Generadas por Eleventy a partir de los data files:
+
+- **`/`** — snapshot nacional: nivel de hoy de las principales ciudades, qué
+  pólenes están en temporada, enlaces por tipo.
+- **`/polen-{ciudad}`** (52) — una por capital de provincia, ordenadas por
+  población (INE, solo orden interno). Nivel de hoy por tipo, previsión,
+  calidad del aire, calendario, FAQ y enlaces a ciudades cercanas (4 más
+  próximas por distancia geográfica).
+- **`/alergia-{polen}`** (6) — páginas nacionales por alérgeno con datos de
+  Open-Meteo (gramíneas, olivo, abedul, aliso, artemisa, ambrosía).
+- **`/polen-{polen}-{ciudad}`** — páginas cruzadas, solo los pares calibrados
+  (ver abajo).
+- **`/mapa-polen-espana`** — índice de las 52 ciudades con su nivel de hoy.
+- **`/estilo`** — guía de estilo interna, `noindex`, fuera del sitemap.
+
+### Páginas cruzadas y calibración
+
+`tools/calibrate-cross-pages.mjs` decide qué páginas `/polen-{polen}-{ciudad}`
+se generan, con filtro mecánico (no a criterio): solo los 6 pólenes con datos
+de Open-Meteo, y solo si ese polen alcanzó al menos nivel `moderate` en esa
+ciudad en los últimos 92 días (`past_days=92`). El resultado se versiona en
+`src/_data/crossPages.json` para que la generación sea reproducible.
+
+⚠️ **Una pasada de 92 días solo ve ~3 meses.** La calibración actual se hizo en
+agosto, así que capta bien gramíneas/olivo/artemisa/ambrosía pero NO abedul ni
+aliso (temporada invierno–primavera). Para las páginas cruzadas de esos pólenes
+hay que re-calibrar con una pasada entre febrero y mayo. El fichero registra
+`runMonth` y un `caveat` con esta limitación.
+
 ## Rebuild diario
 
 `.github/workflows/deploy.yml` reconstruye y despliega:

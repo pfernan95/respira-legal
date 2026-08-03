@@ -133,9 +133,15 @@ export function aggregateDays(hourly) {
 
   // CAMS only provides pollen ~5 days ahead even though the API accepts
   // forecast_days=7: trailing days come back all-null. Drop them — the page
-  // must never promise more days than it can serve.
-  while (result.length && result[result.length - 1].overallLevel === null) {
-    result.pop();
+  // must never promise more days than it can serve. But if NO day has pollen
+  // (e.g. the Canary Islands sit outside CAMS pollen coverage), keep the days:
+  // they still carry AQI and a date, and the template states there is no
+  // pollen forecast for that location instead of rendering an empty page.
+  const anyPollen = result.some((d) => d.overallLevel !== null);
+  if (anyPollen) {
+    while (result.length && result[result.length - 1].overallLevel === null) {
+      result.pop();
+    }
   }
 
   return result;
@@ -143,6 +149,19 @@ export function aggregateDays(hourly) {
 
 function round1(v) {
   return v === null ? null : Math.round(v * 10) / 10;
+}
+
+/** Great-circle-ish distance (km) between two lat/lon points (haversine). */
+export function distanceKm(a, b) {
+  const R = 6371;
+  const toRad = (d) => (d * Math.PI) / 180;
+  const dLat = toRad(b.lat - a.lat);
+  const dLon = toRad(b.lon - a.lon);
+  const lat1 = toRad(a.lat);
+  const lat2 = toRad(b.lat);
+  const h =
+    Math.sin(dLat / 2) ** 2 + Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
 }
 
 /** Slug used in URLs: lowercase, no diacritics ("Cáceres" -> "caceres"). */

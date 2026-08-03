@@ -1,0 +1,46 @@
+---
+layout: layouts/base.njk
+permalink: mapa-polen-espana.html
+title: "Polen en España hoy · niveles por ciudad — Respira"
+ogTitle: "Polen en España hoy · niveles por ciudad"
+description: "Niveles de polen hoy en las 52 capitales de provincia de España. Nivel general por ciudad y enlaces a la previsión de cada una."
+---
+{%- import "macros.njk" as m -%}
+{%- set LEVEL_LABELS = { low: "Bajo", moderate: "Moderado", high: "Alto", very_high: "Muy alto", extreme: "Extremo" } -%}
+
+<main class="page">
+  <nav class="breadcrumbs" aria-label="Miga de pan"><a href="/">Inicio</a> › Ciudades</nav>
+
+  <header class="flow">
+    <h1>Polen en España hoy, por ciudad</h1>
+    <p>Nivel general de polen (máximo previsto para hoy) en las 52 capitales de provincia. Toca una ciudad para ver su previsión, calidad del aire y calendario polínico.</p>
+    {{ m.updateLine(pollenData.fetchedAt, false) }}
+  </header>
+
+  <section class="section" aria-labelledby="listado">
+    <h2 id="listado">Todas las ciudades</h2>
+    <ul class="link-grid">
+      {%- for c in cities %}
+      {%- set cd = pollenData.cities[c.slug] %}
+      {%- set lvl = cd.days[0].overallLevel %}
+      <li><a href="/polen-{{ c.slug }}">
+        <span>{{ c.name }}</span>
+        {%- if lvl %} <span class="nivel-badge bd-{{ lvl | replace('_','-') }}" style="margin-inline-start:auto">{{ LEVEL_LABELS[lvl] }}</span>{% else %} <span class="small text-secondary">Sin previsión</span>{% endif %}
+      </a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="porpolen">
+    <h2 id="porpolen">Por tipo de polen</h2>
+    <ul class="link-grid">
+      {%- for info in pollenInfoList %}
+      <li><a href="/alergia-{{ info.slug }}">{{ info.h1 }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="section">
+    {{ m.ctaApp("Respira, en tu bolsillo", "Niveles de polen de tu ubicación exacta, previsión y diario de síntomas. Gratis, para iPhone y iPad.") }}
+  </section>
+</main>

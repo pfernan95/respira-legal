@@ -20,13 +20,22 @@
 <span class="nivel-badge bd-{{ cssLevel(level) }}">{{ text or LEVEL_LABELS[level] }}</span>
 {% endmacro %}
 
-{# Celda de la rejilla de pólenes del héroe: nombre + cifra + unidad + palabra #}
+{# Celda de la rejilla de pólenes del héroe: nombre + cifra + unidad + palabra.
+   value/level null = sin cobertura del modelo para esta ubicación. #}
 {% macro pollenCell(name, value, unit, level) %}
+{%- if level == null -%}
+<div class="pollen-cell" style="--_lv: var(--border)">
+  <span class="name">{{ name }}</span>
+  <span class="val">— <small>sin dato</small></span>
+  <span class="small text-secondary">No disponible</span>
+</div>
+{%- else -%}
 <div class="pollen-cell bd-{{ cssLevel(level) }}" style="--_lv: var(--level-{{ cssLevel(level) }})">
   <span class="name">{{ name }}</span>
   <span class="val">{{ value }} <small>{{ unit }}</small></span>
   <span class="small">{{ LEVEL_LABELS[level] }}</span>
 </div>
+{%- endif -%}
 {% endmacro %}
 
 {# Fila de polen estimado: nombre + valor + etiqueta de estimación + palabra #}
@@ -58,11 +67,15 @@
     <tbody>
       <tr>
         {%- for day in days %}
+        {%- if day.overallLevel == null %}
+        <td><span class="fc-word text-secondary">—</span></td>
+        {%- else %}
         <td style="--_lv: var(--level-{{ cssLevel(day.overallLevel) }})">
           <div class="fc-bar" aria-hidden="true"><i style="block-size: {{ LEVEL_ORDINAL[day.overallLevel] }}%"></i></div>
           <span class="fc-word">{{ LEVEL_LABELS[day.overallLevel] }}</span>
           {%- if day.dominant %}<br><span class="fc-val small text-secondary">{{ day.dominant }}</span>{% endif %}
         </td>
+        {%- endif %}
         {%- endfor %}
       </tr>
     </tbody>

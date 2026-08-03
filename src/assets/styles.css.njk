@@ -274,7 +274,8 @@ eleventyExcludeFromCollections: true
 
   /* Lista de enlaces internos (ciudades) */
   .link-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: var(--sp-2); list-style: none; padding: 0; }
-  .link-grid a { display: block; padding: var(--sp-2) var(--sp-3); border: 1px solid var(--border); border-radius: var(--radius-s); text-decoration: none; background: var(--surface); transition: background .15s ease-out; }
+  .link-grid a { display: flex; align-items: center; gap: var(--sp-2); padding: var(--sp-2) var(--sp-3); border: 1px solid var(--border); border-radius: var(--radius-s); text-decoration: none; background: var(--surface); transition: background .15s ease-out; }
+  .link-grid .nivel-badge { margin-inline-start: auto; }
   .link-grid a:hover { background: var(--surface-elevated); }
 }
 
