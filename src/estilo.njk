@@ -1,0 +1,217 @@
+---
+layout: layouts/base.njk
+noindex: true
+title: "Guía de estilo — Respira (interno)"
+description: "Referencia interna del design system de respiraapp.fit: tokens, tipografía, componentes y ratios de contraste."
+---
+{%- import "macros.njk" as m -%}
+{%- set L = webTokens.light -%}
+{%- set D = webTokens.dark -%}
+{%- set cal = constants.seasonalCalendar -%}
+{%- set POLLEN_TYPES = constants.pollen.POLLEN_TYPES -%}
+
+{# Estilos exclusivos de esta página interna: no cargan el CSS del sitio #}
+<style>
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: var(--sp-3); list-style: none; padding: 0; }
+  .swatch { border: 1px solid var(--border); border-radius: var(--radius-s); overflow: hidden; font-size: var(--fs--1); }
+  .swatch .chip { block-size: 3.5rem; display: flex; align-items: center; padding-inline: var(--sp-3); font-weight: 600; }
+  .swatch .meta { padding: var(--sp-2) var(--sp-3); display: grid; gap: 2px; background: var(--surface); }
+  .ratio-ok::after { content: " ✓"; }
+  .type-scale > * { margin-block-start: var(--sp-2); }
+  .demo-panel { border: 1px solid var(--border); border-radius: var(--radius-m); padding: var(--sp-5); display: grid; gap: var(--sp-4); background: var(--bg); color: var(--text-primary); }
+  .dark-scope {
+    {%- for k, v in D.level %}
+    --level-{{ k | replace("_", "-") }}: {{ v }};{% endfor %}
+    {%- for k, v in D.levelFill %}
+    --fill-{{ k | replace("_", "-") }}: {{ v.bg }}; --ink-{{ k | replace("_", "-") }}: {{ v.ink }};{% endfor %}
+    {%- for k, v in D.aqi %}
+    --aqi-{{ k | replace("_", "-") }}: {{ v }};{% endfor %}
+    --bg: {{ D.bg }}; --surface: {{ D.surface }}; --surface-elevated: {{ D.surfaceElevated }};
+    --border: {{ D.border }}; --divider: {{ D.divider }};
+    --text-primary: {{ D.textPrimary }}; --text-secondary: {{ D.textSecondary }}; --text-muted: {{ D.textMuted }};
+    --primary: {{ D.primary }}; --primary-dark: {{ D.primaryDark }}; --primary-light: {{ D.primaryLight }};
+    color-scheme: dark;
+  }
+  .dark-scope a { color: var(--primary); }
+  .spacing-demo { display: flex; align-items: end; gap: var(--sp-2); }
+  .spacing-demo i { display: block; background: var(--primary-light); inline-size: var(--sp-4); }
+</style>
+
+<main class="page">
+
+  <header class="flow">
+    <p class="breadcrumbs">Referencia interna · <code>noindex</code></p>
+    <h1>Guía de estilo</h1>
+    <p class="text-secondary">Design system de respiraapp.fit. Tokens generados desde <code>src/_data/webTokens.js</code>; los ratios de contraste de esta página se calculan en build, no a ojo. Modo oscuro: automático por <code>prefers-color-scheme</code> + override manual por <code>[data-theme]</code>.</p>
+  </header>
+
+  <section class="section" aria-labelledby="s-paleta">
+    <h2 id="s-paleta">Paleta y contraste — modo claro</h2>
+    <p class="text-secondary small">Ratio mínimo exigido: 4.5:1 en texto. "Decorativo" = nunca lleva texto encima.</p>
+    <ul class="swatches">
+      {%- set pares = [
+        { n: "textPrimary / bg", fg: L.textPrimary, bg: L.bg },
+        { n: "textPrimary / surface", fg: L.textPrimary, bg: L.surface },
+        { n: "textSecondary / bg", fg: L.textSecondary, bg: L.bg },
+        { n: "textSecondary / surface", fg: L.textSecondary, bg: L.surface },
+        { n: "primaryDark (enlaces) / bg", fg: L.primaryDark, bg: L.bg },
+        { n: "textMuted / bg — decorativo", fg: L.textMuted, bg: L.bg },
+        { n: "primary / bg — decorativo", fg: L.primary, bg: L.bg }
+      ] %}
+      {%- for p in pares %}
+      {%- set r = webTokens.contrast(p.fg, p.bg) %}
+      <li class="swatch">
+        <span class="chip" style="background:{{ p.bg }};color:{{ p.fg }}">Ag 123</span>
+        <span class="meta"><strong>{{ p.n }}</strong><span class="num{% if r >= 4.5 %} ratio-ok{% endif %}">{{ r }}:1</span><span class="text-secondary">{{ p.fg }} / {{ p.bg }}</span></span>
+      </li>
+      {%- endfor %}
+    </ul>
+    <h3 style="margin-block-start: var(--sp-5)">Rellenos sólidos de nivel (badge héroe)</h3>
+    <p class="text-secondary small">Variantes de relleno ajustadas para la web donde el token canónico no llega a 4.5:1 (anexo §5). El token canónico queda intacto para usos sin texto: minibarras, heatmap, bordes.</p>
+    <ul class="swatches">
+      {%- for k, v in L.levelFill %}
+      {%- set r = webTokens.contrast(v.ink, v.bg) %}
+      <li class="swatch">
+        <span class="chip" style="background:{{ v.bg }};color:{{ v.ink }}">{{ k }}</span>
+        <span class="meta"><strong>fill-{{ k }}</strong><span class="num{% if r >= 4.5 %} ratio-ok{% endif %}">{{ r }}:1</span><span class="text-secondary">{{ v.bg }} · tinta {{ v.ink }}{% if v.bg != L.level[k] %} · canónico {{ L.level[k] }}{% endif %}</span></span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="s-paleta-dark">
+    <h2 id="s-paleta-dark">Paleta y contraste — modo oscuro</h2>
+    <ul class="swatches">
+      {%- set paresD = [
+        { n: "textPrimary / bg", fg: D.textPrimary, bg: D.bg },
+        { n: "textPrimary / surface", fg: D.textPrimary, bg: D.surface },
+        { n: "textSecondary / bg", fg: D.textSecondary, bg: D.bg },
+        { n: "textSecondary / surface", fg: D.textSecondary, bg: D.surface },
+        { n: "primary (enlaces) / bg", fg: D.primary, bg: D.bg }
+      ] %}
+      {%- for p in paresD %}
+      {%- set r = webTokens.contrast(p.fg, p.bg) %}
+      <li class="swatch">
+        <span class="chip" style="background:{{ p.bg }};color:{{ p.fg }}">Ag 123</span>
+        <span class="meta"><strong>{{ p.n }}</strong><span class="num{% if r >= 4.5 %} ratio-ok{% endif %}">{{ r }}:1</span><span class="text-secondary">{{ p.fg }} / {{ p.bg }}</span></span>
+      </li>
+      {%- endfor %}
+      {%- for k, v in D.levelFill %}
+      {%- set r = webTokens.contrast(v.ink, v.bg) %}
+      <li class="swatch">
+        <span class="chip" style="background:{{ v.bg }};color:{{ v.ink }}">{{ k }}</span>
+        <span class="meta"><strong>fill-{{ k }} (dark)</strong><span class="num{% if r >= 4.5 %} ratio-ok{% endif %}">{{ r }}:1</span><span class="text-secondary">{{ v.bg }} · tinta {{ v.ink }}{% if v.bg != D.level[k] %} · canónico {{ D.level[k] }}{% endif %}</span></span>
+      </li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="s-tipo">
+    <h2 id="s-tipo">Tipografía</h2>
+    <p class="text-secondary">Fraunces variable (titulares, ejes SOFT/WONK disponibles) + IBM Plex Sans variable (cuerpo, cifras tabulares). Self-hosted, subset latino, <code>font-display: swap</code>, precargadas. Escala fluida con <code>clamp()</code>, razón ~1.25 móvil / ~1.333 escritorio.</p>
+    <div class="type-scale">
+      <p style="font-size: var(--fs-5); font-family: var(--font-display); font-weight: 560; line-height: 1.05">42 <span style="font-size: var(--fs-0); font-family: var(--font-body)">granos/m³ · cifra héroe (--fs-5)</span></p>
+      <h1>Título de página (--fs-3)</h1>
+      <h2>Título de sección (--fs-2)</h2>
+      <h3>Subtítulo (--fs-1)</h3>
+      <p>Cuerpo (--fs-0). La medida de lectura es 65–75ch; los bloques de datos pueden ser más anchos. <a href="#s-tipo">Así se ve un enlace</a>.</p>
+      <p class="small text-secondary">Secundario pequeño (--fs--1). Cifras tabulares: 1111 / 0000 / 8888.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="s-espaciado">
+    <h2 id="s-espaciado">Espaciado</h2>
+    <p class="text-secondary small">Base 4px: 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96 · 128. Nada fuera de escala.</p>
+    <div class="spacing-demo">
+      {%- for s in [1,2,3,4,5,6,7,8,9,10] %}<i style="block-size: var(--sp-{{ s }})" title="--sp-{{ s }}"></i>{% endfor %}
+    </div>
+  </section>
+
+  <section class="section flow" aria-labelledby="s-comp">
+    <h2 id="s-comp">Componentes</h2>
+
+    <h3>NivelBadge — héroe (relleno sólido) e inline (tintado)</h3>
+    <div class="cluster">
+      {%- for lvl in ["low", "moderate", "high", "very_high", "extreme"] %}
+      {{ m.nivelHero(lvl, "máximo previsto para hoy") }}
+      {%- endfor %}
+    </div>
+    <div class="cluster">
+      {%- for lvl in ["low", "moderate", "high", "very_high", "extreme"] %}
+      {{ m.nivelBadge(lvl) }}
+      {%- endfor %}
+      <span class="tag-estimacion">estimación estacional</span>
+    </div>
+
+    <h3>Rejilla de pólenes (container query: 2 col estrecho, 3 col ancho)</h3>
+    <div class="pollen-grid-wrap">
+      <div class="pollen-grid">
+        {{ m.pollenCell("Gramíneas", "184.2", "granos/m³", "very_high") }}
+        {{ m.pollenCell("Olivo", "56.0", "granos/m³", "high") }}
+        {{ m.pollenCell("Abedul", "22.4", "granos/m³", "moderate") }}
+        {{ m.pollenCell("Aliso", "3.1", "granos/m³", "low") }}
+        {{ m.pollenCell("Artemisa", "0", "granos/m³", "low") }}
+        {{ m.pollenCell("Ambrosía", "0.8", "granos/m³", "low") }}
+      </div>
+    </div>
+
+    <h3>Fila de polen estimado</h3>
+    <div class="pollen-rows">
+      {{ m.pollenRowEstimado("Alternaria", 500, "esporas/m³", "very_high") }}
+      {{ m.pollenRowEstimado("Parietaria", 30, "granos/m³", "moderate") }}
+      {{ m.pollenRowEstimado("Ciprés", 0, "granos/m³", "none") }}
+    </div>
+
+    <h3>Previsión 7 días (tabla real; la minibarra es la segunda codificación)</h3>
+    {{ m.forecastTable([
+      { date: "2026-05-18", overallLevel: "moderate", dominant: "Gramíneas" },
+      { date: "2026-05-19", overallLevel: "high", dominant: "Gramíneas" },
+      { date: "2026-05-20", overallLevel: "very_high", dominant: "Gramíneas" },
+      { date: "2026-05-21", overallLevel: "very_high", dominant: "Olivo" },
+      { date: "2026-05-22", overallLevel: "high", dominant: "Olivo" },
+      { date: "2026-05-23", overallLevel: "moderate", dominant: "Gramíneas" },
+      { date: "2026-05-24", overallLevel: "low", dominant: null }
+    ], "Madrid") }}
+
+    <h3>Calidad del aire</h3>
+    {{ m.aqiBlock({ value: 43, pm2_5: 11.2, pm10: 24.0, ozone: 96.4 }) }}
+
+    <h3>Heatmap de calendario polínico (mes actual recuadrado)</h3>
+    {{ m.heatmapCalendario(cal.MONTHLY_POLLEN_INTENSITY, POLLEN_TYPES, cal.MONTH_NAMES_SHORT, cal.INTENSITY_LABELS, build.month) }}
+
+    <h3>Línea de actualización y CTA</h3>
+    {{ m.updateLine(build.nowIso, false) }}
+    {{ m.updateLine("2026-08-01T05:02:11.000Z", true) }}
+    {{ m.ctaApp("Llévate el dato en el bolsillo", "Texto de apoyo del CTA. El badge es el SVG oficial self-hosted; nunca sticky, nunca a todo ancho.") }}
+
+    <h3>Estados</h3>
+    <p><a class="btn" href="#s-comp">Botón secundario</a> — hover con fondo elevado, 150ms ease-out. Foco visible: anillo de 2px en <code>--primary-dark</code> con <code>outline-offset: 2px</code> (prueba con tabulador). Selección de texto con color de marca. <code>prefers-reduced-motion</code> desactiva las transiciones.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="s-dark">
+    <h2 id="s-dark">Muestra en modo oscuro</h2>
+    <p class="text-secondary small">Panel con los tokens oscuros aplicados en línea (el sitio real cambia por <code>prefers-color-scheme</code> o <code>data-theme</code>).</p>
+    <div class="demo-panel dark-scope">
+      <div class="cluster">
+        {%- for lvl in ["low", "moderate", "high", "very_high", "extreme"] %}
+        {{ m.nivelHero(lvl, "máximo previsto para hoy") }}
+        {%- endfor %}
+      </div>
+      <div class="cluster">
+        {%- for lvl in ["low", "moderate", "high", "very_high", "extreme"] %}
+        {{ m.nivelBadge(lvl) }}
+        {%- endfor %}
+        <span class="tag-estimacion">estimación estacional</span>
+      </div>
+      <div class="pollen-grid-wrap">
+        <div class="pollen-grid">
+          {{ m.pollenCell("Gramíneas", "184.2", "granos/m³", "very_high") }}
+          {{ m.pollenCell("Olivo", "56.0", "granos/m³", "high") }}
+          {{ m.pollenCell("Abedul", "3.1", "granos/m³", "low") }}
+        </div>
+      </div>
+      {{ m.aqiBlock({ value: 43, pm2_5: 11.2, pm10: 24.0, ozone: 96.4 }) }}
+    </div>
+  </section>
+
+</main>

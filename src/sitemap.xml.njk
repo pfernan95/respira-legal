@@ -1,0 +1,23 @@
+---
+permalink: sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- set staticPages = ["/privacidad", "/condiciones", "/soporte", "/delete-account"] %}
+{%- for item in collections.all %}
+{%- if not item.data.noindex %}
+{%- set url = item.url | extensionless %}
+  <url>
+    <loc>https://respiraapp.fit{{ url }}</loc>
+    {#- Legal/static pages keep a fixed date; every data-driven page (home,
+        city, cross, national, index) uses the real build date of its data. #}
+    {%- if url in staticPages %}
+    <lastmod>2026-05-19</lastmod>
+    {%- else %}
+    <lastmod>{{ pollenData.fetchedAt | fechaMadrid }}</lastmod>
+    {%- endif %}
+  </url>
+{%- endif %}
+{%- endfor %}
+</urlset>

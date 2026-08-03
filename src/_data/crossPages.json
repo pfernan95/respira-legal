@@ -1,0 +1,1004 @@
+{
+  "calibratedWindow": "past_92_days",
+  "runMonth": 8,
+  "caveat": "One 92-day pass only sees ~3 months. Pollens in season within the window are reliable; pollens whose season falls outside it (e.g. birch/alder in a summer run) are under-counted and need a re-calibration pass during their season (Feb–May for birch/alder/cypress).",
+  "note": "Cross pages generated only for (pollen, city) pairs where the max hourly value in the last 92 days reached the moderate threshold. 6 API pollens only.",
+  "pairCount": 99,
+  "pages": [
+    {
+      "pollen": "olive",
+      "city": "jaen",
+      "maxObserved": 3134.3
+    },
+    {
+      "pollen": "olive",
+      "city": "granada",
+      "maxObserved": 1716.3
+    },
+    {
+      "pollen": "olive",
+      "city": "badajoz",
+      "maxObserved": 1657.8
+    },
+    {
+      "pollen": "olive",
+      "city": "caceres",
+      "maxObserved": 1111.8
+    },
+    {
+      "pollen": "olive",
+      "city": "toledo",
+      "maxObserved": 1085.7
+    },
+    {
+      "pollen": "olive",
+      "city": "ciudad-real",
+      "maxObserved": 739.6
+    },
+    {
+      "pollen": "olive",
+      "city": "salamanca",
+      "maxObserved": 658.8
+    },
+    {
+      "pollen": "olive",
+      "city": "malaga",
+      "maxObserved": 603.2
+    },
+    {
+      "pollen": "olive",
+      "city": "sevilla",
+      "maxObserved": 546.4
+    },
+    {
+      "pollen": "olive",
+      "city": "cordoba",
+      "maxObserved": 472.8
+    },
+    {
+      "pollen": "olive",
+      "city": "zamora",
+      "maxObserved": 376.3
+    },
+    {
+      "pollen": "olive",
+      "city": "huelva",
+      "maxObserved": 327
+    },
+    {
+      "pollen": "grass",
+      "city": "badajoz",
+      "maxObserved": 311
+    },
+    {
+      "pollen": "olive",
+      "city": "avila",
+      "maxObserved": 310.5
+    },
+    {
+      "pollen": "olive",
+      "city": "guadalajara",
+      "maxObserved": 278.8
+    },
+    {
+      "pollen": "olive",
+      "city": "albacete",
+      "maxObserved": 277.3
+    },
+    {
+      "pollen": "olive",
+      "city": "ceuta",
+      "maxObserved": 232.9
+    },
+    {
+      "pollen": "olive",
+      "city": "palencia",
+      "maxObserved": 217.5
+    },
+    {
+      "pollen": "olive",
+      "city": "madrid",
+      "maxObserved": 217
+    },
+    {
+      "pollen": "olive",
+      "city": "valladolid",
+      "maxObserved": 198.9
+    },
+    {
+      "pollen": "olive",
+      "city": "segovia",
+      "maxObserved": 198.3
+    },
+    {
+      "pollen": "grass",
+      "city": "caceres",
+      "maxObserved": 193.6
+    },
+    {
+      "pollen": "olive",
+      "city": "lugo",
+      "maxObserved": 190.3
+    },
+    {
+      "pollen": "olive",
+      "city": "murcia",
+      "maxObserved": 186.3
+    },
+    {
+      "pollen": "grass",
+      "city": "ciudad-real",
+      "maxObserved": 184.2
+    },
+    {
+      "pollen": "olive",
+      "city": "alicante",
+      "maxObserved": 175.8
+    },
+    {
+      "pollen": "olive",
+      "city": "ourense",
+      "maxObserved": 174.8
+    },
+    {
+      "pollen": "olive",
+      "city": "almeria",
+      "maxObserved": 169.7
+    },
+    {
+      "pollen": "olive",
+      "city": "burgos",
+      "maxObserved": 158.1
+    },
+    {
+      "pollen": "olive",
+      "city": "cuenca",
+      "maxObserved": 155.6
+    },
+    {
+      "pollen": "olive",
+      "city": "cadiz",
+      "maxObserved": 145.8
+    },
+    {
+      "pollen": "grass",
+      "city": "cordoba",
+      "maxObserved": 142.9
+    },
+    {
+      "pollen": "olive",
+      "city": "palma",
+      "maxObserved": 138.1
+    },
+    {
+      "pollen": "grass",
+      "city": "lugo",
+      "maxObserved": 137.6
+    },
+    {
+      "pollen": "olive",
+      "city": "leon",
+      "maxObserved": 136.6
+    },
+    {
+      "pollen": "olive",
+      "city": "melilla",
+      "maxObserved": 135.1
+    },
+    {
+      "pollen": "grass",
+      "city": "ourense",
+      "maxObserved": 134.9
+    },
+    {
+      "pollen": "olive",
+      "city": "valencia",
+      "maxObserved": 132.3
+    },
+    {
+      "pollen": "olive",
+      "city": "oviedo",
+      "maxObserved": 124.5
+    },
+    {
+      "pollen": "olive",
+      "city": "lleida",
+      "maxObserved": 117.9
+    },
+    {
+      "pollen": "grass",
+      "city": "toledo",
+      "maxObserved": 110.6
+    },
+    {
+      "pollen": "olive",
+      "city": "logrono",
+      "maxObserved": 108.5
+    },
+    {
+      "pollen": "grass",
+      "city": "logrono",
+      "maxObserved": 106.3
+    },
+    {
+      "pollen": "olive",
+      "city": "pontevedra",
+      "maxObserved": 105.5
+    },
+    {
+      "pollen": "grass",
+      "city": "zamora",
+      "maxObserved": 104.5
+    },
+    {
+      "pollen": "grass",
+      "city": "leon",
+      "maxObserved": 103.3
+    },
+    {
+      "pollen": "olive",
+      "city": "santander",
+      "maxObserved": 99.8
+    },
+    {
+      "pollen": "grass",
+      "city": "salamanca",
+      "maxObserved": 96.9
+    },
+    {
+      "pollen": "grass",
+      "city": "segovia",
+      "maxObserved": 96.4
+    },
+    {
+      "pollen": "olive",
+      "city": "castellon-de-la-plana",
+      "maxObserved": 96.1
+    },
+    {
+      "pollen": "grass",
+      "city": "sevilla",
+      "maxObserved": 95.5
+    },
+    {
+      "pollen": "grass",
+      "city": "albacete",
+      "maxObserved": 94.1
+    },
+    {
+      "pollen": "grass",
+      "city": "vitoria-gasteiz",
+      "maxObserved": 93.6
+    },
+    {
+      "pollen": "grass",
+      "city": "pontevedra",
+      "maxObserved": 89.3
+    },
+    {
+      "pollen": "olive",
+      "city": "a-coruna",
+      "maxObserved": 88
+    },
+    {
+      "pollen": "grass",
+      "city": "oviedo",
+      "maxObserved": 87.9
+    },
+    {
+      "pollen": "grass",
+      "city": "guadalajara",
+      "maxObserved": 85.6
+    },
+    {
+      "pollen": "grass",
+      "city": "huelva",
+      "maxObserved": 85.1
+    },
+    {
+      "pollen": "olive",
+      "city": "teruel",
+      "maxObserved": 82.9
+    },
+    {
+      "pollen": "grass",
+      "city": "pamplona",
+      "maxObserved": 82.5
+    },
+    {
+      "pollen": "grass",
+      "city": "cuenca",
+      "maxObserved": 79.4
+    },
+    {
+      "pollen": "grass",
+      "city": "burgos",
+      "maxObserved": 78.9
+    },
+    {
+      "pollen": "olive",
+      "city": "bilbao",
+      "maxObserved": 78
+    },
+    {
+      "pollen": "grass",
+      "city": "a-coruna",
+      "maxObserved": 77.6
+    },
+    {
+      "pollen": "grass",
+      "city": "palencia",
+      "maxObserved": 74.9
+    },
+    {
+      "pollen": "grass",
+      "city": "avila",
+      "maxObserved": 74.6
+    },
+    {
+      "pollen": "grass",
+      "city": "soria",
+      "maxObserved": 73.4
+    },
+    {
+      "pollen": "grass",
+      "city": "malaga",
+      "maxObserved": 72.5
+    },
+    {
+      "pollen": "olive",
+      "city": "vitoria-gasteiz",
+      "maxObserved": 68.5
+    },
+    {
+      "pollen": "olive",
+      "city": "tarragona",
+      "maxObserved": 65.5
+    },
+    {
+      "pollen": "olive",
+      "city": "zaragoza",
+      "maxObserved": 62.1
+    },
+    {
+      "pollen": "grass",
+      "city": "cadiz",
+      "maxObserved": 60.9
+    },
+    {
+      "pollen": "grass",
+      "city": "valladolid",
+      "maxObserved": 60.7
+    },
+    {
+      "pollen": "grass",
+      "city": "huesca",
+      "maxObserved": 58.3
+    },
+    {
+      "pollen": "olive",
+      "city": "huesca",
+      "maxObserved": 57.7
+    },
+    {
+      "pollen": "grass",
+      "city": "madrid",
+      "maxObserved": 54.5
+    },
+    {
+      "pollen": "grass",
+      "city": "granada",
+      "maxObserved": 51.6
+    },
+    {
+      "pollen": "grass",
+      "city": "donostia-san-sebastian",
+      "maxObserved": 51.6
+    },
+    {
+      "pollen": "olive",
+      "city": "soria",
+      "maxObserved": 51.1
+    },
+    {
+      "pollen": "grass",
+      "city": "girona",
+      "maxObserved": 48.7
+    },
+    {
+      "pollen": "grass",
+      "city": "ceuta",
+      "maxObserved": 47.3
+    },
+    {
+      "pollen": "grass",
+      "city": "jaen",
+      "maxObserved": 46.9
+    },
+    {
+      "pollen": "grass",
+      "city": "zaragoza",
+      "maxObserved": 44.7
+    },
+    {
+      "pollen": "grass",
+      "city": "teruel",
+      "maxObserved": 44.3
+    },
+    {
+      "pollen": "olive",
+      "city": "donostia-san-sebastian",
+      "maxObserved": 42.5
+    },
+    {
+      "pollen": "grass",
+      "city": "santander",
+      "maxObserved": 40.3
+    },
+    {
+      "pollen": "olive",
+      "city": "pamplona",
+      "maxObserved": 39.8
+    },
+    {
+      "pollen": "grass",
+      "city": "bilbao",
+      "maxObserved": 38.9
+    },
+    {
+      "pollen": "olive",
+      "city": "barcelona",
+      "maxObserved": 37.4
+    },
+    {
+      "pollen": "grass",
+      "city": "murcia",
+      "maxObserved": 31.9
+    },
+    {
+      "pollen": "grass",
+      "city": "alicante",
+      "maxObserved": 30.4
+    },
+    {
+      "pollen": "grass",
+      "city": "valencia",
+      "maxObserved": 28.8
+    },
+    {
+      "pollen": "grass",
+      "city": "lleida",
+      "maxObserved": 28.6
+    },
+    {
+      "pollen": "ragweed",
+      "city": "teruel",
+      "maxObserved": 28.5
+    },
+    {
+      "pollen": "grass",
+      "city": "melilla",
+      "maxObserved": 28
+    },
+    {
+      "pollen": "grass",
+      "city": "almeria",
+      "maxObserved": 26
+    },
+    {
+      "pollen": "grass",
+      "city": "tarragona",
+      "maxObserved": 21.2
+    },
+    {
+      "pollen": "grass",
+      "city": "barcelona",
+      "maxObserved": 21.1
+    },
+    {
+      "pollen": "olive",
+      "city": "girona",
+      "maxObserved": 16.1
+    }
+  ],
+  "byCity": {
+    "almeria": [
+      {
+        "pollen": "grass",
+        "maxObserved": 26
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 169.7
+      }
+    ],
+    "granada": [
+      {
+        "pollen": "grass",
+        "maxObserved": 51.6
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 1716.3
+      }
+    ],
+    "cadiz": [
+      {
+        "pollen": "grass",
+        "maxObserved": 60.9
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 145.8
+      }
+    ],
+    "jaen": [
+      {
+        "pollen": "grass",
+        "maxObserved": 46.9
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 3134.3
+      }
+    ],
+    "huelva": [
+      {
+        "pollen": "grass",
+        "maxObserved": 85.1
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 327
+      }
+    ],
+    "malaga": [
+      {
+        "pollen": "grass",
+        "maxObserved": 72.5
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 603.2
+      }
+    ],
+    "sevilla": [
+      {
+        "pollen": "grass",
+        "maxObserved": 95.5
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 546.4
+      }
+    ],
+    "huesca": [
+      {
+        "pollen": "grass",
+        "maxObserved": 58.3
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 57.7
+      }
+    ],
+    "teruel": [
+      {
+        "pollen": "grass",
+        "maxObserved": 44.3
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 82.9
+      },
+      {
+        "pollen": "ragweed",
+        "maxObserved": 28.5
+      }
+    ],
+    "zaragoza": [
+      {
+        "pollen": "grass",
+        "maxObserved": 44.7
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 62.1
+      }
+    ],
+    "oviedo": [
+      {
+        "pollen": "grass",
+        "maxObserved": 87.9
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 124.5
+      }
+    ],
+    "las-palmas-de-gran-canaria": [],
+    "santa-cruz-de-tenerife": [],
+    "palma": [
+      {
+        "pollen": "olive",
+        "maxObserved": 138.1
+      }
+    ],
+    "cordoba": [
+      {
+        "pollen": "grass",
+        "maxObserved": 142.9
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 472.8
+      }
+    ],
+    "santander": [
+      {
+        "pollen": "grass",
+        "maxObserved": 40.3
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 99.8
+      }
+    ],
+    "albacete": [
+      {
+        "pollen": "grass",
+        "maxObserved": 94.1
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 277.3
+      }
+    ],
+    "ciudad-real": [
+      {
+        "pollen": "grass",
+        "maxObserved": 184.2
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 739.6
+      }
+    ],
+    "cuenca": [
+      {
+        "pollen": "grass",
+        "maxObserved": 79.4
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 155.6
+      }
+    ],
+    "guadalajara": [
+      {
+        "pollen": "grass",
+        "maxObserved": 85.6
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 278.8
+      }
+    ],
+    "toledo": [
+      {
+        "pollen": "grass",
+        "maxObserved": 110.6
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 1085.7
+      }
+    ],
+    "avila": [
+      {
+        "pollen": "grass",
+        "maxObserved": 74.6
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 310.5
+      }
+    ],
+    "burgos": [
+      {
+        "pollen": "grass",
+        "maxObserved": 78.9
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 158.1
+      }
+    ],
+    "leon": [
+      {
+        "pollen": "grass",
+        "maxObserved": 103.3
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 136.6
+      }
+    ],
+    "palencia": [
+      {
+        "pollen": "grass",
+        "maxObserved": 74.9
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 217.5
+      }
+    ],
+    "salamanca": [
+      {
+        "pollen": "grass",
+        "maxObserved": 96.9
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 658.8
+      }
+    ],
+    "segovia": [
+      {
+        "pollen": "grass",
+        "maxObserved": 96.4
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 198.3
+      }
+    ],
+    "soria": [
+      {
+        "pollen": "grass",
+        "maxObserved": 73.4
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 51.1
+      }
+    ],
+    "valladolid": [
+      {
+        "pollen": "grass",
+        "maxObserved": 60.7
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 198.9
+      }
+    ],
+    "zamora": [
+      {
+        "pollen": "grass",
+        "maxObserved": 104.5
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 376.3
+      }
+    ],
+    "barcelona": [
+      {
+        "pollen": "grass",
+        "maxObserved": 21.1
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 37.4
+      }
+    ],
+    "girona": [
+      {
+        "pollen": "grass",
+        "maxObserved": 48.7
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 16.1
+      }
+    ],
+    "lleida": [
+      {
+        "pollen": "grass",
+        "maxObserved": 28.6
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 117.9
+      }
+    ],
+    "tarragona": [
+      {
+        "pollen": "grass",
+        "maxObserved": 21.2
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 65.5
+      }
+    ],
+    "alicante": [
+      {
+        "pollen": "grass",
+        "maxObserved": 30.4
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 175.8
+      }
+    ],
+    "castellon-de-la-plana": [
+      {
+        "pollen": "olive",
+        "maxObserved": 96.1
+      }
+    ],
+    "valencia": [
+      {
+        "pollen": "grass",
+        "maxObserved": 28.8
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 132.3
+      }
+    ],
+    "badajoz": [
+      {
+        "pollen": "grass",
+        "maxObserved": 311
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 1657.8
+      }
+    ],
+    "caceres": [
+      {
+        "pollen": "grass",
+        "maxObserved": 193.6
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 1111.8
+      }
+    ],
+    "a-coruna": [
+      {
+        "pollen": "grass",
+        "maxObserved": 77.6
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 88
+      }
+    ],
+    "lugo": [
+      {
+        "pollen": "grass",
+        "maxObserved": 137.6
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 190.3
+      }
+    ],
+    "ourense": [
+      {
+        "pollen": "grass",
+        "maxObserved": 134.9
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 174.8
+      }
+    ],
+    "pontevedra": [
+      {
+        "pollen": "grass",
+        "maxObserved": 89.3
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 105.5
+      }
+    ],
+    "madrid": [
+      {
+        "pollen": "grass",
+        "maxObserved": 54.5
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 217
+      }
+    ],
+    "murcia": [
+      {
+        "pollen": "grass",
+        "maxObserved": 31.9
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 186.3
+      }
+    ],
+    "pamplona": [
+      {
+        "pollen": "grass",
+        "maxObserved": 82.5
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 39.8
+      }
+    ],
+    "vitoria-gasteiz": [
+      {
+        "pollen": "grass",
+        "maxObserved": 93.6
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 68.5
+      }
+    ],
+    "bilbao": [
+      {
+        "pollen": "grass",
+        "maxObserved": 38.9
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 78
+      }
+    ],
+    "donostia-san-sebastian": [
+      {
+        "pollen": "grass",
+        "maxObserved": 51.6
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 42.5
+      }
+    ],
+    "logrono": [
+      {
+        "pollen": "grass",
+        "maxObserved": 106.3
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 108.5
+      }
+    ],
+    "ceuta": [
+      {
+        "pollen": "grass",
+        "maxObserved": 47.3
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 232.9
+      }
+    ],
+    "melilla": [
+      {
+        "pollen": "grass",
+        "maxObserved": 28
+      },
+      {
+        "pollen": "olive",
+        "maxObserved": 135.1
+      }
+    ]
+  }
+}

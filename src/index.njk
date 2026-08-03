@@ -1,0 +1,121 @@
+---
+layout: layouts/base.njk
+permalink: index.html
+title: "Respira · Polen y calidad del aire en España hoy"
+ogTitle: "Respira · Polen en España hoy"
+description: "Niveles de polen y calidad del aire hoy en las principales ciudades de España. Qué pólenes están en temporada ahora y app gratuita para iPhone."
+---
+{%- import "macros.njk" as m -%}
+{%- set POLLEN_TYPES = constants.pollen.POLLEN_TYPES -%}
+{%- set cal = constants.seasonalCalendar -%}
+{%- set LEVEL_LABELS = { low: "Bajo", moderate: "Moderado", high: "Alto", very_high: "Muy alto", extreme: "Extremo" } -%}
+{%- set principales = ["madrid","barcelona","valencia","sevilla","zaragoza","malaga","bilbao","murcia"] -%}
+
+<main class="page">
+
+  <header class="flow">
+    <h1>Polen y calidad del aire en España, hoy</h1>
+    <p>Respira reúne los niveles de polen y el índice de calidad del aire de tu ciudad, con previsión de varios días y calendario polínico por especie. El dato en el HTML, actualizado a diario. La app, gratuita para iPhone y iPad.</p>
+    {{ m.updateLine(pollenData.fetchedAt, false) }}
+  </header>
+
+  <section class="section" aria-labelledby="snapshot">
+    <h2 id="snapshot">Nivel de polen hoy en las principales ciudades</h2>
+    <div class="scroller">
+      <table class="forecast" style="min-inline-size: 30rem; table-layout: auto">
+        <thead><tr>
+          <th scope="col" style="text-align:start">Ciudad</th>
+          <th scope="col">Nivel general</th>
+          <th scope="col">Polen dominante</th>
+          <th scope="col">Aire</th>
+        </tr></thead>
+        <tbody>
+          {%- for slug in principales %}
+          {%- set cd = pollenData.cities[slug] %}
+          {%- set hoy = cd.days[0] %}
+          <tr>
+            <td style="text-align:start"><a href="/polen-{{ slug }}">{{ cd.name }}</a></td>
+            <td>{% if hoy.overallLevel %}{{ m.nivelBadge(hoy.overallLevel, LEVEL_LABELS[hoy.overallLevel]) }}{% else %}<span class="small text-secondary">—</span>{% endif %}</td>
+            <td class="small">{% if hoy.dominant %}{{ POLLEN_TYPES[hoy.dominant].nameEs }}{% else %}<span class="text-secondary">—</span>{% endif %}</td>
+            <td class="num">{{ hoy.aqi.value }}</td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-block-start: var(--sp-3)"><a href="/mapa-polen-espana">Ver las 52 capitales →</a></p>
+  </section>
+
+  <section class="section" aria-labelledby="temporada">
+    <h2 id="temporada">Qué está en temporada ahora</h2>
+    <p class="text-secondary">Pólenes activos en {{ cal.MONTH_NAMES_FULL[build.month] | lower }} en España, según el calendario polínico:</p>
+    <div class="cluster" style="margin-block-start: var(--sp-3)">
+      {%- for item in build.activeNow %}
+      {%- if pollenInfo[item.type] %}
+      <a href="/alergia-{{ pollenInfo[item.type].slug }}" style="text-decoration:none">{{ m.nivelBadge(item.intensity, POLLEN_TYPES[item.type].nameEs + " · " + cal.INTENSITY_LABELS[item.intensity] | lower) }}</a>
+      {%- else %}
+      {{ m.nivelBadge(item.intensity, POLLEN_TYPES[item.type].nameEs + " · " + cal.INTENSITY_LABELS[item.intensity] | lower) }}
+      {%- endif %}
+      {%- endfor %}
+    </div>
+    <p class="small text-secondary" style="margin-block-start: var(--sp-3)">Intensidad orientativa media para España. El nivel real depende de tu ciudad: consúltalo en su página.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="que-es">
+    <h2 id="que-es">Una herramienta para quien lo pasa mal con el polen</h2>
+    <p>Según la <a href="https://www.seaic.org/" rel="noopener">Sociedad Española de Alergología e Inmunología Clínica (SEAIC)</a>, más de 8 millones de personas en España sufren algún tipo de alergia al polen. La temporada se ha alargado en las últimas décadas: las cupresáceas arrancan en invierno, las gramíneas y el olivo dominan de la primavera al verano, y las herbáceas de zonas secas alargan los síntomas hasta el otoño.</p>
+    <p>Respira te muestra qué hay en el aire de tu ciudad hoy y en los próximos días, con niveles por especie, calidad del aire y un diario de síntomas para llevar a tu consulta. Sin anuncios y sin compartir tus datos.</p>
+  </section>
+
+  <section class="section" aria-labelledby="explora">
+    <h2 id="explora">Explora por tipo de polen</h2>
+    <ul class="link-grid">
+      {%- for info in pollenInfoList %}
+      <li><a href="/alergia-{{ info.slug }}">{{ info.h1 }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="section">
+    {{ m.ctaApp("Descarga Respira gratis", "Niveles de polen de tu ubicación, previsión, calidad del aire y diario de síntomas. Sin coste y sin anuncios, para iPhone y iPad.") }}
+  </section>
+
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      "@id": "https://respiraapp.fit/#app",
+      "name": "Respira",
+      "operatingSystem": "iOS 16.0",
+      "applicationCategory": "HealthApplication",
+      "description": "App para personas alérgicas al polen en España. Niveles de polen y calidad del aire con datos de Open-Meteo, calendario de polinización, diario de síntomas y recordatorios.",
+      "url": "https://respiraapp.fit/",
+      "downloadUrl": "https://apps.apple.com/app/6759206565",
+      "inLanguage": "es-ES",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "publisher": { "@id": "https://respiraapp.fit/#org" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://respiraapp.fit/#org",
+      "name": "Respira",
+      "url": "https://respiraapp.fit/",
+      "logo": "https://respiraapp.fit/apple-touch-icon.png",
+      "email": "respiraapp.info@gmail.com",
+      "sameAs": ["https://apps.apple.com/app/6759206565"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://respiraapp.fit/#website",
+      "url": "https://respiraapp.fit/",
+      "name": "Respira",
+      "inLanguage": "es-ES",
+      "publisher": { "@id": "https://respiraapp.fit/#org" }
+    }
+  ]
+}
+</script>

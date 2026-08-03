@@ -1,0 +1,182 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: cities
+  size: 1
+  alias: ciudad
+  addAllPagesToCollections: true
+permalink: "polen-{{ ciudad.slug }}.html"
+ogType: article
+eleventyComputed:
+  title: "Polen en {{ ciudad.name }} hoy · niveles y previsión — Respira"
+  ogTitle: "Polen en {{ ciudad.name }} hoy · niveles y previsión"
+  description: "Niveles de polen en {{ ciudad.name }} hoy: máximo previsto por tipo, previsión de los próximos días, calidad del aire y calendario polínico. Datos de Open-Meteo actualizados a diario."
+---
+{%- import "macros.njk" as m -%}
+{%- set data = pollenData.cities[ciudad.slug] -%}
+{%- set hoy = data.days[0] -%}
+{%- set POLLEN_TYPES = constants.pollen.POLLEN_TYPES -%}
+{%- set cal = constants.seasonalCalendar -%}
+{%- set predomNames = [] -%}
+{%- for id in ciudad.predominantes %}{% set _ = predomNames.push(POLLEN_TYPES[id].nameEs) %}{% endfor -%}
+
+<main class="page">
+
+  <nav class="breadcrumbs" aria-label="Miga de pan">
+    <a href="/">Inicio</a> › <a href="/mapa-polen-espana">Ciudades</a> › Polen en {{ ciudad.name }}
+  </nav>
+
+  {%- set sinCobertura = hoy.overallLevel == null %}
+  <header class="hero-data">
+    <h1>Polen en {{ ciudad.name }} hoy</h1>
+    <p class="date-line">Máximo previsto para el <time datetime="{{ hoy.date }}">{{ hoy.date | fechaEs }}</time> · {{ ciudad.name }} ({{ ciudad.ccaa }})</p>
+    {%- if sinCobertura %}
+    <p class="nivel-hero lv-low" style="--_lv: var(--border)">
+      <span class="detail">Nivel general de polen</span>
+      <strong class="word">Sin previsión</strong>
+      <span class="detail">El modelo de Open-Meteo no ofrece datos de polen para esta ubicación</span>
+    </p>
+    {%- else %}
+    {{ m.nivelHero(hoy.overallLevel, "máximo previsto para hoy") }}
+    <div class="pollen-grid-wrap">
+      <div class="pollen-grid">
+        {%- for id, p in hoy.pollen %}
+        {{ m.pollenCell(POLLEN_TYPES[id].nameEs, p.value, "granos/m³", p.level) }}
+        {%- endfor %}
+      </div>
+    </div>
+    {%- endif %}
+    {{ m.updateLine(data.fetchedAt, data.stale) }}
+  </header>
+
+  {%- if not sinCobertura %}
+  <section class="section" aria-labelledby="prevision">
+    <h2 id="prevision">Previsión a {{ data.days.length }} días</h2>
+    {%- set diasConNombre = [] %}
+    {%- for day in data.days %}
+      {%- set _ = diasConNombre.push({
+        date: day.date,
+        overallLevel: day.overallLevel,
+        dominant: POLLEN_TYPES[day.dominant].nameEs if day.dominant else null
+      }) %}
+    {%- endfor %}
+    {{ m.forecastTable(diasConNombre, ciudad.name) }}
+  </section>
+  {%- endif %}
+
+  <section class="section" aria-labelledby="temporada">
+    <h2 id="temporada">En temporada ahora mismo</h2>
+    <p class="text-secondary">Pólenes activos en {{ cal.MONTH_NAMES_FULL[build.month] | lower }} según el calendario polínico:</p>
+    <div class="cluster" style="margin-block-start: var(--sp-3)">
+      {%- for item in build.activeNow %}
+      {{ m.nivelBadge(item.intensity, POLLEN_TYPES[item.type].nameEs + " · " + cal.INTENSITY_LABELS[item.intensity] | lower) }}
+      {%- endfor %}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="estimados">
+    <h2 id="estimados">Otros pólenes y esporas <span class="tag-estimacion">estimación estacional</span></h2>
+    <p class="text-secondary">Estos tipos no tienen dato del modelo de Open-Meteo. Los valores son estimaciones estacionales medias para {{ cal.MONTH_NAMES_FULL[build.month] | lower }}, basadas en los calendarios históricos de la <a href="https://www.uco.es/rea/" rel="noopener">Red Española de Aerobiología</a> — no son mediciones.</p>
+    <div class="pollen-rows">
+      {%- for item in build.estimatedNow %}
+      {{ m.pollenRowEstimado(POLLEN_TYPES[item.id].nameEs, item.value, "esporas/m³" if item.id == "alternaria" else "granos/m³", item.level) }}
+      {%- endfor %}
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="aire">
+    <h2 id="aire">Calidad del aire hoy en {{ ciudad.name }}</h2>
+    {{ m.aqiBlock(hoy.aqi) }}
+  </section>
+
+  <section class="section wide" aria-labelledby="calendario">
+    <h2 id="calendario">Calendario polínico</h2>
+    <p class="text-secondary">Intensidad orientativa mes a mes en España, según los calendarios de la REA. El mes actual aparece recuadrado.</p>
+    {{ m.heatmapCalendario(cal.MONTHLY_POLLEN_INTENSITY, POLLEN_TYPES, cal.MONTH_NAMES_SHORT, cal.INTENSITY_LABELS, build.month) }}
+  </section>
+
+  <section class="section flow" aria-labelledby="sobre">
+    <h2 id="sobre">Alergia al polen en {{ ciudad.name }}</h2>
+    {%- if ciudad.intro.length %}
+      {%- for parrafo in ciudad.intro %}
+    <p>{{ parrafo | safe }}</p>
+      {%- endfor %}
+    {%- else %}
+    <p>{{ ciudad.name }} ({{ ciudad.provincia }}, {{ ciudad.ccaa }}) tiene su propio calendario polínico. El dato de esta página es el máximo previsto para hoy en la ciudad, con la previsión de los próximos días y el calendario mes a mes para anticipar los picos.</p>
+    {%- endif %}
+    {%- if predomNames.length %}
+    <p>Los pólenes de mayor relevancia local son {{ predomNames | join(", ") }}. Consulta también las páginas de <a href="/alergia-gramineas">gramíneas</a> y <a href="/alergia-olivo">olivo</a> para saber más sobre cada alérgeno.</p>
+    {%- endif %}
+  </section>
+
+  <section class="section faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Preguntas frecuentes</h2>
+    {%- set faq = ciudad.name | cityFaq(predomNames) %}
+    {%- for item in faq %}
+    <details{% if loop.first %} open{% endif %}>
+      <summary>{{ item.q }}</summary>
+      <p>{{ item.a }}</p>
+    </details>
+    {%- endfor %}
+  </section>
+
+  <section class="section" aria-labelledby="cerca">
+    <h2 id="cerca">Polen en ciudades cercanas</h2>
+    <ul class="link-grid">
+      {%- for c in ciudad.nearby %}
+      <li><a href="/polen-{{ c.slug }}">Polen en {{ c.name }}</a></li>
+      {%- endfor %}
+    </ul>
+    <p style="margin-block-start: var(--sp-4)"><a href="/mapa-polen-espana">Ver todas las ciudades →</a></p>
+  </section>
+
+  <section class="section">
+    {{ m.ctaApp("Llévate el dato en el bolsillo", "Respira muestra los niveles de tu ubicación, la previsión y un diario de síntomas. Gratis y sin anuncios, para iPhone y iPad.") }}
+  </section>
+
+</main>
+
+{%- set faqData = ciudad.name | cityFaq(predomNames) %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Dataset",
+      "name": "Niveles de polen en {{ ciudad.name }}",
+      "description": "Máximo diario previsto por tipo de polen y calidad del aire (EAQI, PM2.5, PM10, ozono) en {{ ciudad.name }}, con previsión a varios días. Elaborado a partir del modelo CAMS de Copernicus vía Open-Meteo.",
+      "url": "https://respiraapp.fit/polen-{{ ciudad.slug }}",
+      "inLanguage": "es-ES",
+      "temporalCoverage": "{{ data.days[0].date }}/{{ data.days[data.days.length - 1].date }}",
+      "dateModified": "{{ data.fetchedAt }}",
+      "creator": { "@type": "Organization", "name": "Respira", "url": "https://respiraapp.fit/" },
+      "isBasedOn": "https://open-meteo.com/",
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "{{ ciudad.name }}, {{ ciudad.ccaa }}, España",
+        "geo": { "@type": "GeoCoordinates", "latitude": {{ data.lat }}, "longitude": {{ data.lon }} }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://respiraapp.fit/" },
+        { "@type": "ListItem", "position": 2, "name": "Ciudades", "item": "https://respiraapp.fit/mapa-polen-espana" },
+        { "@type": "ListItem", "position": 3, "name": "Polen en {{ ciudad.name }}" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for item in faqData %}
+        {
+          "@type": "Question",
+          "name": {{ item.q | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ item.a | dump | safe }} }
+        }{% if not loop.last %},{% endif %}
+        {%- endfor %}
+      ]
+    }
+  ]
+}
+</script>

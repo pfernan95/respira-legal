@@ -1,0 +1,75 @@
+# Daily rebuild + deploy to GitHub Pages.
+#
+# - Cron is UTC: 05:00 UTC = 06:00 Madrid in winter, 07:00 in summer. Per the
+#   brief we accept the DST offset instead of building clock-change logic.
+#   Actions crons can also run several minutes late; nothing here depends on
+#   punctuality.
+# - Data is NEVER committed to main: the site deploys from a build artifact.
+#   The last good Open-Meteo payload lives in the Actions cache (.cache/) so a
+#   failed fetch falls back to the previous data with its real date.
+# - GitHub disables scheduled workflows after 60 days without repo activity.
+#   Backup trigger: cron-job.org fires `workflow_dispatch` daily via the REST
+#   API (immune to that rule), so the site keeps rebuilding through the
+#   July–January valley. See README section "Rebuild diario".
+name: build-and-deploy
+
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Restore last good pollen data
+        uses: actions/cache/restore@v4
+        with:
+          path: .cache
+          key: pollen-data-${{ github.run_id }}
+          restore-keys: |
+            pollen-data-
+
+      - run: npm ci
+
+      - name: Build (fetches Open-Meteo, falls back to cache per city)
+        run: npm run build
+
+      - name: Save pollen data cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .cache
+          key: pollen-data-${{ github.run_id }}
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
