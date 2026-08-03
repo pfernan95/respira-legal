@@ -1,0 +1,21 @@
+---
+permalink: sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for item in collections.all %}
+{%- if not item.data.noindex %}
+  <url>
+    <loc>https://respiraapp.fit{{ item.url | extensionless }}</loc>
+    {#- Páginas con datos: lastmod = fecha real del dato. Resto: fecha de su
+        último cambio de contenido (fija hasta que el contenido cambie). #}
+    {%- if item.inputPath.includes("polen-ciudad.njk") %}
+    <lastmod>{{ pollenData.fetchedAt | fechaMadrid }}</lastmod>
+    {%- else %}
+    <lastmod>2026-05-19</lastmod>
+    {%- endif %}
+  </url>
+{%- endif %}
+{%- endfor %}
+</urlset>
