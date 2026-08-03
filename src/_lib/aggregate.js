@@ -15,7 +15,12 @@
  * The label for this number is "máximo previsto para hoy" — never "ahora
  * mismo": the page is static and rebuilt once a day.
  */
-import { POLLEN_TYPES, getPollenLevel, getOverallPollenLevel } from "../_data/constants/pollen.js";
+import {
+  POLLEN_TYPES,
+  POLLEN_THRESHOLDS,
+  getPollenLevel,
+  getOverallPollenLevel,
+} from "../_data/constants/pollen.js";
 
 /** Open-Meteo hourly params, exactly as the app requests them. */
 export const HOURLY_PARAMS = [
@@ -94,11 +99,28 @@ export function aggregateDays(hourly) {
       .map((p) => p.level)
       .filter(Boolean);
 
+    // Dominant pollen of the day: highest level, ties broken by how far the
+    // value is into its own thresholds (raw values aren't comparable across
+    // types because each type has different thresholds).
+    const LEVEL_ORDER = ["low", "moderate", "high", "very_high", "extreme"];
+    let dominant = null;
+    let best = -1;
+    for (const [id, p] of Object.entries(pollen)) {
+      if (p.value === null || p.value === 0) continue;
+      const score =
+        LEVEL_ORDER.indexOf(p.level) * 1000 + p.value / POLLEN_THRESHOLDS[id].moderate;
+      if (score > best) {
+        best = score;
+        dominant = id;
+      }
+    }
+
     const aqiMean = meanOf(pick("european_aqi"));
 
     result.push({
       date,
       pollen,
+      dominant,
       overallLevel: levels.length ? getOverallPollenLevel(levels) : null,
       aqi: {
         value: aqiMean === null ? null : Math.round(aqiMean),
@@ -107,6 +129,13 @@ export function aggregateDays(hourly) {
         ozone: round1(meanOf(pick("ozone"))),
       },
     });
+  }
+
+  // CAMS only provides pollen ~5 days ahead even though the API accepts
+  // forecast_days=7: trailing days come back all-null. Drop them — the page
+  // must never promise more days than it can serve.
+  while (result.length && result[result.length - 1].overallLevel === null) {
+    result.pop();
   }
 
   return result;
