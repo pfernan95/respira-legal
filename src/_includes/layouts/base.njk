@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  {%- set canonical = "https://respiraapp.fit" + (page.url | extensionless) %}
+  {%- if noindex %}
+  <meta name="robots" content="noindex,nofollow">
+  {%- else %}
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="{{ canonical }}">
+  {%- endif %}
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF8F5">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#16181A">
+
+  <meta property="og:type" content="{{ ogType or "website" }}">
+  <meta property="og:site_name" content="Respira">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:title" content="{{ ogTitle or title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:image" content="https://respiraapp.fit/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ ogTitle or title }}">
+  <meta name="twitter:description" content="{{ description }}">
+  <meta name="twitter:image" content="https://respiraapp.fit/og-image.png">
+
+  <meta name="apple-itunes-app" content="app-id=6759206565">
+
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <link rel="preload" href="/assets/fonts/fraunces-latin-full-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="/">
+      <svg class="icon" width="22" height="22" viewBox="0 0 100 100" aria-hidden="true" fill="currentColor">
+        <rect x="47" y="24" width="6" height="20" rx="3"/>
+        <path d="M45 44c0-4-3-6-7-6-9 0-17 12-17 25 0 8 4 13 10 13 9 0 14-9 14-18z"/>
+        <path d="M55 44c0-4 3-6 7-6 9 0 17 12 17 25 0 8-4 13-10 13-9 0-14-9-14-18z"/>
+      </svg>
+      Respira
+    </a>
+    <nav aria-label="Principal">
+      <a href="/">Inicio</a>
+      <a href="/soporte">Soporte</a>
+      <a href="https://apps.apple.com/app/6759206565" rel="noopener">Descargar</a>
+    </nav>
+  </header>
+
+  {{ content | safe }}
+
+  <footer class="site-footer">
+    <nav class="cluster" aria-label="Legal" style="justify-content:center">
+      <a href="/privacidad">Privacidad</a>
+      <a href="/condiciones">Condiciones</a>
+      <a href="/soporte">Soporte</a>
+      <a href="/delete-account">Eliminar cuenta</a>
+      <a href="mailto:respiraapp.info@gmail.com">Contacto</a>
+    </nav>
+    <p>Polen por ciudad:
+      <a href="/polen-madrid">Madrid</a> · <a href="/polen-barcelona">Barcelona</a> ·
+      <a href="/polen-sevilla">Sevilla</a> · <a href="/polen-valencia">Valencia</a> ·
+      <a href="/polen-zaragoza">Zaragoza</a> · <a href="/polen-malaga">Málaga</a> ·
+      <a href="/polen-cordoba">Córdoba</a> · <a href="/polen-bilbao">Bilbao</a>
+    </p>
+    <p>Datos de <a href="https://open-meteo.com/" rel="noopener">Open-Meteo</a> (modelo CAMS de Copernicus).
+      Calendarios basados en la <a href="https://www.uco.es/rea/" rel="noopener">Red Española de Aerobiología (REA)</a>.</p>
+    <p>Respira es una herramienta informativa. No sustituye el diagnóstico ni la consulta de un profesional médico.</p>
+    <p>&copy; 2026 Respira</p>
+  </footer>
+
+</body>
+</html>
