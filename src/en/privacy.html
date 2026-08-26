@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://respiraapp.fit/en/privacy">
+  <link rel="alternate" hreflang="es-ES" href="https://respiraapp.fit/privacidad">
+  <link rel="alternate" hreflang="en-US" href="https://respiraapp.fit/en/privacy">
+  <link rel="alternate" hreflang="x-default" href="https://respiraapp.fit/privacidad">
+  <title>Respira &mdash; Privacy Policy</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 700px; margin: 0 auto; padding: 24px; color: #2D3436; line-height: 1.6; }
+    h1 { color: #7C9A82; }
+    h2 { color: #5A7A60; margin-top: 32px; }
+    p { margin: 12px 0; }
+    .date { color: #636E72; font-size: 14px; }
+    a { color: #7C9A82; }
+    .back-link { display: inline-block; margin-top: 24px; color: #636E72; text-decoration: none; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1>Respira &mdash; Privacy Policy</h1>
+  <p class="date">Last updated: 27 August 2026</p>
+
+  <h2>1. Information we collect</h2>
+  <p><strong>Account data:</strong> When you sign up we collect your name, email address and password (encrypted). If you sign in with Google or Apple, we receive your name and email from those providers.</p>
+  <p><strong>Location data:</strong> We ask for your location (city, region, country) to show you pollen levels and air quality for your area. You can pick your location manually without granting GPS access. You may also save additional locations (for example "Home" or "Work"), which are stored with their coordinates and synced between your devices.</p>
+  <p><strong>Trip data:</strong> If you plan a trip in the app, we store the destination (city and coordinates) and the trip dates so we can show you the pollen forecast for that place and send you related alerts. You can delete your trips at any time.</p>
+  <p><strong>Health data (diary):</strong> The symptoms, severity, medication and notes you record in your personal diary. This data is private and only you can access it.</p>
+  <p><strong>Preferences:</strong> Settings such as font size, selected allergens and notification preferences.</p>
+  <p><strong>Notifications:</strong> If you enable notifications, we store a technical identifier for your device (a push notification token) so we can send you alerts about pollen levels and your trips. Delivery goes through the Expo service and your operating system's notification service. You can turn them off at any time in the app or in your device settings.</p>
+  <p><strong>Purchase data:</strong> If you subscribe to Respira Pro, your transaction is processed by the Apple App Store or Google Play Store. We do not store payment details (card, bank account). Your subscription status is managed through RevenueCat (see section 3).</p>
+  <p><strong>Usage data (analytics):</strong> To understand how the app is used and improve it, we collect interaction events (screens viewed, actions taken) and app lifecycle events (launch, foreground). These events are linked to an internal user identifier so they are not double-counted across devices, which makes them <strong>pseudonymous</strong> rather than anonymous. <strong>They contain no clinical data whatsoever: not the contents of your diary, not your symptoms, not their severity, not which medications you take, not which allergies you have &mdash; not even a count of them.</strong> You can turn this collection off entirely under Profile &rarr; About Respira &rarr; "Share usage data". See section 3 for the provider.</p>
+
+  <h2>2. Advertising</h2>
+  <p>Respira shows ads through Unity LevelPlay (formerly ironSource) to users on the free version. Respira Pro users see no ads at all.</p>
+  <p><strong>Non-personalized by design.</strong> Before the advertising SDK is initialised, Respira instructs it not to use your data for personalised advertising and not to sell or share it. The ads you see are contextual, not based on a profile of you. If those instructions cannot be applied for any reason, the app does not initialise the advertising SDK at all &mdash; it shows no ads rather than personalised ones.</p>
+  <p><strong>Ad formats:</strong> Respira uses adaptive banners on the home screen and interstitials shown occasionally when moving between sections of the app (with a frequency cap and an initial grace period after opening the app). These ads are supplied by Unity LevelPlay and its partner networks.</p>
+  <p><strong>App Tracking Transparency:</strong> On iOS you may be asked for permission to track. Respira does not build advertising profiles and does not share your diary. Respira Pro users are not asked at all.</p>
+
+  <h2>3. Third-party services</h2>
+  <ul>
+    <li><strong>Supabase</strong> (storage and authentication): Your account and diary data are stored on AWS servers in the European Union. <a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase privacy policy</a>.</li>
+    <li><strong>RevenueCat</strong> (subscription management): Processes your user identifier and transaction data to manage the Respira Pro subscription. Stores no payment details. <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat privacy policy</a>.</li>
+    <li><strong>Unity LevelPlay</strong> (advertising): Serves non-personalized ads in the free version. LevelPlay mediates several advertising networks and processes what is needed to serve the ads. <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy" target="_blank" rel="noopener">Unity privacy policy</a>.</li>
+    <li><strong>Expo</strong> (push notifications): When you enable notifications, the Expo service processes your device token and the contents of the alerts (pollen levels, trip reminders) to deliver them. <a href="https://expo.dev/privacy" target="_blank" rel="noopener">Expo privacy policy</a>.</li>
+    <li><strong>PostHog Cloud EU</strong> (usage analytics, error reports and surveys): Processes pseudonymised interaction events, technical crash reports and any answers you submit to in-app surveys. Data is stored on servers in the European Union under the GDPR. It is not used for advertising and is not shared with third parties for marketing. <a href="https://posthog.com/privacy" target="_blank" rel="noopener">PostHog privacy policy</a>.</li>
+    <li><strong>Open-Meteo</strong> (environmental data): Receives geographic coordinates to provide pollen and air quality data. Receives no personal data.</li>
+    <li><strong>Google Pollen API</strong> (pollen data in the United States): Receives only approximate geographic coordinates in order to return pollen levels for that area. Coordinates are rounded to a cell of roughly 39 &times; 20 km before being sent, and the request is made by our server, not by your device: Google does not receive your identifier, your IP address or any account data. It is used only for locations in the United States, where the European model has no coverage. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google privacy policy</a>.</li>
+  </ul>
+
+  <h2>4. How we use your information</h2>
+  <p>To show you pollen levels and air quality for your locations, to send the alerts you have configured, to keep your diary in sync across your devices, to produce the report you can export for your allergist, to manage your subscription, and to understand how the app is used so we can improve it.</p>
+  <p>We do not sell your personal information, and we do not share it for cross-context behavioural advertising.</p>
+
+  <h2>5. Storage and security</h2>
+  <p>Your data is stored securely on Supabase (Amazon Web Services infrastructure in the EU). Access is protected by authentication and row-level security policies, so one account cannot read another's data. Your diary never leaves your account.</p>
+
+  <h2>6. External data sources</h2>
+  <p>Pollen and air quality data come from:</p>
+  <ul>
+    <li><strong>Open-Meteo Air Quality API</strong> (open data, CC BY 4.0), based on the Copernicus CAMS model, for Europe</li>
+    <li><strong>Google Pollen API</strong> for locations in the United States, where the European model has no coverage</li>
+    <li><strong>Spanish Aerobiology Network (REA)</strong> for monitoring stations in Spain</li>
+    <li><strong>POLLnet</strong> (ISPRA/SNPA) for monitoring stations in Italy</li>
+    <li><strong>Deutscher Wetterdienst (DWD)</strong> for regional pollen data in Germany</li>
+  </ul>
+  <p>We do not send your personal data to these services. We send geographic coordinates only.</p>
+
+  <h2>7. Your rights</h2>
+  <p>Wherever you live, you can access, correct, export and delete your data from within the app, and you can delete your account entirely at <a href="/en/delete-account">respiraapp.fit/en/delete-account</a>.</p>
+  <p><strong>If you are in the European Economic Area or the United Kingdom</strong>, the GDPR gives you the rights of access, rectification, erasure, portability, restriction and objection, and the right to lodge a complaint with your national data protection authority. In Spain that is the <a href="https://www.aepd.es" target="_blank" rel="noopener">Agencia Espa&ntilde;ola de Protecci&oacute;n de Datos</a>.</p>
+
+  <h2>8. Your California privacy rights</h2>
+  <p>This section applies if you are a California resident, under the California Consumer Privacy Act as amended by the CPRA.</p>
+  <p><strong>Categories of personal information we collect:</strong> identifiers (name, email, an internal user identifier, a push notification token); commercial information (your subscription status); internet activity (which screens you open in the app); approximate geolocation (the city or coordinates you choose &mdash; we do not collect precise background location); and health information you choose to enter in your diary.</p>
+  <p><strong>Why we collect it:</strong> to provide the features described in section 4. We do not use it for any purpose that is incompatible with those.</p>
+  <p><strong>We do not sell or share your personal information.</strong> We do not sell personal information as "sale" is defined by the CCPA, and we do not share it for cross-context behavioural advertising. Because of that, no "Do Not Sell or Share My Personal Information" link is required &mdash; there is nothing to opt out of. The advertising SDK is instructed not to sell or share your data before it is initialised, on every launch, for every user.</p>
+  <p><strong>Sensitive personal information:</strong> your diary may contain health information, which California treats as sensitive. We use it only to provide the diary and the report you export yourself. We do not use or disclose it to infer characteristics about you, and it is never sent to our analytics provider.</p>
+  <p><strong>Your rights:</strong> to know what we collect and why, to delete it, to correct it, to obtain a portable copy, and not to be discriminated against for exercising any of these. To exercise them, email <a href="mailto:respiraapp.info@gmail.com">respiraapp.info@gmail.com</a> or use the deletion page linked above. We will verify your request through the email address on your account.</p>
+
+  <h2>9. Data retention</h2>
+  <p>We keep your data for as long as your account exists. When you delete your account, your account data and diary are deleted from our servers. Pseudonymised analytics events are retained by our analytics provider under its own retention schedule and are not linked to your identity once the account is gone.</p>
+
+  <h2>10. Children</h2>
+  <p>Respira is not directed to children. We do not knowingly collect data from children under 13 in the United States, or under 16 in the European Economic Area. If you believe a child has provided us with personal information, contact us and we will delete it.</p>
+
+  <h2>11. Changes to this policy</h2>
+  <p>We may update this policy from time to time. We will notify you of significant changes through the app.</p>
+
+  <h2>12. Contact</h2>
+  <p>If you have questions about this privacy policy, contact us at:</p>
+  <p><strong>Email:</strong> <a href="mailto:respiraapp.info@gmail.com">respiraapp.info@gmail.com</a></p>
+
+  <a href="/en/" class="back-link">&larr; Back to respiraapp.fit</a>
+  <a href="/privacidad" class="back-link" style="margin-left:16px" hreflang="es-ES">Español</a>
+</body>
+</html>

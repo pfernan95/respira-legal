@@ -1,0 +1,58 @@
+---
+layout: layouts/base.njk
+lang: en
+pagination:
+  data: usPollenInfoList
+  size: 1
+  alias: info
+  addAllPagesToCollections: true
+permalink: "en/allergy-{{ info.slug }}.html"
+ogType: article
+eleventyComputed:
+  title: "{{ info.h1 }}: symptoms, season and where it occurs — Respira"
+  ogTitle: "{{ info.h1 }}: symptoms, season and where it occurs"
+  description: "{{ info.lead | truncate(155) }}"
+---
+{%- import "macros.njk" as m -%}
+
+<main class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> › Allergens</nav>
+
+  <header class="flow">
+    <h1>{{ info.h1 }}</h1>
+    <p>{{ info.lead }}</p>
+  </header>
+
+  <section class="section" aria-labelledby="season">
+    <h2 id="season">Season</h2>
+    <p><strong>{{ info.season }}</strong></p>
+    <p>Pollen seasons shift with latitude and elevation — the same species can start six weeks apart in Texas and Minnesota — so treat these months as the shape of the year rather than a date to plan around. Respira shows the level measured for your own location each day.</p>
+  </section>
+
+  <section class="section" aria-labelledby="symptoms">
+    <h2 id="symptoms">Symptoms commonly associated with it</h2>
+    <p>{{ info.symptoms }}</p>
+  </section>
+
+  <section class="section" aria-labelledby="where">
+    <h2 id="where">Where it occurs</h2>
+    <p>{{ info.where }}</p>
+  </section>
+
+  <section class="section" aria-labelledby="app">
+    <h2 id="app">Track it day by day</h2>
+    <p>Respira reports {{ info.h1 | lower | replace(" allergy", "") }} for your location every day, alongside the other ten species measured across the United States, air quality on the EPA scale, and a symptom diary you can export for your allergist.</p>
+    <p><a class="button" href="https://apps.apple.com/app/6759206565" rel="noopener">Get Respira for iPhone</a></p>
+  </section>
+
+  <section class="section" aria-labelledby="others">
+    <h2 id="others">Other allergens in the United States</h2>
+    <ul class="link-grid">
+      {%- for other in usPollenInfoList %}{% if other.slug != info.slug %}
+      <li><a href="/en/allergy-{{ other.slug }}">{{ other.h1 | replace(" allergy", "") | replace(" pollen", "") }}</a></li>
+      {%- endif %}{% endfor %}
+    </ul>
+  </section>
+
+  <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
+</main>

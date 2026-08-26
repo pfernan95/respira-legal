@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+{# Language of THIS page. Absent means Spanish, which is every route that
+   existed before the expansion — so nothing about their output changes.
+   Note the un-trimmed opening tag: `{#-` would eat the newline after the
+   doctype and rewrite all 164 existing files for no reason. #}
+{%- set L = i18nWeb[lang or "es"] -%}
+<html lang="{{ L.htmlLang }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,13 +17,22 @@
   {%- else %}
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="{{ canonical }}">
+  {#- hreflang is declared ONLY when the counterpart page really exists, named
+      by `altEs`/`altEn` in the front matter. Pointing at a URL that 404s is
+      worse than declaring nothing: Google drops the whole cluster. Most of the
+      164 Spanish routes have no English twin and correctly emit none. -#}
+  {%- if altEs and altEn %}
+  <link rel="alternate" hreflang="es-ES" href="https://respiraapp.fit{{ altEs }}">
+  <link rel="alternate" hreflang="en-US" href="https://respiraapp.fit{{ altEn }}">
+  <link rel="alternate" hreflang="x-default" href="https://respiraapp.fit{{ altEs }}">
+  {%- endif %}
   {%- endif %}
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF8F5">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#16181A">
 
   <meta property="og:type" content="{{ ogType or "website" }}">
   <meta property="og:site_name" content="Respira">
-  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale" content="{{ L.ogLocale }}">
   <meta property="og:url" content="{{ canonical }}">
   <meta property="og:title" content="{{ ogTitle or title }}">
   <meta property="og:description" content="{{ description }}">
@@ -42,36 +56,44 @@
 <body>
 
   <header class="site-header">
-    <a class="brand" href="/">
+    <a class="brand" href="{{ L.home }}">
       <img class="brand-mark" src="/apple-touch-icon.png" width="28" height="28" alt="" aria-hidden="true">
       Respira
     </a>
-    <nav aria-label="Principal">
-      <a href="/">Inicio</a>
-      <a href="/soporte">Soporte</a>
-      <a href="https://apps.apple.com/app/6759206565" rel="noopener">Descargar</a>
+    <nav aria-label="{{ L.mainNav }}">
+      <a href="{{ L.home }}">{{ L.nav.home }}</a>
+      <a href="{{ L.nav.support }}">{{ L.nav.supportLabel }}</a>
+      <a href="https://apps.apple.com/app/6759206565" rel="noopener">{{ L.nav.download }}</a>
     </nav>
   </header>
 
   {{ content | safe }}
 
   <footer class="site-footer">
-    <nav class="cluster" aria-label="Legal" style="justify-content:center">
-      <a href="/privacidad">Privacidad</a>
-      <a href="/condiciones">Condiciones</a>
-      <a href="/soporte">Soporte</a>
-      <a href="/delete-account">Eliminar cuenta</a>
-      <a href="mailto:respiraapp.info@gmail.com">Contacto</a>
+    <nav class="cluster" aria-label="{{ L.legalNav }}" style="justify-content:center">
+      <a href="{{ L.footer.privacy.href }}">{{ L.footer.privacy.label }}</a>
+      <a href="{{ L.footer.terms.href }}">{{ L.footer.terms.label }}</a>
+      <a href="{{ L.footer.support.href }}">{{ L.footer.support.label }}</a>
+      <a href="{{ L.footer.del.href }}">{{ L.footer.del.label }}</a>
+      <a href="mailto:respiraapp.info@gmail.com">{{ L.footer.contact }}</a>
+      {#- The language switch only appears where there IS a counterpart, for the
+          same reason hreflang does. -#}
+      {%- if altEs and altEn %}
+      <a href="{{ altEn if (lang or "es") == "es" else altEs }}" rel="alternate"
+         hreflang="{{ "en-US" if (lang or "es") == "es" else "es-ES" }}">{{ L.footer.switchLabel }}</a>
+      {%- endif %}
     </nav>
+    {%- if (lang or "es") == "es" %}
     <p>Polen por ciudad:
       <a href="/polen-madrid">Madrid</a> · <a href="/polen-barcelona">Barcelona</a> ·
       <a href="/polen-sevilla">Sevilla</a> · <a href="/polen-valencia">Valencia</a> ·
       <a href="/polen-zaragoza">Zaragoza</a> · <a href="/polen-malaga">Málaga</a> ·
       <a href="/polen-cordoba">Córdoba</a> · <a href="/polen-bilbao">Bilbao</a>
     </p>
-    <p>Datos de <a href="https://open-meteo.com/" rel="noopener">Open-Meteo</a> (modelo CAMS de Copernicus).
-      Calendarios basados en la <a href="https://www.uco.es/rea/" rel="noopener">Red Española de Aerobiología (REA)</a>.</p>
-    <p>Respira es una herramienta informativa. No sustituye el diagnóstico ni la consulta de un profesional médico.</p>
+    {%- endif %}
+    <p>{{ L.footer.sourcesLead }} <a href="https://open-meteo.com/" rel="noopener">Open-Meteo</a> {{ L.footer.sourcesMid }}
+      {{ L.footer.calendars }} <a href="https://www.uco.es/rea/" rel="noopener">{{ L.footer.reaName }}</a>.</p>
+    <p>{{ L.footer.disclaimer }}</p>
     <p>&copy; 2026 Respira</p>
   </footer>
 

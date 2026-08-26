@@ -1,0 +1,50 @@
+---
+layout: layouts/base.njk
+lang: en
+permalink: en/index.html
+altEs: /
+altEn: /en/
+title: "Respira · Pollen and air quality today, in eight countries"
+ogTitle: "Respira · Pollen and air quality today"
+description: "Daily pollen levels and air quality for your city in the US, Spain, Portugal, France, Italy, Germany, Ireland and the UK. Free app for iPhone and iPad."
+---
+{%- import "macros.njk" as m -%}
+
+<main class="page">
+
+  <header class="flow">
+    <h1>Pollen and air quality, today</h1>
+    <p>Respira shows the pollen levels and the air quality index for where you are, with a multi-day forecast and a seasonal calendar by species. Free for iPhone and iPad.</p>
+  </header>
+
+  <section class="section" aria-labelledby="countries">
+    <h2 id="countries">Eight countries, two data sources</h2>
+    <p>In the <strong>United States</strong>, Respira uses the Google Pollen API: eleven species, updated daily, for wherever you are. In <strong>Spain, Portugal, France, Italy, Germany, Ireland and the United Kingdom</strong>, it uses the Copernicus CAMS model, enriched with the national monitoring networks of Spain, Italy and Germany where they publish measured readings.</p>
+    <p>Which species you are offered depends on where you are, because the honest answer differs: ragweed, oak and mountain cedar matter in the United States and olive and pellitory do not. Respira never shows a level for a species its source does not report there.</p>
+  </section>
+
+  <section class="section" aria-labelledby="allergens">
+    <h2 id="allergens">Allergens in the United States</h2>
+    <ul class="link-grid">
+      {%- for info in usPollenInfoList %}
+      <li><a href="/en/allergy-{{ info.slug }}">{{ info.h1 | replace(" allergy", "") | replace(" pollen", "") }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="what">
+    <h2 id="what">What the app does</h2>
+    <p><strong>Today's levels, by species.</strong> Only the allergens you have selected, only where they are actually reported.</p>
+    <p><strong>Air quality on the right scale.</strong> The EPA index in the United States, the European index elsewhere &mdash; 49 is "Moderate" on one and "Good" on the other, so showing the wrong one would be worse than showing none.</p>
+    <p><strong>A symptom diary.</strong> Record how you felt; the app pairs it with the pollen that day. Export a report for your allergist as a PDF.</p>
+    <p><strong>Smart notifications and a trip planner</strong> are part of Respira Pro. Set a threshold per allergen and get told the morning it is crossed, in any of your saved places.</p>
+    <p><a class="button" href="https://apps.apple.com/app/6759206565" rel="noopener">Get Respira for iPhone</a></p>
+  </section>
+
+  <section class="section" aria-labelledby="honest">
+    <h2 id="honest">When we have no data, we say so</h2>
+    <p>Pollen models have gaps &mdash; a species with no coverage, a source that did not answer, a cell outside the model's domain. Respira shows "no reading" for those rather than a zero. "No pollen" is a measurement; "we have no data" is not, and the two should never look the same on a screen you are using to decide whether to go outside.</p>
+  </section>
+
+  <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
+</main>
