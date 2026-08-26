@@ -142,13 +142,37 @@
 </p>
 {% endmacro %}
 
-{# CTA de app: badge oficial self-hosted, nunca sticky, nunca a todo ancho #}
-{% macro ctaApp(titulo, texto) %}
+{# Insignia española por defecto. Las macros se importan SIN contexto
+   (`{% import "macros.njk" as m %}`), así que no ven `i18nWeb` ni `lang`: lo
+   que necesiten tiene que llegarles por parámetro o estar aquí. #}
+{% set i18nWebEs = {
+  badge: {
+    src: "/assets/app-store-badge-es.svg",
+    alt: "Consíguelo en el App Store",
+    aria: "Descargar Respira en el App Store"
+  }
+} %}
+
+{# CTA de app: badge oficial self-hosted, nunca sticky, nunca a todo ancho.
+   La versión anterior tenía la insignia española fija y no la llamaba nadie. #}
+{# `L` va AL FINAL y es opcional: hay seis llamantes en las plantillas
+   españolas y cambiar el orden de los parámetros los rompió a los seis —160
+   páginas con el h2 y el texto intercambiados. Sin `L` la insignia sale en
+   español, que es lo correcto para las 164 rutas que ya existían. #}
+{% macro ctaApp(titulo, texto, L) %}
 <div class="cta-app">
   <h2>{{ titulo }}</h2>
   <p class="text-secondary">{{ texto }}</p>
-  <a class="appstore-badge" href="https://apps.apple.com/app/6759206565" rel="noopener" aria-label="Descargar Respira en el App Store">
-    <img src="/assets/app-store-badge-es.svg" alt="Consíguelo en el App Store" width="156" height="52">
-  </a>
+  {{ storeBadge(L or i18nWebEs) }}
 </div>
+{% endmacro %}
+
+{# La insignia sola, para el hero. Apple exige SU artwork —no una recreación—
+   y que enlace a la ficha. width/height fijos para que no haya salto de
+   layout: el SVG es 119.66×40, escalado a 156×52. #}
+{% macro storeBadge(L) %}
+<a class="appstore-badge" href="https://apps.apple.com/app/6759206565"
+   rel="noopener" aria-label="{{ L.badge.aria }}">
+  <img src="{{ L.badge.src }}" alt="{{ L.badge.alt }}" width="156" height="52">
+</a>
 {% endmacro %}

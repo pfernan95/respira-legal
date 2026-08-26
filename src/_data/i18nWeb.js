@@ -30,6 +30,14 @@ export default {
         "Respira es una herramienta informativa. No sustituye el diagnóstico ni la consulta de un profesional médico.",
       switchLabel: "English",
     },
+    badge: {
+      // Apple's own artwork, self-hosted. Their guidelines require the badge
+      // they supply, not a re-creation, and it has to link to the App Store.
+      src: "/assets/app-store-badge-es.svg",
+      alt: "Consíguelo en el App Store",
+      aria: "Descargar Respira en el App Store",
+      lead: "Gratis para iPhone y iPad",
+    },
     legalNav: "Legal",
     mainNav: "Principal",
   },
@@ -51,6 +59,12 @@ export default {
       disclaimer:
         "Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.",
       switchLabel: "Español",
+    },
+    badge: {
+      src: "/assets/app-store-badge-en.svg",
+      alt: "Download on the App Store",
+      aria: "Download Respira on the App Store",
+      lead: "Free for iPhone and iPad",
     },
     legalNav: "Legal",
     mainNav: "Main",

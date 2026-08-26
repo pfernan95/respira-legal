@@ -18,6 +18,10 @@ altEn: /en/
   <header class="flow">
     <h1>Polen y calidad del aire en España, hoy</h1>
     <p>Respira reúne los niveles de polen y el índice de calidad del aire de tu ciudad, con previsión de varios días y calendario polínico por especie. El dato en el HTML, actualizado a diario. La app, gratuita para iPhone y iPad.</p>
+    <div class="hero-cta">
+      {{ m.storeBadge(i18nWeb.es) }}
+      <span class="hero-cta-note">{{ i18nWeb.es.badge.lead }}</span>
+    </div>
     {{ m.updateLine(pollenData.fetchedAt, false) }}
   </header>
 

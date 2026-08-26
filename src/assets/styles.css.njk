@@ -261,6 +261,12 @@ eleventyExcludeFromCollections: true
   .btn { display: inline-flex; align-items: center; gap: var(--sp-2); padding: var(--sp-2) var(--sp-4); border-radius: var(--radius-s); border: 1px solid var(--border); color: var(--text-primary); text-decoration: none; font-weight: 500; transition: background .15s ease-out; }
   .btn:hover { background: var(--surface-elevated); }
   .appstore-badge { transition: opacity .15s ease-out; }
+  /* Insignia del hero. `align-items: center` y no `baseline`: la insignia es
+     una imagen de 52px y la nota una línea de texto, así que una línea base
+     compartida las descuadra. */
+  .hero-cta { display: flex; align-items: center; gap: var(--sp-3); flex-wrap: wrap; }
+  .hero-cta-note { color: var(--text-secondary); font-size: var(--fs--1); }
+  @media (prefers-reduced-motion: reduce) { .appstore-badge { transition: none; } }
   .appstore-badge:hover { opacity: .85; }
   .cta-app { display: grid; gap: var(--sp-3); justify-items: start; padding: var(--sp-5); border: 1px solid var(--border); border-radius: var(--radius-m); background: var(--surface); box-shadow: var(--shadow); }
 

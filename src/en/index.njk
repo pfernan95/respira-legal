@@ -14,7 +14,11 @@ description: "Daily pollen levels and air quality for your city in the US, Spain
 
   <header class="flow">
     <h1>Pollen and air quality, today</h1>
-    <p>Respira shows the pollen levels and the air quality index for where you are, with a multi-day forecast and a seasonal calendar by species. Free for iPhone and iPad.</p>
+    <p>Respira shows the pollen levels and the air quality index for where you are, with a multi-day forecast and a seasonal calendar by species.</p>
+    <div class="hero-cta">
+      {{ m.storeBadge(i18nWeb.en) }}
+      <span class="hero-cta-note">{{ i18nWeb.en.badge.lead }}</span>
+    </div>
   </header>
 
   <section class="section" aria-labelledby="countries">
@@ -38,12 +42,15 @@ description: "Daily pollen levels and air quality for your city in the US, Spain
     <p><strong>Air quality on the right scale.</strong> The EPA index in the United States, the European index elsewhere &mdash; 49 is "Moderate" on one and "Good" on the other, so showing the wrong one would be worse than showing none.</p>
     <p><strong>A symptom diary.</strong> Record how you felt; the app pairs it with the pollen that day. Export a report for your allergist as a PDF.</p>
     <p><strong>Smart notifications and a trip planner</strong> are part of Respira Pro. Set a threshold per allergen and get told the morning it is crossed, in any of your saved places.</p>
-    <p><a class="button" href="https://apps.apple.com/app/6759206565" rel="noopener">Get Respira for iPhone</a></p>
   </section>
 
   <section class="section" aria-labelledby="honest">
     <h2 id="honest">When we have no data, we say so</h2>
     <p>Pollen models have gaps &mdash; a species with no coverage, a source that did not answer, a cell outside the model's domain. Respira shows "no reading" for those rather than a zero. "No pollen" is a measurement; "we have no data" is not, and the two should never look the same on a screen you are using to decide whether to go outside.</p>
+  </section>
+
+  <section class="section">
+    {{ m.ctaApp("Download Respira free", "Pollen levels for where you are, a multi-day forecast, air quality and a symptom diary. Free, for iPhone and iPad.", i18nWeb.en) }}
   </section>
 
   <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
