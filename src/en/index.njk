@@ -27,6 +27,17 @@ description: "Daily pollen levels and air quality for your city in the US, Spain
     <p>Which species you are offered depends on where you are, because the honest answer differs: ragweed, oak and mountain cedar matter in the United States and olive and pellitory do not. Respira never shows a level for a species its source does not report there.</p>
   </section>
 
+  <section class="section" aria-labelledby="cities">
+    <h2 id="cities">Pollen by city</h2>
+    <p>Every US metro has a different pollen year: ragweed defines late summer in Minneapolis, mountain cedar defines December in Austin, and alder starts in February in Seattle before anywhere else has begun.</p>
+    <ul class="link-grid">
+      {%- for c in usCities | slice(1) | first %}{% if loop.index <= 12 %}
+      <li><a href="/en/pollen-{{ c.slug }}">{{ c.name }}, {{ c.abbr }}</a></li>
+      {%- endif %}{% endfor %}
+    </ul>
+    <p><a href="/en/pollen-map-usa">All 50 cities</a></p>
+  </section>
+
   <section class="section" aria-labelledby="allergens">
     <h2 id="allergens">Allergens in the United States</h2>
     <ul class="link-grid">

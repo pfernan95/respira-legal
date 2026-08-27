@@ -176,3 +176,35 @@
   <img src="{{ L.badge.src }}" alt="{{ L.badge.alt }}" width="156" height="52">
 </a>
 {% endmacro %}
+
+{# English heatmap. A separate macro rather than a parameter on the Spanish
+   one: changing an existing macro's signature is what broke 160 pages once
+   in this repo, and the two differ in more than the labels anyway. #}
+{% macro heatmapCalendarEn(intensity, names, monthNames, intensityLabels, currentMonth) %}
+<div class="scroller">
+  <table class="heatmap">
+    <caption class="visually-hidden">Pollen calendar: intensity by month and species</caption>
+    <thead>
+      <tr>
+        <td></td>
+        {%- for m in monthNames %}
+        <th scope="col"{% if loop.index0 == currentMonth %} aria-current="date"{% endif %}>{{ m }}</th>
+        {%- endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {%- for row in intensity %}
+      <tr>
+        <th scope="row">{{ names[row.id] }}</th>
+        {%- for lvl in row.months %}
+        <td class="hm-cell {% if lvl == "none" %}hm-none{% endif %}{% if loop.index0 == currentMonth %} hm-now{% endif %}"
+            {%- if lvl != "none" %} style="--_lv: var(--level-{{ cssLevel(lvl) }})"{% endif %}>
+          <span class="visually-hidden">{{ monthNames[loop.index0] }}: {{ intensityLabels[lvl] }}</span>
+        </td>
+        {%- endfor %}
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</div>
+{% endmacro %}

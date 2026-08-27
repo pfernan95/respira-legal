@@ -1,0 +1,50 @@
+---
+layout: layouts/base.njk
+lang: en
+permalink: en/pollen-map-usa.html
+title: "Pollen by city in the United States — Respira"
+ogTitle: "Pollen by city in the United States"
+description: "Pollen seasons for 50 US cities: which species occur where, month by month, and what is in the air right now."
+---
+{%- import "macros.njk" as m -%}
+{%- set us = constants.us -%}
+{%- set monthIdx = build.month -%}
+
+<main class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> › Cities</nav>
+
+  <header class="flow">
+    <h1>Pollen by city in the United States</h1>
+    <p>Fifty metro areas, grouped by the climate zone that decides the shape of their pollen year. What is in season in {{ us.MONTH_FULL_EN[monthIdx] }} differs by weeks between them, and which species occur at all differs even more: there is no birch in Miami and no mountain cedar in Seattle.</p>
+  </header>
+
+  {%- for zoneId in us.US_ZONES %}
+  {%- set inZone = [] %}
+  {%- for c in usCities %}{% if c.zone == zoneId %}{% set _ = inZone.push(c) %}{% endif %}{% endfor %}
+  {%- if inZone.length %}
+  <section class="section" aria-labelledby="z-{{ zoneId }}">
+    <h2 id="z-{{ zoneId }}">{{ us.US_ZONE_LABELS[zoneId] | replace("the ", "") | title }}</h2>
+    <ul class="link-grid">
+      {%- for c in inZone %}
+      <li><a href="/en/pollen-{{ c.slug }}">{{ c.name }}, {{ c.abbr }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
+  {%- endfor %}
+
+  <section class="section" aria-labelledby="species">
+    <h2 id="species">By allergen instead</h2>
+    <ul class="link-grid">
+      {%- for info in usPollenInfoList %}
+      <li><a href="/en/allergy-{{ info.slug }}">{{ info.h1 | replace(" allergy", "") | replace(" pollen", "") }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="section">
+    {{ m.ctaApp("Today's levels, where you are", "These pages are the shape of the year. For today's numbers, Respira reports the eleven US species for your own location, air quality on the EPA scale, and a symptom diary you can export for your allergist.", i18nWeb.en) }}
+  </section>
+
+  <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
+</main>

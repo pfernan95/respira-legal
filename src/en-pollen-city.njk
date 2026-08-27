@@ -1,0 +1,105 @@
+---
+layout: layouts/base.njk
+lang: en
+pagination:
+  data: usCities
+  size: 1
+  alias: city
+  addAllPagesToCollections: true
+permalink: "en/pollen-{{ city.slug }}.html"
+ogType: article
+eleventyComputed:
+  title: "Pollen in {{ city.name }}, {{ city.abbr }} · season and forecast — Respira"
+  ogTitle: "Pollen in {{ city.name }}, {{ city.abbr }} · season and forecast"
+  description: "Which pollen affects {{ city.name }} and when: month by month intensity by species, what peaks and when, and how to track today's levels."
+---
+{%- import "macros.njk" as m -%}
+{%- set us = constants.us -%}
+{%- set zone = city.zone -%}
+{%- set names = us.US_SPECIES_NAMES -%}
+{%- set monthIdx = build.month -%}
+{%- set INTENSITY_LABELS_EN = { "none": "none", "low": "low", "moderate": "moderate", "high": "high", "very_high": "very high" } -%}
+
+{#- Build this city's rows: species that actually occur here, ranked by peak. -#}
+{%- set rows = [] -%}
+{%- for id in us.US_SPECIES_ORDER -%}
+  {%- set series = us.US_MONTHLY_INTENSITY[id][zone] -%}
+  {%- if series -%}
+    {%- set rank = 0 -%}
+    {%- for lvl in series -%}
+      {%- set v = 0 -%}
+      {%- if lvl == "low" %}{% set v = 1 %}{% elif lvl == "moderate" %}{% set v = 2 %}{% elif lvl == "high" %}{% set v = 3 %}{% elif lvl == "very_high" %}{% set v = 4 %}{% endif -%}
+      {%- if v > rank %}{% set rank = v %}{% endif -%}
+    {%- endfor -%}
+    {%- if rank > 0 -%}
+      {%- set _ = rows.push({ "id": id, "slug": usPollenInfo[id].slug, "months": series, "rank": rank, "now": series[monthIdx] }) -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{#- What is in season right now, strongest first. -#}
+{%- set inSeason = [] -%}
+{%- for r in rows %}{% if r.now != "none" %}{% set _ = inSeason.push(r) %}{% endif %}{% endfor -%}
+
+<main class="page">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/en/">Home</a> › <a href="/en/pollen-map-usa">Cities</a> › Pollen in {{ city.name }}
+  </nav>
+
+  <header class="flow">
+    <h1>Pollen in {{ city.name }}, {{ city.state }}</h1>
+    <p>{{ city.note }}</p>
+    <p class="text-secondary">{{ city.name }} sits in {{ us.US_ZONE_LABELS[zone] }}, which is what decides the shape of its pollen year. {{ rows.length }} of the eleven species Respira reports in the United States occur here.</p>
+  </header>
+
+  <section class="section" aria-labelledby="now">
+    <h2 id="now">In season in {{ city.name }} right now</h2>
+    {%- if inSeason.length %}
+    <p>As of {{ us.MONTH_FULL_EN[monthIdx] }}, these are the species expected to be in the air in {{ city.name }}:</p>
+    <ul class="link-grid">
+      {%- for r in inSeason %}
+      <li><a href="/en/allergy-{{ r.slug }}">{{ names[r.id] }}</a></li>
+      {%- endfor %}
+    </ul>
+    <p class="text-secondary">This is the seasonal expectation for {{ us.US_ZONE_LABELS[zone] }}, not a measurement. The app reports the level measured for your own location each day, and says so when there is no reading rather than showing a zero.</p>
+    {%- else %}
+    <p>{{ us.MONTH_FULL_EN[monthIdx] }} is the quietest part of the year in {{ city.name }}. None of the species reported here are typically in season this month.</p>
+    {%- endif %}
+  </section>
+
+  <section class="section" aria-labelledby="calendar">
+    <h2 id="calendar">Pollen calendar for {{ city.name }}</h2>
+    <p>Month by month intensity for every species that occurs in {{ us.US_ZONE_LABELS[zone] }}. Darker means higher. The current month is marked.</p>
+    {{ m.heatmapCalendarEn(rows, names, us.MONTH_NAMES_EN, INTENSITY_LABELS_EN, monthIdx) }}
+    <p class="fine-print">Seasonal estimate by climate zone, not a measurement. Seasons shift with elevation and with the year's weather.</p>
+  </section>
+
+  <section class="section" aria-labelledby="species">
+    <h2 id="species">What grows around {{ city.name }}</h2>
+    <dl class="flow">
+      {%- for r in rows %}
+      <dt><strong><a href="/en/allergy-{{ r.slug }}">{{ names[r.id] }}</a></strong></dt>
+      <dd class="text-secondary">Peaks in {{ r.months | peakMonthsEn }}.</dd>
+      {%- endfor %}
+    </dl>
+  </section>
+
+  <section class="section" aria-labelledby="app">
+    <h2 id="app">Track today's levels in {{ city.name }}</h2>
+    <p>This page is the shape of the year. For today's actual numbers, Respira reports the eleven US species for wherever you are, air quality on the EPA scale, and a symptom diary you can export as a PDF for your allergist.</p>
+    {{ m.storeBadge(i18nWeb.en) }}
+  </section>
+
+  <section class="section" aria-labelledby="nearby">
+    <h2 id="nearby">Nearby cities</h2>
+    <ul class="link-grid">
+      {%- for n in city.nearby %}
+      <li><a href="/en/pollen-{{ n.slug }}">{{ n.name }}, {{ n.abbr }}</a></li>
+      {%- endfor %}
+    </ul>
+    <p><a href="/en/pollen-map-usa">All cities</a></p>
+  </section>
+
+  <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
+</main>

@@ -67,6 +67,23 @@ export default function (eleventyConfig) {
     ];
   });
 
+  /**
+   * "March and April" from a 12-month intensity series: the months at the
+   * series' own maximum, written out. Used by the /en/ city pages, where a
+   * species' peak is the one fact a reader actually wants from the calendar.
+   */
+  eleventyConfig.addFilter("peakMonthsEn", (series) => {
+    const RANK = { none: 0, low: 1, moderate: 2, high: 3, very_high: 4 };
+    const NAMES = ["January","February","March","April","May","June",
+                   "July","August","September","October","November","December"];
+    const top = Math.max(...series.map((l) => RANK[l] ?? 0));
+    if (top === 0) return "no month in particular";
+    const hits = series.map((l, i) => [l, i]).filter(([l]) => (RANK[l] ?? 0) === top).map(([, i]) => NAMES[i]);
+    if (hits.length === 1) return hits[0];
+    if (hits.length === 2) return `${hits[0]} and ${hits[1]}`;
+    return `${hits.slice(0, -1).join(", ")} and ${hits[hits.length - 1]}`;
+  });
+
   // ISO timestamp -> "2026-08-03" in Europe/Madrid
   eleventyConfig.addFilter("fechaMadrid", (iso) =>
     new Intl.DateTimeFormat("en-CA", { dateStyle: "short", timeZone: "Europe/Madrid" }).format(
