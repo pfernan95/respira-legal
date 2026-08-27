@@ -103,3 +103,66 @@ eleventyComputed:
 
   <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
 </main>
+
+{#- Breadcrumb plus a FAQ built from this city's own data. The Spanish city
+    pages have carried both since launch; the English tree shipped without
+    them, which is exactly the machine-readable layer an assistant reads when
+    it is asked "when is ragweed season in Minneapolis". -#}
+{%- set peakSpecies = rows[0] -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://respiraapp.fit/en/" },
+        { "@type": "ListItem", "position": 2, "name": "Cities", "item": "https://respiraapp.fit/en/pollen-map-usa" },
+        { "@type": "ListItem", "position": 3, "name": "Pollen in {{ city.name }}" }
+      ]
+    },
+    {
+      "@type": "Place",
+      "name": "{{ city.name }}, {{ city.state }}",
+      "geo": { "@type": "GeoCoordinates", "latitude": {{ city.lat }}, "longitude": {{ city.lon }} }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which pollen is in the air in {{ city.name }} right now?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{% if inSeason.length %}In {{ us.MONTH_FULL_EN[monthIdx] }}, the species typically in season in {{ city.name }} are {% for r in inSeason %}{{ names[r.id] }}{% if not loop.last %}, {% endif %}{% endfor %}. This is the seasonal expectation for {{ us.US_ZONE_LABELS[zone] }}, not a measurement for today.{% else %}{{ us.MONTH_FULL_EN[monthIdx] }} is the quietest month of the year in {{ city.name }}. None of the species reported there are typically in season.{% endif %}"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is pollen season in {{ city.name }}?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{% for r in rows %}{{ names[r.id] }} peaks in {{ r.months | peakMonthsEn }}{% if not loop.last %}. {% endif %}{% endfor %}."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which pollen species are reported in {{ city.name }}?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{ rows.length }} of the eleven species Respira reports in the United States occur around {{ city.name }}: {% for r in rows %}{{ names[r.id] }}{% if not loop.last %}, {% endif %}{% endfor %}. {{ city.name }} sits in {{ us.US_ZONE_LABELS[zone] }}, which is what decides which species occur and when."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where does the pollen data for {{ city.name }} come from?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The month-by-month calendar on this page is a seasonal estimate for {{ us.US_ZONE_LABELS[zone] }}. For measured daily levels, the Respira app uses the Google Pollen API across the United States, and reports no reading rather than a zero when a species has no data."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>

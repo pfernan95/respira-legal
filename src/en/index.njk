@@ -66,3 +66,51 @@ description: "Daily pollen levels and air quality for your city in the US, Spain
 
   <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
 </main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      "@id": "https://respiraapp.fit/en/#app",
+      "name": "Respira",
+      "operatingSystem": "iOS 16.0",
+      "applicationCategory": "HealthApplication",
+      "description": "Pollen and air quality app for people with pollen allergies in the United States, Spain, Portugal, France, Italy, Germany, Ireland and the United Kingdom. Daily levels by species, a multi-day forecast, a seasonal calendar and a symptom diary you can export as a PDF for your allergist.",
+      "url": "https://respiraapp.fit/en/",
+      "downloadUrl": "https://apps.apple.com/app/6759206565",
+      "inLanguage": "en",
+      "countriesSupported": "US, ES, PT, FR, IT, DE, IE, GB",
+      "featureList": [
+        "Daily pollen levels by species for your location",
+        "Multi-day pollen forecast",
+        "Air quality on the EPA index in the United States and the European index elsewhere",
+        "Seasonal pollen calendar by species and region",
+        "Symptom diary with PDF export for your allergist",
+        "Threshold-based pollen notifications",
+        "Trip planner with destination pollen forecast"
+      ],
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "publisher": { "@id": "https://respiraapp.fit/#org" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://respiraapp.fit/#org",
+      "name": "Respira",
+      "url": "https://respiraapp.fit/",
+      "logo": "https://respiraapp.fit/apple-touch-icon.png",
+      "email": "respiraapp.info@gmail.com",
+      "sameAs": ["https://apps.apple.com/app/6759206565"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://respiraapp.fit/en/#website",
+      "url": "https://respiraapp.fit/en/",
+      "name": "Respira",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://respiraapp.fit/#org" }
+    }
+  ]
+}
+</script>
