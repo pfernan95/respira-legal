@@ -48,3 +48,42 @@ description: "Pollen seasons for 50 US cities: which species occur where, month 
 
   <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
 </main>
+
+{#- The hub is the page the whole US tree hangs off, so it carries the list
+    itself as data: an assistant asked "which US cities does this cover"
+    gets the answer without crawling fifty pages. -#}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://respiraapp.fit/en/" },
+        { "@type": "ListItem", "position": 2, "name": "Cities" }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "name": "Pollen by city in the United States",
+      "url": "https://respiraapp.fit/en/pollen-map-usa",
+      "inLanguage": "en",
+      "about": { "@id": "https://respiraapp.fit/en/#app" },
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": {{ usCities.length }},
+        "itemListElement": [
+          {%- for c in usCities %}
+          {
+            "@type": "ListItem",
+            "position": {{ loop.index }},
+            "name": "Pollen in {{ c.name }}, {{ c.abbr }}",
+            "url": "https://respiraapp.fit/en/pollen-{{ c.slug }}"
+          }{% if not loop.last %},{% endif %}
+          {%- endfor %}
+        ]
+      }
+    }
+  ]
+}
+</script>
