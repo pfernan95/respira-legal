@@ -42,7 +42,8 @@ eleventyComputed:
   <section class="section" aria-labelledby="app">
     <h2 id="app">Track it day by day</h2>
     <p>Respira reports {{ info.h1 | lower | replace(" allergy", "") }} for your location every day, alongside the other ten species measured across the United States, air quality on the EPA scale, and a symptom diary you can export for your allergist.</p>
-    <p><a class="button" href="https://apps.apple.com/app/6759206565" rel="noopener">Get Respira for iPhone</a></p>
+    {%- set storeUrl = "https://apps.apple.com/us/app/respira-alergia-al-polen/id6759206565?ppid=297c89b8-6ad1-4572-b93a-c84cee6f5ffa" if info.slug == "ragweed" else "https://apps.apple.com/app/6759206565" -%}
+    <p><a class="button" href="{{ storeUrl }}" rel="noopener">Get Respira for iPhone</a></p>
   </section>
 
   <section class="section" aria-labelledby="others">

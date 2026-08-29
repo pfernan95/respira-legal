@@ -19,6 +19,11 @@ eleventyComputed:
 {%- set names = us.US_SPECIES_NAMES -%}
 {%- set monthIdx = build.month -%}
 {%- set INTENSITY_LABELS_EN = { "none": "none", "low": "low", "moderate": "moderate", "high": "high", "very_high": "very high" } -%}
+{#- Ragweed-belt cities route through the Ragweed 2026 CPP instead of the
+    default listing, so Apple Ads' CPP attribution and the ragweed-specific
+    screenshots reach whoever lands here already primed for that allergen. -#}
+{%- set RAGWEED_BELT = ["minneapolis", "chicago", "kansas-city", "st-louis", "indianapolis", "cincinnati"] -%}
+{%- set storeUrl = "https://apps.apple.com/us/app/respira-alergia-al-polen/id6759206565?ppid=297c89b8-6ad1-4572-b93a-c84cee6f5ffa" if city.slug in RAGWEED_BELT else "https://apps.apple.com/app/6759206565" -%}
 
 {#- Build this city's rows: species that actually occur here, ranked by peak. -#}
 {%- set rows = [] -%}
@@ -88,7 +93,7 @@ eleventyComputed:
   <section class="section" aria-labelledby="app">
     <h2 id="app">Track today's levels in {{ city.name }}</h2>
     <p>This page is the shape of the year. For today's actual numbers, Respira reports the eleven US species for wherever you are, air quality on the EPA scale, and a symptom diary you can export as a PDF for your allergist.</p>
-    {{ m.storeBadge(i18nWeb.en) }}
+    {{ m.storeBadge(i18nWeb.en, storeUrl) }}
   </section>
 
   <section class="section" aria-labelledby="nearby">

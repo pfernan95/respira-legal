@@ -170,8 +170,12 @@
 {# La insignia sola, para el hero. Apple exige SU artwork —no una recreación—
    y que enlace a la ficha. width/height fijos para que no haya salto de
    layout: el SVG es 119.66×40, escalado a 156×52. #}
-{% macro storeBadge(L) %}
-<a class="appstore-badge" href="https://apps.apple.com/app/6759206565"
+{# `href` overrides the default App Store link — used to route ragweed-intent
+   pages through the Ragweed 2026 Custom Product Page instead of the default
+   listing, so Apple Ads' CPP attribution and the ragweed-specific screenshots
+   actually reach the visitor who searched for it. #}
+{% macro storeBadge(L, href) %}
+<a class="appstore-badge" href="{{ href or 'https://apps.apple.com/app/6759206565' }}"
    rel="noopener" aria-label="{{ L.badge.aria }}">
   <img src="{{ L.badge.src }}" alt="{{ L.badge.alt }}" width="156" height="52">
 </a>
