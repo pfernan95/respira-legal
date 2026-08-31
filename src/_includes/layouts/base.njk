@@ -30,19 +30,20 @@
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF8F5">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#16181A">
 
+  {%- set ogImage = "https://respiraapp.fit/og-image-en.png" if (lang or "es") == "en" else "https://respiraapp.fit/og-image.png" %}
   <meta property="og:type" content="{{ ogType or "website" }}">
   <meta property="og:site_name" content="Respira">
   <meta property="og:locale" content="{{ L.ogLocale }}">
   <meta property="og:url" content="{{ canonical }}">
   <meta property="og:title" content="{{ ogTitle or title }}">
   <meta property="og:description" content="{{ description }}">
-  <meta property="og:image" content="https://respiraapp.fit/og-image.png">
+  <meta property="og:image" content="{{ ogImage }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ ogTitle or title }}">
   <meta name="twitter:description" content="{{ description }}">
-  <meta name="twitter:image" content="https://respiraapp.fit/og-image.png">
+  <meta name="twitter:image" content="{{ ogImage }}">
 
   <meta name="apple-itunes-app" content="app-id=6759206565">
 
