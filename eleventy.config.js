@@ -84,6 +84,25 @@ export default function (eleventyConfig) {
     return `${hits.slice(0, -1).join(", ")} and ${hits[hits.length - 1]}`;
   });
 
+  /**
+   * Spanish counterpart of peakMonthsEn: "mayo y junio" from a 12-month
+   * intensity series. Used by the /alergia-* pages, which unlike the city
+   * pages have no free-text season field in pollenInfo.js — the calendar
+   * array is the only source for "when", so the FAQ answer derives it here
+   * instead of duplicating it by hand per allergen.
+   */
+  eleventyConfig.addFilter("peakMonths", (series) => {
+    const RANK = { none: 0, low: 1, moderate: 2, high: 3, very_high: 4 };
+    const NAMES = ["enero","febrero","marzo","abril","mayo","junio",
+                   "julio","agosto","septiembre","octubre","noviembre","diciembre"];
+    const top = Math.max(...series.map((l) => RANK[l] ?? 0));
+    if (top === 0) return "ningún mes en particular";
+    const hits = series.map((l, i) => [l, i]).filter(([l]) => (RANK[l] ?? 0) === top).map(([, i]) => NAMES[i]);
+    if (hits.length === 1) return hits[0];
+    if (hits.length === 2) return `${hits[0]} y ${hits[1]}`;
+    return `${hits.slice(0, -1).join(", ")} y ${hits[hits.length - 1]}`;
+  });
+
   // ISO timestamp -> "2026-08-03" in Europe/Madrid
   eleventyConfig.addFilter("fechaMadrid", (iso) =>
     new Intl.DateTimeFormat("en-CA", { dateStyle: "short", timeZone: "Europe/Madrid" }).format(

@@ -97,13 +97,43 @@ eleventyComputed:
 
 </main>
 
+{%- set peak = months | peakMonths -%}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://respiraapp.fit/" },
-    { "@type": "ListItem", "position": 2, "name": {{ info.h1 | dump | safe }} }
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://respiraapp.fit/" },
+        { "@type": "ListItem", "position": 2, "name": {{ info.h1 | dump | safe }} }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": {{ ("¿Qué síntomas produce la " + (info.h1 | lower) + "?") | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ info.sintomas | dump | safe }} }
+        },
+        {
+          "@type": "Question",
+          "name": {{ ("¿Cuándo es la temporada de " + (info.pollenName | lower) + " en España?") | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ ("El polen de " + (info.pollenName | lower) + " alcanza su máxima intensidad en " + peak + ", según el calendario polínico orientativo de Respira.") | dump | safe }} }
+        },
+        {
+          "@type": "Question",
+          "name": {{ ("¿Dónde se encuentra el polen de " + (info.pollenName | lower) + " en España?") | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ info.donde | dump | safe }} }
+        },
+        {
+          "@type": "Question",
+          "name": {{ ("¿Cómo puedo seguir los niveles de " + (info.pollenName | lower) + " día a día?") | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ ("La app Respira muestra el nivel de " + (info.pollenName | lower) + " en tu ubicación, la previsión y un diario de síntomas exportable. Gratis, para iPhone y iPad.") | dump | safe }} }
+        }
+      ]
+    }
   ]
 }
 </script>

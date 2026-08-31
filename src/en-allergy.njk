@@ -57,3 +57,48 @@ eleventyComputed:
 
   <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
 </main>
+
+{#- English allergen pages shipped without structured data — the Spanish
+    /alergia-* pages and the /en/pollen-* city pages both carry FAQPage, this
+    was the one page type still missing it. Built inline from fields the page
+    already renders (season, symptoms, where), same as en-pollen-city.njk. -#}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://respiraapp.fit/en/" },
+        { "@type": "ListItem", "position": 2, "name": "Allergens" },
+        { "@type": "ListItem", "position": 3, "name": {{ info.h1 | dump | safe }} }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": {{ ("What are the symptoms of " + (info.h1 | lower) + "?") | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ info.symptoms | dump | safe }} }
+        },
+        {
+          "@type": "Question",
+          "name": {{ ("When is " + (info.h1 | lower) + " season?") | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ info.season | dump | safe }} }
+        },
+        {
+          "@type": "Question",
+          "name": {{ ("Where does " + (info.h1 | lower) + " occur in the United States?") | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ info.where | dump | safe }} }
+        },
+        {
+          "@type": "Question",
+          "name": {{ ("How can I track " + (info.h1 | lower | replace(" allergy", "")) + " day by day?") | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ ("Respira reports " + (info.h1 | lower | replace(" allergy", "")) + " for your own location, alongside the other species measured across the United States, air quality on the EPA scale, and an exportable symptom diary. Free, for iPhone and iPad.") | dump | safe }} }
+        }
+      ]
+    }
+  ]
+}
+</script>

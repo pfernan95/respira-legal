@@ -1,0 +1,44 @@
+# Respira
+
+> Respira is a free iOS app for pollen and air-quality tracking. It shows the current pollen level for a species and location, a short forecast, and a symptom diary. Available in Spain, Portugal, France, Italy, Germany, Ireland, the UK and the US.
+
+Pollen data for Spain and the rest of Europe comes from the CAMS atmospheric model (Copernicus) via Open-Meteo, refreshed once daily; species without model coverage fall back to a seasonal estimate from the Spanish Aerobiology Network (REA), always labeled as such. Pollen data for the US comes from the Google Pollen API. Every page states its own source and last-updated time — nothing here should be read as a live measurement unless the page says so.
+
+## App
+
+- [Respira on the App Store](https://apps.apple.com/app/6759206565): free, iPhone and iPad, pollen levels, forecast, symptom diary, no ads on Respira Pro.
+
+## Pollen by allergen — Spain (Spanish)
+
+- [Gramíneas](https://respiraapp.fit/alergia-gramineas)
+- [Olivo](https://respiraapp.fit/alergia-olivo)
+- [Abedul](https://respiraapp.fit/alergia-abedul)
+- [Aliso](https://respiraapp.fit/alergia-aliso)
+- [Artemisa](https://respiraapp.fit/alergia-artemisa)
+- [Ambrosía](https://respiraapp.fit/alergia-ambrosia)
+
+## Pollen by city — Spain (Spanish)
+
+- [Every Spanish provincial capital](https://respiraapp.fit/mapa-polen-espana): daily pollen level by species, one page per city.
+
+## Pollen by allergen — United States (English)
+
+- [Ragweed](https://respiraapp.fit/en/allergy-ragweed)
+- [Oak](https://respiraapp.fit/en/allergy-oak)
+- [Birch](https://respiraapp.fit/en/allergy-birch)
+- [Maple](https://respiraapp.fit/en/allergy-maple)
+- [Juniper and cedar](https://respiraapp.fit/en/allergy-juniper)
+- [Elm](https://respiraapp.fit/en/allergy-elm)
+- [Ash](https://respiraapp.fit/en/allergy-ash)
+- [Cottonwood and poplar](https://respiraapp.fit/en/allergy-cottonwood)
+- [Pine](https://respiraapp.fit/en/allergy-pine)
+- [Grass](https://respiraapp.fit/en/allergy-grass)
+- [Alder](https://respiraapp.fit/en/allergy-alder)
+
+## Pollen by city — United States (English)
+
+- [50 US cities](https://respiraapp.fit/en/pollen-map-usa): month-by-month calendar and what's in season right now, one page per city.
+
+## Full page index
+
+- [Sitemap](https://respiraapp.fit/sitemap.xml)
