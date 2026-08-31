@@ -283,6 +283,27 @@ eleventyExcludeFromCollections: true
   .link-grid a { display: flex; align-items: center; gap: var(--sp-2); padding: var(--sp-2) var(--sp-3); border: 1px solid var(--border); border-radius: var(--radius-s); text-decoration: none; background: var(--surface); transition: background .15s ease-out; }
   .link-grid .nivel-badge { margin-inline-start: auto; }
   .link-grid a:hover { background: var(--surface-elevated); }
+
+  /* Aviso de cookies/analítica: solo aparece sin elección guardada */
+  .cookie-banner {
+    position: fixed; inset-inline: 0; inset-block-end: 0; z-index: 100;
+    display: flex; flex-wrap: wrap; gap: var(--sp-3);
+    align-items: center; justify-content: space-between;
+    padding: var(--sp-4) var(--sp-5);
+    background: var(--surface);
+    border-block-start: 1px solid var(--border);
+    box-shadow: 0 -2px 12px rgba(45, 52, 54, .1);
+  }
+  .cookie-banner p { flex: 1 1 20rem; margin: 0; font-size: var(--fs--1); color: var(--text-secondary); }
+  .cookie-banner p a { color: inherit; }
+  .cookie-banner .cluster { display: flex; gap: var(--sp-2); flex-wrap: wrap; }
+  .cookie-banner button {
+    padding: var(--sp-2) var(--sp-4); border-radius: var(--radius-s);
+    border: 1px solid var(--border); background: var(--surface-elevated);
+    color: var(--text-primary); font-weight: 500; cursor: pointer;
+  }
+  .cookie-banner button.accept { background: var(--primary); border-color: var(--primary); color: #fff; }
+  .cookie-banner[hidden] { display: none; }
 }
 
 @layer utilities {

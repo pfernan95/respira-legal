@@ -97,5 +97,63 @@
     <p>&copy; 2026 Respira</p>
   </footer>
 
+  {#- Web analytics (PostHog Cloud EU), opt-in only — see privacidad.html §3
+      / privacy.html §3. Loads posthog-js directly from PostHog's own CDN
+      (the same array.js their async snippet fetches) instead of the
+      IIFE stub: fewer moving parts, and it only needs to run once consent
+      is already granted, so the stub's pre-load event queueing buys nothing
+      here. Nothing loads or runs until a choice is stored. -#}
+  <div class="cookie-banner" id="cookie-banner" hidden>
+    <p>{{ L.cookieBanner.text }} <a href="{{ L.footer.privacy.href }}">{{ L.cookieBanner.more }}</a></p>
+    <div class="cluster">
+      <button type="button" id="cookie-reject">{{ L.cookieBanner.reject }}</button>
+      <button type="button" id="cookie-accept" class="accept">{{ L.cookieBanner.accept }}</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var KEY = "respira_analytics_consent";
+      var POSTHOG_TOKEN = "phc_kT5Dg7n6REoP5dteywVpNwkGY4uoNtEkQDZduaSGXgNx";
+      var consent = null;
+      try { consent = localStorage.getItem(KEY); } catch (e) {}
+
+      function loadPostHog() {
+        if (window.posthog) return;
+        var s = document.createElement("script");
+        s.src = "https://eu-assets.i.posthog.com/static/array.js";
+        s.async = true;
+        s.onload = function () {
+          window.posthog.init(POSTHOG_TOKEN, {
+            api_host: "https://eu.i.posthog.com",
+            defaults: "2026-05-05",
+            person_profiles: "identified_only",
+          });
+        };
+        document.head.appendChild(s);
+      }
+
+      var banner = document.getElementById("cookie-banner");
+      if (consent === "granted") {
+        loadPostHog();
+      } else if (consent !== "denied" && banner) {
+        banner.hidden = false;
+      }
+
+      if (banner) {
+        var acceptBtn = document.getElementById("cookie-accept");
+        var rejectBtn = document.getElementById("cookie-reject");
+        if (acceptBtn) acceptBtn.addEventListener("click", function () {
+          try { localStorage.setItem(KEY, "granted"); } catch (e) {}
+          banner.hidden = true;
+          loadPostHog();
+        });
+        if (rejectBtn) rejectBtn.addEventListener("click", function () {
+          try { localStorage.setItem(KEY, "denied"); } catch (e) {}
+          banner.hidden = true;
+        });
+      }
+    })();
+  </script>
+
 </body>
 </html>
