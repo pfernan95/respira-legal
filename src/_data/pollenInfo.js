@@ -9,6 +9,7 @@ export default {
     slug: "gramineas",
     h1: "Alergia a las gramíneas",
     lead: "Las gramíneas son el principal alérgeno estacional en España. Agrupan a cientos de especies de céspedes, cereales y pastos silvestres cuyo polen se dispersa sobre todo entre finales de primavera y comienzos del verano.",
+    metaDescription: "Las gramíneas son el principal alérgeno estacional en España, con picos entre finales de primavera y comienzos del verano. Sigue los niveles con Respira.",
     sintomas:
       "Los síntomas que se asocian habitualmente al polen de gramíneas incluyen rinitis (estornudos, congestión y goteo nasal), picor y lagrimeo ocular y, en algunas personas, síntomas respiratorios. La intensidad suele seguir la curva de concentración de polen en el aire.",
     donde:
@@ -18,6 +19,7 @@ export default {
     slug: "olivo",
     h1: "Alergia al olivo",
     lead: "El olivo es, junto a las gramíneas, uno de los alérgenos más importantes de España, especialmente en el sur y el interior. Su polinización se concentra en un periodo corto e intenso de primavera.",
+    metaDescription: "El olivo poliniza en un periodo corto e intenso de primavera, sobre todo en Andalucía, Extremadura y Castilla-La Mancha. Sigue los niveles con Respira.",
     sintomas:
       "Se asocia con rinitis y conjuntivitis en las semanas de máxima polinización. En las zonas de gran densidad de olivar, las concentraciones de polen pueden ser muy elevadas durante mayo y junio.",
     donde:
@@ -27,6 +29,7 @@ export default {
     slug: "abedul",
     h1: "Alergia al abedul",
     lead: "El abedul es uno de los alérgenos arbóreos más potentes del norte de España. Su polen se dispersa en primavera y es especialmente relevante en la cornisa cantábrica y las zonas de montaña húmeda.",
+    metaDescription: "El abedul dispersa su polen en primavera, sobre todo en el norte peninsular y zonas de montaña húmeda. Sigue los niveles día a día con Respira.",
     sintomas:
       "Se asocia con rinitis y conjuntivitis primaverales. El polen de abedul presenta reactividad cruzada con la de otros árboles de la misma familia.",
     donde:
@@ -36,6 +39,7 @@ export default {
     slug: "aliso",
     h1: "Alergia al aliso",
     lead: "El aliso es uno de los primeros pólenes del año: abre la temporada en pleno invierno, antes que la mayoría de los árboles. Es característico de las riberas y zonas húmedas del norte.",
+    metaDescription: "El aliso abre la temporada en pleno invierno, antes que la mayoría de los árboles, junto a ríos del norte. Sigue los niveles con Respira.",
     sintomas:
       "Se asocia con síntomas de rinitis y conjuntivitis a finales de invierno. Al ser precoz, puede sorprender a personas alérgicas antes del inicio de la temporada general.",
     donde:
@@ -45,6 +49,7 @@ export default {
     slug: "artemisa",
     h1: "Alergia a la artemisa",
     lead: "La artemisa es un polen de verano y otoño, característico de zonas secas y bordes de camino. Cierra la temporada polínica del año junto con otras herbáceas.",
+    metaDescription: "La artemisa poliniza en verano y otoño, cerrando la temporada polínica del año. Sigue sus niveles día a día con la app Respira.",
     sintomas:
       "Se asocia con rinitis y conjuntivitis en el final del verano. Presenta reactividad cruzada con otros pólenes de herbáceas de la misma época.",
     donde:
@@ -54,6 +59,7 @@ export default {
     slug: "ambrosia",
     h1: "Alergia a la ambrosía",
     lead: "La ambrosía es un alérgeno potente de otoño, en expansión en algunas zonas de Europa. En España su presencia es más limitada que la de gramíneas u olivo, pero relevante en focos concretos.",
+    metaDescription: "La ambrosía es un alérgeno potente de otoño, concentrado en el valle del Ebro y el noreste. Sigue sus niveles día a día con Respira.",
     sintomas:
       "Se asocia con rinitis y conjuntivitis en otoño. Es conocida por provocar síntomas incluso a concentraciones relativamente bajas.",
     donde:

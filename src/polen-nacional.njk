@@ -8,9 +8,9 @@ pagination:
 permalink: "alergia-{{ info.slug }}.html"
 ogType: article
 eleventyComputed:
-  title: "{{ info.h1 }}: síntomas, temporada y niveles por ciudad — Respira"
-  ogTitle: "{{ info.h1 }}: síntomas, temporada y niveles por ciudad"
-  description: "{{ info.lead }}"
+  title: "{{ info.h1 }}: síntomas y temporada — Respira"
+  ogTitle: "{{ info.h1 }}: síntomas y temporada"
+  description: "{{ info.metaDescription }}"
 ---
 {%- import "macros.njk" as m -%}
 {%- set POLLEN_TYPES = constants.pollen.POLLEN_TYPES -%}
