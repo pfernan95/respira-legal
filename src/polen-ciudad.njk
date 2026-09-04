@@ -27,7 +27,7 @@ eleventyComputed:
   </nav>
 
   {%- set sinCobertura = hoy.overallLevel == null %}
-  <header class="hero-data">
+  <header class="hero-data panelled">
     <h1>Polen en {{ ciudad.name }} hoy</h1>
     <p class="date-line">Máximo previsto para el <time datetime="{{ hoy.date }}">{{ hoy.date | fechaEs }}</time> · {{ ciudad.name }} ({{ ciudad.ccaa }})</p>
     {%- if sinCobertura %}
@@ -60,7 +60,7 @@ eleventyComputed:
         dominant: POLLEN_TYPES[day.dominant].nameEs if day.dominant else null
       }) %}
     {%- endfor %}
-    {{ m.forecastTable(diasConNombre, ciudad.name) }}
+    <div class="data-panel">{{ m.forecastTable(diasConNombre, ciudad.name) }}</div>
   </section>
   {%- endif %}
 

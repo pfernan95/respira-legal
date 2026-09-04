@@ -15,20 +15,30 @@ altEn: /en/
 
 <main class="page">
 
-  <header class="flow">
-    <h1>Polen y calidad del aire en España, hoy</h1>
-    <p>Respira reúne los niveles de polen y el índice de calidad del aire de tu ciudad, con previsión de varios días y calendario polínico por especie. El dato en el HTML, actualizado a diario. La app, gratuita para iPhone y iPad.</p>
-    <div class="hero-cta">
-      {{ m.storeBadge(i18nWeb.es) }}
-      <span class="hero-cta-note">{{ i18nWeb.es.badge.lead }}</span>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1>Polen y calidad del aire en España, hoy</h1>
+        <p>Respira reúne los niveles de polen y el índice de calidad del aire de tu ciudad, con previsión de varios días y calendario polínico por especie. El dato en el HTML, actualizado a diario. La app, gratuita para iPhone y iPad.</p>
+        <div class="hero-cta">
+          {{ m.storeBadge(i18nWeb.es) }}
+          <span class="hero-cta-note">{{ i18nWeb.es.badge.lead }}</span>
+        </div>
+        {{ m.updateLine(pollenData.fetchedAt, false) }}
+      </div>
+      <div class="hero-shot">
+        <img src="/assets/img/app-es-01.png" width="600" height="1300"
+             alt="Pantalla de inicio de Respira mostrando el nivel general de polen, los alérgenos del día y la calidad del aire para Madrid."
+             fetchpriority="high" decoding="async">
+      </div>
     </div>
-    {{ m.updateLine(pollenData.fetchedAt, false) }}
   </header>
 
   <section class="section" aria-labelledby="snapshot">
     <h2 id="snapshot">Nivel de polen hoy en las principales ciudades</h2>
+    <div class="data-panel">
     <div class="scroller">
-      <table class="forecast" style="min-inline-size: 30rem; table-layout: auto">
+      <table class="forecast table-rows" style="min-inline-size: 30rem; table-layout: auto">
         <thead><tr>
           <th scope="col" style="text-align:start">Ciudad</th>
           <th scope="col">Nivel general</th>
@@ -49,7 +59,8 @@ altEn: /en/
         </tbody>
       </table>
     </div>
-    <p style="margin-block-start: var(--sp-3)"><a href="/mapa-polen-espana">Ver las 52 capitales →</a></p>
+    </div>
+    <p style="margin-block-start: var(--sp-4)"><a href="/mapa-polen-espana">Ver las 52 capitales →</a></p>
   </section>
 
   <section class="section" aria-labelledby="temporada">

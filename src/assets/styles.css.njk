@@ -75,18 +75,35 @@ eleventyExcludeFromCollections: true
     --font-body: "IBM Plex Sans", system-ui, sans-serif;
     --radius-s: 6px;
     --radius-m: 10px;
+    --radius-l: 16px;
     --shadow: 0 1px 3px rgba(45, 52, 54, .06);
+    /* Elevación en tres pasos. Se gasta por jerarquía, no por decoración:
+       -s en tarjetas de datos, -m en el bloque destacado de una página,
+       -l solo en la captura del héroe, que es el único objeto que debe
+       parecer que flota por encima de la página. */
+    --shadow-s: 0 1px 2px rgba(45, 52, 54, .04), 0 2px 8px rgba(45, 52, 54, .05);
+    --shadow-m: 0 2px 4px rgba(45, 52, 54, .04), 0 8px 24px rgba(45, 52, 54, .07);
+    --shadow-l: 0 4px 12px rgba(45, 52, 54, .06), 0 24px 56px rgba(45, 52, 54, .12);
+    --hero-wash: radial-gradient(120% 100% at 15% 0%, #F1F5EF 0%, rgba(241,245,239,0) 62%);
     color-scheme: light;
   }
   :root[data-theme="dark"] {
     {{ palette(d) }}
     --shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    --shadow-s: 0 1px 2px rgba(0, 0, 0, .25), 0 2px 8px rgba(0, 0, 0, .2);
+    --shadow-m: 0 2px 4px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .28);
+    --shadow-l: 0 4px 12px rgba(0, 0, 0, .35), 0 24px 56px rgba(0, 0, 0, .45);
+    --hero-wash: radial-gradient(120% 100% at 15% 0%, #1E2622 0%, rgba(30,38,34,0) 62%);
     color-scheme: dark;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       {{ palette(d) }}
       --shadow: 0 1px 3px rgba(0, 0, 0, .3);
+      --shadow-s: 0 1px 2px rgba(0, 0, 0, .25), 0 2px 8px rgba(0, 0, 0, .2);
+      --shadow-m: 0 2px 4px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .28);
+      --shadow-l: 0 4px 12px rgba(0, 0, 0, .35), 0 24px 56px rgba(0, 0, 0, .45);
+      --hero-wash: radial-gradient(120% 100% at 15% 0%, #1E2622 0%, rgba(30,38,34,0) 62%);
       color-scheme: dark;
     }
   }
@@ -148,6 +165,41 @@ eleventyExcludeFromCollections: true
   .section > h2 { margin-block-end: var(--sp-4); }
   .flow > * + * { margin-block-start: var(--sp-4); }
   .cluster { display: flex; flex-wrap: wrap; gap: var(--sp-2); align-items: center; }
+
+  /* Héroe de portada. Ocupa la columna `full` para que el degradado llegue a
+     los bordes, pero el contenido se realinea con la rejilla de la página, así
+     que ni el ancho de lectura ni el orden del DOM cambian: el h1 y el párrafo
+     siguen siendo lo primero que lee un rastreador. */
+  .hero {
+    grid-column: full;
+    background: var(--hero-wash);
+    border-block-end: 1px solid var(--divider);
+    margin-block-start: calc(var(--sp-6) * -1);
+    padding-block: var(--sp-8) var(--sp-7);
+  }
+  .hero-inner {
+    max-inline-size: 68rem;
+    margin-inline: auto;
+    padding-inline: var(--sp-4);
+    display: grid;
+    gap: var(--sp-7);
+    align-items: center;
+  }
+  .hero-copy > * + * { margin-block-start: var(--sp-4); }
+  .hero-copy h1 { font-size: var(--fs-4); }
+  .hero-copy > p:first-of-type { font-size: var(--fs-1); line-height: 1.45; color: var(--text-secondary); max-inline-size: 34ch; }
+  .hero-shot { justify-self: center; display: none; }
+  .hero-shot img {
+    inline-size: min(16rem, 100%);
+    block-size: auto;
+    border-radius: 22px;
+    box-shadow: var(--shadow-l);
+    display: block;
+  }
+  @media (min-width: 56rem) {
+    .hero-inner { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
+    .hero-shot { display: block; }
+  }
 }
 
 @layer components {
@@ -239,13 +291,58 @@ eleventyExcludeFromCollections: true
   .compare .cmp-yes { background: color-mix(in oklab, var(--level-low) 12%, transparent); }
   .compare .cmp-no { background: color-mix(in oklab, var(--level-high) 10%, transparent); }
 
+  /* Panel de datos. Las secciones con medición viven sobre una superficie
+     elevada y las de prosa siguen planas: la diferencia de tratamiento marca
+     qué es dato y qué es texto, en vez de repetir el mismo bloque toda la
+     página. No cambia ni el orden ni el marcado del contenido. */
+  .data-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-s);
+    padding: var(--sp-5);
+  }
+  .data-panel > .scroller { margin-inline: calc(var(--sp-5) * -1); padding-inline: var(--sp-5); }
+  @media (max-width: 40rem) { .data-panel { padding: var(--sp-4); border-radius: var(--radius-m); } }
+
+  /* El héroe ya cierra con su propia línea: la primera sección que le sigue no
+     dibuja otra, o salen dos líneas pegadas. */
+  .hero + .section { border-block-start: 0; padding-block-start: var(--sp-2); }
+
+  /* Cabecera de página de ciudad: el nivel del día y la rejilla de especies
+     forman una sola unidad de lectura sobre superficie elevada, en vez de
+     flotar sueltos sobre el fondo. */
+  .hero-data.panelled {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-l);
+    box-shadow: var(--shadow-s);
+    padding: var(--sp-5);
+  }
+  @media (max-width: 40rem) { .hero-data.panelled { padding: var(--sp-4); border-radius: var(--radius-m); } }
+
   .forecast { inline-size: 100%; min-inline-size: 34rem; table-layout: fixed; }
-  .forecast caption { text-align: start; font-size: var(--fs--1); color: var(--text-secondary); margin-block-end: var(--sp-2); }
-  .forecast th { font-size: var(--fs--1); font-weight: 500; color: var(--text-secondary); padding-block-end: var(--sp-2); }
+  .forecast caption { text-align: start; font-size: var(--fs--1); color: var(--text-secondary); margin-block-end: var(--sp-3); }
+  .forecast th { font-size: var(--fs--1); font-weight: 500; color: var(--text-secondary); padding-block-end: var(--sp-3); }
   .forecast td { text-align: center; padding: var(--sp-1); }
   .forecast .fc-date { font-variant-numeric: tabular-nums; font-size: var(--fs--1); }
-  .fc-bar { block-size: 56px; display: flex; align-items: end; justify-content: center; }
-  .fc-bar i { inline-size: 14px; border-radius: 3px 3px 0 0; background: var(--_lv); min-block-size: 4px; }
+
+  /* Tabla de ciudades de portada: cabecera asentada sobre línea, filas con
+     zona de foco al pasar el cursor, para que se lea como un panel de datos
+     y no como una lista de enlaces sueltos. */
+  .table-rows thead th { border-block-end: 1px solid var(--border); text-transform: uppercase; letter-spacing: .06em; font-size: .72rem; }
+  .table-rows tbody tr { border-block-end: 1px solid var(--divider); }
+  .table-rows tbody tr:last-child { border-block-end: 0; }
+  .table-rows tbody tr:hover { background: var(--surface-elevated); }
+  .table-rows tbody td, .table-rows tbody th { padding-block: var(--sp-3); }
+  .table-rows a { text-decoration: none; font-weight: 500; }
+  .table-rows a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+
+  /* Barras de previsión: más altas y con línea de base, para que la altura
+     signifique algo a simple vista. La palabra sigue debajo de cada barra:
+     el nivel nunca se comunica solo con altura ni solo con color. */
+  .fc-bar { block-size: 92px; display: flex; align-items: end; justify-content: center; border-block-end: 1px solid var(--divider); }
+  .fc-bar i { inline-size: 26px; border-radius: 4px 4px 0 0; background: var(--_lv); min-block-size: 4px; }
   .fc-word { font-size: .75rem; color: var(--text-secondary); }
   .fc-val { font-size: var(--fs--1); }
 

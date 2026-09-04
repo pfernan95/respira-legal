@@ -8,6 +8,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/CNAME": "CNAME" });
   eleventyConfig.addPassthroughCopy("src/assets/fonts");
   eleventyConfig.addPassthroughCopy("src/assets/*.svg");
+  eleventyConfig.addPassthroughCopy("src/assets/img");
 
   // "/polen-madrid.html" -> "/polen-madrid", "/index.html" -> "/"
   eleventyConfig.addFilter("extensionless", (url) =>
