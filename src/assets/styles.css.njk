@@ -73,27 +73,39 @@ eleventyExcludeFromCollections: true
     --fs-5: clamp(3rem, 2.42rem + 2.9vw, 4.5rem);
     --font-display: "Fraunces", Georgia, serif;
     --font-body: "IBM Plex Sans", system-ui, sans-serif;
-    --radius-s: 6px;
-    --radius-m: 10px;
-    --radius-l: 16px;
+    /* Dirección "producto premium": sobrescribe la paleta generada arriba
+       dentro de la misma capa, no apilada al final. */
+    --bg: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-elevated: #F6F7F5;
+    --border: #E4E7E2;
+    --divider: #EDF0EB;
+    --text-primary: #14201A;
+    --text-secondary: #5A665F;
+    --primary: #3F7A5C;
+    --primary-dark: #2C5B43;
+    --radius-s: 10px;
+    --radius-m: 16px;
+    --radius-l: 24px;
     --shadow: 0 1px 3px rgba(45, 52, 54, .06);
-    /* Elevación en tres pasos. Se gasta por jerarquía, no por decoración:
-       -s en tarjetas de datos, -m en el bloque destacado de una página,
-       -l solo en la captura del héroe, que es el único objeto que debe
-       parecer que flota por encima de la página. */
-    --shadow-s: 0 1px 2px rgba(45, 52, 54, .04), 0 2px 8px rgba(45, 52, 54, .05);
-    --shadow-m: 0 2px 4px rgba(45, 52, 54, .04), 0 8px 24px rgba(45, 52, 54, .07);
-    --shadow-l: 0 4px 12px rgba(45, 52, 54, .06), 0 24px 56px rgba(45, 52, 54, .12);
-    --hero-wash: radial-gradient(120% 100% at 15% 0%, #F1F5EF 0%, rgba(241,245,239,0) 62%);
+    /* Elevación por jerarquía, no decorativa: -s tarjetas de datos,
+       -l solo la captura del héroe. */
+    --shadow-s: 0 1px 2px rgba(20, 32, 26, .03), 0 6px 20px rgba(20, 32, 26, .05);
+    --shadow-m: 0 2px 4px rgba(20, 32, 26, .04), 0 8px 24px rgba(20, 32, 26, .07);
+    --shadow-l: 0 8px 24px rgba(20, 32, 26, .08), 0 40px 80px rgba(20, 32, 26, .14);
+    --hero-wash: linear-gradient(180deg, #F3F7F2 0%, #FFFFFF 100%);
     color-scheme: light;
   }
   :root[data-theme="dark"] {
     {{ palette(d) }}
+    --bg: #0F1512; --surface: #151C18; --surface-elevated: #1B241F;
+    --border: #26312B; --divider: #202A24;
+    --text-primary: #EAEFEB; --text-secondary: #9CA8A1;
     --shadow: 0 1px 3px rgba(0, 0, 0, .3);
-    --shadow-s: 0 1px 2px rgba(0, 0, 0, .25), 0 2px 8px rgba(0, 0, 0, .2);
+    --shadow-s: 0 1px 2px rgba(0, 0, 0, .25), 0 6px 20px rgba(0, 0, 0, .22);
     --shadow-m: 0 2px 4px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .28);
-    --shadow-l: 0 4px 12px rgba(0, 0, 0, .35), 0 24px 56px rgba(0, 0, 0, .45);
-    --hero-wash: radial-gradient(120% 100% at 15% 0%, #1E2622 0%, rgba(30,38,34,0) 62%);
+    --shadow-l: 0 8px 24px rgba(0, 0, 0, .38), 0 40px 80px rgba(0, 0, 0, .5);
+    --hero-wash: linear-gradient(180deg, #16201B 0%, #0F1512 100%);
     color-scheme: dark;
   }
   @media (prefers-color-scheme: dark) {
@@ -121,12 +133,13 @@ eleventyExcludeFromCollections: true
   }
   h1, h2 {
     font-family: var(--font-display);
-    font-weight: 560;
-    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -.018em;
+    line-height: 1.05;
     text-wrap: balance;
   }
   h1 { font-size: var(--fs-3); }
-  h2 { font-size: var(--fs-2); }
+  h2 { font-size: clamp(1.9rem, 1.6rem + 1.3vw, 2.75rem); }
   h3 { font-size: var(--fs-1); font-weight: 600; line-height: 1.3; }
   p { text-wrap: pretty; }
   a { color: var(--primary-dark); text-decoration-thickness: 1px; text-underline-offset: 2px; }
@@ -158,48 +171,65 @@ eleventyExcludeFromCollections: true
     row-gap: var(--sp-6);
     padding-block: var(--sp-6) var(--sp-8);
   }
+  /* Ritmo amplio solo en la portada (única con .hero): en páginas de prosa
+     deja los bloques flotando. Sin :has() cae al base compacto, el lado seguro. */
+  .page:has(.hero) { row-gap: var(--sp-8); }
+  .page:has(.hero) .section { padding-block-start: var(--sp-8); border-block-start: 0; }
   .page > * { grid-column: content; }
   .page > .wide { grid-column: wide; }
   .page > .full { grid-column: full; }
   .section { padding-block-start: var(--sp-6); border-block-start: 1px solid var(--divider); }
-  .section > h2 { margin-block-end: var(--sp-4); }
+  .section > h2 { margin-block-end: var(--sp-5); }
   .flow > * + * { margin-block-start: var(--sp-4); }
   .cluster { display: flex; flex-wrap: wrap; gap: var(--sp-2); align-items: center; }
 
-  /* Héroe de portada. Ocupa la columna `full` para que el degradado llegue a
-     los bordes, pero el contenido se realinea con la rejilla de la página, así
-     que ni el ancho de lectura ni el orden del DOM cambian: el h1 y el párrafo
-     siguen siendo lo primero que lee un rastreador. */
+  /* Héroe: columna `full` para que el fondo llegue a los bordes, con el
+     contenido realineado a la rejilla. El h1 sigue primero en el DOM. */
   .hero {
     grid-column: full;
     background: var(--hero-wash);
     border-block-end: 1px solid var(--divider);
     margin-block-start: calc(var(--sp-6) * -1);
-    padding-block: var(--sp-8) var(--sp-7);
+    padding-block: var(--sp-9) var(--sp-8);
+    border-block-end: 0;
   }
   .hero-inner {
     max-inline-size: 68rem;
     margin-inline: auto;
     padding-inline: var(--sp-4);
     display: grid;
-    gap: var(--sp-7);
+    gap: var(--sp-8);
     align-items: center;
   }
   .hero-copy > * + * { margin-block-start: var(--sp-4); }
-  .hero-copy h1 { font-size: var(--fs-4); }
-  .hero-copy > p:first-of-type { font-size: var(--fs-1); line-height: 1.45; color: var(--text-secondary); max-inline-size: 34ch; }
-  .hero-shot { justify-self: center; display: none; }
+  .hero-copy h1 { font-size: clamp(2.75rem, 2rem + 3.4vw, 4.5rem); }
+  .hero-copy > p:first-of-type { font-size: clamp(1.125rem, 1.05rem + .35vw, 1.375rem); line-height: 1.45; color: var(--text-secondary); max-inline-size: 30ch; }
+  /* La captura también se ve en móvil, apilada y sin inclinar: a ese ancho
+     la rotación solo roba espacio. */
+  .hero-shot { justify-self: center; }
   .hero-shot img {
-    inline-size: min(16rem, 100%);
+    inline-size: min(19rem, 100%);
     block-size: auto;
-    border-radius: 22px;
+    margin-inline: auto;
+    border-radius: 30px;
     box-shadow: var(--shadow-l);
-    display: block;
+    transform: rotate(-2.5deg);
+  }
+  @media (prefers-reduced-motion: reduce) { .hero-shot img { transform: none; } }
+  @media (max-width: 56rem) {
+    .hero-shot img { inline-size: min(14rem, 62%); transform: none; border-radius: 24px; }
   }
   @media (min-width: 56rem) {
     .hero-inner { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
-    .hero-shot { display: block; }
   }
+  /* En móvil el relleno del héroe + row-gap + sección dejaba un hueco muerto. */
+  @media (max-width: 48rem) {
+    .hero { padding-block: var(--sp-6) var(--sp-6); }
+    .hero-inner { gap: var(--sp-5); }
+    .page:has(.hero) { row-gap: var(--sp-6); }
+    .page:has(.hero) .section { padding-block-start: var(--sp-6); }
+  }
+  .hero-cta { display: flex; align-items: center; gap: var(--sp-4); flex-wrap: wrap; }
 }
 
 @layer components {
@@ -255,7 +285,7 @@ eleventyExcludeFromCollections: true
   .pollen-grid-wrap { container-type: inline-size; }
   .pollen-grid { display: grid; gap: var(--sp-2); grid-template-columns: repeat(2, 1fr); }
   @container (min-width: 34rem) { .pollen-grid { grid-template-columns: repeat(3, 1fr); } }
-  .pollen-cell { display: grid; gap: 2px; padding: var(--sp-3); border-radius: var(--radius-s); border: 1px solid var(--divider); border-inline-start: 3px solid var(--_lv); background: color-mix(in oklab, var(--_lv) 10%, var(--surface)); }
+  .pollen-cell { display: grid; gap: 2px; padding: var(--sp-4); border-radius: var(--radius-s); border: 1px solid var(--divider); border-inline-start: 3px solid var(--_lv); background: color-mix(in oklab, var(--_lv) 10%, var(--surface)); }
   .pollen-cell .name { font-size: var(--fs--1); color: var(--text-secondary); }
   .pollen-cell .val { font-size: var(--fs-1); font-weight: 600; font-variant-numeric: tabular-nums; }
   .pollen-cell .val small { font-size: var(--fs--1); font-weight: 400; color: var(--text-secondary); }
@@ -291,35 +321,33 @@ eleventyExcludeFromCollections: true
   .compare .cmp-yes { background: color-mix(in oklab, var(--level-low) 12%, transparent); }
   .compare .cmp-no { background: color-mix(in oklab, var(--level-high) 10%, transparent); }
 
-  /* Panel de datos. Las secciones con medición viven sobre una superficie
-     elevada y las de prosa siguen planas: la diferencia de tratamiento marca
-     qué es dato y qué es texto, en vez de repetir el mismo bloque toda la
-     página. No cambia ni el orden ni el marcado del contenido. */
+  /* Panel de datos: las secciones con medición van sobre superficie elevada
+     y las de prosa planas. Distingue dato de texto sin tocar el marcado. */
   .data-panel {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-l);
     box-shadow: var(--shadow-s);
-    padding: var(--sp-5);
+    border-color: var(--divider);
+    padding: var(--sp-6);
   }
-  .data-panel > .scroller { margin-inline: calc(var(--sp-5) * -1); padding-inline: var(--sp-5); }
-  @media (max-width: 40rem) { .data-panel { padding: var(--sp-4); border-radius: var(--radius-m); } }
+  .data-panel > .scroller { margin-inline: calc(var(--sp-6) * -1); padding-inline: var(--sp-6); }
+  @media (max-width: 48rem) { .data-panel { padding: var(--sp-4); border-radius: var(--radius-m); } }
 
   /* El héroe ya cierra con su propia línea: la primera sección que le sigue no
      dibuja otra, o salen dos líneas pegadas. */
   .hero + .section { border-block-start: 0; padding-block-start: var(--sp-2); }
 
-  /* Cabecera de página de ciudad: el nivel del día y la rejilla de especies
-     forman una sola unidad de lectura sobre superficie elevada, en vez de
-     flotar sueltos sobre el fondo. */
+  /* Cabecera de ciudad: nivel del día y rejilla de especies como una unidad. */
   .hero-data.panelled {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: var(--radius-l);
     box-shadow: var(--shadow-s);
-    padding: var(--sp-5);
+    border-color: var(--divider);
+    padding: var(--sp-6);
   }
-  @media (max-width: 40rem) { .hero-data.panelled { padding: var(--sp-4); border-radius: var(--radius-m); } }
+  @media (max-width: 48rem) { .hero-data.panelled { padding: var(--sp-4); border-radius: var(--radius-m); } }
 
   .forecast { inline-size: 100%; min-inline-size: 34rem; table-layout: fixed; }
   .forecast caption { text-align: start; font-size: var(--fs--1); color: var(--text-secondary); margin-block-end: var(--sp-3); }
@@ -327,22 +355,19 @@ eleventyExcludeFromCollections: true
   .forecast td { text-align: center; padding: var(--sp-1); }
   .forecast .fc-date { font-variant-numeric: tabular-nums; font-size: var(--fs--1); }
 
-  /* Tabla de ciudades de portada: cabecera asentada sobre línea, filas con
-     zona de foco al pasar el cursor, para que se lea como un panel de datos
-     y no como una lista de enlaces sueltos. */
-  .table-rows thead th { border-block-end: 1px solid var(--border); text-transform: uppercase; letter-spacing: .06em; font-size: .72rem; }
+  /* Tabla de ciudades: se lee como panel de datos, no como lista de enlaces. */
+  .table-rows thead th { border-block-end: 1px solid var(--border); text-transform: uppercase; letter-spacing: .08em; font-size: .72rem; }
   .table-rows tbody tr { border-block-end: 1px solid var(--divider); }
   .table-rows tbody tr:last-child { border-block-end: 0; }
   .table-rows tbody tr:hover { background: var(--surface-elevated); }
-  .table-rows tbody td, .table-rows tbody th { padding-block: var(--sp-3); }
+  .table-rows tbody td, .table-rows tbody th { padding-block: var(--sp-4); }
   .table-rows a { text-decoration: none; font-weight: 500; }
   .table-rows a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
 
-  /* Barras de previsión: más altas y con línea de base, para que la altura
-     signifique algo a simple vista. La palabra sigue debajo de cada barra:
-     el nivel nunca se comunica solo con altura ni solo con color. */
+  /* Barras con línea de base para que la altura signifique algo. La palabra
+     sigue debajo: el nivel nunca se comunica solo con altura ni color. */
   .fc-bar { block-size: 92px; display: flex; align-items: end; justify-content: center; border-block-end: 1px solid var(--divider); }
-  .fc-bar i { inline-size: 26px; border-radius: 4px 4px 0 0; background: var(--_lv); min-block-size: 4px; }
+  .fc-bar i { inline-size: 30px; border-radius: 6px 6px 0 0; background: var(--_lv); min-block-size: 4px; }
   .fc-word { font-size: .75rem; color: var(--text-secondary); }
   .fc-val { font-size: var(--fs--1); }
 
@@ -431,106 +456,3 @@ eleventyExcludeFromCollections: true
   .hm-cell, .nivel-hero, .nivel-badge, .pollen-cell, .fc-bar i { print-color-adjust: exact; }
   a { color: inherit; text-decoration: none; }
 }
-
-/* ═══════════════════════════════════════════════════════════════════════
-   DIRECCIÓN B — "Producto premium"
-   Capa de estilo, no de estructura: no toca marcado, URLs, encabezados ni
-   datos estructurados. Va al final y fuera de @layer para que gane sin
-   !important y se pueda quitar entera borrando este bloque.
-
-   La idea opuesta a la A: aquí el producto es la app, no la tabla. Fondo
-   blanco puro, el serif se queda pero mucho más grande y apretado, aire
-   generoso, radios amplios y sombras suaves, y la captura del móvil manda
-   en el héroe. Es el lenguaje de una página de producto de consumo.
-   ═══════════════════════════════════════════════════════════════════════ */
-:root {
-  --bg: #FFFFFF;
-  --surface: #FFFFFF;
-  --surface-elevated: #F6F7F5;
-  --border: #E4E7E2;
-  --divider: #EDF0EB;
-  --text-primary: #14201A;
-  --text-secondary: #5A665F;
-  --primary: #3F7A5C;
-  --primary-dark: #2C5B43;
-  --radius-s: 10px;
-  --radius-m: 16px;
-  --radius-l: 24px;
-  --shadow-s: 0 1px 2px rgba(20, 32, 26, .03), 0 6px 20px rgba(20, 32, 26, .05);
-  --shadow-l: 0 8px 24px rgba(20, 32, 26, .08), 0 40px 80px rgba(20, 32, 26, .14);
-  --hero-wash: linear-gradient(180deg, #F3F7F2 0%, #FFFFFF 100%);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0F1512; --surface: #151C18; --surface-elevated: #1B241F;
-    --border: #26312B; --divider: #202A24;
-    --text-primary: #EAEFEB; --text-secondary: #9CA8A1;
-    --hero-wash: linear-gradient(180deg, #16201B 0%, #0F1512 100%);
-  }
-}
-
-/* Titulares mucho más grandes y apretados: el serif deja de ser decorativo
-   y pasa a ser la voz de la página. */
-h1, h2 { font-weight: 600; letter-spacing: -.018em; line-height: 1.05; }
-.hero-copy h1 { font-size: clamp(2.75rem, 2rem + 3.4vw, 4.5rem); }
-.hero-copy > p:first-of-type { font-size: clamp(1.125rem, 1.05rem + .35vw, 1.375rem); line-height: 1.45; max-inline-size: 30ch; }
-h2 { font-size: clamp(1.9rem, 1.6rem + 1.3vw, 2.75rem); }
-.section > h2 { margin-block-end: var(--sp-5); }
-
-/* Aire. El ritmo entre secciones es lo que separa una landing de producto de
-   un documento: se respira entre bloques y desaparecen las reglas divisorias. */
-.page { row-gap: var(--sp-8); }
-.section { padding-block-start: var(--sp-8); border-block-start: 0; }
-.hero { padding-block: var(--sp-9) var(--sp-8); border-block-end: 0; }
-.hero-inner { gap: var(--sp-8); }
-
-/* La captura manda: más grande, más elevada, ligeramente inclinada para que
-   parezca un objeto y no una imagen pegada. */
-.hero-shot img { inline-size: min(19rem, 100%); border-radius: 30px; transform: rotate(-2.5deg); }
-@media (prefers-reduced-motion: reduce) { .hero-shot img { transform: none; } }
-
-/* Superficies amplias y suaves. Las tarjetas de datos siguen legibles pero
-   dejan de parecer una hoja de cálculo. */
-.data-panel, .hero-data.panelled { padding: var(--sp-6); border-radius: var(--radius-l); box-shadow: var(--shadow-s); border-color: var(--divider); }
-.pollen-cell { border-radius: var(--radius-s); padding: var(--sp-4); }
-.table-rows tbody td, .table-rows tbody th { padding-block: var(--sp-4); }
-.table-rows thead th { letter-spacing: .08em; }
-.fc-bar i { border-radius: 6px 6px 0 0; inline-size: 30px; }
-
-/* CTA con peso de botón de producto, no de enlace. */
-.hero-cta { display: flex; align-items: center; gap: var(--sp-4); flex-wrap: wrap; }
-
-/* Correcciones de la dirección B tras revisar en móvil y modo oscuro. */
-
-/* En B la captura de la app ES el argumento, así que en móvil no se oculta:
-   se apila bajo el texto, más pequeña y sin rotar (a ese tamaño la inclinación
-   solo roba ancho útil). La base la escondía por debajo de 56rem. */
-.hero-shot { display: block; }
-.hero-shot img { margin-inline: auto; }
-@media (max-width: 56rem) {
-  .hero-shot img { inline-size: min(14rem, 62%); transform: none; border-radius: 24px; }
-}
-
-/* El ritmo generoso de escritorio se acumulaba en móvil hasta dejar un hueco
-   muerto entre el héroe y la primera sección: se suman el relleno del héroe,
-   el row-gap de la rejilla y el relleno superior de la sección. */
-@media (max-width: 48rem) {
-  .hero { padding-block: var(--sp-6) var(--sp-6); }
-  .hero-inner { gap: var(--sp-5); }
-  .page { row-gap: var(--sp-6); }
-  .section { padding-block-start: var(--sp-6); }
-  .data-panel, .hero-data.panelled { padding: var(--sp-4); border-radius: var(--radius-m); }
-}
-
-/* El ritmo amplio de B se afinó para la portada, donde cada sección lleva un
-   panel de datos que la sostiene. En una página de solo prosa (alérgenos,
-   comparativas, legales) esa misma amplitud deja los bloques flotando sin
-   relación entre sí, así que la generosidad se acota a la portada, que es la
-   única página con .hero, y el resto recupera una regla divisoria tenue y un
-   ritmo más contenido.
-
-   Si :has() no estuviese soportado, el fallo es hacia el estilo base (compacto
-   y con regla), que es el lado seguro. */
-.section { padding-block-start: var(--sp-6); border-block-start: 1px solid var(--divider); }
-.page:has(.hero) { row-gap: var(--sp-8); }
-.page:has(.hero) .section { padding-block-start: var(--sp-8); border-block-start: 0; }
