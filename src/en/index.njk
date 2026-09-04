@@ -12,12 +12,21 @@ description: "Daily pollen levels and air quality for your city in the US, Spain
 
 <main class="page">
 
-  <header class="flow">
-    <h1>Pollen and air quality, today</h1>
-    <p>Respira shows the pollen levels and the air quality index for where you are, with a multi-day forecast and a seasonal calendar by species.</p>
-    <div class="hero-cta">
-      {{ m.storeBadge(i18nWeb.en) }}
-      <span class="hero-cta-note">{{ i18nWeb.en.badge.lead }}</span>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1>Pollen and air quality, today</h1>
+        <p>Respira shows the pollen levels and the air quality index for where you are, with a multi-day forecast and a seasonal calendar by species.</p>
+        <div class="hero-cta">
+          {{ m.storeBadge(i18nWeb.en) }}
+          <span class="hero-cta-note">{{ i18nWeb.en.badge.lead }}</span>
+        </div>
+      </div>
+      <div class="hero-shot">
+        <img src="/assets/img/app-en-01.webp" width="600" height="1298"
+             alt="Respira's home screen showing the overall pollen level, today's allergens and air quality for Minneapolis."
+             fetchpriority="high" decoding="async">
+      </div>
     </div>
   </header>
 
