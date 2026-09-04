@@ -499,3 +499,38 @@ h2 { font-size: clamp(1.9rem, 1.6rem + 1.3vw, 2.75rem); }
 
 /* CTA con peso de botón de producto, no de enlace. */
 .hero-cta { display: flex; align-items: center; gap: var(--sp-4); flex-wrap: wrap; }
+
+/* Correcciones de la dirección B tras revisar en móvil y modo oscuro. */
+
+/* En B la captura de la app ES el argumento, así que en móvil no se oculta:
+   se apila bajo el texto, más pequeña y sin rotar (a ese tamaño la inclinación
+   solo roba ancho útil). La base la escondía por debajo de 56rem. */
+.hero-shot { display: block; }
+.hero-shot img { margin-inline: auto; }
+@media (max-width: 56rem) {
+  .hero-shot img { inline-size: min(14rem, 62%); transform: none; border-radius: 24px; }
+}
+
+/* El ritmo generoso de escritorio se acumulaba en móvil hasta dejar un hueco
+   muerto entre el héroe y la primera sección: se suman el relleno del héroe,
+   el row-gap de la rejilla y el relleno superior de la sección. */
+@media (max-width: 48rem) {
+  .hero { padding-block: var(--sp-6) var(--sp-6); }
+  .hero-inner { gap: var(--sp-5); }
+  .page { row-gap: var(--sp-6); }
+  .section { padding-block-start: var(--sp-6); }
+  .data-panel, .hero-data.panelled { padding: var(--sp-4); border-radius: var(--radius-m); }
+}
+
+/* El ritmo amplio de B se afinó para la portada, donde cada sección lleva un
+   panel de datos que la sostiene. En una página de solo prosa (alérgenos,
+   comparativas, legales) esa misma amplitud deja los bloques flotando sin
+   relación entre sí, así que la generosidad se acota a la portada, que es la
+   única página con .hero, y el resto recupera una regla divisoria tenue y un
+   ritmo más contenido.
+
+   Si :has() no estuviese soportado, el fallo es hacia el estilo base (compacto
+   y con regla), que es el lado seguro. */
+.section { padding-block-start: var(--sp-6); border-block-start: 1px solid var(--divider); }
+.page:has(.hero) { row-gap: var(--sp-8); }
+.page:has(.hero) .section { padding-block-start: var(--sp-8); border-block-start: 0; }
