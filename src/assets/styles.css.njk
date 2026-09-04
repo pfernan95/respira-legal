@@ -431,3 +431,71 @@ eleventyExcludeFromCollections: true
   .hm-cell, .nivel-hero, .nivel-badge, .pollen-cell, .fc-bar i { print-color-adjust: exact; }
   a { color: inherit; text-decoration: none; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DIRECCIÓN B — "Producto premium"
+   Capa de estilo, no de estructura: no toca marcado, URLs, encabezados ni
+   datos estructurados. Va al final y fuera de @layer para que gane sin
+   !important y se pueda quitar entera borrando este bloque.
+
+   La idea opuesta a la A: aquí el producto es la app, no la tabla. Fondo
+   blanco puro, el serif se queda pero mucho más grande y apretado, aire
+   generoso, radios amplios y sombras suaves, y la captura del móvil manda
+   en el héroe. Es el lenguaje de una página de producto de consumo.
+   ═══════════════════════════════════════════════════════════════════════ */
+:root {
+  --bg: #FFFFFF;
+  --surface: #FFFFFF;
+  --surface-elevated: #F6F7F5;
+  --border: #E4E7E2;
+  --divider: #EDF0EB;
+  --text-primary: #14201A;
+  --text-secondary: #5A665F;
+  --primary: #3F7A5C;
+  --primary-dark: #2C5B43;
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --shadow-s: 0 1px 2px rgba(20, 32, 26, .03), 0 6px 20px rgba(20, 32, 26, .05);
+  --shadow-l: 0 8px 24px rgba(20, 32, 26, .08), 0 40px 80px rgba(20, 32, 26, .14);
+  --hero-wash: linear-gradient(180deg, #F3F7F2 0%, #FFFFFF 100%);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1512; --surface: #151C18; --surface-elevated: #1B241F;
+    --border: #26312B; --divider: #202A24;
+    --text-primary: #EAEFEB; --text-secondary: #9CA8A1;
+    --hero-wash: linear-gradient(180deg, #16201B 0%, #0F1512 100%);
+  }
+}
+
+/* Titulares mucho más grandes y apretados: el serif deja de ser decorativo
+   y pasa a ser la voz de la página. */
+h1, h2 { font-weight: 600; letter-spacing: -.018em; line-height: 1.05; }
+.hero-copy h1 { font-size: clamp(2.75rem, 2rem + 3.4vw, 4.5rem); }
+.hero-copy > p:first-of-type { font-size: clamp(1.125rem, 1.05rem + .35vw, 1.375rem); line-height: 1.45; max-inline-size: 30ch; }
+h2 { font-size: clamp(1.9rem, 1.6rem + 1.3vw, 2.75rem); }
+.section > h2 { margin-block-end: var(--sp-5); }
+
+/* Aire. El ritmo entre secciones es lo que separa una landing de producto de
+   un documento: se respira entre bloques y desaparecen las reglas divisorias. */
+.page { row-gap: var(--sp-8); }
+.section { padding-block-start: var(--sp-8); border-block-start: 0; }
+.hero { padding-block: var(--sp-9) var(--sp-8); border-block-end: 0; }
+.hero-inner { gap: var(--sp-8); }
+
+/* La captura manda: más grande, más elevada, ligeramente inclinada para que
+   parezca un objeto y no una imagen pegada. */
+.hero-shot img { inline-size: min(19rem, 100%); border-radius: 30px; transform: rotate(-2.5deg); }
+@media (prefers-reduced-motion: reduce) { .hero-shot img { transform: none; } }
+
+/* Superficies amplias y suaves. Las tarjetas de datos siguen legibles pero
+   dejan de parecer una hoja de cálculo. */
+.data-panel, .hero-data.panelled { padding: var(--sp-6); border-radius: var(--radius-l); box-shadow: var(--shadow-s); border-color: var(--divider); }
+.pollen-cell { border-radius: var(--radius-s); padding: var(--sp-4); }
+.table-rows tbody td, .table-rows tbody th { padding-block: var(--sp-4); }
+.table-rows thead th { letter-spacing: .08em; }
+.fc-bar i { border-radius: 6px 6px 0 0; inline-size: 30px; }
+
+/* CTA con peso de botón de producto, no de enlace. */
+.hero-cta { display: flex; align-items: center; gap: var(--sp-4); flex-wrap: wrap; }
