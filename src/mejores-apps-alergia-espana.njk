@@ -1,0 +1,105 @@
+---
+layout: layouts/base.njk
+permalink: "mejores-apps-alergia-espana.html"
+title: "Mejores apps para la alergia en España (2026) — Respira"
+ogTitle: "Mejores apps para la alergia en España (2026)"
+description: "Qué app instalar si tienes alergia en España: polen por especie, calidad del aire o las dos cosas. Comparativa con fuentes y valoraciones reales."
+ogType: article
+---
+{%- set fecha = airQualityApps.fecha -%}
+
+<main class="page">
+  <nav class="breadcrumbs" aria-label="Migas de pan"><a href="/">Inicio</a> › Apps para la alergia</nav>
+
+  <header class="flow">
+    <h1>Mejores apps para la alergia en España</h1>
+    <p>Hacemos una de ellas, así que léelo sabiendo eso. Esto no es un ranking con Respira arriba: es qué instalar según lo que realmente busques, con los datos sacados de la ficha de App Store de cada app el {{ fecha }}, incluyendo los casos en los que la respuesta correcta no es la nuestra.</p>
+  </header>
+
+  <section class="section flow" aria-labelledby="corto">
+    <h2 id="corto">La respuesta corta</h2>
+    <ul>
+      <li><strong>Solo calidad del aire, dato oficial de España:</strong> ICA del MITECO. Lee la red oficial de vigilancia. Es la fuente.</li>
+      <li><strong>Solo calidad del aire, en Madrid:</strong> Aire de Madrid, del Ayuntamiento, con la red municipal de estaciones.</li>
+      <li><strong>Calidad del aire viajando o comparando ciudades:</strong> IQAir AirVisual, con más de 500.000 ubicaciones en más de 100 países.</li>
+      <li><strong>Polen por especie, y polen junto a calidad del aire:</strong> Respira, o AirCare si cinco tipos de polen te bastan y quieres además índice UV.</li>
+    </ul>
+    <p>Si has llegado buscando <em>calidad del aire</em> a secas, la respuesta honesta es una de las tres primeras y no hace falta que sigas leyendo. Respira es una app de polen que además muestra calidad del aire, y su dato de aire sale del modelo europeo CAMS, no de las estaciones oficiales.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="apps">
+    <h2 id="apps">Las apps</h2>
+
+    {%- for a in airQualityApps.apps %}
+    <h3>{{ a.nombre }}</h3>
+    <p>{{ a.queEs }}</p>
+    <p><strong>Cuándo elegirla:</strong> {{ a.cuandoElegirla }}</p>
+    <p class="small text-secondary">Fuente de datos: {{ a.fuenteDatos }}. {{ a.valoracion }}. Polen por especie: {{ "sí" if a.hacePolen else "no" }}.</p>
+    {%- endfor %}
+
+    <h3>Respira</h3>
+    <p>App de polen y calidad del aire para ocho países. En España sigue las especies que importan aquí (gramíneas, olivo, ciprés, abedul, parietaria, alternaria y más) con el modelo CAMS enriquecido con la Red Española de Aerobiología, y añade calidad del aire, un diario de síntomas y medicación que puedes exportar en PDF para tu alergólogo, y widgets en pantalla de inicio y de bloqueo.</p>
+    <p><strong>Cuándo elegirla:</strong> si tienes alergia y quieres saber qué polen concreto está alto hoy, no solo si el aire está limpio. Y si además quieres llevar registro de cómo te encuentras para enseñárselo a un médico.</p>
+    <p class="small text-secondary">Fuente de datos: modelo CAMS (Copernicus) vía Open-Meteo, con la Red Española de Aerobiología para estaciones en España. 4,9 sobre 5 con 14 valoraciones (App Store España, {{ fecha }}). Polen por especie: sí.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="donde-no">
+    <h2 id="donde-no">Dónde Respira no es la respuesta</h2>
+    <p>Si lo único que quieres es calidad del aire con dato oficial validado, instala ICA o Aire de Madrid. Miden estaciones reales de la red pública; Respira te da salida de modelo, que es otra cosa y no pretende sustituirla.</p>
+    <p>Si quieres profundidad de calidad del aire —histórico largo, mapas, comparar países— IQAir está muy por delante y no es discutible.</p>
+    <p>Y si cinco tipos de polen te bastan y te interesan el índice UV o los incendios, AirCare cubre eso y Respira no.</p>
+  </section>
+
+  <section class="section" aria-labelledby="app">
+    <h2 id="app">Probar Respira</h2>
+    <p>Gratis en la App Store. Polen por especie para tu ubicación, calidad del aire, diario de síntomas y widgets.</p>
+    <p><a class="button" href="https://apps.apple.com/app/6759206565" rel="noopener">Descargar Respira para iPhone</a></p>
+  </section>
+
+  <section class="section" aria-labelledby="mas">
+    <h2 id="mas">Polen por alérgeno</h2>
+    <ul class="link-grid">
+      {%- for info in pollenInfoList %}
+      <li><a href="/alergia-{{ info.slug }}">{{ info.h1 | replace("Alergia al ", "") | replace("Alergia a la ", "") }}</a></li>
+      {%- endfor %}
+    </ul>
+    <p><a href="/calidad-aire-y-polen">Calidad del aire y polen: por qué van juntos si tienes alergia</a></p>
+  </section>
+
+  <p class="fine-print">Respira es una herramienta informativa. No sustituye el diagnóstico ni el criterio de un profesional médico. Los datos de otras apps proceden de sus fichas públicas de App Store el {{ fecha }} y pueden haber cambiado.</p>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://respiraapp.fit/" },
+        { "@type": "ListItem", "position": 2, "name": "Apps para la alergia" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuál es la mejor app para la alergia al polen en España?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Depende de qué busques. Para polen por especie, Respira sigue las especies relevantes en España con el modelo CAMS y la Red Española de Aerobiología, y añade diario de síntomas y widgets. AirCare también junta polen y calidad del aire, con cinco tipos de polen. Si solo quieres calidad del aire oficial, ICA del MITECO o Aire de Madrid son la fuente correcta." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuál es la mejor app de calidad del aire en España?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Para calidad del aire con dato oficial, la app ICA del Ministerio para la Transición Ecológica, que lee la red oficial española de vigilancia. En Madrid, Aire de Madrid del Ayuntamiento usa la red municipal de estaciones. Para comparar ciudades o viajar, IQAir AirVisual cubre más de 500.000 ubicaciones. Respira muestra calidad del aire, pero a partir del modelo CAMS, no de estaciones oficiales." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Hay alguna app que muestre polen y calidad del aire a la vez?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sí. Respira muestra polen por especie y calidad del aire en la misma pantalla, con diario de síntomas y widgets. AirCare también combina ambos, con cinco tipos de polen más índice UV e incendios. Las apps oficiales de calidad del aire españolas no cubren polen." }
+        }
+      ]
+    }
+  ]
+}
+</script>

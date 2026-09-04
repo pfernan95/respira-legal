@@ -1,0 +1,92 @@
+---
+layout: layouts/base.njk
+permalink: "calidad-aire-y-polen.html"
+title: "Calidad del aire y polen: por qué van juntos — Respira"
+ogTitle: "Calidad del aire y polen: por qué van juntos"
+description: "Si tienes alergia, mirar solo el polen o solo la contaminación te deja media foto. Qué mide cada índice, en qué se diferencian y qué app usar para cada cosa."
+ogType: article
+---
+{%- set fecha = airQualityApps.fecha -%}
+
+<main class="page">
+  <nav class="breadcrumbs" aria-label="Migas de pan"><a href="/">Inicio</a> › Calidad del aire y polen</nav>
+
+  <header class="flow">
+    <h1>Calidad del aire y polen: por qué van juntos si tienes alergia</h1>
+    <p>Son dos cosas distintas, se miden distinto y las publican organismos distintos. Si eres alérgico, mirar solo una te deja con media explicación de por qué hoy estás peor.</p>
+  </header>
+
+  <section class="section flow" aria-labelledby="que-mide-cada-uno">
+    <h2 id="que-mide-cada-uno">Qué mide cada uno</h2>
+    <p><strong>La calidad del aire</strong> mide contaminantes: partículas en suspensión (PM2,5 y PM10), dióxido de nitrógeno, ozono, dióxido de azufre. Es un índice de contaminación, y en España lo publica la red oficial de vigilancia con el índice ICA.</p>
+    <p><strong>El polen</strong> se cuenta en granos por metro cúbico de aire, por especie: no es lo mismo que estén altas las gramíneas a que esté alto el olivo, porque muy poca gente es alérgica a todo a la vez. En España lo miden las estaciones aerobiológicas, y los modelos atmosféricos como el europeo CAMS lo estiman entre estaciones.</p>
+    <p>Un índice de calidad del aire excelente no dice nada sobre si hoy hay gramíneas por las nubes. Y un día de polen bajo puede seguir siendo mal día para salir a correr si el ozono está disparado. Son mediciones independientes.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="por-que-importa">
+    <h2 id="por-que-importa">Por qué le importa a alguien con alergia</h2>
+    <p>La respuesta corta es que los síntomas de la alergia y los efectos de la contaminación se parecen bastante desde dentro: congestión, ojos irritados, tos, sensación de que hoy cuesta más respirar. Cuando solo miras una de las dos variables, te falta la mitad de la información para saber a qué atribuir el día malo, y para decidir si mañana conviene salir o no.</p>
+    <p>Por eso Respira muestra las dos en la misma pantalla: el nivel de cada especie de polen que te afecta, y el índice de calidad del aire de tu ubicación, sin que tengas que abrir dos apps y cruzar los datos mentalmente.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="que-app">
+    <h2 id="que-app">Qué app usar para cada cosa</h2>
+    <p><strong>Si solo quieres calidad del aire, con dato oficial:</strong> la app ICA del Ministerio para la Transición Ecológica lee la red oficial española. En Madrid, Aire de Madrid usa la red de estaciones del Ayuntamiento. Son la fuente directa y son gratuitas.</p>
+    <p><strong>Si quieres profundidad de calidad del aire</strong>, histórico largo o comparar ciudades y países, IQAir AirVisual cubre más de 500.000 ubicaciones y va bastante más allá de lo que enseña Respira.</p>
+    <p><strong>Si tienes alergia y quieres las dos cosas juntas:</strong> ahí es donde entra Respira, y también AirCare, que combina calidad del aire con cinco tipos de polen más índice UV.</p>
+    <p class="small text-secondary">Conviene decirlo claro: la calidad del aire de Respira sale del modelo europeo CAMS a través de Open-Meteo, no de las estaciones oficiales. Para polen sí incorporamos medición real de la Red Española de Aerobiología donde la hay. Si tu pregunta es exclusivamente de contaminación, las apps oficiales son mejor respuesta que la nuestra.</p>
+  </section>
+
+  <section class="section" aria-labelledby="app">
+    <h2 id="app">Ver las dos cosas a la vez</h2>
+    <p>Respira muestra el polen de tus alérgenos y la calidad del aire de tu ubicación en la misma pantalla, con diario de síntomas y widgets. Gratis en la App Store.</p>
+    <p><a class="button" href="https://apps.apple.com/app/6759206565" rel="noopener">Descargar Respira para iPhone</a></p>
+  </section>
+
+  <section class="section" aria-labelledby="mas">
+    <h2 id="mas">Seguir leyendo</h2>
+    <ul class="link-grid">
+      <li><a href="/mejores-apps-alergia-espana">Mejores apps para la alergia en España</a></li>
+      {%- for info in pollenInfoList %}
+      <li><a href="/alergia-{{ info.slug }}">{{ info.h1 | replace("Alergia al ", "") | replace("Alergia a la ", "") }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <p class="fine-print">Respira es una herramienta informativa. No sustituye el diagnóstico ni el criterio de un profesional médico. Los datos de otras apps proceden de sus fichas públicas de App Store el {{ fecha }} y pueden haber cambiado.</p>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://respiraapp.fit/" },
+        { "@type": "ListItem", "position": 2, "name": "Calidad del aire y polen" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Es lo mismo la calidad del aire que el nivel de polen?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. La calidad del aire mide contaminantes como PM2,5, PM10, dióxido de nitrógeno y ozono, y se publica como un índice global. El polen se cuenta en granos por metro cúbico y por especie, porque casi nadie es alérgico a todas a la vez. Un día con buena calidad del aire puede tener gramíneas muy altas, y al revés." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Por qué mirar polen y contaminación a la vez si tengo alergia?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Porque los síntomas se parecen desde dentro: congestión, ojos irritados, tos. Mirando solo una de las dos variables falta la mitad de la información para saber a qué se debe un día malo y para decidir si conviene hacer deporte al aire libre." }
+        },
+        {
+          "@type": "Question",
+          "name": "¿De dónde saca Respira la calidad del aire?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Del modelo atmosférico europeo CAMS (Copernicus) a través de Open-Meteo, con el índice europeo en Europa y el índice de la EPA en Estados Unidos. No son estaciones oficiales: para calidad del aire medida en estación en España, la app ICA del MITECO o Aire de Madrid son la fuente directa." }
+        }
+      ]
+    }
+  ]
+}
+</script>
