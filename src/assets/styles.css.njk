@@ -226,6 +226,19 @@ eleventyExcludeFromCollections: true
   }
   .scroller::-webkit-scrollbar { block-size: 8px; }
   .scroller::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 4px; }
+  /* Comparison table (/en/respira-vs-*, /en/best-pollen-apps). Never signals a
+     verdict with colour alone: every cell leads with the word Yes / No / Not
+     stated and the tint is only a second encoding on top of it. "Not stated"
+     stays neutral on purpose — it means no source was found, not "no". */
+  .compare { inline-size: 100%; min-inline-size: 40rem; }
+  .compare caption { text-align: start; font-size: var(--fs--1); color: var(--text-secondary); margin-block-end: var(--sp-2); }
+  .compare th, .compare td { text-align: start; vertical-align: top; padding: var(--sp-3); border-block-start: 1px solid var(--divider); }
+  .compare thead th { font-size: var(--fs--1); font-weight: 600; color: var(--text-secondary); border-block-start: 0; }
+  .compare tbody th { font-weight: 500; inline-size: 12rem; }
+  .compare td span.small { display: block; margin-block-start: var(--sp-1); }
+  .compare .cmp-yes { background: color-mix(in oklab, var(--level-low) 12%, transparent); }
+  .compare .cmp-no { background: color-mix(in oklab, var(--level-high) 10%, transparent); }
+
   .forecast { inline-size: 100%; min-inline-size: 34rem; table-layout: fixed; }
   .forecast caption { text-align: start; font-size: var(--fs--1); color: var(--text-secondary); margin-block-end: var(--sp-2); }
   .forecast th { font-size: var(--fs--1); font-weight: 500; color: var(--text-secondary); padding-block-end: var(--sp-2); }

@@ -1,0 +1,100 @@
+---
+layout: layouts/base.njk
+lang: en
+permalink: "en/best-pollen-apps.html"
+title: "Best pollen allergy apps for iPhone (2026) — Respira"
+ogTitle: "Best pollen allergy apps for iPhone (2026)"
+description: "A sourced comparison of the main iPhone pollen apps: Allergy Plus, ZYRTEC AllergyCast, IQAir AirVisual and Respira, and what each is actually best at."
+---
+{%- set R = competitors.respira -%}
+
+<main class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> › Pollen apps</nav>
+
+  <header class="flow">
+    <h1>Best pollen allergy apps for iPhone</h1>
+    <p>We make one of these, so read this with that in mind. What follows is not a ranking with Respira at the top: it is what each app is genuinely best at, taken from their own App Store listings on {{ competitors.snapshotDate }}, including the places where the others are the better answer.</p>
+  </header>
+
+  <section class="section flow" aria-labelledby="short-answer">
+    <h2 id="short-answer">The short answer</h2>
+    <ul>
+      <li><strong>Longest US track record:</strong> Allergy Plus by Pollen.com. Two decades of US allergy forecasting behind it and around 22,900 ratings. Its listing states it is for the continental US only.</li>
+      <li><strong>Predicting how you will feel:</strong> ZYRTEC AllergyCast. It turns your logged symptoms into a personalised daily severity prediction, which none of the others here do.</li>
+      <li><strong>Air quality:</strong> IQAir AirVisual, and not close. Over 500,000 locations in 100+ countries, historical data and 3D maps. Pollen is not its focus.</li>
+      <li><strong>Pollen outside the US, and a diary you can hand to a doctor:</strong> Respira. Eight countries, eleven US species, an exportable symptom diary, and Home and Lock Screen widgets. It is also the newest here, with no US ratings yet.</li>
+    </ul>
+  </section>
+
+  <section class="section flow" aria-labelledby="apps">
+    <h2 id="apps">The apps</h2>
+
+    {%- for c in competitors.list %}
+    <h3>{{ c.name }}</h3>
+    <p>{{ c.positioning }}</p>
+    <p class="small text-secondary">{{ c.price }}. {{ c.rating }}. <a href="/en/respira-vs-{{ c.slug }}">Full comparison with Respira</a></p>
+    {%- endfor %}
+
+    <h3>Respira</h3>
+    <p>A pollen and air-quality app covering eight countries. In the United States it reports the eleven species published by the Google Pollen API, including ragweed and oak, with air quality on the EPA scale; in Europe it uses the Copernicus CAMS model, enriched with national monitoring networks in Spain, Italy and Germany. It keeps a symptom, severity and medication diary you can export as a PDF, and shows levels on Home and Lock Screen widgets.</p>
+    <p class="small text-secondary">{{ R.price }}. {{ R.rating }}.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="honest">
+    <h2 id="honest">Where Respira is not the right answer</h2>
+    <p>If you want an app to tell you how bad your own symptoms are likely to be tomorrow, Respira does not do that: it reports measured and forecast pollen, and leaves the interpretation to you. AllergyCast is built around exactly that prediction.</p>
+    <p>If air quality rather than pollen is your reason for installing anything, AirVisual's coverage and history are far deeper than what Respira shows.</p>
+    <p>And if a large, settled US user base is what makes you trust an app, Respira does not have one yet. It launched in the United States in August 2026 and has no US ratings so far.</p>
+  </section>
+
+  <section class="section" aria-labelledby="app">
+    <h2 id="app">Try Respira</h2>
+    <p><a class="button" href="https://apps.apple.com/app/6759206565" rel="noopener">Get Respira for iPhone</a></p>
+  </section>
+
+  <section class="section" aria-labelledby="more">
+    <h2 id="more">Pollen by allergen</h2>
+    <ul class="link-grid">
+      {%- for info in usPollenInfoList %}
+      <li><a href="/en/allergy-{{ info.slug }}">{{ info.h1 | replace(" allergy", "") | replace(" pollen", "") }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional. Competitor details are taken from their public App Store listings on {{ competitors.snapshotDate }} and may have changed since.</p>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://respiraapp.fit/en/" },
+        { "@type": "ListItem", "position": 2, "name": "Pollen apps" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best pollen app for iPhone?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It depends what you need. Allergy Plus by Pollen.com has the longest US forecasting track record but states it covers the continental US only. ZYRTEC AllergyCast predicts how your symptoms are likely to feel. IQAir AirVisual is the strongest for air quality specifically. Respira covers eight countries, names eleven US pollen species, and keeps a symptom diary you can export for a clinician." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which pollen app works outside the United States?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Respira covers the United States, Spain, Portugal, France, Italy, Germany, Ireland and the United Kingdom. Allergy Plus by Pollen.com states in its listing that it is currently for use in the continental US only. IQAir AirVisual covers over 100 countries, but for air quality rather than pollen species." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which pollen app predicts my symptoms?",
+          "acceptedAnswer": { "@type": "Answer", "text": "ZYRTEC AllergyCast produces a personalised daily symptom-severity prediction from the symptoms you log. Respira records symptoms in a diary and reports measured and forecast pollen, but does not predict how you personally will feel." }
+        }
+      ]
+    }
+  ]
+}
+</script>

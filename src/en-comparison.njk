@@ -1,0 +1,120 @@
+---
+layout: layouts/base.njk
+lang: en
+pagination:
+  data: competitors.list
+  size: 1
+  alias: rival
+  addAllPagesToCollections: true
+permalink: "en/respira-vs-{{ rival.slug }}.html"
+ogType: article
+eleventyComputed:
+  title: "Respira vs {{ rival.name }} — Respira"
+  ogTitle: "Respira vs {{ rival.name }}"
+  description: "Respira vs {{ rival.name }}, side by side: coverage, pollen species, symptom tracking, widgets, and where each app is the better choice."
+---
+{%- set R = competitors.respira -%}
+{%- set marks = { yes: "Yes", no: "No", unstated: "Not stated" } -%}
+
+<main class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> › <a href="/en/best-pollen-apps">Pollen apps</a> › Respira vs {{ rival.shortName }}</nav>
+
+  <header class="flow">
+    <h1>Respira vs {{ rival.name }}</h1>
+    <p>Both are free iPhone apps for tracking pollen. They are built around different ideas, and which one suits you depends on what you actually want out of it. Everything below is taken from each app's own App Store listing, checked on {{ competitors.snapshotDate }}.</p>
+  </header>
+
+  <section class="section flow" aria-labelledby="what-each-is">
+    <h2 id="what-each-is">What each one is</h2>
+    <p><strong>{{ rival.name }}</strong> ({{ rival.developer }}) — {{ rival.positioning }} {{ rival.rating }}.</p>
+    <p><strong>Respira</strong> — a pollen and air-quality app for eight countries, with per-species allergen tracking, a symptom diary you can export, and Home and Lock Screen widgets. {{ R.rating }}.</p>
+  </section>
+
+  <section class="section" aria-labelledby="side-by-side">
+    <h2 id="side-by-side">Side by side</h2>
+    <div class="scroller">
+      <table class="compare">
+        <caption>Respira compared with {{ rival.name }}, from each app's own App Store listing on {{ competitors.snapshotDate }}</caption>
+        <thead>
+          <tr>
+            <th scope="col">Feature</th>
+            <th scope="col">Respira</th>
+            <th scope="col">{{ rival.shortName }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for row in competitors.featureRows %}
+          {%- set mine = R.features[row.key] %}
+          {%- set theirs = rival.features[row.key] %}
+          <tr>
+            <th scope="row">{{ row.label }}</th>
+            <td class="cmp-{{ mine.value }}"><strong>{{ marks[mine.value] }}</strong><br><span class="small text-secondary">{{ mine.note }}</span></td>
+            <td class="cmp-{{ theirs.value }}"><strong>{{ marks[theirs.value] }}</strong><br><span class="small text-secondary">{{ theirs.note }}</span></td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="small text-secondary" style="margin-block-start: var(--sp-3)">“Not stated” means the app's own listing does not mention it. It is not a claim that the feature is missing — only that we found no source saying it is there, and we would rather say so than guess.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="verdict">
+    <h2 id="verdict">Which one should you use</h2>
+    <p>{{ rival.honestVerdict }}</p>
+    <p>The honest summary: {{ rival.shortName }} has a far larger US user base than Respira, which launched in the United States in August 2026 and has no US ratings yet. If a long track record is what reassures you, that is a real point in its favour, and no feature table changes it.</p>
+  </section>
+
+  <section class="section" aria-labelledby="app">
+    <h2 id="app">Try Respira</h2>
+    <p>Free on the App Store. Eleven pollen species in the United States, air quality on the EPA scale, and a symptom diary you can export as a PDF for your allergist.</p>
+    <p><a class="button" href="https://apps.apple.com/app/6759206565" rel="noopener">Get Respira for iPhone</a></p>
+  </section>
+
+  <section class="section" aria-labelledby="others">
+    <h2 id="others">Other comparisons</h2>
+    <ul class="link-grid">
+      <li><a href="/en/best-pollen-apps">Best pollen apps for iPhone</a></li>
+      {%- for other in competitors.list %}{% if other.slug != rival.slug %}
+      <li><a href="/en/respira-vs-{{ other.slug }}">Respira vs {{ other.shortName }}</a></li>
+      {%- endif %}{% endfor %}
+    </ul>
+  </section>
+
+  <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional. Competitor details are taken from their public App Store listings on {{ competitors.snapshotDate }} and may have changed since.</p>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://respiraapp.fit/en/" },
+        { "@type": "ListItem", "position": 2, "name": "Pollen apps", "item": "https://respiraapp.fit/en/best-pollen-apps" },
+        { "@type": "ListItem", "position": 3, "name": {{ ("Respira vs " + rival.name) | dump | safe }} }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": {{ ("Is Respira or " + rival.name + " better?") | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ rival.honestVerdict | dump | safe }} }
+        },
+        {
+          "@type": "Question",
+          "name": {{ ("What countries does " + rival.name + " cover?") | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ rival.features.countries.note | dump | safe }} }
+        },
+        {
+          "@type": "Question",
+          "name": "What countries does Respira cover?",
+          "acceptedAnswer": { "@type": "Answer", "text": {{ R.features.countries.note | dump | safe }} }
+        }
+      ]
+    }
+  ]
+}
+</script>
