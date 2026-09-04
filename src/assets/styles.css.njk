@@ -431,3 +431,80 @@ eleventyExcludeFromCollections: true
   .hm-cell, .nivel-hero, .nivel-badge, .pollen-cell, .fc-bar i { print-color-adjust: exact; }
   a { color: inherit; text-decoration: none; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DIRECCIÓN A — "Instrumento"
+   Capa de estilo, no de estructura: no toca marcado, URLs, encabezados ni
+   datos estructurados. Va al final y fuera de @layer a propósito, para que
+   gane a las capas anteriores sin usar !important y se pueda quitar entera
+   borrando este bloque.
+
+   La idea: el producto es el dato, así que el cromo se calla. Fuera el serif
+   y el fondo crema; neutros fríos, tipografía apretada, esquinas de 4px,
+   bordes precisos en vez de sombras, y el color reservado para codificar
+   nivel. Nada decorativo compite con las cifras.
+   ═══════════════════════════════════════════════════════════════════════ */
+:root {
+  --bg: #FBFBFA;
+  --surface: #FFFFFF;
+  --surface-elevated: #F4F5F4;
+  --border: #DDE0DD;
+  --divider: #EBEDEB;
+  --text-primary: #191D1B;
+  --text-secondary: #5B6360;
+  --text-muted: #9AA29E;
+  --primary: #2F6B4F;
+  --primary-dark: #235539;
+  --primary-light: #8FB79F;
+  --font-display: "IBM Plex Sans", system-ui, sans-serif;
+  --radius-s: 3px;
+  --radius-m: 4px;
+  --radius-l: 6px;
+  --shadow-s: none;
+  --shadow-m: none;
+  --shadow-l: 0 2px 8px rgba(25, 29, 27, .08), 0 12px 32px rgba(25, 29, 27, .10);
+  --hero-wash: none;
+}
+:root[data-theme="dark"], :root:not([data-theme="light"]) {
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101312; --surface: #171B19; --surface-elevated: #1D2220;
+    --border: #2A302D; --divider: #222826;
+    --text-primary: #E8EBE9; --text-secondary: #9BA5A0; --text-muted: #6D7671;
+    --primary: #6FAE8B; --primary-dark: #8CC4A4; --primary-light: #3C5B4B;
+    --hero-wash: none;
+  }
+}
+
+/* Tipografía: una sola familia, pesos altos y tracking negativo en titulares.
+   La densidad es el mensaje. */
+h1, h2, h3 { font-family: var(--font-display); letter-spacing: -.021em; }
+h1 { font-weight: 640; line-height: 1.08; }
+h2 { font-weight: 620; line-height: 1.15; letter-spacing: -.018em; }
+h3 { font-weight: 600; }
+body { line-height: 1.55; }
+.hero-copy h1 { font-size: clamp(2.1rem, 1.7rem + 1.8vw, 3rem); }
+.hero-copy > p:first-of-type { font-size: var(--fs-0); color: var(--text-secondary); max-inline-size: 42ch; }
+
+/* Cromo plano: bordes en vez de sombras, y el héroe se separa por una regla,
+   no por un degradado. */
+.hero { background: none; border-block-end: 1px solid var(--border); }
+.data-panel, .hero-data.panelled { box-shadow: none; border: 1px solid var(--border); }
+.pollen-cell { border-radius: var(--radius-s); }
+
+/* Micro-etiquetas de instrumento: versalitas trackeadas para cualquier rótulo
+   que nombre una magnitud, no para texto corrido. */
+.table-rows thead th,
+.pollen-cell .name,
+.nivel-hero .detail,
+.forecast th { text-transform: uppercase; letter-spacing: .07em; font-size: .7rem; font-weight: 600; color: var(--text-secondary); }
+
+/* La cifra manda: tabular, apretada, con más peso que su etiqueta. */
+.pollen-cell .val { font-size: 1.45rem; font-weight: 650; letter-spacing: -.02em; }
+.nivel-hero .word { font-family: var(--font-display); font-weight: 660; letter-spacing: -.022em; }
+.table-rows tbody td.num { font-weight: 600; }
+
+/* Barras de previsión rectas, sin redondeo: leen como una escala medida. */
+.fc-bar i { border-radius: 1px; inline-size: 22px; }
