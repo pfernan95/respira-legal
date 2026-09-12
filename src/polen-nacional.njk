@@ -106,7 +106,7 @@ eleventyComputed:
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://respiraapp.fit/" },
-        { "@type": "ListItem", "position": 2, "name": {{ info.h1 | dump | safe }} }
+        { "@type": "ListItem", "position": 2, "name": {{ info.h1 | dump | safe }}, "item": "https://respiraapp.fit{{ page.url | extensionless }}" }
       ]
     },
     {
