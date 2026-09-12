@@ -16,7 +16,7 @@ eleventyComputed:
 {%- import "macros.njk" as m -%}
 
 <main class="page">
-  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> › Allergens</nav>
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> › {{ info.h1 }}</nav>
 
   <header class="flow">
     <h1>{{ info.h1 }}</h1>
@@ -70,8 +70,7 @@ eleventyComputed:
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://respiraapp.fit/en/" },
-        { "@type": "ListItem", "position": 2, "name": "Allergens" },
-        { "@type": "ListItem", "position": 3, "name": {{ info.h1 | dump | safe }} }
+        { "@type": "ListItem", "position": 2, "name": {{ info.h1 | dump | safe }}, "item": "https://respiraapp.fit{{ page.url | extensionless }}" }
       ]
     },
     {
