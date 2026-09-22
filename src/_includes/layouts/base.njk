@@ -23,7 +23,16 @@
       164 Spanish routes have no English twin and correctly emit none. -#}
   {%- if altEs and altEn %}
   <link rel="alternate" hreflang="es-ES" href="https://respiraapp.fit{{ altEs }}">
+  {#- 2.1.0: the same Spanish page is the one an Argentine or a Chilean should
+      land on, and the same English page serves Australia and New Zealand. One
+      URL may carry several hreflang values; what must not happen is a Buenos
+      Aires search landing on /en/. -#}
+  <link rel="alternate" hreflang="es-AR" href="https://respiraapp.fit{{ altEs }}">
+  <link rel="alternate" hreflang="es-CL" href="https://respiraapp.fit{{ altEs }}">
   <link rel="alternate" hreflang="en-US" href="https://respiraapp.fit{{ altEn }}">
+  <link rel="alternate" hreflang="en-AU" href="https://respiraapp.fit{{ altEn }}">
+  <link rel="alternate" hreflang="en-NZ" href="https://respiraapp.fit{{ altEn }}">
+  <link rel="alternate" hreflang="en-GB" href="https://respiraapp.fit{{ altEn }}">
   <link rel="alternate" hreflang="x-default" href="https://respiraapp.fit{{ altEs }}">
   {%- endif %}
   {%- endif %}
