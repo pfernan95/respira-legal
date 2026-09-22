@@ -1,12 +1,26 @@
 # Respira
 
-> Respira is a free iOS app for pollen and air-quality tracking. It shows the current pollen level for a species and location, a short forecast, and a symptom diary. Available in Spain, Portugal, France, Italy, Germany, Ireland, the UK and the US.
+> Respira is a free iOS app for pollen and air-quality tracking. It shows the current pollen level for a species and location, a short forecast, and a symptom diary. Available in twelve countries: Spain, Portugal, France, Italy, Germany, Ireland, the UK, the US, Australia, New Zealand, Argentina and Chile.
 
-Pollen data for Spain and the rest of Europe comes from the CAMS atmospheric model (Copernicus) via Open-Meteo, refreshed once daily; species without model coverage fall back to a seasonal estimate from the Spanish Aerobiology Network (REA), always labeled as such. Pollen data for the US comes from the Google Pollen API. Every page states its own source and last-updated time — nothing here should be read as a live measurement unless the page says so.
+Pollen data for Spain and the rest of Europe comes from the CAMS atmospheric model (Copernicus) via Open-Meteo, refreshed once daily; species without model coverage fall back to a seasonal estimate from the Spanish Aerobiology Network (REA), always labeled as such. Pollen data for the US, Australia, New Zealand, Argentina and Chile comes from the Google Pollen API. Every page states its own source and last-updated time — nothing here should be read as a live measurement unless the page says so.
 
 ## App
 
 - [Respira on the App Store](https://apps.apple.com/app/6759206565): free, iPhone and iPad, pollen levels, forecast, symptom diary, no ads on Respira Pro.
+
+## Start here
+
+- [Respira in English](https://respiraapp.fit/en/): what the app does and the twelve countries it covers.
+- [Respira en español](https://respiraapp.fit/): today's pollen and air quality in Spain's main cities.
+
+## Guides and comparisons
+
+- [Best pollen allergy apps for iPhone (2026)](https://respiraapp.fit/en/best-pollen-apps)
+- [Respira vs Allergy Plus by Pollen.com](https://respiraapp.fit/en/respira-vs-pollen-com)
+- [Respira vs Zyrtec AllergyCast](https://respiraapp.fit/en/respira-vs-zyrtec-allergycast)
+- [Respira vs IQAir AirVisual](https://respiraapp.fit/en/respira-vs-iqair-airvisual)
+- [Mejores apps para la alergia en España (2026)](https://respiraapp.fit/mejores-apps-alergia-espana) (Spanish)
+- [Calidad del aire y polen: por qué van juntos](https://respiraapp.fit/calidad-aire-y-polen) (Spanish)
 
 ## Pollen by allergen — Spain (Spanish)
 
