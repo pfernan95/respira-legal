@@ -42,7 +42,7 @@ export default {
     mainNav: "Principal",
     cookieBanner: {
       text: "Usamos analítica anónima para saber qué páginas funcionan y de dónde llega la gente. No se activa hasta que la aceptas.",
-      more: "Más información",
+      more: "Política de privacidad",
       accept: "Aceptar",
       reject: "Rechazar",
     },
@@ -76,7 +76,7 @@ export default {
     mainNav: "Main",
     cookieBanner: {
       text: "We use anonymous analytics to see which pages work and where visitors come from. It doesn't run until you accept it.",
-      more: "Learn more",
+      more: "Privacy policy",
       accept: "Accept",
       reject: "Reject",
     },

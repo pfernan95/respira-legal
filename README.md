@@ -13,6 +13,21 @@ npm run serve          # servidor de desarrollo
 POLLEN_SKIP_FETCH=1 npm run build   # build offline con el último dato cacheado
 ```
 
+## SEO
+
+Dos comprobaciones, las dos sobre **todas** las páginas y no sobre una muestra:
+
+```bash
+npm run build && npm run seo    # guía SEO de Google como checks estáticos (falla con errores)
+npm run lighthouse               # Lighthouse (SEO, accesibilidad, buenas prácticas) por URL del sitemap
+node tools/lighthouse-all.mjs http://localhost:8080   # contra un build local
+```
+
+`npm run seo` corre en cada PR (`.github/workflows/seo-audit.yml`), no en el
+deploy diario: un refresco de datos nunca debe quedar bloqueado por él. Qué
+comprueba cada regla y por qué está en el skill `google-seo-starter` de
+`pfernan95/respira-app` (`.claude/skills/`).
+
 ## Arquitectura de datos
 
 - `src/_data/constants/` — puerto **literal** de las constantes de la app iOS

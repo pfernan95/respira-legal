@@ -8,9 +8,11 @@ pagination:
 permalink: "polen-{{ ciudad.slug }}.html"
 ogType: article
 eleventyComputed:
-  title: "Polen en {{ ciudad.name }} hoy · niveles y previsión — Respira"
+  # Four city names push the long form past ~65 characters, where Google
+  # truncates the title link; they get the short form instead.
+  title: "{% if ciudad.name | length > 20 %}Polen en {{ ciudad.name }} hoy y previsión — Respira{% else %}Polen en {{ ciudad.name }} hoy · niveles y previsión — Respira{% endif %}"
   ogTitle: "Polen en {{ ciudad.name }} hoy · niveles y previsión"
-  description: "Niveles de polen en {{ ciudad.name }} hoy: máximo previsto por tipo, previsión de los próximos días, calidad del aire y calendario polínico. Datos de Open-Meteo actualizados a diario."
+  description: "Niveles de polen en {{ ciudad.name }} hoy por tipo, previsión, calidad del aire y calendario polínico. Datos de Open-Meteo actualizados cada día."
 ---
 {%- import "macros.njk" as m -%}
 {%- set data = pollenData.cities[ciudad.slug] -%}

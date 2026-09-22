@@ -106,7 +106,7 @@ export default {
     slug: "pine",
     h1: "Pine pollen allergy",
     lead: "Pine produces enormous quantities of pollen — enough to turn cars, decks and puddles yellow across the Southeast every spring — but it is a comparatively weak allergen. The grains are large and heavy, and most of them fall out of the air near the tree rather than being inhaled.",
-    metaDescription: "Pine pollen season runs March to June, turning cars and decks yellow across the Southeast — though it's a comparatively weak allergen. Track it with Respira.",
+    metaDescription: "Pine pollen season runs March to June, turning cars yellow across the Southeast — though it's a comparatively weak allergen. Track it with Respira.",
     symptoms:
       "Less commonly associated with allergic symptoms than its sheer volume suggests. Where it does cause them, they are the usual rhinitis and conjunctivitis. The visible yellow layer often coincides with other species that are the real trigger.",
     where:
