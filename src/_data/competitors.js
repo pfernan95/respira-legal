@@ -34,7 +34,7 @@ const respira = {
   price: "Free, with an optional Pro subscription",
   rating: "4.9 from 14 ratings (Spanish App Store); not yet rated in the US",
   features: {
-    countries: { value: "yes", note: "Eight: the United States, Spain, Portugal, France, Italy, Germany, Ireland and the United Kingdom" },
+    countries: { value: "yes", note: "Twelve: the United States, Australia, New Zealand, Argentina, Chile, Spain, Portugal, France, Italy, Germany, Ireland and the United Kingdom" },
     usSpecies: { value: "yes", note: "Eleven species, from the Google Pollen API" },
     airQuality: { value: "yes", note: "AQI plus PM2.5, PM10 and ozone, on the EPA scale in the US and the European index elsewhere" },
     symptomDiary: { value: "yes", note: "Symptoms, severity, medication and notes, with a monthly calendar" },
