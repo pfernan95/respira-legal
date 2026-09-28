@@ -33,6 +33,11 @@
   <link rel="alternate" hreflang="en-AU" href="https://respiraapp.fit{{ altEn }}">
   <link rel="alternate" hreflang="en-NZ" href="https://respiraapp.fit{{ altEn }}">
   <link rel="alternate" hreflang="en-GB" href="https://respiraapp.fit{{ altEn }}">
+  {#- 2.3.0: 22 European countries with no page in their own language. An
+      English reader in Warsaw or Stockholm matches no regional value above,
+      so the bare language codes catch everyone else. -#}
+  <link rel="alternate" hreflang="en" href="https://respiraapp.fit{{ altEn }}">
+  <link rel="alternate" hreflang="es" href="https://respiraapp.fit{{ altEs }}">
   <link rel="alternate" hreflang="x-default" href="https://respiraapp.fit{{ altEs }}">
   {%- endif %}
   {%- endif %}

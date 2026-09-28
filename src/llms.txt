@@ -1,6 +1,6 @@
 # Respira
 
-> Respira is a free iOS app for pollen and air-quality tracking. It shows the current pollen level for a species and location, a short forecast, and a symptom diary. Available in twelve countries: Spain, Portugal, France, Italy, Germany, Ireland, the UK, the US, Australia, New Zealand, Argentina and Chile.
+> Respira is a free iOS app for pollen and air-quality tracking. It shows the current pollen level for a species and location, a short forecast, and a symptom diary. Available in 34 countries: 29 in Europe (Spain, Portugal, France, Italy, Germany, Ireland, the UK, Austria, Switzerland, the Netherlands, Belgium, Luxembourg, Poland, Czechia, Slovakia, Hungary, Slovenia, Sweden, Norway, Denmark, Finland, Estonia, Latvia, Lithuania, Greece, Croatia, Romania, Bulgaria, Serbia) on the Copernicus CAMS model, and the US, Australia, New Zealand, Argentina and Chile on the Google Pollen API.
 
 Pollen data for Spain and the rest of Europe comes from the CAMS atmospheric model (Copernicus) via Open-Meteo, refreshed once daily; species without model coverage fall back to a seasonal estimate from the Spanish Aerobiology Network (REA), always labeled as such. Pollen data for the US, Australia, New Zealand, Argentina and Chile comes from the Google Pollen API. Every page states its own source and last-updated time — nothing here should be read as a live measurement unless the page says so.
 
@@ -10,7 +10,7 @@ Pollen data for Spain and the rest of Europe comes from the CAMS atmospheric mod
 
 ## Start here
 
-- [Respira in English](https://respiraapp.fit/en/): what the app does and the twelve countries it covers.
+- [Respira in English](https://respiraapp.fit/en/): what the app does and the 34 countries it covers.
 - [Respira en español](https://respiraapp.fit/): today's pollen and air quality in Spain's main cities.
 
 ## Guides and comparisons
