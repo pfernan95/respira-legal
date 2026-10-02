@@ -1,0 +1,381 @@
+{
+ "source": "CAMS (Copernicus) vía Open-Meteo",
+ "start": "2023-01-01",
+ "end": "2025-12-31",
+ "cities": {
+  "madrid": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 1.6,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 11.7,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 43,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 26.1,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 10.1,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 2.9,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.6,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "olive": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 23.7,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 112.2,
+     "level": "high",
+     "days": 93
+    },
+    {
+     "value": 9.4,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 10,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 5.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 1.4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 10,
+     "level": "moderate",
+     "days": 74
+    },
+    {
+     "value": 0.6,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 1.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 4.3,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 0.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  }
+ }
+}

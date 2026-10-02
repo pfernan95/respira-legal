@@ -29,14 +29,29 @@ eleventyComputed:
     <p>{{ info.lead }}</p>
   </header>
 
+  {%- if info.queEs %}
+  <section class="section flow" aria-labelledby="que-es">
+    <h2 id="que-es">¿Qué es la {{ info.pollenName | lower }} que aparece en el tiempo?</h2>
+    {%- for parrafo in info.queEs %}
+    <p>{{ parrafo | safe }}</p>
+    {%- endfor %}
+  </section>
+  {%- endif %}
+
   <section class="section flow" aria-labelledby="sintomas">
-    <h2 id="sintomas">Síntomas asociados</h2>
+    <h2 id="sintomas">{{ info.headings.sintomas if info.headings else "Síntomas asociados" }}</h2>
     <p>{{ info.sintomas }}</p>
+    {%- if pid == "ragweed" %}
+    <p>Si te ocurre en primavera, mira también la <a href="/alergia-artemisa">alergia a la artemisa</a> y la <a href="/alergia-gramineas">alergia a las gramíneas</a>.</p>
+    {%- endif %}
     <p class="small text-secondary">Esta información es divulgativa y no sustituye la valoración de un profesional médico.</p>
   </section>
 
   <section class="section flow" aria-labelledby="temporada">
-    <h2 id="temporada">Temporada</h2>
+    <h2 id="temporada">{{ info.headings.temporada if info.headings else "Temporada" }}</h2>
+    {%- if info.temporadaEuropa %}
+    <p>{{ info.temporadaEuropa }}</p>
+    {%- endif %}
     <p>{{ info.donde }}</p>
     <p>Periodo de polinización orientativo en España (mes actual recuadrado):</p>
     <div class="scroller">
@@ -112,6 +127,13 @@ eleventyComputed:
     {
       "@type": "FAQPage",
       "mainEntity": [
+        {%- if info.queEs %}
+        {
+          "@type": "Question",
+          "name": {{ ("¿Qué es la " + (info.pollenName | lower) + " que aparece en el tiempo?") | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ (info.queEs | join(" ") | striptags) | dump | safe }} }
+        },
+        {%- endif %}
         {
           "@type": "Question",
           "name": {{ ("¿Qué síntomas produce la " + (info.h1 | lower) + "?") | dump | safe }},
@@ -120,7 +142,7 @@ eleventyComputed:
         {
           "@type": "Question",
           "name": {{ ("¿Cuándo es la temporada de " + (info.pollenName | lower) + " en España?") | dump | safe }},
-          "acceptedAnswer": { "@type": "Answer", "text": {{ ("El polen de " + (info.pollenName | lower) + " alcanza su máxima intensidad en " + peak + ", según el calendario polínico orientativo de Respira.") | dump | safe }} }
+          "acceptedAnswer": { "@type": "Answer", "text": {{ ((info.temporadaEuropa + " " if info.temporadaEuropa else "") + "En España, el polen de " + (info.pollenName | lower) + " alcanza su máxima intensidad en " + peak + ", según el calendario polínico orientativo de Respira.") | dump | safe }} }
         },
         {
           "@type": "Question",

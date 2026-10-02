@@ -371,6 +371,28 @@ eleventyExcludeFromCollections: true
   .fc-word { font-size: .75rem; color: var(--text-secondary); }
   .fc-val { font-size: var(--fs--1); }
 
+  /* Tabla por tipo (previsión y calendario local): palabra + valor por celda */
+  .lv-none { background: var(--surface-elevated); color: var(--text-primary); }
+  .hero-row { display: flex; flex-wrap: wrap; gap: var(--sp-3); align-items: stretch; }
+  .dominante { display: inline-flex; flex-direction: column; justify-content: center; gap: var(--sp-1); padding: var(--sp-4) var(--sp-5); border-radius: var(--radius-m); border: 1px solid var(--divider); }
+  .dominante strong { font-size: var(--fs-1); font-family: var(--font-display); font-weight: 620; line-height: 1.1; }
+  .dominante .detail { font-size: var(--fs--1); color: var(--text-secondary); }
+  .bytype { inline-size: 100%; border-collapse: separate; border-spacing: 3px; }
+  .bytype td { min-inline-size: 3.6rem; }
+  .bytype caption { text-align: start; font-size: var(--fs--1); color: var(--text-secondary); margin-block-end: var(--sp-2); }
+  .bytype thead th { font-size: var(--fs--1); font-weight: 500; color: var(--text-secondary); text-align: center; }
+  .bytype thead th:first-child { text-align: start; }
+  .bytype thead th[aria-current] { color: var(--text-primary); font-weight: 700; }
+  .bytype [scope="row"] { position: sticky; inset-inline-start: 0; background: var(--surface); text-align: start; font-weight: 500; font-size: var(--fs--1); padding-inline-end: var(--sp-3); white-space: nowrap; }
+  .bt-cell { text-align: center; padding: var(--sp-1); border-radius: 4px; border-inline-start: 3px solid var(--_lv); background: color-mix(in oklab, var(--_lv) 14%, var(--surface)); line-height: 1.2; }
+  .bt-none { --_lv: var(--border); background: var(--surface-elevated); }
+  .bt-word { display: block; font-size: .75rem; color: var(--text-primary); }
+  .bt-none .bt-word { color: var(--text-secondary); }
+  .bt-val { display: block; font-size: .72rem; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+  .clima { min-inline-size: 52rem; }
+  .clima abbr { text-decoration: none; }
+  .bytype .bt-now { outline: 1px solid var(--text-secondary); outline-offset: -1px; }
+
   /* Heatmap calendario polínico */
   .heatmap { min-inline-size: 40rem; inline-size: 100%; }
   .heatmap th, .heatmap td { padding: 2px; font-size: .75rem; }
@@ -453,6 +475,6 @@ eleventyExcludeFromCollections: true
   .page { display: block; }
   .scroller { overflow: visible; background: none; }
   .heatmap [scope="row"] { position: static; }
-  .hm-cell, .nivel-hero, .nivel-badge, .pollen-cell, .fc-bar i { print-color-adjust: exact; }
+  .hm-cell, .nivel-hero, .nivel-badge, .pollen-cell, .fc-bar i, .bt-cell { print-color-adjust: exact; }
   a { color: inherit; text-decoration: none; }
 }
