@@ -9,9 +9,12 @@ pagination:
 permalink: "en/pollen-{{ city.slug }}.html"
 ogType: article
 eleventyComputed:
-  title: "Pollen in {{ city.name }}, {{ city.abbr }} · season and forecast — Respira"
-  ogTitle: "Pollen in {{ city.name }}, {{ city.abbr }} · season and forecast"
-  description: "Which pollen affects {{ city.name }} and when: month by month intensity by species, what peaks and when, and how to track today's levels."
+  # "Pollen Count Today" only when the build has today's Google reading for
+  # this city (usPollenData.js). Without it the page is the seasonal calendar
+  # it always was, and says so in its title.
+  title: "{% if usPollenData.cities[city.slug] %}{{ city.name }} Pollen Count Today & Forecast | Respira{% else %}Pollen in {{ city.name }}, {{ city.abbr }} · season and forecast — Respira{% endif %}"
+  ogTitle: "{% if usPollenData.cities[city.slug] %}{{ city.name }} Pollen Count Today & Forecast{% else %}Pollen in {{ city.name }}, {{ city.abbr }} · season and forecast{% endif %}"
+  description: "{% if usPollenData.cities[city.slug] %}Pollen count in {{ city.name }}, {{ city.abbr }} today: overall level, main pollen and a 5-day forecast by species, plus the month-by-month season.{% else %}Which pollen affects {{ city.name }} and when: month by month intensity by species, what peaks and when, and how to track today's levels.{% endif %}"
 ---
 {%- import "macros.njk" as m -%}
 {%- set us = constants.us -%}
@@ -46,17 +49,70 @@ eleventyComputed:
 {%- set inSeason = [] -%}
 {%- for r in rows %}{% if r.now != "none" %}{% set _ = inSeason.push(r) %}{% endif %}{% endfor -%}
 
+{%- set EN = { "none": "None", "low": "Low", "moderate": "Moderate", "high": "High", "very_high": "Very high" } -%}
+{%- set live = usPollenData.cities[city.slug] -%}
+{%- set faqEn = [] -%}
+{%- if live -%}
+  {%- set tParts = [] -%}
+  {%- for id in us.US_SPECIES_ORDER %}{% if live.days[0].plants[id] %}{% set _ = tParts.push(names[id] + " " + (EN[live.days[0].plants[id]] | lower)) %}{% endif %}{% endfor -%}
+  {%- set _ = faqEn.push({ q: "What is the pollen count in " + city.name + " today?", a: "For " + (live.days[0].date | longDateEn) + ", the overall pollen level forecast for " + city.name + " is " + (EN[live.days[0].overallLevel] | lower) + (", led by " + names[live.days[0].dominant] if live.days[0].dominant else "") + ". By species: " + tParts.join(", ") + ". Source: Google Pollen API, a 0-5 forecast index per species, updated once a day." }) -%}
+{%- endif -%}
+{%- set nowList = [] %}{% for r in inSeason %}{% set _ = nowList.push(names[r.id]) %}{% endfor -%}
+{%- set _ = faqEn.push({ q: "Which pollen is in the air in " + city.name + " right now?", a: ("In " + us.MONTH_FULL_EN[monthIdx] + ", the species typically in season in " + city.name + " are " + nowList.join(", ") + ". This is the seasonal expectation for " + us.US_ZONE_LABELS[zone] + ", not a measurement for today.") if inSeason.length else (us.MONTH_FULL_EN[monthIdx] + " is the quietest month of the year in " + city.name + ". None of the species reported there are typically in season.") }) -%}
+{%- set peakList = [] %}{% for r in rows %}{% set _ = peakList.push(names[r.id] + " peaks in " + (r.months | peakMonthsEn)) %}{% endfor -%}
+{%- set _ = faqEn.push({ q: "When is pollen season in " + city.name + "?", a: peakList.join(". ") + "." }) -%}
+{%- set allList = [] %}{% for r in rows %}{% set _ = allList.push(names[r.id]) %}{% endfor -%}
+{%- set _ = faqEn.push({ q: "Which pollen species are reported in " + city.name + "?", a: rows.length + " of the eleven species Respira reports in the United States occur around " + city.name + ": " + allList.join(", ") + ". " + city.name + " sits in " + us.US_ZONE_LABELS[zone] + ", which is what decides which species occur and when." }) -%}
+{%- set _ = faqEn.push({ q: "Where does the pollen data for " + city.name + " come from?", a: ("Today's levels and the forecast at the top of this page come from the Google Pollen API, rebuilt once a day. " if live else "") + "The month-by-month calendar on this page is a seasonal estimate for " + us.US_ZONE_LABELS[zone] + ". For measured daily levels, the Respira app uses the Google Pollen API across the United States, and reports no reading rather than a zero when a species has no data." }) -%}
+
 <main class="page">
 
   <nav class="breadcrumbs" aria-label="Breadcrumb">
     <a href="/en/">Home</a> › <a href="/en/pollen-map-usa">Cities</a> › Pollen in {{ city.name }}
   </nav>
 
+  {%- if live %}
+  {%- set today = live.days[0] %}
+  <header class="hero-data panelled">
+    <h1>{{ city.name }} Pollen Count Today</h1>
+    <p class="date-line">Forecast for <time datetime="{{ today.date }}">{{ today.date | longDateEn }}</time> · {{ city.name }}, {{ city.state }}</p>
+    <div class="hero-row">
+      <p class="nivel-hero lv-{{ today.overallLevel | replace('_','-') }}">
+        <span class="detail">Overall pollen level</span>
+        <strong class="word">{{ EN[today.overallLevel] }}</strong>
+        <span class="detail">highest species index for today</span>
+      </p>
+      <p class="dominante">
+        <span class="detail">Main pollen today</span>
+        {%- if today.dominant %}
+        <strong>{{ names[today.dominant] }}</strong>
+        <span class="detail">{{ EN[today.plants[today.dominant]] }}</span>
+        {%- else %}
+        <strong>None</strong>
+        <span class="detail">No species above none today</span>
+        {%- endif %}
+      </p>
+    </div>
+    {{ m.forecastByTypeEn(live.days, us.US_SPECIES_ORDER, names, city.name) }}
+    <p class="update-line">
+      <span>Updated <time datetime="{{ live.fetchedAt }}">{{ live.fetchedAt | stampUtcEn }}</time></span>
+      <span>· Source: <a href="https://developers.google.com/maps/documentation/pollen" rel="noopener">Google Pollen API</a></span>
+      <span>· A 0–5 forecast index per species, shown as a level, not a grain count</span>
+    </p>
+  </header>
+
+  <section class="section flow" aria-labelledby="about">
+    <h2 id="about">Pollen in {{ city.name }}, {{ city.state }}</h2>
+    <p>{{ city.note }}</p>
+    <p class="text-secondary">{{ city.name }} sits in {{ us.US_ZONE_LABELS[zone] }}, which is what decides the shape of its pollen year. {{ rows.length }} of the eleven species Respira reports in the United States occur here.</p>
+  </section>
+  {%- else %}
   <header class="flow">
     <h1>Pollen in {{ city.name }}, {{ city.state }}</h1>
     <p>{{ city.note }}</p>
     <p class="text-secondary">{{ city.name }} sits in {{ us.US_ZONE_LABELS[zone] }}, which is what decides the shape of its pollen year. {{ rows.length }} of the eleven species Respira reports in the United States occur here.</p>
   </header>
+  {%- endif %}
 
   <section class="section" aria-labelledby="now">
     <h2 id="now">In season in {{ city.name }} right now</h2>
@@ -92,8 +148,18 @@ eleventyComputed:
 
   <section class="section" aria-labelledby="app">
     <h2 id="app">Track today's levels in {{ city.name }}</h2>
-    <p>This page is the shape of the year. For today's actual numbers, Respira reports the eleven US species for wherever you are, air quality on the EPA scale, and a symptom diary you can export as a PDF for your allergist.</p>
+    <p>{% if live %}This page is rebuilt once a day. For the level where you are right now, Respira reports{% else %}This page is the shape of the year. For today's actual numbers, Respira reports{% endif %} the eleven US species for wherever you are, air quality on the EPA scale, and a symptom diary you can export as a PDF for your allergist.</p>
     {{ m.storeBadge(i18nWeb.en, storeUrl) }}
+  </section>
+
+  <section class="section faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Frequently asked questions</h2>
+    {%- for item in faqEn %}
+    <details{% if loop.first %} open{% endif %}>
+      <summary>{{ item.q }}</summary>
+      <p>{{ item.a }}</p>
+    </details>
+    {%- endfor %}
   </section>
 
   <section class="section" aria-labelledby="nearby">
@@ -109,11 +175,9 @@ eleventyComputed:
   <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
 </main>
 
-{#- Breadcrumb plus a FAQ built from this city's own data. The Spanish city
-    pages have carried both since launch; the English tree shipped without
-    them, which is exactly the machine-readable layer an assistant reads when
-    it is asked "when is ragweed season in Minneapolis". -#}
-{%- set peakSpecies = rows[0] -%}
+{#- Breadcrumb plus the FAQ built from this city's own data. The FAQ is the
+    same `faqEn` list the page shows, so the markup never says more than the
+    visible text. -#}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -134,38 +198,13 @@ eleventyComputed:
     {
       "@type": "FAQPage",
       "mainEntity": [
+        {%- for item in faqEn %}
         {
           "@type": "Question",
-          "name": "Which pollen is in the air in {{ city.name }} right now?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "{% if inSeason.length %}In {{ us.MONTH_FULL_EN[monthIdx] }}, the species typically in season in {{ city.name }} are {% for r in inSeason %}{{ names[r.id] }}{% if not loop.last %}, {% endif %}{% endfor %}. This is the seasonal expectation for {{ us.US_ZONE_LABELS[zone] }}, not a measurement for today.{% else %}{{ us.MONTH_FULL_EN[monthIdx] }} is the quietest month of the year in {{ city.name }}. None of the species reported there are typically in season.{% endif %}"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "When is pollen season in {{ city.name }}?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "{% for r in rows %}{{ names[r.id] }} peaks in {{ r.months | peakMonthsEn }}{% if not loop.last %}. {% endif %}{% endfor %}."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Which pollen species are reported in {{ city.name }}?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "{{ rows.length }} of the eleven species Respira reports in the United States occur around {{ city.name }}: {% for r in rows %}{{ names[r.id] }}{% if not loop.last %}, {% endif %}{% endfor %}. {{ city.name }} sits in {{ us.US_ZONE_LABELS[zone] }}, which is what decides which species occur and when."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where does the pollen data for {{ city.name }} come from?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The month-by-month calendar on this page is a seasonal estimate for {{ us.US_ZONE_LABELS[zone] }}. For measured daily levels, the Respira app uses the Google Pollen API across the United States, and reports no reading rather than a zero when a species has no data."
-          }
-        }
+          "name": {{ item.q | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ item.a | dump | safe }} }
+        }{% if not loop.last %},{% endif %}
+        {%- endfor %}
       ]
     }
   ]

@@ -1,8 +1,11 @@
 ---
 layout: layouts/base.njk
 permalink: mapa-polen-espana.html
-title: "Polen en España hoy · niveles por ciudad — Respira"
-ogTitle: "Polen en España hoy · niveles por ciudad"
+# Oct 2026: "en tiempo real" was asked for and left out on purpose. The page
+# is rebuilt once a day from a forecast; aggregate.js forbids "ahora mismo"
+# for the same reason.
+title: "Niveles de polen hoy en España: mapa por ciudades | Respira"
+ogTitle: "Niveles de polen hoy en España: mapa por ciudades"
 description: "Niveles de polen hoy en las 52 capitales de provincia de España. Nivel general por ciudad y enlaces a la previsión de cada una."
 ---
 {%- import "macros.njk" as m -%}
@@ -12,7 +15,7 @@ description: "Niveles de polen hoy en las 52 capitales de provincia de España. 
   <nav class="breadcrumbs" aria-label="Miga de pan"><a href="/">Inicio</a> › Ciudades</nav>
 
   <header class="flow">
-    <h1>Polen en España hoy, por ciudad</h1>
+    <h1>Niveles de polen hoy en España</h1>
     <p>Nivel general de polen (máximo previsto para hoy) en las 52 capitales de provincia. Toca una ciudad para ver su previsión, calidad del aire y calendario polínico.</p>
     {{ m.updateLine(pollenData.fetchedAt, false) }}
   </header>

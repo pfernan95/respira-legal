@@ -8,11 +8,13 @@ pagination:
 permalink: "polen-{{ ciudad.slug }}.html"
 ogType: article
 eleventyComputed:
-  # Four city names push the long form past ~65 characters, where Google
-  # truncates the title link; they get the short form instead.
-  title: "{% if ciudad.name | length > 20 %}Polen en {{ ciudad.name }} hoy y previsión — Respira{% else %}Polen en {{ ciudad.name }} hoy · niveles y previsión — Respira{% endif %}"
-  ogTitle: "Polen en {{ ciudad.name }} hoy · niveles y previsión"
-  description: "Niveles de polen en {{ ciudad.name }} hoy por tipo, previsión, calidad del aire y calendario polínico. Datos de Open-Meteo actualizados cada día."
+  # Oct 2026 (Search Console): the queries are "polen {ciudad} hoy" and
+  # "niveles de polen {ciudad}". The brand goes when it pushes the title past
+  # 60 characters (Barcelona and longer); the long names that still do not
+  # fit lose "semanal" too, so nothing reaches the ~65 where Google cuts.
+  title: "{% set t = 'Polen en ' + ciudad.name + ' hoy: niveles y previsión semanal' %}{% if (t | length) <= 50 %}{{ t }} | Respira{% elif (t | length) <= 60 %}{{ t }}{% else %}Polen en {{ ciudad.name }} hoy: niveles y previsión{% endif %}"
+  ogTitle: "Polen en {{ ciudad.name }} hoy: niveles y previsión semanal"
+  description: "Niveles de polen en {{ ciudad.name }} hoy por tipo (gramíneas, olivo, abedul…) y previsión para los próximos días. Datos actualizados a diario."
 ---
 {%- import "macros.njk" as m -%}
 {%- set data = pollenData.cities[ciudad.slug] -%}
@@ -29,6 +31,11 @@ eleventyComputed:
   </nav>
 
   {%- set sinCobertura = hoy.overallLevel == null %}
+  {%- set LEVEL_LABELS = { low: "Bajo", moderate: "Moderado", high: "Alto", very_high: "Muy alto", extreme: "Extremo" } %}
+  {#- The answer comes first: today's overall level and the type behind it,
+      every modelled type for every forecast day, and when it was computed.
+      Out of season the same block shows low or null values as they are;
+      nothing is hidden for being uninteresting. #}
   <header class="hero-data panelled">
     <h1>Polen en {{ ciudad.name }} hoy</h1>
     <p class="date-line">Máximo previsto para el <time datetime="{{ hoy.date }}">{{ hoy.date | fechaEs }}</time> · {{ ciudad.name }} ({{ ciudad.ccaa }})</p>
@@ -39,21 +46,36 @@ eleventyComputed:
       <span class="detail">El modelo de Open-Meteo no ofrece datos de polen para esta ubicación</span>
     </p>
     {%- else %}
-    {{ m.nivelHero(hoy.overallLevel, "máximo previsto para hoy") }}
-    <div class="pollen-grid-wrap">
-      <div class="pollen-grid">
-        {%- for id, p in hoy.pollen %}
-        {{ m.pollenCell(POLLEN_TYPES[id].nameEs, p.value, "granos/m³", p.level) }}
-        {%- endfor %}
-      </div>
+    <div class="hero-row">
+      {{ m.nivelHero(hoy.overallLevel, "máximo previsto para hoy") }}
+      <p class="dominante">
+        <span class="detail">Tipo dominante hoy</span>
+        {%- if hoy.dominant %}
+        <strong>{{ POLLEN_TYPES[hoy.dominant].nameEs }}</strong>
+        <span class="detail">{{ LEVEL_LABELS[hoy.pollen[hoy.dominant].level] }} · {{ hoy.pollen[hoy.dominant].value }} granos/m³</span>
+        {%- else %}
+        <strong>Ninguno</strong>
+        <span class="detail">Valores nulos o casi nulos en todos los tipos</span>
+        {%- endif %}
+      </p>
     </div>
+    {{ m.tablaPorTipo(data.days, POLLEN_TYPES, ciudad.name) }}
     {%- endif %}
     {{ m.updateLine(data.fetchedAt, data.stale) }}
   </header>
 
   {%- if not sinCobertura %}
-  <section class="section" aria-labelledby="prevision">
-    <h2 id="prevision">Previsión a {{ data.days.length }} días</h2>
+  <section class="section" aria-labelledby="semana">
+    <h2 id="semana">Niveles de polen en {{ ciudad.name }} esta semana</h2>
+    {%- set ns = data.days | weekPeak %}
+    <p>
+      {%- if ns.same %}
+      El nivel general previsto se mantiene <strong>{{ LEVEL_LABELS[hoy.overallLevel] | lower }}</strong> los {{ data.days.length }} días con dato del modelo, de hoy al <time datetime="{{ data.days[data.days.length - 1].date }}">{{ data.days[data.days.length - 1].date | fechaEs }}</time>.
+      {%- else %}
+      El día con el nivel general más alto de los próximos {{ data.days.length }} es el <time datetime="{{ ns.peak.date }}">{{ ns.peak.date | fechaEs }}</time>: <strong>{{ LEVEL_LABELS[ns.peak.overallLevel] | lower }}</strong>{% if ns.peak.dominant %}, sobre todo por {{ POLLEN_TYPES[ns.peak.dominant].nameEs | lower }}{% endif %}.
+      {%- endif %}
+      Cada columna es el máximo diario previsto; el tipo bajo el nivel es el que lo marca.
+    </p>
     {%- set diasConNombre = [] %}
     {%- for day in data.days %}
       {%- set _ = diasConNombre.push({
@@ -91,8 +113,20 @@ eleventyComputed:
     {{ m.aqiBlock(hoy.aqi) }}
   </section>
 
+  {%- set clima = cityClimatology.cities[ciudad.slug] %}
+  {%- if clima %}
+  <section class="section wide" aria-labelledby="calendario-local">
+    <h2 id="calendario-local">Calendario polínico de {{ ciudad.name }}</h2>
+    <p class="text-secondary">Los seis tipos que da el modelo, mes a mes, en {{ ciudad.name }}: la media de los máximos diarios entre {{ cityClimatology.start | fechaEs }} y {{ cityClimatology.end | fechaEs }}, clasificada con los mismos umbrales que el dato de hoy. Es un modelo (CAMS de Copernicus, vía Open-Meteo), no un captador. El mes actual aparece recuadrado.</p>
+    {{ m.tablaClimatologia(clima, POLLEN_TYPES, cal.MONTH_NAMES_SHORT, cal.MONTH_NAMES_FULL, build.month, ciudad.name) }}
+    {%- if clima.mugwort and clima.mugwort[10] and clima.mugwort[10].value >= 1 %}
+    <p class="fine-print">La artemisa de noviembre aparece los tres años en el modelo, pero no coincide con la floración de la planta, que acaba en octubre. Tómala con cautela: es lo que calcula el modelo, no una medición.</p>
+    {%- endif %}
+  </section>
+  {%- endif %}
+
   <section class="section wide" aria-labelledby="calendario">
-    <h2 id="calendario">Calendario polínico</h2>
+    <h2 id="calendario">{% if clima %}Calendario polínico orientativo de España{% else %}Calendario polínico{% endif %}</h2>
     <p class="text-secondary">Intensidad orientativa mes a mes en España, según los calendarios de la REA. El mes actual aparece recuadrado.</p>
     {{ m.heatmapCalendario(cal.MONTHLY_POLLEN_INTENSITY, POLLEN_TYPES, cal.MONTH_NAMES_SHORT, cal.INTENSITY_LABELS, build.month) }}
   </section>
@@ -113,7 +147,7 @@ eleventyComputed:
 
   <section class="section faq" aria-labelledby="faq-title">
     <h2 id="faq-title">Preguntas frecuentes</h2>
-    {%- set faq = ciudad.name | cityFaq(predomNames) %}
+    {%- set faq = (ciudad.name | cityFaqHead(None if sinCobertura else hoy, ciudad.predominantes, clima)).concat(ciudad.name | cityFaq(predomNames)) %}
     {%- for item in faq %}
     <details{% if loop.first %} open{% endif %}>
       <summary>{{ item.q }}</summary>
@@ -138,7 +172,8 @@ eleventyComputed:
 
 </main>
 
-{%- set faqData = ciudad.name | cityFaq(predomNames) %}
+{%- set clima = cityClimatology.cities[ciudad.slug] %}
+{%- set faqData = (ciudad.name | cityFaqHead(None if hoy.overallLevel == null else hoy, ciudad.predominantes, clima)).concat(ciudad.name | cityFaq(predomNames)) %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

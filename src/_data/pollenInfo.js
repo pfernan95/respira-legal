@@ -58,10 +58,25 @@ export default {
   ragweed: {
     slug: "ambrosia",
     h1: "Alergia a la ambrosía",
-    lead: "La ambrosía es un alérgeno potente de otoño, en expansión en algunas zonas de Europa. En España su presencia es más limitada que la de gramíneas u olivo, pero relevante en focos concretos.",
-    metaDescription: "La ambrosía es un alérgeno potente de otoño, concentrado en el valle del Ebro y el noreste. Sigue sus niveles día a día con Respira.",
+    lead: "La ambrosía es un alérgeno potente de final de verano, en expansión en algunas zonas de Europa. En España su presencia es más limitada que la de gramíneas u olivo, pero relevante en focos concretos.",
+    // Search Console, Oct 2026: "que es ambrosia en el clima", "síntomas de
+    // alergia a la ambrosía", "temporada de alergia a la ambrosía". The page
+    // answers those three without presenting ragweed as a main Spanish
+    // allergen, which it is not.
+    metaDescription: "Qué es la ambrosía que aparece en el tiempo, qué síntomas da su alergia y cuándo es su temporada (agosto a octubre en Europa). En España está poco extendida.",
+    queEs: [
+      "Si ves «ambrosía» en la previsión del tiempo o en la app del móvil, se refiere al polen de una planta, no a un fenómeno meteorológico. Muchas apps y webs del tiempo toman el polen del servicio europeo <a href=\"https://atmosphere.copernicus.eu/\" rel=\"noopener\">Copernicus (CAMS)</a>, cuyo modelo pronostica seis tipos de polen para toda Europa: aliso, abedul, gramíneas, artemisa, olivo y ambrosía. Por eso la ambrosía sale en la lista aunque no crezca cerca de ti.",
+      "La planta es sobre todo <i>Ambrosia artemisiifolia</i>, una hierba anual originaria de Norteamérica que se ha extendido por Europa como especie invasora. Sus mayores focos están en Hungría, el norte de Italia, el valle del Ródano en Francia y los Balcanes. Crece en cunetas, solares y campos de cultivo, y cada planta libera mucho polen.",
+      "En España está poco extendida: hay focos localizados, sobre todo en el noreste y el valle del Ebro, y en la mayor parte del país el modelo da valores bajos o nulos. Que aparezca en el tiempo no quiere decir que haya ambrosía en tu ciudad; lo que cuenta es el nivel que la acompaña, que puedes ver por ciudad más abajo.",
+    ],
+    headings: {
+      sintomas: "Síntomas de la alergia a la ambrosía",
+      temporada: "¿Cuándo es la temporada de ambrosía?",
+    },
     sintomas:
-      "Se asocia con rinitis y conjuntivitis en otoño. Es conocida por provocar síntomas incluso a concentraciones relativamente bajas.",
+      "Los síntomas que se asocian al polen de ambrosía son los de la rinitis alérgica (estornudos, congestión, picor y goteo nasal) y la conjuntivitis (picor y lagrimeo de ojos); en algunas personas también síntomas respiratorios como tos o pitos. Es conocida por provocar síntomas incluso a concentraciones relativamente bajas. Como poliniza al final del verano, puede alargar la temporada de quien ya tuvo síntomas en primavera, y es frecuente que quien reacciona a ella reaccione también a la artemisa, de la misma familia y que poliniza en las mismas semanas.",
+    temporadaEuropa:
+      "En Europa, la ambrosía poliniza de agosto a octubre, con el máximo entre finales de agosto y septiembre. Las primeras heladas acaban con la planta y con la temporada.",
     donde:
       "En España se concentra en focos del valle del Ebro y zonas del noreste, más que de forma generalizada.",
   },

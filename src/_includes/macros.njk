@@ -84,6 +84,75 @@
 {% endmacro %}
 
 {# Heatmap calendario polínico: 12 meses × tipos, mes actual con borde #}
+{# Forecast by type: one row per modelled type, one column per forecast day,
+   today first. Each cell carries the level word AND the value, so neither the
+   colour nor the number has to be read alone. A null stays "sin dato". #}
+{% macro tablaPorTipo(days, pollenTypes, cityName) %}
+<div class="scroller">
+  <table class="bytype">
+    <caption>Polen en {{ cityName }} por tipo: máximo diario previsto, hoy y los próximos días (granos/m³)</caption>
+    <thead>
+      <tr>
+        <th scope="col">Tipo</th>
+        {%- for day in days %}
+        <th scope="col"{% if loop.first %} aria-current="date"{% endif %}><span>{% if loop.first %}Hoy{% else %}{{ day.date | diaSemana }}{% endif %}</span><br><time class="fc-date" datetime="{{ day.date }}">{{ day.date | diaMes }}</time></th>
+        {%- endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {%- for id, p0 in days[0].pollen %}
+      <tr>
+        <th scope="row">{{ pollenTypes[id].nameEs }}</th>
+        {%- for day in days %}
+        {%- set p = day.pollen[id] %}
+        {%- if p and p.level %}
+        <td class="bt-cell bd-{{ cssLevel(p.level) }}"><span class="bt-word">{{ LEVEL_LABELS[p.level] }}</span><span class="bt-val">{{ p.value }}</span></td>
+        {%- else %}
+        <td class="bt-cell bt-none"><span class="bt-word">sin dato</span></td>
+        {%- endif %}
+        {%- endfor %}
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</div>
+{% endmacro %}
+
+{# A city's own month-by-month table (cityClimatology.json). A month under
+   1 grain/m³ on average reads "casi nulo": that is what the model says, and
+   it is not the same claim as "Bajo". #}
+{% macro tablaClimatologia(clima, pollenTypes, monthNames, monthNamesFull, currentMonth, cityName) %}
+<div class="scroller">
+  <table class="bytype clima">
+    <caption>Calendario polínico de {{ cityName }}: nivel medio de cada mes por tipo de polen (media de los máximos diarios, granos/m³)</caption>
+    <thead>
+      <tr>
+        <th scope="col">Tipo</th>
+        {%- for mo in monthNames %}
+        <th scope="col"{% if loop.index0 == currentMonth %} aria-current="date"{% endif %}><abbr title="{{ monthNamesFull[loop.index0] }}">{{ mo }}</abbr></th>
+        {%- endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {%- for id, months in clima %}
+      <tr>
+        <th scope="row">{{ pollenTypes[id].nameEs }}</th>
+        {%- for c in months %}
+        {%- if c == null %}
+        <td class="bt-cell bt-none{% if loop.index0 == currentMonth %} bt-now{% endif %}"><span class="bt-word">sin dato</span></td>
+        {%- elif c.value < 1 %}
+        <td class="bt-cell bt-none{% if loop.index0 == currentMonth %} bt-now{% endif %}"><span class="bt-word">casi nulo</span><span class="bt-val">{{ c.value }}</span></td>
+        {%- else %}
+        <td class="bt-cell bd-{{ cssLevel(c.level) }}{% if loop.index0 == currentMonth %} bt-now{% endif %}"><span class="bt-word">{{ LEVEL_LABELS[c.level] }}</span><span class="bt-val">{{ c.value }}</span></td>
+        {%- endif %}
+        {%- endfor %}
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</div>
+{% endmacro %}
+
 {% macro heatmapCalendario(intensity, pollenTypes, monthNames, intensityLabels, currentMonth) %}
 <div class="scroller">
   <table class="heatmap">
@@ -207,6 +276,45 @@
         </td>
         {%- endfor %}
       </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</div>
+{% endmacro %}
+
+{# English forecast by species for the /en/ city pages (Google Pollen API).
+   Google gives an index, not grains, so the cells carry the level word only.
+   "None" is Google's own reading for a plant out of season, and is shown. #}
+{% macro forecastByTypeEn(days, order, names, cityName) %}
+{%- set EN = { "none": "None", "low": "Low", "moderate": "Moderate", "high": "High", "very_high": "Very high" } %}
+<div class="scroller">
+  <table class="bytype">
+    <caption>Pollen in {{ cityName }} by species: forecast level for today and the next days</caption>
+    <thead>
+      <tr>
+        <th scope="col">Species</th>
+        {%- for day in days %}
+        <th scope="col"{% if loop.first %} aria-current="date"{% endif %}><span>{% if loop.first %}Today{% else %}{{ day.date | weekdayEn }}{% endif %}</span><br><time class="fc-date" datetime="{{ day.date }}">{{ day.date | dayMonthEn }}</time></th>
+        {%- endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {%- for id in order %}
+      {%- if days[0].plants[id] %}
+      <tr>
+        <th scope="row">{{ names[id] }}</th>
+        {%- for day in days %}
+        {%- set lvl = day.plants[id] %}
+        {%- if not lvl %}
+        <td class="bt-cell bt-none"><span class="bt-word">no data</span></td>
+        {%- elif lvl == "none" %}
+        <td class="bt-cell bt-none"><span class="bt-word">None</span></td>
+        {%- else %}
+        <td class="bt-cell bd-{{ cssLevel(lvl) }}"><span class="bt-word">{{ EN[lvl] }}</span></td>
+        {%- endif %}
+        {%- endfor %}
+      </tr>
+      {%- endif %}
       {%- endfor %}
     </tbody>
   </table>

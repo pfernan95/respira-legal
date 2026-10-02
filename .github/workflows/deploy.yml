@@ -52,6 +52,10 @@ jobs:
 
       - name: Build (fetches Open-Meteo, falls back to cache per city)
         run: npm run build
+        env:
+          # Optional. Without it the /en/pollen-* pages stay seasonal; with it
+          # they show today's Google pollen (src/_data/usPollenData.js).
+          GOOGLE_POLLEN_API_KEY: ${{ secrets.GOOGLE_POLLEN_API_KEY }}
 
       - name: Save pollen data cache
         if: always()
