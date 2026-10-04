@@ -320,3 +320,131 @@
   </table>
 </div>
 {% endmacro %}
+
+{# ---- UK and Ireland city pages (CAMS, English) ---- #}
+{%- set LEVEL_EN = { "low": "Low", "moderate": "Moderate", "high": "High", "very_high": "Very high", "extreme": "Extreme" } -%}
+
+{# The overall level and the type behind it, in English. #}
+{% macro heroLevelEn(day, names) %}
+<div class="hero-row">
+  <p class="nivel-hero lv-{{ cssLevel(day.overallLevel) }}">
+    <span class="detail">Overall pollen level</span>
+    <strong class="word">{{ LEVEL_EN[day.overallLevel] }}</strong>
+    <span class="detail">highest forecast for today</span>
+  </p>
+  <p class="dominante">
+    <span class="detail">Main pollen today</span>
+    {%- if day.dominant %}
+    <strong>{{ names[day.dominant] }}</strong>
+    <span class="detail">{{ LEVEL_EN[day.pollen[day.dominant].level] }} · {{ day.pollen[day.dominant].value }} grains/m³</span>
+    {%- else %}
+    <strong>None</strong>
+    <span class="detail">Zero or near-zero values for every type</span>
+    {%- endif %}
+  </p>
+</div>
+{% endmacro %}
+
+{# Forecast by type and day: level word plus the model value in every cell. #}
+{% macro forecastByTypeGb(days, types, names, cityName) %}
+<div class="scroller">
+  <table class="bytype">
+    <caption>Pollen in {{ cityName }} by type: highest forecast value of the day, today and the next days (grains/m³)</caption>
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+        {%- for day in days %}
+        <th scope="col"{% if loop.first %} aria-current="date"{% endif %}><span>{% if loop.first %}Today{% else %}{{ day.date | weekdayEn }}{% endif %}</span><br><time class="fc-date" datetime="{{ day.date }}">{{ day.date | dayMonthGb }}</time></th>
+        {%- endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {%- for id in types %}
+      <tr>
+        <th scope="row">{{ names[id] }}</th>
+        {%- for day in days %}
+        {%- set p = day.pollen[id] %}
+        {%- if p and p.level %}
+        <td class="bt-cell bd-{{ cssLevel(p.level) }}"><span class="bt-word">{{ LEVEL_EN[p.level] }}</span><span class="bt-val">{{ p.value }}</span></td>
+        {%- else %}
+        <td class="bt-cell bt-none"><span class="bt-word">no data</span></td>
+        {%- endif %}
+        {%- endfor %}
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</div>
+{% endmacro %}
+
+{# Overall level per day, as bars with the word underneath (English). #}
+{% macro forecastTableGb(days, names, cityName) %}
+<div class="scroller">
+  <table class="forecast">
+    <caption>Pollen forecast for {{ cityName }}: overall level per day (highest forecast value)</caption>
+    <thead>
+      <tr>
+        {%- for day in days %}
+        <th scope="col"><span>{{ day.date | weekdayEn }}</span><br><time class="fc-date" datetime="{{ day.date }}">{{ day.date | dayMonthGb }}</time></th>
+        {%- endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {%- for day in days %}
+        {%- if day.overallLevel == null %}
+        <td><span class="fc-word text-secondary">—</span></td>
+        {%- else %}
+        <td style="--_lv: var(--level-{{ cssLevel(day.overallLevel) }})">
+          <div class="fc-bar" aria-hidden="true"><i style="block-size: {{ LEVEL_ORDINAL[day.overallLevel] }}%"></i></div>
+          <span class="fc-word">{{ LEVEL_EN[day.overallLevel] }}</span>
+          {%- if day.dominant %}<br><span class="fc-val small text-secondary">{{ names[day.dominant] }}</span>{% endif %}
+        </td>
+        {%- endif %}
+        {%- endfor %}
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% endmacro %}
+
+{# A city's own month-by-month table from cityClimatology.json, in English. #}
+{% macro climatologyGb(clima, types, names, monthNames, monthFull, currentMonth, cityName) %}
+<div class="scroller">
+  <table class="bytype clima">
+    <caption>{{ cityName }} pollen calendar: average level each month by type (mean of daily highs, grains/m³)</caption>
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+        {%- for mo in monthNames %}
+        <th scope="col"{% if loop.index0 == currentMonth %} aria-current="date"{% endif %}><abbr title="{{ monthFull[loop.index0] }}">{{ mo }}</abbr></th>
+        {%- endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {%- for id in types %}
+      <tr>
+        <th scope="row">{{ names[id] }}</th>
+        {%- for c in clima[id] %}
+        {%- if c == null %}
+        <td class="bt-cell bt-none{% if loop.index0 == currentMonth %} bt-now{% endif %}"><span class="bt-word">no data</span></td>
+        {%- elif c.value < 1 %}
+        <td class="bt-cell bt-none{% if loop.index0 == currentMonth %} bt-now{% endif %}"><span class="bt-word">near zero</span><span class="bt-val">{{ c.value }}</span></td>
+        {%- else %}
+        <td class="bt-cell bd-{{ cssLevel(c.level) }}{% if loop.index0 == currentMonth %} bt-now{% endif %}"><span class="bt-word">{{ LEVEL_EN[c.level] }}</span><span class="bt-val">{{ c.value }}</span></td>
+        {%- endif %}
+        {%- endfor %}
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</div>
+{% endmacro %}
+
+{# Update line for the CAMS pages in English. #}
+{% macro updateLineGb(fetchedAt, stale) %}
+<p class="update-line">
+  <span>{% if stale %}Data from{% else %}Updated{% endif %} <time datetime="{{ fetchedAt }}">{{ fetchedAt | stampGb }}</time> (UK time)</span>
+  <span>· Source: <a href="https://open-meteo.com/" rel="noopener">Open-Meteo</a>, Copernicus CAMS model</span>
+</p>
+{% endmacro %}

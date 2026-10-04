@@ -1,0 +1,168 @@
+---
+layout: layouts/base.njk
+lang: en
+pagination:
+  data: ukCities
+  size: 1
+  alias: city
+  addAllPagesToCollections: true
+permalink: "en/{{ city.dir }}/pollen-{{ city.slug }}.html"
+ogType: article
+eleventyComputed:
+  title: "{{ city.name }} Pollen Count Today & Forecast | Respira"
+  ogTitle: "{{ city.name }} Pollen Count Today & Forecast"
+  description: "Pollen count in {{ city.name }} today by type (grass, birch, alder…), a 5-day forecast and {{ city.name }}'s own month-by-month pollen calendar. Updated daily."
+---
+{%- import "macros.njk" as m -%}
+{%- set POLLEN_TYPES = constants.pollen.POLLEN_TYPES -%}
+{%- set cal = constants.seasonalCalendar -%}
+{%- set us = constants.us -%}
+{#- No olive in Britain or Ireland: the app lists both in ABSENT_IN.olive. -#}
+{%- set TYPES = ["grass", "birch", "alder", "mugwort", "ragweed"] -%}
+{%- set NAMES = { "grass": "Grass", "birch": "Birch", "alder": "Alder", "mugwort": "Mugwort", "ragweed": "Ragweed" } -%}
+{%- set data = ukPollenData.cities[city.key] -%}
+{%- set today = data.days[0] if data else null -%}
+{%- set hasToday = today and today.overallLevel != null -%}
+{%- set clima = cityClimatology.cities[city.key] -%}
+{%- set text = city | ukCityText(today, clima, cityClimatology.cities, TYPES) -%}
+{%- set place = city.name + ", " + city.nation -%}
+{%- set LEVEL_EN_PAGE = { "low": "Low", "moderate": "Moderate", "high": "High", "very_high": "Very high", "extreme": "Extreme" } -%}
+
+<main class="page">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/en/">Home</a> › <a href="/en/pollen-map-uk-ireland">UK and Ireland</a> › Pollen in {{ city.name }}
+  </nav>
+
+  {#- The answer first: today's level and the type behind it, every type for
+      every forecast day, and when it was computed. Out of season the low and
+      near-zero values are shown as they are. -#}
+  <header class="hero-data panelled">
+    <h1>{{ city.name }} Pollen Count Today</h1>
+    {%- if hasToday %}
+    <p class="date-line">Forecast for <time datetime="{{ today.date }}">{{ today.date | longDateGb }}</time> · {{ place }}</p>
+    {{ m.heroLevelEn(today, NAMES) }}
+    {{ m.forecastByTypeGb(data.days, TYPES, NAMES, city.name) }}
+    {{ m.updateLineGb(data.fetchedAt, data.stale) }}
+    {%- else %}
+    <p class="date-line">{{ place }}</p>
+    <p class="nivel-hero lv-none">
+      <span class="detail">Overall pollen level</span>
+      <strong class="word">No forecast today</strong>
+      <span class="detail">The model's data for {{ city.name }} could not be fetched for this build</span>
+    </p>
+    {%- endif %}
+  </header>
+
+  {%- if hasToday %}
+  <section class="section" aria-labelledby="week">
+    <h2 id="week">Pollen levels in {{ city.name }} this week</h2>
+    {%- set wk = data.days | weekPeakEn %}
+    <p>
+      {%- if wk.same %}
+      The overall level stays <strong>{{ LEVEL_EN_PAGE[today.overallLevel] | lower }}</strong> on all {{ data.days.length }} days the model forecasts, through <time datetime="{{ data.days[data.days.length - 1].date }}">{{ data.days[data.days.length - 1].date | longDateGb }}</time>.
+      {%- else %}
+      The highest overall level of the next {{ data.days.length }} days is on <time datetime="{{ wk.peak.date }}">{{ wk.peak.date | longDateGb }}</time>: <strong>{{ LEVEL_EN_PAGE[wk.peak.overallLevel] | lower }}</strong>{% if wk.peak.dominant %}, mostly {{ NAMES[wk.peak.dominant] | lower }}{% endif %}.
+      {%- endif %}
+      Each column is the day's highest forecast value; the type under the level is the one that sets it.
+    </p>
+    <div class="data-panel">{{ m.forecastTableGb(data.days, NAMES, city.name) }}</div>
+  </section>
+  {%- endif %}
+
+  <section class="section wide" aria-labelledby="calendar">
+    <h2 id="calendar">{{ city.name }} pollen calendar</h2>
+    <p class="text-secondary">The five pollen types the model covers here, month by month, at {{ city.name }}'s own coordinates: the average of the daily highs over {{ cityClimatology.start | truncate(4, true, "") }}–{{ cityClimatology.end | truncate(4, true, "") }}, graded with the same thresholds as today's level. A model (Copernicus CAMS, via Open-Meteo), not a pollen trap. The current month is outlined.</p>
+    {{ m.climatologyGb(clima, TYPES, NAMES, us.MONTH_NAMES_EN, us.MONTH_FULL_EN, build.month, city.name) }}
+  </section>
+
+  <section class="section flow" aria-labelledby="hayfever">
+    <h2 id="hayfever">Hay fever in {{ city.name }}</h2>
+    <p>How {{ city.name }}'s worst month for each type compares with the other {{ text.ranks.grass.of - 1 }} UK and Ireland cities on Respira, on the same 2023–2025 model average:</p>
+    <ul>
+      {%- for id in TYPES %}
+      {%- set r = text.ranks[id] %}
+      {%- if r.peak >= 1 %}
+      <li><strong>{{ NAMES[id] }}</strong>: peaks in {{ r.months | join(" and ") }}, {% if r.rank == 1 %}the highest peak of the {{ r.of }} cities{% elif r.rank == r.of %}the lowest peak of the {{ r.of }} cities{% else %}{{ r.rank | ordinalEn }} highest of {{ r.of }}{% endif %}.</li>
+      {%- endif %}
+      {%- endfor %}
+    </ul>
+    <p>Across Britain and Ireland, grass pollen is the main trigger of hay fever, from late spring into summer. Tree pollen (alder, then birch) comes first, and mugwort follows in late summer where it grows. Ragweed, which dominates late summer in parts of central Europe, barely registers here.</p>
+  </section>
+
+  <section class="section faq" aria-labelledby="faq-title">
+    <h2 id="faq-title">Frequently asked questions</h2>
+    {%- for item in text.faq %}
+    <details{% if loop.first %} open{% endif %}>
+      <summary>{{ item.q }}</summary>
+      <p>{{ item.a }}</p>
+    </details>
+    {%- endfor %}
+  </section>
+
+  <section class="section" aria-labelledby="nearby">
+    <h2 id="nearby">Pollen in nearby cities</h2>
+    <ul class="link-grid">
+      {%- for n in city.nearby %}
+      <li><a href="{{ n.url }}">Pollen in {{ n.name }}</a></li>
+      {%- endfor %}
+    </ul>
+    <p><a href="/en/pollen-map-uk-ireland">All UK and Ireland cities</a></p>
+  </section>
+
+  <section class="section" aria-labelledby="app">
+    <h2 id="app">Track pollen where you are</h2>
+    <p>This page is rebuilt once a day for {{ city.name }}. Respira shows the level for your own location, a five-day forecast, alerts the morning your allergen crosses your threshold, and a symptom diary you can export as a PDF for your GP or allergy specialist.</p>
+    {{ m.storeBadge(i18nWeb.en) }}
+  </section>
+
+  <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://respiraapp.fit/en/" },
+        { "@type": "ListItem", "position": 2, "name": "UK and Ireland", "item": "https://respiraapp.fit/en/pollen-map-uk-ireland" },
+        { "@type": "ListItem", "position": 3, "name": "Pollen in {{ city.name }}", "item": "https://respiraapp.fit{{ page.url | extensionless }}" }
+      ]
+    },
+    {%- if hasToday %}
+    {
+      "@type": "Dataset",
+      "name": "Pollen levels in {{ city.name }}",
+      "description": "Highest daily forecast value by pollen type (grass, birch, alder, mugwort, ragweed) in {{ city.name }}, with a multi-day forecast and a 2023-2025 monthly calendar. From the Copernicus CAMS model via Open-Meteo.",
+      "url": "https://respiraapp.fit{{ page.url | extensionless }}",
+      "inLanguage": "en-GB",
+      "temporalCoverage": "{{ data.days[0].date }}/{{ data.days[data.days.length - 1].date }}",
+      "dateModified": "{{ data.fetchedAt }}",
+      "creator": { "@type": "Organization", "name": "Respira", "url": "https://respiraapp.fit/en/" },
+      "isBasedOn": "https://open-meteo.com/",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": {{ place | dump | safe }},
+        "geo": { "@type": "GeoCoordinates", "latitude": {{ city.lat }}, "longitude": {{ city.lon }} }
+      }
+    },
+    {%- endif %}
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for item in text.faq %}
+        {
+          "@type": "Question",
+          "name": {{ item.q | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ item.a | dump | safe }} }
+        }{% if not loop.last %},{% endif %}
+        {%- endfor %}
+      ]
+    }
+  ]
+}
+</script>

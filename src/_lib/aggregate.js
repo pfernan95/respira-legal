@@ -69,7 +69,8 @@ function groupByDay(hourly) {
 }
 
 /**
- * Aggregate one city's Open-Meteo response into daily summaries.
+ * Aggregate one city's Open-Meteo response into daily summaries. `types`
+ * narrows the pollen types (the UK and Ireland pages leave olive out).
  * Returns an array of days (local dates, timezone=auto):
  * {
  *   date: "2026-08-03",
@@ -78,7 +79,7 @@ function groupByDay(hourly) {
  *   aqi: { value, pm2_5, pm10, ozone },          // means, rounded
  * }
  */
-export function aggregateDays(hourly) {
+export function aggregateDays(hourly, types = API_POLLEN_TYPES) {
   const days = groupByDay(hourly);
   const result = [];
 
@@ -86,7 +87,7 @@ export function aggregateDays(hourly) {
     const pick = (key) => idxs.map((i) => hourly[key]?.[i]);
 
     const pollen = {};
-    for (const id of API_POLLEN_TYPES) {
+    for (const id of types) {
       const key = POLLEN_TYPES[id].openMeteoKey;
       const value = maxOf(pick(key));
       pollen[id] = {

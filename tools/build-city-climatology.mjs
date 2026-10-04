@@ -2,6 +2,8 @@
  * Month-by-month pollen climatology for a city, from CAMS reanalysis via
  * Open-Meteo, written to src/_data/cityClimatology.json.
  *
+ * Covers the Spanish cities in CITIES and every UK and Ireland city page.
+ *
  * Run by hand, not in the build: the past does not change, and a daily deploy
  * should not depend on a 26,000-hour download. Re-run once a year to roll the
  * window forward.
@@ -18,7 +20,9 @@ import path from "node:path";
 import { getAllCapitals } from "../src/_data/constants/spain.js";
 import { POLLEN_TYPES, getPollenLevel } from "../src/_data/constants/pollen.js";
 import { slugify } from "../src/_lib/aggregate.js";
+import loadUkCities from "../src/_data/ukCities.js";
 
+// Spanish city pages that carry their own calendar, by slug.
 const CITIES = ["madrid"];
 const START = "2023-01-01";
 const END = "2025-12-31";
@@ -26,21 +30,29 @@ const OUT = path.join(process.cwd(), "src", "_data", "cityClimatology.json");
 
 const TYPES = Object.values(POLLEN_TYPES).filter((t) => t.openMeteoKey).map((t) => t.id);
 
-async function climatology(city) {
+async function climatology(city, types = TYPES) {
   const params = new URLSearchParams({
     latitude: String(city.lat),
     longitude: String(city.lon),
-    hourly: TYPES.map((id) => POLLEN_TYPES[id].openMeteoKey).join(","),
+    hourly: types.map((id) => POLLEN_TYPES[id].openMeteoKey).join(","),
     start_date: START,
     end_date: END,
-    timezone: "Europe/Madrid",
+    timezone: "auto",
   });
-  const res = await fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?${params}`);
+  // Three years of hourly data is a heavy request by Open-Meteo's per-minute
+  // weighting; a 429 means wait for the next minute, not give up.
+  let res;
+  for (let attempt = 1; ; attempt++) {
+    res = await fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?${params}`);
+    if (res.status !== 429 || attempt === 4) break;
+    console.log(`[climatology] ${city.name}: 429, waiting 65 s`);
+    await new Promise((r) => setTimeout(r, 65000));
+  }
   if (!res.ok) throw new Error(`${city.name}: HTTP ${res.status}`);
   const { hourly } = await res.json();
 
   const rows = {};
-  for (const id of TYPES) {
+  for (const id of types) {
     const series = hourly[POLLEN_TYPES[id].openMeteoKey];
     const dailyMax = new Map();
     hourly.time.forEach((t, i) => {
@@ -68,5 +80,11 @@ for (const slug of CITIES) {
   if (!city) throw new Error(`unknown city ${slug}`);
   out.cities[slug] = await climatology(city);
   console.log(`[climatology] ${slug}: ${TYPES.length} types`);
+}
+// Every UK and Ireland page, keyed "uk/london", "ireland/dublin". No olive:
+// the app treats it as absent there (ukPollenData.js).
+for (const city of loadUkCities()) {
+  out.cities[city.key] = await climatology(city, TYPES.filter((id) => id !== "olive"));
+  console.log(`[climatology] ${city.key}`);
 }
 fs.writeFileSync(OUT, JSON.stringify(out, null, 1) + "\n");
