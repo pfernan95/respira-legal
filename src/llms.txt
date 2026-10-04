@@ -53,6 +53,10 @@ Pollen data for Spain and the rest of Europe comes from the CAMS atmospheric mod
 
 - [50 US cities](https://respiraapp.fit/en/pollen-map-usa): month-by-month calendar and what's in season right now, one page per city.
 
+## Pollen by city — United Kingdom and Ireland (English)
+
+- [19 UK and Ireland cities](https://respiraapp.fit/en/pollen-map-uk-ireland): today's level by type (grass, birch, alder, mugwort, ragweed) from the Copernicus CAMS model, a multi-day forecast and a 2023-2025 monthly calendar for each city, rebuilt daily.
+
 ## Full page index
 
 - [Sitemap](https://respiraapp.fit/sitemap.xml)

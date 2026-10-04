@@ -1,0 +1,81 @@
+---
+layout: layouts/base.njk
+lang: en
+permalink: en/pollen-map-uk-ireland.html
+title: "Pollen Count Today in the UK and Ireland by City | Respira"
+ogTitle: "Pollen count today in the UK and Ireland, by city"
+description: "Today's pollen level in 19 cities across England, Scotland, Wales, Northern Ireland and Ireland, with a forecast and a pollen calendar for each."
+---
+{%- import "macros.njk" as m -%}
+{%- set LEVEL_EN_PAGE = { "low": "Low", "moderate": "Moderate", "high": "High", "very_high": "Very high", "extreme": "Extreme" } -%}
+{%- set NATIONS = ["England", "Scotland", "Wales", "Northern Ireland", "Ireland"] -%}
+
+<main class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> › UK and Ireland</nav>
+
+  <header class="flow">
+    <h1>Pollen count today in the UK and Ireland</h1>
+    <p>Today's overall pollen level in {{ ukCities.length }} cities, the highest value the Copernicus CAMS model forecasts for the day. Each city page has the level by type (grass, birch, alder, mugwort and ragweed), the forecast for the coming days and a month-by-month calendar for that city.</p>
+    {{ m.updateLineGb(ukPollenData.fetchedAt, false) }}
+  </header>
+
+  {%- for nation in NATIONS %}
+  {%- set inNation = [] %}
+  {%- for c in ukCities %}{% if c.nation == nation %}{% set _ = inNation.push(c) %}{% endif %}{% endfor %}
+  <section class="section" aria-labelledby="n-{{ loop.index }}">
+    <h2 id="n-{{ loop.index }}">{{ nation }}</h2>
+    <ul class="link-grid">
+      {%- for c in inNation %}
+      {%- set cd = ukPollenData.cities[c.key] %}
+      {%- set lvl = cd.days[0].overallLevel if cd else null %}
+      <li><a href="{{ c.url }}">
+        <span>{{ c.name }}</span>
+        {%- if lvl %} <span class="nivel-badge bd-{{ lvl | replace('_','-') }}" style="margin-inline-start:auto">{{ LEVEL_EN_PAGE[lvl] }}</span>{% else %} <span class="small text-secondary">No forecast</span>{% endif %}
+      </a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endfor %}
+
+  <section class="section">
+    {{ m.ctaApp("Pollen where you are", "Respira shows the level for your own location, a five-day forecast and a symptom diary you can export for your GP or allergy specialist. Free for iPhone and iPad.", i18nWeb.en) }}
+  </section>
+
+  <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://respiraapp.fit/en/" },
+        { "@type": "ListItem", "position": 2, "name": "UK and Ireland", "item": "https://respiraapp.fit{{ page.url | extensionless }}" }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "name": "Pollen count today in the UK and Ireland",
+      "url": "https://respiraapp.fit/en/pollen-map-uk-ireland",
+      "inLanguage": "en-GB",
+      "about": { "@id": "https://respiraapp.fit/en/#app" },
+      "mainEntity": {
+        "@type": "ItemList",
+        "numberOfItems": {{ ukCities.length }},
+        "itemListElement": [
+          {%- for c in ukCities %}
+          {
+            "@type": "ListItem",
+            "position": {{ loop.index }},
+            "name": "Pollen in {{ c.name }}",
+            "url": "https://respiraapp.fit{{ c.url }}"
+          }{% if not loop.last %},{% endif %}
+          {%- endfor %}
+        ]
+      }
+    }
+  ]
+}
+</script>

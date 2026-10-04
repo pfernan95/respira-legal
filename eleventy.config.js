@@ -28,6 +28,28 @@ function seasonSpan(series) {
   return words.length === 1 ? words[0] : `${words.slice(0, -1).join(", ")} y ${words[words.length - 1]}`;
 }
 
+const MONTHS_EN = ["January","February","March","April","May","June",
+                   "July","August","September","October","November","December"];
+const LEVEL_EN = { none: "None", low: "Low", moderate: "Moderate", high: "High", very_high: "Very high", extreme: "Extreme" };
+
+/** English seasonSpan: "from April to July", "in June", "from December to March". */
+function seasonSpanEn(series) {
+  const on = series.map((l) => RANK[l] >= 2);
+  if (!on.some(Boolean)) return null;
+  if (on.every(Boolean)) return "all year";
+  const start = (on.lastIndexOf(false) + 1) % 12;
+  const runs = [];
+  for (let k = 0; k < 12; k++) {
+    const i = (start + k) % 12;
+    if (!on[i]) continue;
+    const last = runs[runs.length - 1];
+    if (last && (last.end + 1) % 12 === i) last.end = i;
+    else runs.push({ from: i, end: i });
+  }
+  const words = runs.map((r) => (r.from === r.end ? `in ${MONTHS_EN[r.from]}` : `from ${MONTHS_EN[r.from]} to ${MONTHS_EN[r.end]}`));
+  return words.length === 1 ? words[0] : `${words.slice(0, -1).join(", ")} and ${words[words.length - 1]}`;
+}
+
 function fechaLarga(isoDate) {
   const [y, m, d] = isoDate.slice(0, 10).split("-").map(Number);
   return `${d} de ${MONTHS_LOWER[m - 1]} de ${y}`;
@@ -217,6 +239,109 @@ export default function (eleventyConfig) {
     new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "UTC" })
       .format(new Date(iso)) + " UTC",
   );
+
+  // British date forms for the UK and Ireland pages: "4 Oct", "Sunday 4
+  // October 2026", "4 October 2026 at 06:12" (UK time; Ireland shares it).
+  eleventyConfig.addFilter("dayMonthGb", (isoDate) => {
+    const [, m, d] = isoDate.slice(0, 10).split("-").map(Number);
+    return `${d} ${MONTHS_EN[m - 1].slice(0, 3)}`;
+  });
+  eleventyConfig.addFilter("longDateGb", (isoDate) =>
+    new Intl.DateTimeFormat("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })
+      .format(new Date(`${isoDate.slice(0, 10)}T12:00:00Z`)),
+  );
+  eleventyConfig.addFilter("stampGb", (iso) => {
+    const d = new Date(iso);
+    const day = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/London" }).format(d);
+    const time = new Intl.DateTimeFormat("en-GB", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/London" }).format(d);
+    return `${day} at ${time}`;
+  });
+
+  // 2 -> "2nd", 13 -> "13th"
+  eleventyConfig.addFilter("ordinalEn", (n) => {
+    const s = ["th", "st", "nd", "rd"];
+    const v = n % 100;
+    return n + (s[(v - 20) % 10] || s[v] || s[0]);
+  });
+
+  // The week's worst day, as for the Spanish pages.
+  eleventyConfig.addFilter("weekPeakEn", (days) => {
+    let peak = null;
+    let same = true;
+    const first = days.find((d) => d.overallLevel)?.overallLevel;
+    for (const d of days) {
+      if (!d.overallLevel) continue;
+      if (!peak || RANK[d.overallLevel] > RANK[peak.overallLevel]) peak = d;
+      if (d.overallLevel !== first) same = false;
+    }
+    return { peak, same };
+  });
+
+  /**
+   * Everything a UK or Ireland city page says in words, computed from its own
+   * data so the visible text and the FAQPage markup cannot drift apart:
+   *   - `faq`: [{q, a}] (today, season, grass, source)
+   *   - `ranks`: per type, where this city's peak month sits among all the
+   *     UK and Ireland cities on the site ("the 3rd highest of 19").
+   * `clima` is this city's CAMS 2023-2025 monthly table, `all` every city's,
+   * keyed like cityClimatology.json.
+   */
+  eleventyConfig.addFilter("ukCityText", (city, today, clima, all, types) => {
+    const name = (id) => POLLEN_TYPES[id].nameEn.toLowerCase();
+    const peakOf = (series) => Math.max(...series.map((c) => (c ? c.value : 0)));
+    const levelSeries = (series) => series.map((c) => (c && c.value >= 1 ? c.level : "none"));
+    const peakMonthsOf = (series) => {
+      const top = peakOf(series);
+      return series.map((c, i) => [c ? c.value : 0, i]).filter(([v]) => top > 0 && v === top).map(([, i]) => MONTHS_EN[i]);
+    };
+
+    let todayA;
+    if (!today || today.overallLevel == null) {
+      todayA = `The CAMS model has no pollen forecast for ${city.name} today, so there is no level to show. The page says so rather than showing a zero.`;
+    } else {
+      const parts = types
+        .filter((id) => today.pollen[id]?.level)
+        .map((id) => `${name(id)} ${LEVEL_EN[today.pollen[id].level].toLowerCase()} (${today.pollen[id].value} grains/m³)`);
+      const dom = today.dominant ? `, led by ${name(today.dominant)}` : "";
+      todayA = `For ${new Intl.DateTimeFormat("en-GB", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(`${today.date}T12:00:00Z`))}, the overall pollen level forecast for ${city.name} is ${LEVEL_EN[today.overallLevel].toLowerCase()}${dom}. By type: ${parts.join(", ")}. These are the highest hourly values the Copernicus CAMS model forecasts for the day, updated every morning.`;
+    }
+
+    const spans = [];
+    for (const id of types) {
+      const span = seasonSpanEn(levelSeries(clima[id]));
+      if (span) spans.push(`${name(id)} ${span}`);
+    }
+    const seasonA = spans.length
+      ? `On the 2023-2025 average of the Copernicus CAMS model, these reach moderate or higher in ${city.name}: ${spans.join("; ")}. Outside those months levels are usually low, and each year the season comes earlier or later with the weather.`
+      : `On the 2023-2025 average of the Copernicus CAMS model, no pollen type reaches a moderate monthly level in ${city.name}. Single days can still be higher than the average.`;
+
+    const grass = clima.grass;
+    const firstGrass = grass.findIndex((c) => c && c.value >= 1);
+    const grassSpan = seasonSpanEn(levelSeries(grass));
+    const grassA = firstGrass < 0
+      ? `Grass pollen barely registers in ${city.name} on the model's 2023-2025 average.`
+      : `Grass pollen starts to register in ${city.name} in ${MONTHS_EN[firstGrass]} and peaks in ${peakMonthsOf(grass).join(" and ")}, on the 2023-2025 average of the Copernicus CAMS model.${grassSpan ? ` It is at moderate or higher ${grassSpan}.` : ""} Grass is the main hay fever trigger in Britain and Ireland.`;
+
+    const sourceA = `Today's levels, the forecast and the calendar on this page all come from the Copernicus Atmosphere Monitoring Service (CAMS) model, through Open-Meteo. It is a model of what is in the air at ${city.name}'s coordinates, not a count from a pollen trap, so it can differ from a station reading. The page is rebuilt every morning and shows when its data was last updated.`;
+
+    const ranks = {};
+    const keys = Object.keys(all).filter((k) => k.includes("/"));
+    for (const id of types) {
+      const mine = peakOf(clima[id]);
+      const sorted = keys.map((k) => peakOf(all[k][id])).sort((a, b) => b - a);
+      ranks[id] = { rank: sorted.indexOf(mine) + 1, of: keys.length, peak: mine, months: peakMonthsOf(clima[id]) };
+    }
+
+    return {
+      faq: [
+        { q: `What is the pollen count in ${city.name} today?`, a: todayA },
+        { q: `When is pollen season in ${city.name}?`, a: seasonA },
+        { q: `When does grass pollen season start in ${city.name}?`, a: grassA },
+        { q: `Where does the pollen data for ${city.name} come from?`, a: sourceA },
+      ],
+      ranks,
+    };
+  });
 
   // ISO timestamp -> "2026-08-03" in Europe/Madrid
   eleventyConfig.addFilter("fechaMadrid", (iso) =>

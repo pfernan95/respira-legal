@@ -47,6 +47,13 @@ description: "Today's pollen levels and air quality for your city in the US, the
       {%- endif %}{% endfor %}
     </ul>
     <p><a href="/en/pollen-map-usa">All 50 cities</a></p>
+    <p>In the UK and Ireland, each city page has today's level by type from the Copernicus CAMS model and its own month-by-month calendar: alder from February in London, birch in April, grass from June.</p>
+    <ul class="link-grid">
+      {%- for c in ukCities %}{% if loop.index <= 8 %}
+      <li><a href="{{ c.url }}">{{ c.name }}</a></li>
+      {%- endif %}{% endfor %}
+    </ul>
+    <p><a href="/en/pollen-map-uk-ireland">All UK and Ireland cities</a></p>
   </section>
 
   <section class="section" aria-labelledby="allergens">

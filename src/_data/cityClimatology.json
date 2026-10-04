@@ -376,6 +376,5934 @@
      "days": 93
     }
    ]
+  },
+  "uk/london": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 4.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 50.3,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 21.5,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 3.4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 10.9,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 61.2,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 4.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 9.6,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 54.3,
+     "level": "high",
+     "days": 93
+    },
+    {
+     "value": 9.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.4,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 3.9,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 47.6,
+     "level": "high",
+     "days": 93
+    },
+    {
+     "value": 22.1,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "uk/birmingham": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 4.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 69.4,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 29.1,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 4.6,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.4,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 4.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 95.2,
+     "level": "very_high",
+     "days": 90
+    },
+    {
+     "value": 4.4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 8.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 45.6,
+     "level": "high",
+     "days": 93
+    },
+    {
+     "value": 7.9,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.4,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 3.4,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 7,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 2.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "uk/manchester": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 4.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 56.3,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 22.1,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 3.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 2.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 102.3,
+     "level": "very_high",
+     "days": 90
+    },
+    {
+     "value": 14.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 7.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 34.3,
+     "level": "high",
+     "days": 93
+    },
+    {
+     "value": 6.7,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.3,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 5.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.6,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "uk/leeds": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 58.2,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 27.3,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 4.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.4,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 1.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 68.2,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 17.4,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 4.9,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 26.2,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 4.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.2,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 6.1,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.7,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "uk/glasgow": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 24.9,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 13.4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 2.4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 29.2,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 10.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.4,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 3.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 27.4,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 6.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 1.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.4,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "uk/liverpool": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 3.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 40.8,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 14.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 2.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 3.9,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 54.7,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 5.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 6.4,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 36.7,
+     "level": "high",
+     "days": 93
+    },
+    {
+     "value": 6.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 3.4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.8,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "uk/newcastle": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 4.7,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 47.1,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 19.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 3.7,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.5,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 27.8,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 9.4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 1.7,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 10.8,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 2.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 3.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.6,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "uk/sheffield": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 4.4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 71.7,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 27.4,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 3.6,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 78.7,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 15.6,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 5.5,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 29.5,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 5.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 5.8,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 14.6,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 1.8,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "uk/bristol": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 5.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 64,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 23.8,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 2.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 4.9,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 77.4,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 3.6,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 4.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 22.7,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 3.3,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 20,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 9.7,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "uk/edinburgh": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 1.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 28,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 17.6,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 3.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.4,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 15.4,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 11.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 8.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 2.6,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 0.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.8,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "uk/nottingham": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 4.6,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 83.6,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 32.4,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 4.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 66.2,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 5.9,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 5.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 27.9,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 5.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0.4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 3.7,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "uk/leicester": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 5.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 93.4,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 36.9,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 4.9,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 3.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 55.7,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 4.4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 4.5,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 23,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 4.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.4,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0.7,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 5,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 8.4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.8,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "uk/cardiff": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 4.7,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 63.7,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 23.7,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 2.6,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 2.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 56.2,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 4.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 1.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 9.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.9,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 2.1,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 29.6,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 21.5,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "uk/belfast": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 1.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 35.4,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 18.9,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 2.6,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 13.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 3.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0.4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.6,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 23.7,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 2.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "uk/brighton": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.5,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 6.7,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 59.7,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 26.5,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 3.7,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.4,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 6.6,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 59.7,
+     "level": "high",
+     "days": 90
+    },
+    {
+     "value": 4.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 1.5,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 9.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.4,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.4,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 13.9,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 12.8,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "ireland/dublin": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 1.9,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 35.6,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 20.3,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 2.7,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 21.1,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 3.7,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.4,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 2.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 2.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "ireland/cork": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 4.6,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 45.7,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 17.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 2.4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 10.6,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0.7,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.7,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 1.9,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 3.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "ireland/limerick": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 3.4,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 48.1,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 23.9,
+     "level": "moderate",
+     "days": 93
+    },
+    {
+     "value": 3.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 14.8,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0.7,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.9,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 1.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 2.4,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
+  },
+  "ireland/galway": {
+   "grass": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 1.6,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 18.5,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 10.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 1.5,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 64
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "birch": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 1.2,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 17.2,
+     "level": "moderate",
+     "days": 90
+    },
+    {
+     "value": 0.8,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.1,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "mugwort": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "ragweed": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 57
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.2,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 74
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ],
+   "alder": [
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0.4,
+     "level": "low",
+     "days": 85
+    },
+    {
+     "value": 1.3,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 2.3,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 90
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 66
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 60
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 62
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 70
+    },
+    {
+     "value": 0,
+     "level": "low",
+     "days": 93
+    }
+   ]
   }
  }
 }
