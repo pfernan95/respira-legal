@@ -113,12 +113,16 @@
   </footer>
 
   {#- Android waitlist. Respira is iOS-only; most phones in Spain are
-      Android, and every App Store badge was a dead end for them. On Android
-      only, the script below swaps each badge (and the header's download
-      link) for a button that opens this form. Nothing changes on iOS or
-      desktop, or without JavaScript. The email goes to the android-waitlist
-      Edge Function (respira-app), stored with one-purpose consent: a single
-      launch notice. See privacidad.html / en/privacy.html. -#}
+      Android, and every App Store badge was a dead end for them. What each
+      visitor sees, decided by the script below:
+        - Android: each badge (and the header's download link) becomes a
+          button that opens this form. An App Store link is no use to them.
+        - iPhone / iPad: the badge, unchanged.
+        - Desktop: the badge, plus a small "¿Tienes Android?" link under it,
+          because a desktop visitor may carry either phone.
+      Without JavaScript everyone gets the badge. The email goes to the
+      android-waitlist Edge Function (respira-app), stored with one-purpose
+      consent: a single launch notice. See privacidad.html / en/privacy.html. -#}
   {%- set W = L.waitlist %}
   <dialog class="waitlist" id="android-waitlist" aria-labelledby="waitlist-title">
     <form class="flow" id="waitlist-form" novalidate>
@@ -143,7 +147,11 @@
   </dialog>
   <script>
     (function () {
-      if (!/Android/i.test(navigator.userAgent)) return;
+      var ua = navigator.userAgent;
+      var isAndroid = /Android/i.test(ua);
+      // iPadOS Safari reports itself as a Mac; touch points tell them apart.
+      var isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+      if (isIOS) return;
       var dlg = document.getElementById("android-waitlist");
       if (!dlg || typeof dlg.showModal !== "function") return;
       var T = {{ W | dump | safe }};
@@ -157,14 +165,23 @@
       document.querySelectorAll("a.appstore-badge").forEach(function (a) {
         var b = document.createElement("button");
         b.type = "button";
-        b.className = "waitlist-btn";
-        b.textContent = T.button;
         b.addEventListener("click", open);
-        a.replaceWith(b);
+        if (isAndroid) {
+          b.className = "waitlist-btn";
+          b.textContent = T.button;
+          a.replaceWith(b);
+        } else {
+          // Desktop: keep the badge, add the Android way in next to it.
+          b.className = "waitlist-link";
+          b.textContent = T.desktopLink;
+          a.insertAdjacentElement("afterend", b);
+        }
       });
-      document.querySelectorAll('.site-header a[href*="apps.apple.com"]').forEach(function (a) {
-        a.addEventListener("click", open);
-      });
+      if (isAndroid) {
+        document.querySelectorAll('.site-header a[href*="apps.apple.com"]').forEach(function (a) {
+          a.addEventListener("click", open);
+        });
+      }
 
       var form = document.getElementById("waitlist-form");
       var msg = document.getElementById("waitlist-msg");
