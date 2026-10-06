@@ -44,6 +44,7 @@ export default {
     waitlist: {
       consentVersion: "2026-10-06-es",
       button: "Avísame cuando salga en Android",
+      desktopLink: "¿Tienes Android? Avísame cuando salga",
       title: "Respira para Android",
       lead: "Por ahora Respira solo está en iPhone y iPad. Déjanos tu email y te escribimos una sola vez, el día que salga en Android.",
       emailLabel: "Tu email",
@@ -93,6 +94,7 @@ export default {
     waitlist: {
       consentVersion: "2026-10-06-en",
       button: "Notify me when it's on Android",
+      desktopLink: "On Android? Get notified when it launches",
       title: "Respira for Android",
       lead: "Respira is on iPhone and iPad for now. Leave your email and we will write to you once, on the day it comes to Android.",
       emailLabel: "Your email",
