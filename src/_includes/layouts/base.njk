@@ -112,6 +112,102 @@
     <p>&copy; 2026 Respira</p>
   </footer>
 
+  {#- Android waitlist. Respira is iOS-only; most phones in Spain are
+      Android, and every App Store badge was a dead end for them. On Android
+      only, the script below swaps each badge (and the header's download
+      link) for a button that opens this form. Nothing changes on iOS or
+      desktop, or without JavaScript. The email goes to the android-waitlist
+      Edge Function (respira-app), stored with one-purpose consent: a single
+      launch notice. See privacidad.html / en/privacy.html. -#}
+  {%- set W = L.waitlist %}
+  <dialog class="waitlist" id="android-waitlist" aria-labelledby="waitlist-title">
+    <form class="flow" id="waitlist-form" novalidate>
+      <h2 id="waitlist-title">{{ W.title }}</h2>
+      <p class="text-secondary">{{ W.lead }}</p>
+      <label for="waitlist-email">{{ W.emailLabel }}</label>
+      <input type="email" id="waitlist-email" name="email" autocomplete="email" inputmode="email" required maxlength="254">
+      <div class="waitlist-hp" aria-hidden="true">
+        <label for="waitlist-website">Website</label>
+        <input type="text" id="waitlist-website" name="website" tabindex="-1" autocomplete="off">
+      </div>
+      <label class="waitlist-consent">
+        <input type="checkbox" id="waitlist-consent" name="consent" required>
+        <span>{{ W.consent }} <a href="{{ L.footer.privacy.href }}">{{ W.privacy }}</a></span>
+      </label>
+      <p class="waitlist-msg small" id="waitlist-msg" role="status" aria-live="polite"></p>
+      <div class="cluster waitlist-actions">
+        <button type="button" id="waitlist-close">{{ W.close }}</button>
+        <button type="submit" class="primary" id="waitlist-submit">{{ W.submit }}</button>
+      </div>
+    </form>
+  </dialog>
+  <script>
+    (function () {
+      if (!/Android/i.test(navigator.userAgent)) return;
+      var dlg = document.getElementById("android-waitlist");
+      if (!dlg || typeof dlg.showModal !== "function") return;
+      var T = {{ W | dump | safe }};
+      var ENDPOINT = "https://qnxuhlpmnbmtuhleyptg.supabase.co/functions/v1/android-waitlist";
+      // The project's public anon key: it is in every copy of the app too,
+      // and the table it would reach grants it nothing.
+      var ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFueHVobHBtbmJtdHVobGV5cHRnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA4NDc2NTMsImV4cCI6MjA4NjQyMzY1M30.irLQ38UiB4Re2M0kCrLiAK3oR9NQvuRg3hbVbfxFG-s";
+      var LANG = "{{ lang or 'es' }}";
+
+      function open(e) { if (e) e.preventDefault(); dlg.showModal(); }
+      document.querySelectorAll("a.appstore-badge").forEach(function (a) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "waitlist-btn";
+        b.textContent = T.button;
+        b.addEventListener("click", open);
+        a.replaceWith(b);
+      });
+      document.querySelectorAll('.site-header a[href*="apps.apple.com"]').forEach(function (a) {
+        a.addEventListener("click", open);
+      });
+
+      var form = document.getElementById("waitlist-form");
+      var msg = document.getElementById("waitlist-msg");
+      var submit = document.getElementById("waitlist-submit");
+      document.getElementById("waitlist-close").addEventListener("click", function () { dlg.close(); });
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var email = document.getElementById("waitlist-email").value.trim();
+        var consent = document.getElementById("waitlist-consent").checked;
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = T.errorEmail; return; }
+        if (!consent) { msg.textContent = T.errorConsent; return; }
+        submit.disabled = true;
+        msg.textContent = "";
+        fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", apikey: ANON, Authorization: "Bearer " + ANON },
+          body: JSON.stringify({
+            email: email,
+            consent: true,
+            consentVersion: T.consentVersion,
+            lang: LANG,
+            path: location.pathname,
+            website: document.getElementById("waitlist-website").value,
+          }),
+        })
+          .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j.ok, j: j }; }); })
+          .then(function (res) {
+            if (res.ok) {
+              form.querySelectorAll("input, label, .waitlist-actions .primary").forEach(function (el) { el.hidden = true; });
+              msg.textContent = T.ok;
+              // Counted only when analytics consent was given; no email in it.
+              if (window.posthog) window.posthog.capture("android_waitlist_signup", { lang: LANG, path: location.pathname });
+            } else {
+              msg.textContent = res.j && res.j.error === "email" ? T.errorEmail : T.errorServer;
+              submit.disabled = false;
+            }
+          })
+          .catch(function () { msg.textContent = T.errorServer; submit.disabled = false; });
+      });
+    })();
+  </script>
+
   {#- Web analytics (PostHog Cloud EU), opt-in only — see privacidad.html §3
       / privacy.html §3. Loads posthog-js directly from PostHog's own CDN
       (the same array.js their async snippet fetches) instead of the
