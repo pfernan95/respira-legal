@@ -461,6 +461,37 @@ eleventyExcludeFromCollections: true
   }
   .cookie-banner button.accept { background: var(--primary); border-color: var(--primary); color: #fff; }
   .cookie-banner[hidden] { display: none; }
+
+  /* Lista de espera de Android: solo la ve quien entra desde Android */
+  .waitlist-btn {
+    min-block-size: 52px; padding: var(--sp-2) var(--sp-4);
+    border-radius: var(--radius-s); border: 0;
+    background: var(--primary-dark); color: #fff; font-weight: 600; cursor: pointer;
+  }
+  .waitlist {
+    margin: auto; inline-size: min(28rem, calc(100vw - 2rem)); padding: var(--sp-5);
+    border: 1px solid var(--border); border-radius: var(--radius-m);
+    background: var(--surface); color: var(--text-primary);
+  }
+  .waitlist::backdrop { background: rgba(0, 0, 0, .4); }
+  .waitlist h2 { margin: 0; font-size: var(--fs-1); }
+  .waitlist label[for="waitlist-email"] { display: block; font-weight: 500; }
+  .waitlist input[type="email"] {
+    inline-size: 100%; padding: var(--sp-2) var(--sp-3); font: inherit;
+    border: 1px solid var(--border); border-radius: var(--radius-s);
+    background: var(--bg); color: var(--text-primary);
+  }
+  .waitlist-consent { display: flex; gap: var(--sp-2); align-items: start; font-size: var(--fs--1); }
+  .waitlist-consent input { margin-block-start: .2em; }
+  .waitlist-hp { position: absolute; inset-inline-start: -10000px; inline-size: 1px; block-size: 1px; overflow: hidden; }
+  .waitlist-actions { display: flex; gap: var(--sp-2); justify-content: end; flex-wrap: wrap; }
+  .waitlist-actions button {
+    padding: var(--sp-2) var(--sp-4); border-radius: var(--radius-s);
+    border: 1px solid var(--border); background: var(--surface-elevated);
+    color: var(--text-primary); font-weight: 500; cursor: pointer;
+  }
+  .waitlist-actions button.primary { background: var(--primary-dark); border-color: var(--primary-dark); color: #fff; }
+  .waitlist-actions button:disabled { opacity: .6; cursor: default; }
 }
 
 @layer utilities {
