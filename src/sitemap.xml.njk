@@ -5,7 +5,8 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- set staticPages = ["/privacidad", "/condiciones", "/soporte", "/delete-account",
-                       "/en/privacy", "/en/terms", "/en/support", "/en/delete-account"] %}
+                       "/en/privacy", "/en/terms", "/en/support", "/en/delete-account",
+                       "/ja/privacy"] %}
 {%- for item in collections.all %}
 {%- if not item.data.noindex %}
 {%- set url = item.url | extensionless %}
