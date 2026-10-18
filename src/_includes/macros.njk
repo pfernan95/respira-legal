@@ -448,3 +448,43 @@
   <span>· Source: <a href="https://open-meteo.com/" rel="noopener">Open-Meteo</a>, Copernicus CAMS model</span>
 </p>
 {% endmacro %}
+
+{# Calendar tool table (/calendario-polen, /en/pollen-calendar). The server
+   renders the default city with it; assets/js/pollen-calendar.js redraws the
+   same markup client-side. Rows are calendarTool.js strings, one character a
+   month. Colour is never alone: each cell carries its level word, hidden. #}
+{% macro calTable(city, names, T, monthsShort, monthsFull, levels, currentMonth) %}
+{%- set CSS = { "1": "low", "2": "moderate", "3": "high", "4": "very-high" } %}
+<div class="scroller">
+  <table class="heatmap" id="cal-table">
+    <caption id="cal-caption" class="visually-hidden">{{ T.caption | replace("{city}", city.name) }}</caption>
+    <thead>
+      <tr>
+        <td></td>
+        {%- for mo in monthsShort %}
+        <th scope="col" data-m="{{ loop.index0 }}"{% if loop.index0 == currentMonth %} aria-current="date"{% endif %}><abbr title="{{ monthsFull[loop.index0] }}">{{ mo }}</abbr></th>
+        {%- endfor %}
+      </tr>
+    </thead>
+    <tbody id="cal-body">
+      {%- for type, row in city.rows %}
+      <tr>
+        <th scope="row">{{ names[type] }}{% if city.src[type] == "c" %} <span class="tag-estimacion">{{ T.estimateTag }}</span>{% endif %}</th>
+        {%- for m in range(0, 12) %}
+        {%- set c = row[m] %}
+        <td class="hm-cell{% if c == '0' %} hm-none{% elif c == '-' %} hm-nodata{% endif %}{% if m == currentMonth %} hm-now{% endif %}"
+            {%- if CSS[c] %} style="--_lv: var(--level-{{ CSS[c] }})"{% endif %}><span class="visually-hidden">{{ monthsFull[m] }}: {{ T.noData if c == '-' else levels[c] }}</span></td>
+        {%- endfor %}
+      </tr>
+      {%- endfor %}
+    </tbody>
+  </table>
+</div>
+<ul class="legend" aria-label="{{ T.legendLabel }}">
+  {%- for c in ["1", "2", "3", "4"] %}
+  <li><i style="--_lv: var(--level-{{ CSS[c] }})"></i>{{ levels[c] }}</li>
+  {%- endfor %}
+  <li><i class="hm-none"></i>{{ levels["0"] }}</li>
+  <li><i class="hm-nodata"></i>{{ T.noData | capitalize }}</li>
+</ul>
+{% endmacro %}

@@ -1,0 +1,211 @@
+---
+layout: layouts/base.njk
+lang: en
+permalink: "en/pollen-calendar.html"
+title: "Pollen Calendar by City and Allergy | Respira"
+ogTitle: "Pollen calendar for your city"
+description: "Pick your city and allergies to see the months your pollen is usually worst: grass, birch, oak, ragweed and more, in 69 UK, Irish and US cities."
+altEs: "/calendario-polen"
+altEn: "/en/pollen-calendar"
+---
+{%- import "macros.njk" as m -%}
+{%- set CT = calendarTool -%}
+{%- set us = constants.us -%}
+{%- set MONTHS = us.MONTH_FULL_EN -%}
+{%- set LEVELS = { "0": "None or almost none", "1": "Low", "2": "Moderate", "3": "High", "4": "Very high" } -%}
+{%- set T = {
+  "and": " and ",
+  "allYear": "all year",
+  "inMonth": "in {m}",
+  "fromTo": "from {a} to {b}",
+  "pickPrompt": "Tick your allergies to see the months when yours are at their worst in {city}. Meanwhile, every pollen in the city is listed below.",
+  "yourMonths": "In {city}, your allergies are usually at moderate or above {span}.",
+  "noneModerate": "In {city}, none of your allergies reaches moderate in any month on this data.",
+  "nameLevel": "{name} ({level})",
+  "nowOn": "This month ({month}): {list}.",
+  "nowOff": "This month ({month}): none of yours is above low.",
+  "next": "Next up: {list}, from {month}.",
+  "estimateTag": "Estimate",
+  "noData": "no data",
+  "caption": "Pollen calendar for {city}: the usual level each month, by pollen type",
+  "legendLabel": "Level key",
+  "srcModel": "{list}: the Copernicus CAMS model (via Open-Meteo), the {a}–{b} average of the daily highs at {city}'s coordinates. A model, not a pollen trap.",
+  "srcCalendar": "{list}: seasonal estimate.",
+  "srcUs": "{list}: seasonal estimate for {region}, the same calendar the Respira app uses there. Not a measurement.",
+  "noteMugwort": "The model shows mugwort in November every year, which does not match the plant's flowering, over by October. Treat it with caution: it is what the model computes, not a measurement.",
+  "noteNoModel": "The CAMS model has no data for {city}, so only the estimates are shown.",
+  "cityLink": "Today's pollen in {city}"
+} -%}
+{%- set city = CT.en.default -%}
+{%- set london = CT.en.byId["uk/london"] -%}
+{%- set dublin = CT.en.byId["ireland/dublin"] -%}
+{%- set dallas = CT.en.byId["us/dallas"] -%}
+{%- set chicago = CT.en.byId["us/chicago"] -%}
+
+{#- "alder from February to April, birch in April, …" for one city, from its
+    own rows. Only species that reach moderate in some month are named. -#}
+{%- macro cityRun(c, names) -%}
+{%- set parts = [] -%}
+{%- for type in c.order -%}
+{%- set span = c.rows[type] | rowLevels | seasonSpanEn -%}
+{%- if span %}{% set _ = parts.push((names[type] | lower) + " " + span) %}{% endif -%}
+{%- endfor -%}
+{{ parts | join("; ") }}
+{%- endmacro -%}
+
+<main class="page">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/en/">Home</a> › Pollen calendar
+  </nav>
+
+  <header class="flow">
+    <h1>Pollen calendar for your city</h1>
+    <p>Pick your city and tick your allergies to see the months your pollen is usually at its worst, what this month looks like and what comes next. For 19 cities in the UK and Ireland and 50 in the United States.</p>
+  </header>
+
+  <section class="data-panel flow wide" aria-labelledby="your-calendar">
+    <h2 id="your-calendar" class="visually-hidden">Your pollen calendar</h2>
+    <form id="cal-form" class="tool-form" hidden>
+      <div class="field">
+        <label for="cal-city">City</label>
+        <select id="cal-city" name="city">
+          {%- for g in CT.en.groups %}
+          <optgroup label="{{ g.name }}">
+            {%- for c in g.cities %}
+            <option value="{{ c.id }}"{% if c.id == city.id %} selected{% endif %}>{{ c.label }}</option>
+            {%- endfor %}
+          </optgroup>
+          {%- endfor %}
+        </select>
+      </div>
+      <fieldset id="cal-allergens" class="chips">
+        <legend>Your allergies</legend>
+      </fieldset>
+    </form>
+    <div id="cal-summary" class="cal-summary" aria-live="polite">
+      <p class="cal-lead">Pollen calendar for {{ city.name }}. Each row is a pollen type and each square a month.</p>
+    </div>
+    {{ m.calTable(city, CT.en.names, T, us.MONTH_NAMES_EN, MONTHS, LEVELS, build.month) }}
+    {%- set srcM = [] %}
+    {%- for type, row in city.rows %}{% set _ = srcM.push(CT.en.names[type]) %}{% endfor %}
+    <div id="cal-sources" class="small text-secondary flow">
+      <p>{{ T.srcModel | replace("{list}", srcM | sentenceList(" and ")) | replace("{city}", city.name) | replace("{a}", CT.climaStart) | replace("{b}", CT.climaEnd) }}</p>
+    </div>
+    <div id="cal-notes" class="small text-secondary flow">
+      {%- if "mugwortNov" in city.notes %}<p>{{ T.noteMugwort }}</p>{% endif %}
+    </div>
+    <p><a id="cal-citylink" href="{{ city.url }}">{{ T.cityLink | replace("{city}", city.name) }}</a></p>
+  </section>
+
+  <section class="section">
+    {{ m.ctaApp("Know when yours starts", "Respira shows today's level for each of your pollens where you are, a multi-day forecast and a symptom diary, and lets you know when your season begins. Free for iPhone and iPad.", i18nWeb.en) }}
+  </section>
+
+  <section class="section flow" aria-labelledby="how-to-read">
+    <h2 id="how-to-read">How to read the calendar</h2>
+    <p>Each square is the usual level of that pollen in that month, not this year's: a wet or warm spring moves the season by a few weeks. For today's level, open the city's page or the app.</p>
+    <p>In the UK and Ireland the rows come from the Copernicus CAMS model at the city's own coordinates: the {{ CT.climaStart }}–{{ CT.climaEnd }} average of each day's high, graded with the same thresholds as the daily level. A model gets the timing right more reliably than the amount, and it usually reads lower than pollen traps at the spring peak.</p>
+    <p>In the United States the rows carry the <span class="tag-estimacion">Estimate</span> tag. They are Respira's seasonal calendars for each region, the ones the app and the US city pages use. The Google Pollen API that feeds the app's daily US levels has no history to average, so there is no model row to show instead.</p>
+    <p>A pollen only appears where there is data for it. If the model never puts it above almost nothing in a city, it is left out: there is no season to show.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="uk-season">
+    <h2 id="uk-season">When does hay fever season start in the UK and Ireland?</h2>
+    <p>Trees come first, then grass, then weeds such as mugwort. By the model's {{ CT.climaStart }}–{{ CT.climaEnd }} average, these are the months each pollen reaches moderate or above:</p>
+    <ul class="season-list">
+      <li><strong><a href="{{ london.url }}">London</a></strong>: {{ cityRun(london, CT.en.names) }}.</li>
+      <li><strong><a href="{{ dublin.url }}">Dublin</a></strong>: {{ cityRun(dublin, CT.en.names) }}.</li>
+    </ul>
+    <p>Each city's months differ a little. Pick yours in the tool above, or see every city on the <a href="/en/pollen-map-uk-ireland">UK and Ireland pollen map</a>.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="us-season">
+    <h2 id="us-season">Pollen seasons across the United States</h2>
+    <p>The US has no single season. Respira's regional calendars put each pollen at moderate or above in these months:</p>
+    <ul class="season-list">
+      {%- for id in ["us/new-york", "us/chicago", "us/atlanta", "us/dallas", "us/seattle"] %}
+      {%- set c = CT.en.byId[id] %}
+      <li><strong><a href="{{ c.url }}">{{ c.name }}</a></strong> ({{ CT.en.zoneLabels[c.zone] }}): {{ cityRun(c, CT.en.namesUs) }}.</li>
+      {%- endfor %}
+    </ul>
+    <p>Every other city is on the <a href="/en/pollen-map-usa">US pollen map</a>.</p>
+  </section>
+
+  {%- set londonGrass = london.rows.grass | rowLevels | seasonSpanEn -%}
+{%- set londonAlder = london.rows.alder | rowLevels | seasonSpanEn -%}
+{%- set londonBirch = london.rows.birch | rowLevels | seasonSpanEn -%}
+  {%- set dallasJuniper = dallas.rows.juniper | rowLevels | seasonSpanEn -%}
+  {%- set chicagoRagweed = chicago.rows.ragweed | rowLevels | seasonSpanEn -%}
+  {%- set faq = [
+    { "q": "What is a pollen calendar?", "a": "A table of the months each type of pollen is usually in the air in a place. It tells you when your season starts and ends, not how much pollen there is today: that is what each city's daily level is for." },
+    { "q": "When does grass pollen season start in the UK?", "a": "In London, the Copernicus CAMS model's " + CT.climaStart + "–" + CT.climaEnd + " average puts grass at moderate or above " + londonGrass + ". Tree pollen comes before it: alder " + londonAlder + " and birch " + londonBirch + ". The tool on this page shows the months for 19 UK and Irish cities." },
+    { "q": "When is cedar fever season in Texas?", "a": "Mountain cedar (Ashe juniper) flowers in winter. Respira's seasonal calendar for " + CT.en.zoneLabels[dallas.zone] + " puts juniper at moderate or above " + dallasJuniper + ", which is why Texans can have allergy season at Christmas." },
+    { "q": "When is ragweed season?", "a": "Late summer into autumn. In Chicago, Respira's calendar for " + CT.en.zoneLabels[chicago.zone] + " puts ragweed at moderate or above " + chicagoRagweed + ", ending with the first hard frost." },
+    { "q": "Where does the data come from?", "a": "UK and Irish rows come from the Copernicus CAMS model at each city's coordinates (via Open-Meteo), averaged over " + CT.climaStart + "–" + CT.climaEnd + ". US rows are Respira's seasonal calendars for each region, the same ones the app uses; they are estimates, not measurements, and are tagged as such." },
+    { "q": "Is this a forecast for this year?", "a": "No. It is the calendar of a typical year. Each season comes earlier or later depending on the weather. Today's level and the forecast for the coming days are on each city's page and in the Respira app." }
+  ] -%}
+  <section class="section faq" aria-labelledby="faq">
+    <h2 id="faq">Frequently asked questions</h2>
+    {%- for f in faq %}
+    <details>
+      <summary>{{ f.q }}</summary>
+      <p>{{ f.a }}</p>
+    </details>
+    {%- endfor %}
+  </section>
+
+  <section class="section" aria-labelledby="more">
+    <h2 id="more">More about pollen</h2>
+    <ul class="link-grid">
+      <li><a href="/en/pollen-map-uk-ireland">UK and Ireland pollen map</a></li>
+      <li><a href="/en/pollen-map-usa">US pollen map</a></li>
+      <li><a href="/en/allergy-grass">Grass pollen allergy</a></li>
+      <li><a href="/en/allergy-birch">Birch pollen allergy</a></li>
+      <li><a href="/en/allergy-ragweed">Ragweed allergy</a></li>
+      <li><a href="/en/allergy-juniper">Juniper and cedar allergy</a></li>
+    </ul>
+  </section>
+</main>
+
+{%- set payload = {
+  "cities": CT.en.cities,
+  "names": CT.en.names,
+  "namesUs": CT.en.namesUs,
+  "zoneLabels": CT.en.zoneLabels,
+  "levels": LEVELS,
+  "monthsFull": MONTHS,
+  "climaStart": CT.climaStart,
+  "climaEnd": CT.climaEnd,
+  "q": { "city": "city", "pollen": "allergies" },
+  "tzDefaults": {
+    "Europe/Dublin": "ireland/dublin", "Europe/Belfast": "uk/belfast", "Europe/London": "uk/london",
+    "America/Chicago": "us/chicago", "America/Denver": "us/denver", "America/Phoenix": "us/phoenix",
+    "America/Los_Angeles": "us/los-angeles", "America/": "us/new-york"
+  },
+  "t": T
+} %}
+<script type="application/json" id="cal-data">{{ payload | dump | safe }}</script>
+<script src="/assets/js/pollen-calendar.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://respiraapp.fit/en/" },
+        { "@type": "ListItem", "position": 2, "name": "Pollen calendar", "item": "https://respiraapp.fit{{ page.url | extensionless }}" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for f in faq %}
+        { "@type": "Question", "name": {{ f.q | dump | safe }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | dump | safe }} } }{% if not loop.last %},{% endif %}
+        {%- endfor %}
+      ]
+    }
+  ]
+}
+</script>

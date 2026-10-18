@@ -64,6 +64,40 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/fonts");
   eleventyConfig.addPassthroughCopy("src/assets/*.svg");
   eleventyConfig.addPassthroughCopy("src/assets/img");
+  eleventyConfig.addPassthroughCopy("src/assets/js");
+
+  // "de abril a julio" / "from April to July": the months of a 12-level
+  // series at moderate or above (the calendar tools' static summaries).
+  eleventyConfig.addFilter("temporadaEs", (series) => seasonSpan(series));
+  eleventyConfig.addFilter("seasonSpanEn", (series) => seasonSpanEn(series));
+  // The peak of a season, only when it says something: the series reaches
+  // high or more, and in fewer months than the season lasts. Otherwise null
+  // ("moderate from April to October, peaking April to October" says nothing).
+  // Months come in season order, so a December-February run reads that way.
+  eleventyConfig.addFilter("seasonPeak", (series, lang = "es") => {
+    const r = series.map((l) => RANK[l] ?? 0);
+    const top = Math.max(...r);
+    const on = r.filter((x) => x >= 2).length;
+    const hits = r.filter((x) => x === top).length;
+    if (top < 3 || hits >= on) return null;
+    const start = (r.findIndex((x, i) => x < 2 && r[(i + 1) % 12] >= 2) + 1) % 12;
+    const names = lang === "en" ? MONTHS_EN : MONTHS_LOWER;
+    const months = [];
+    for (let k = 0; k < 12; k++) { const i = (start + k) % 12; if (r[i] === top) months.push(names[i]); }
+    const and = lang === "en" ? " and " : " y ";
+    return months.length < 2 ? months.join("") : `${months.slice(0, -1).join(", ")}${and}${months[months.length - 1]}`;
+  });
+
+  // ["Gramíneas", "Olivo", "Abedul"] -> "Gramíneas, olivo y abedul": a list
+  // that opens a sentence, the way the calendar tool writes its sources.
+  eleventyConfig.addFilter("sentenceList", (names, and) => {
+    const n = names.map((x, i) => (i ? x.toLowerCase() : x));
+    return n.length < 2 ? n.join("") : `${n.slice(0, -1).join(", ")}${and}${n[n.length - 1]}`;
+  });
+  // A calendarTool.js row ("0012332100-0") back to level words, for the
+  // filters above. "-" (no data) counts as off: it never makes a season.
+  eleventyConfig.addFilter("rowLevels", (row) =>
+    [...row].map((c) => ({ 1: "low", 2: "moderate", 3: "high", 4: "very_high" })[c] ?? "none"));
 
   // "/polen-madrid.html" -> "/polen-madrid", "/index.html" -> "/"
   eleventyConfig.addFilter("extensionless", (url) =>
@@ -177,7 +211,9 @@ export default function (eleventyConfig) {
       : "según el calendario polínico orientativo de España (Red Española de Aerobiología)";
     const season = parts.length
       ? `Los pólenes con más peso en ${cityName} alcanzan niveles moderados o altos en estos meses, ${fuente}: ${parts.join("; ")}. Fuera de esos meses los niveles suelen ser bajos, y cada año la temporada se adelanta o se retrasa según la meteorología.`
-      : `La temporada principal en España va de febrero a julio, con las gramíneas y el olivo como protagonistas de la primavera, ${fuente}.`;
+      // Nothing reached moderate: the sentence is about Spain, so it names
+      // Spain's calendar even when this city has a model table.
+      : "La temporada principal en España va de febrero a julio, con las gramíneas y el olivo como protagonistas de la primavera, según el calendario polínico orientativo de España (Red Española de Aerobiología).";
 
     return [
       { q: `¿Cuáles son los niveles de polen en ${cityName} hoy?`, a: today },

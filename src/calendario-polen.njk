@@ -1,0 +1,177 @@
+---
+layout: layouts/base.njk
+permalink: "calendario-polen.html"
+title: "Calendario polínico de tu ciudad y tus alergias — Respira"
+ogTitle: "Calendario polínico de tu ciudad"
+description: "Elige tu ciudad y tus alergias y mira en qué meses hay más polen de gramíneas, olivo, ciprés y más en las 52 capitales de provincia. Gratis y sin registro."
+altEs: "/calendario-polen"
+altEn: "/en/pollen-calendar"
+---
+{%- import "macros.njk" as m -%}
+{%- set cal = constants.seasonalCalendar -%}
+{%- set POLLEN_TYPES = constants.pollen.POLLEN_TYPES -%}
+{%- set CT = calendarTool -%}
+{%- set MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"] -%}
+{%- set NIVELES = { "0": "Nulo o casi nulo", "1": "Bajo", "2": "Moderado", "3": "Alto", "4": "Muy alto" } -%}
+{%- set T = {
+  "and": " y ",
+  "allYear": "todo el año",
+  "inMonth": "en {m}",
+  "fromTo": "de {a} a {b}",
+  "pickPrompt": "Marca tus alergias para ver en qué meses hay más polen de lo tuyo en {city}. Mientras, debajo tienes todos los pólenes de la ciudad.",
+  "yourMonths": "En {city}, tus alergias suelen estar en nivel moderado o más {span}.",
+  "noneModerate": "En {city}, ninguna de tus alergias llega a nivel moderado en ningún mes con estos datos.",
+  "nameLevel": "{name} ({level})",
+  "nowOn": "Este mes ({month}): {list}.",
+  "nowOff": "Este mes ({month}): ninguna de tus alergias pasa de nivel bajo.",
+  "next": "Lo siguiente: {list}, desde {month}.",
+  "estimateTag": "Estimación",
+  "noData": "sin dato",
+  "caption": "Calendario polínico de {city}: nivel habitual de cada mes por tipo de polen",
+  "legendLabel": "Leyenda de niveles",
+  "srcModel": "{list}: modelo CAMS de Copernicus (vía Open-Meteo), media de los máximos diarios de {a} a {b} en las coordenadas de {city}. Es un modelo, no un captador.",
+  "srcCalendar": "{list}: estimación del calendario orientativo de la Red Española de Aerobiología (REA), el mismo que usa la app para los pólenes que el modelo no da.",
+  "noteMugwort": "La artemisa de noviembre aparece los tres años en el modelo, pero no coincide con la floración de la planta, que acaba en octubre. Tómala con cautela: es lo que calcula el modelo, no una medición.",
+  "noteNoModel": "El modelo CAMS no cubre {city} (queda fuera de su dominio europeo), así que solo aparecen las estimaciones.",
+  "cityLink": "Polen de hoy en {city}"
+} -%}
+{%- set city = CT.es.default -%}
+
+<main class="page">
+
+  <nav class="breadcrumbs" aria-label="Miga de pan">
+    <a href="/">Inicio</a> › Calendario polínico
+  </nav>
+
+  <header class="flow">
+    <h1>Calendario polínico de tu ciudad</h1>
+    <p>Elige tu ciudad y marca tus alergias: verás en qué meses suele haber más polen de lo tuyo, qué toca este mes y qué viene después. Para las 52 capitales de provincia, con los datos de cada una.</p>
+  </header>
+
+  <section class="data-panel flow wide" aria-labelledby="tu-calendario">
+    <h2 id="tu-calendario" class="visually-hidden">Tu calendario polínico</h2>
+    <form id="cal-form" class="tool-form" hidden>
+      <div class="field">
+        <label for="cal-city">Ciudad</label>
+        <select id="cal-city" name="ciudad">
+          {%- for g in CT.es.groups %}
+          <optgroup label="{{ g.name }}">
+            {%- for c in g.cities %}
+            <option value="{{ c.id }}"{% if c.id == city.id %} selected{% endif %}>{{ c.label }}</option>
+            {%- endfor %}
+          </optgroup>
+          {%- endfor %}
+        </select>
+      </div>
+      <fieldset id="cal-allergens" class="chips">
+        <legend>Tus alergias</legend>
+      </fieldset>
+    </form>
+    <div id="cal-summary" class="cal-summary" aria-live="polite">
+      <p class="cal-lead">Calendario polínico de {{ city.name }}. Cada fila es un tipo de polen y cada casilla, un mes.</p>
+    </div>
+    {{ m.calTable(city, CT.es.names, T, cal.MONTH_NAMES_SHORT, MESES, NIVELES, build.month) }}
+    {%- set srcM = [] %}{% set srcC = [] %}
+    {%- for type, row in city.rows %}{% if city.src[type] == "m" %}{% set _ = srcM.push(CT.es.names[type]) %}{% else %}{% set _ = srcC.push(CT.es.names[type]) %}{% endif %}{% endfor %}
+    <div id="cal-sources" class="small text-secondary flow">
+      <p>{{ T.srcModel | replace("{list}", srcM | sentenceList(" y ")) | replace("{city}", city.name) | replace("{a}", CT.climaStart) | replace("{b}", CT.climaEnd) }}</p>
+      <p>{{ T.srcCalendar | replace("{list}", srcC | sentenceList(" y ")) }}</p>
+    </div>
+    <div id="cal-notes" class="small text-secondary flow">
+      {%- if "mugwortNov" in city.notes %}<p>{{ T.noteMugwort }}</p>{% endif %}
+    </div>
+    <p><a id="cal-citylink" href="{{ city.url }}">{{ T.cityLink | replace("{city}", city.name) }}</a></p>
+  </section>
+
+  <section class="section">
+    {{ m.ctaApp("Que Respira te avise de lo tuyo", "La app te enseña el nivel de hoy de cada uno de tus pólenes donde estés, con previsión de varios días y un diario de síntomas, y te avisa cuando empieza tu temporada. Gratis, para iPhone y iPad.") }}
+  </section>
+
+  <section class="section flow" aria-labelledby="como-leer">
+    <h2 id="como-leer">Cómo leer el calendario</h2>
+    <p>Cada casilla es el nivel habitual de ese polen en ese mes, no el de este año: la lluvia y el calor adelantan o retrasan la temporada unas semanas. Para saber cuánto polen hay hoy, mira la página de tu ciudad o la app.</p>
+    <p>Los pólenes sin etiqueta salen del modelo CAMS de Copernicus en las coordenadas de tu ciudad: la media de {{ CT.climaStart }} a {{ CT.climaEnd }} del máximo de cada día, clasificada con los mismos umbrales que el dato diario. Es un modelo, así que acierta mejor el cuándo que el cuánto, y en primavera suele quedarse por debajo de lo que miden los captadores.</p>
+    <p>Los que llevan la etiqueta <span class="tag-estimacion">Estimación</span> son pólenes que el modelo no da (ciprés, plátano de sombra, parietaria, arizónicas y alternaria). Para ellos se usa el calendario orientativo de la <a href="https://www.uco.es/rea/" rel="noopener">Red Española de Aerobiología</a>, el mismo con el que trabaja la app.</p>
+    <p>Un polen solo aparece si hay datos de él en tu ciudad. Si el modelo nunca lo pone por encima de casi cero, no se lista: no es temporada de nada.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="cuando">
+    <h2 id="cuando">¿Cuándo empieza cada alergia en España?</h2>
+    <p>Según el calendario orientativo de la REA para España, estos son los meses en que cada polen suele estar en nivel moderado o más, y cuándo llega a su máximo si destaca:</p>
+    <ul class="season-list">
+      {%- for id, series in cal.MONTHLY_POLLEN_INTENSITY %}
+      {%- set span = series | temporadaEs %}
+      {%- if span %}
+      {%- set info = pollenInfo[id] %}
+      {%- set pico = series | seasonPeak("es") %}
+      <li><strong>{% if info %}<a href="/alergia-{{ info.slug }}">{{ POLLEN_TYPES[id].nameEs }}</a>{% else %}{{ POLLEN_TYPES[id].nameEs }}{% endif %}</strong>: {{ span }}{% if pico %}, con el máximo en {{ pico }}{% endif %}.</li>
+      {%- endif %}
+      {%- endfor %}
+    </ul>
+    <p>Es un calendario nacional: en tu ciudad puede ir algo antes o después. Por eso la herramienta de arriba usa los datos de cada capital.</p>
+  </section>
+
+  {%- set grassSpan = cal.MONTHLY_POLLEN_INTENSITY.grass | temporadaEs -%}
+  {%- set cypressSpan = cal.MONTHLY_POLLEN_INTENSITY.cypress | temporadaEs -%}
+  {%- set faq = [
+    { "q": "¿Qué es un calendario polínico?", "a": "Es una tabla con los meses en que cada tipo de polen suele estar en el aire en una zona. Sirve para saber cuándo empieza y cuándo acaba tu temporada, no cuánto polen hay hoy: para eso está el dato diario de cada ciudad." },
+    { "q": "¿Cuándo empieza la alergia a las gramíneas?", "a": "Según el calendario orientativo de la Red Española de Aerobiología, las gramíneas están en nivel moderado o más " + grassSpan + " en la mayor parte de España, con el máximo en " + (cal.MONTHLY_POLLEN_INTENSITY.grass | seasonPeak("es")) + ". En cada ciudad cambia: la herramienta de esta página muestra los meses de tu capital según el modelo CAMS." },
+    { "q": "¿Cuándo hay polen de ciprés?", "a": "En invierno. El calendario orientativo de la REA lo sitúa en nivel moderado o más " + cypressSpan + ", con el máximo en " + (cal.MONTHLY_POLLEN_INTENSITY.cypress | seasonPeak("es")) + ". Es de los primeros pólenes del año." },
+    { "q": "¿De dónde salen los datos?", "a": "Para gramíneas, olivo, abedul, aliso, artemisa y ambrosía, del modelo CAMS de Copernicus en las coordenadas de cada ciudad (vía Open-Meteo), con la media de " + CT.climaStart + " a " + CT.climaEnd + ". Para ciprés, plátano de sombra, parietaria, arizónicas y alternaria, que el modelo no da, del calendario orientativo de la Red Española de Aerobiología. Cada fila dice cuál de las dos es." },
+    { "q": "¿Es una previsión para este año?", "a": "No. Es el calendario de un año típico. Cada temporada se adelanta o se retrasa según la lluvia y la temperatura del invierno y la primavera. El nivel de hoy y la previsión de los próximos días están en la página de cada ciudad y en la app Respira." }
+  ] -%}
+  <section class="section faq" aria-labelledby="preguntas">
+    <h2 id="preguntas">Preguntas frecuentes</h2>
+    {%- for f in faq %}
+    <details>
+      <summary>{{ f.q }}</summary>
+      <p>{{ f.a }}</p>
+    </details>
+    {%- endfor %}
+  </section>
+
+  <section class="section" aria-labelledby="mas">
+    <h2 id="mas">Más sobre el polen</h2>
+    <ul class="link-grid">
+      <li><a href="/mapa-polen-espana">Mapa del polen en España</a></li>
+      {%- for info in pollenInfoList %}
+      <li><a href="/alergia-{{ info.slug }}">{{ info.h1 }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+</main>
+
+{%- set payload = {
+  "cities": CT.es.cities,
+  "names": CT.es.names,
+  "levels": NIVELES,
+  "monthsFull": MESES,
+  "climaStart": CT.climaStart,
+  "climaEnd": CT.climaEnd,
+  "q": { "city": "ciudad", "pollen": "alergias" },
+  "t": T
+} %}
+<script type="application/json" id="cal-data">{{ payload | dump | safe }}</script>
+<script src="/assets/js/pollen-calendar.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://respiraapp.fit/" },
+        { "@type": "ListItem", "position": 2, "name": "Calendario polínico", "item": "https://respiraapp.fit{{ page.url | extensionless }}" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for f in faq %}
+        { "@type": "Question", "name": {{ f.q | dump | safe }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | dump | safe }} } }{% if not loop.last %},{% endif %}
+        {%- endfor %}
+      ]
+    }
+  ]
+}
+</script>

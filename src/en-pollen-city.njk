@@ -134,6 +134,7 @@ eleventyComputed:
     <p>Month by month intensity for every species that occurs in {{ us.US_ZONE_LABELS[zone] }}. Darker means higher. The current month is marked.</p>
     {{ m.heatmapCalendarEn(rows, names, us.MONTH_NAMES_EN, INTENSITY_LABELS_EN, monthIdx) }}
     <p class="fine-print">Seasonal estimate by climate zone, not a measurement. Seasons shift with elevation and with the year's weather.</p>
+    <p><a href="/en/pollen-calendar?city=us/{{ city.slug }}">{{ city.name }} pollen calendar for your own allergies</a></p>
   </section>
 
   <section class="section" aria-labelledby="species">

@@ -129,6 +129,7 @@ eleventyComputed:
     <h2 id="calendario">{% if clima %}Calendario polínico orientativo de España{% else %}Calendario polínico{% endif %}</h2>
     <p class="text-secondary">Intensidad orientativa mes a mes en España, según los calendarios de la REA. El mes actual aparece recuadrado.</p>
     {{ m.heatmapCalendario(cal.MONTHLY_POLLEN_INTENSITY, POLLEN_TYPES, cal.MONTH_NAMES_SHORT, cal.INTENSITY_LABELS, build.month) }}
+    <p><a href="/calendario-polen?ciudad=es/{{ ciudad.slug }}">Calendario polínico de {{ ciudad.name }} solo con tus alergias</a></p>
   </section>
 
   <section class="section flow" aria-labelledby="sobre">

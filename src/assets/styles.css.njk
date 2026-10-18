@@ -175,7 +175,9 @@ eleventyExcludeFromCollections: true
      deja los bloques flotando. Sin :has() cae al base compacto, el lado seguro. */
   .page:has(.hero) { row-gap: var(--sp-8); }
   .page:has(.hero) .section { padding-block-start: var(--sp-8); border-block-start: 0; }
-  .page > * { grid-column: content; }
+  /* min-inline-size: 0 so a wide table's .scroller scrolls inside its column
+     instead of widening the grid (and the whole page) on a phone. */
+  .page > * { grid-column: content; min-inline-size: 0; }
   .page > .wide { grid-column: wide; }
   .page > .full { grid-column: full; }
   .section { padding-block-start: var(--sp-6); border-block-start: 1px solid var(--divider); }
@@ -297,7 +299,10 @@ eleventyExcludeFromCollections: true
   .pollen-row .val { font-variant-numeric: tabular-nums; color: var(--text-secondary); }
 
   /* Previsión 7 días: tabla real presentada como tira */
-  .scroller { overflow-x: auto; scrollbar-color: var(--primary-light) transparent;
+  /* position: relative makes the scroller the containing block of the
+     visually-hidden level words in each heatmap cell. Without it those
+     absolutely positioned spans escape the scroll box and widen the page. */
+  .scroller { position: relative; overflow-x: auto; scrollbar-color: var(--primary-light) transparent;
     background:
       linear-gradient(90deg, var(--bg) 30%, transparent) 0 0 / 3rem 100%,
       linear-gradient(270deg, var(--bg) 30%, transparent) 100% 0 / 3rem 100%,
@@ -402,6 +407,38 @@ eleventyExcludeFromCollections: true
   .hm-none { background: var(--surface-elevated); }
   .heatmap .hm-now { outline: 1px solid var(--text-secondary); outline-offset: -1px; }
   .heatmap th[aria-current] { color: var(--text-primary); font-weight: 700; }
+
+  .hm-nodata { background: repeating-linear-gradient(135deg, var(--surface-elevated) 0 4px, var(--divider) 4px 7px); }
+
+  /* Herramientas (/calendario-polen, /alergia-cruzada-polen-alimentos y sus
+     versiones /en/): un selector, chips de alergias y el resultado. */
+  .tool-form { display: grid; gap: var(--sp-4); }
+  .tool-form[hidden] { display: none; }
+  .field { display: grid; gap: var(--sp-1); justify-items: start; }
+  .field label, .chips legend { font-weight: 500; }
+  .field select {
+    font: inherit; max-inline-size: 100%; min-block-size: 44px;
+    padding: var(--sp-2) var(--sp-3); border: 1px solid var(--border); border-radius: var(--radius-s);
+    background: var(--bg); color: var(--text-primary);
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: var(--sp-2); border: 0; padding: 0; min-inline-size: 0; }
+  .chips legend { inline-size: 100%; margin-block-end: var(--sp-2); }
+  .chip { position: relative; }
+  .chip input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+  .chip span {
+    display: inline-block; padding: var(--sp-2) var(--sp-3); min-block-size: 44px; line-height: 1.6;
+    border: 1px solid var(--border); border-radius: 999px; background: var(--surface); font-size: var(--fs--1);
+  }
+  .chip input:checked + span { background: var(--primary-dark); border-color: var(--primary-dark); color: #fff; }
+  .chip input:focus-visible + span { outline: 2px solid var(--primary-dark); outline-offset: 2px; }
+  .cal-summary > * + * { margin-block-start: var(--sp-1); }
+  .cal-lead { font-size: var(--fs-1); font-weight: 500; line-height: 1.35; }
+  .legend { display: flex; flex-wrap: wrap; gap: var(--sp-1) var(--sp-4); padding: 0; list-style: none; font-size: var(--fs--1); color: var(--text-secondary); }
+  .legend i { display: inline-block; inline-size: 1em; block-size: 1em; margin-inline-end: var(--sp-1); vertical-align: -.15em; border-radius: 3px; background: color-mix(in oklab, var(--_lv, transparent) 82%, var(--surface)); }
+  .legend i.hm-none { background: var(--surface-elevated); border: 1px solid var(--divider); }
+  .legend i.hm-nodata { background: repeating-linear-gradient(135deg, var(--surface-elevated) 0 3px, var(--border) 3px 5px); }
+  .heatmap abbr { text-decoration: none; }
+  .season-list { display: grid; gap: var(--sp-2); padding-inline-start: var(--sp-5); }
 
   /* Calidad del aire */
   .aqi-block { display: flex; flex-wrap: wrap; gap: var(--sp-4) var(--sp-6); align-items: end; }
