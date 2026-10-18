@@ -13,6 +13,13 @@ Pollen data for Spain and the rest of Europe comes from the CAMS atmospheric mod
 - [Respira in English](https://respiraapp.fit/en/): what the app does and the 35 countries it covers.
 - [Respira en español](https://respiraapp.fit/): today's pollen and air quality in Spain's main cities.
 
+## Free tools
+
+- [Pollen calendar for your city (English)](https://respiraapp.fit/en/pollen-calendar): pick a city and your allergies to see the months each pollen is usually at moderate or above, this month and what comes next. 19 UK and Irish cities from the Copernicus CAMS model (2023-2025 average), 50 US cities from Respira's regional seasonal calendars (estimates, labelled as such).
+- [Pollen food allergy (English)](https://respiraapp.fit/en/pollen-food-allergy): which fruits, vegetables and nuts are linked to eight pollens (birch, alder, grass, olive, mugwort, ragweed, cypress, plane tree), the protein behind each link and whether cooking helps, every fact sourced (EAACI Molecular Allergology User's Guide 2.0 and journal studies). Not a diagnosis.
+- [Alergia cruzada entre polen y alimentos (Spanish)](https://respiraapp.fit/alergia-cruzada-polen-alimentos): the same, in Spanish.
+- [Calendario polínico de tu ciudad (Spanish)](https://respiraapp.fit/calendario-polen): the same tool for Spain's 52 provincial capitals: the CAMS model's 2023-2025 average for grass, olive, birch, alder, mugwort and ragweed, and the Spanish Aerobiology Network's calendar for the five species the model does not carry.
+
 ## Guides and comparisons
 
 - [Best pollen allergy apps for iPhone (2026)](https://respiraapp.fit/en/best-pollen-apps)

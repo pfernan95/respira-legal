@@ -74,6 +74,7 @@ eleventyComputed:
     <h2 id="calendar">{{ city.name }} pollen calendar</h2>
     <p class="text-secondary">The five pollen types the model covers here, month by month, at {{ city.name }}'s own coordinates: the average of the daily highs over {{ cityClimatology.start | truncate(4, true, "") }}–{{ cityClimatology.end | truncate(4, true, "") }}, graded with the same thresholds as today's level. A model (Copernicus CAMS, via Open-Meteo), not a pollen trap. The current month is outlined.</p>
     {{ m.climatologyGb(clima, TYPES, NAMES, us.MONTH_NAMES_EN, us.MONTH_FULL_EN, build.month, city.name) }}
+    <p><a href="/en/pollen-calendar?city={{ city.key }}">{{ city.name }} pollen calendar for your own allergies</a></p>
   </section>
 
   <section class="section flow" aria-labelledby="hayfever">
