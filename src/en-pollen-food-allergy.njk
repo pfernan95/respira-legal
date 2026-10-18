@@ -1,0 +1,150 @@
+---
+layout: layouts/base.njk
+lang: en
+permalink: "en/pollen-food-allergy.html"
+ogType: article
+title: "Pollen Food Allergy: Oral Allergy Syndrome Foods | Respira"
+ogTitle: "Pollen food allergy: which foods to watch"
+description: "Tick your pollens to see which fruits, vegetables and nuts are linked to them, which protein causes it and whether cooking helps. Every fact is sourced."
+altEs: "/alergia-cruzada-polen-alimentos"
+altEn: "/en/pollen-food-allergy"
+---
+{%- import "macros.njk" as m -%}
+{%- set CR = crossReactivity.en -%}
+{%- set T = {
+  "and": " and ",
+  "prompt": "Tick your pollens to see only yours. Meanwhile, all eight are below.",
+  "strong": "With {pollens} allergy, the best documented foods are: {foods}.",
+  "other": "Also reported: {foods}.",
+  "onlyReported": "With {pollens} allergy, reactions have been reported to: {foods}.",
+  "stableWarning": "Careful: for at least one of your pollens the protein involved survives cooking. Cooking or peeling does not make the food safe, and reactions can be severe. See its section."
+} -%}
+
+<main class="page">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/en/">Home</a> › Pollen food allergy
+  </nav>
+
+  <header class="flow">
+    <h1>Pollen food allergy: which foods to watch</h1>
+    <p>If you have a pollen allergy, some fruits, vegetables or nuts can make your mouth or throat itch. This is oral allergy syndrome, also called pollen food syndrome. Tick your pollens to see which foods are linked to them, which protein causes it and whether cooking helps. Every fact links to its source.</p>
+  </header>
+
+  <div class="notice" role="note">
+    <p><strong>This is not a diagnosis.</strong> Being sensitised to a pollen does not mean you will react to these foods, and only an allergist's tests can tell what applies to you. If a food makes your mouth itch or swell, mention it at your next appointment.</p>
+    <p>If you have trouble breathing, swelling of the throat or tongue, or feel faint, call emergency services (999 in the UK, 112 in Ireland, 911 in the US).</p>
+  </div>
+
+  <section class="data-panel flow wide" aria-labelledby="your-pollens">
+    <h2 id="your-pollens" class="visually-hidden">Your pollens</h2>
+    <form id="cr-form" class="tool-form" hidden>
+      <fieldset class="chips">
+        <legend>Your pollen allergies</legend>
+        {%- for p in CR.pollens %}
+        <label class="chip"><input type="checkbox" name="pollen" value="{{ p.id }}"><span>{{ p.name }}</span></label>
+        {%- endfor %}
+      </fieldset>
+    </form>
+    <div id="cr-summary" class="cal-summary" aria-live="polite">
+      <p class="cal-lead">These are the eight pollens with foods linked to them in reliable sources, each in its own section.</p>
+    </div>
+  </section>
+
+  <section class="section flow" aria-labelledby="by-pollen">
+    <h2 id="by-pollen">Which foods are linked to each pollen</h2>
+    <p class="small text-secondary">"Best documented" means the European Academy of Allergy and Clinical Immunology (EAACI) guide or several sources name the food; "also reported", that at least one reliable source does. Neither says how many people react: no source gives that figure food by food.</p>
+    {%- for p in CR.pollens %}
+    <article class="cr-pollen flow" data-pollen="{{ p.id }}" aria-labelledby="p-{{ p.id }}">
+      <h3 id="p-{{ p.id }}">{{ p.name }}</h3>
+      <p><strong>What causes it.</strong> {{ p.cause }}</p>
+      {%- if p.well.length %}
+      <h4>Best documented</h4>
+      <ul class="food-list">{% for f in p.well %}<li>{{ f }}</li>{% endfor %}</ul>
+      {%- endif %}
+      {%- if p.reported.length %}
+      <h4>Also reported</h4>
+      <ul class="food-list">{% for f in p.reported %}<li>{{ f }}</li>{% endfor %}</ul>
+      {%- endif %}
+      <p{% if p.stable %} class="cr-warning"{% endif %}><strong>Does cooking help?</strong> {{ p.cooking }}</p>
+      {%- if p.fact %}
+      <p><strong>One figure.</strong> {{ p.fact }}</p>
+      {%- endif %}
+      <p class="small text-secondary">Sources:
+        {%- for s in p.sources %} <a href="{{ s.url }}" rel="noopener">{{ s.title }}</a> ({{ s.publisher }}, {{ s.year }}){% if not loop.last %};{% else %}.{% endif %}{% endfor %}
+      </p>
+      {%- if p.page %}
+      <p><a href="{{ p.page }}">{{ p.name }} pollen allergy: season and symptoms</a></p>
+      {%- endif %}
+    </article>
+    {%- endfor %}
+  </section>
+
+  <section class="section flow" aria-labelledby="what-is-it">
+    <h2 id="what-is-it">What pollen food syndrome is</h2>
+    <p>Some pollen proteins look like proteins in fruits, vegetables or nuts. If your immune system reacts to the pollen's, it can react to the food's as well. It usually shows as itching or tingling in the mouth, lips or throat straight after eating the food raw.</p>
+    <p>What cooking does depends on the protein. PR-10 proteins (birch, alder) and profilins (grass, ragweed) are broken down by heat and digestion and usually cause mild symptoms. LTPs (olive, plane tree, and mugwort with peach and mustard) and gibberellin-regulated proteins (cypress) survive cooking and digestion and can cause severe reactions; around the Mediterranean, LTPs are the leading cause of food anaphylaxis in adults.</p>
+    <p class="small text-secondary">Sources:
+      {%- for s in CR.general %} <a href="{{ s.url }}" rel="noopener">{{ s.title }}</a> ({{ s.publisher }}, {{ s.year }}){% if not loop.last %};{% else %}.{% endif %}{% endfor %}
+    </p>
+  </section>
+
+  <section class="section">
+    {{ m.ctaApp("Track your pollen day by day", "Respira shows today's level for each of your pollens where you are, a multi-day forecast and a symptom diary you can take to your allergist. Free for iPhone and iPad.", i18nWeb.en) }}
+  </section>
+
+  {%- set faq = [
+    { "q": "What is oral allergy syndrome?", "a": "A reaction to a plant food in people with pollen allergy, because some pollen proteins look like the food's. It usually shows as itching or tingling in the mouth, lips or throat when eating the food raw. It is also called pollen food syndrome." },
+    { "q": "Does cooking the fruit stop the reaction?", "a": "It depends on the pollen. With birch, alder, grass and ragweed, the protein involved is usually destroyed by heat and cooked fruit is usually tolerated, with exceptions such as soy, nuts and celery. With olive, plane tree, cypress and mugwort, the protein survives cooking: cooking does not make the food safe." },
+    { "q": "Can it be serious?", "a": "It is usually mild, but not always. Reactions linked to LTPs (olive, plane tree, and peach and mustard with mugwort) and to gibberellin-regulated proteins (cypress) can reach anaphylaxis. If you have trouble breathing, throat swelling or feel faint, call emergency services." },
+    { "q": "Do I have to stop eating these foods?", "a": "Not because of this list. Being sensitised does not always mean reacting: in one study, only 6 of 26 patients with antibodies to watermelon had symptoms when they ate it. Avoid the foods that give you symptoms and ask your allergist which ones you need to avoid." },
+    { "q": "Where does this information come from?", "a": "From the European Academy of Allergy and Clinical Immunology's molecular allergology guide (EAACI) and studies in medical journals, linked in each section. A food is only listed if at least one reliable source links it to that pollen." }
+  ] -%}
+  <section class="section faq" aria-labelledby="faq">
+    <h2 id="faq">Frequently asked questions</h2>
+    {%- for f in faq %}
+    <details>
+      <summary>{{ f.q }}</summary>
+      <p>{{ f.a }}</p>
+    </details>
+    {%- endfor %}
+  </section>
+
+  <section class="section" aria-labelledby="more">
+    <h2 id="more">More about pollen</h2>
+    <ul class="link-grid">
+      <li><a href="/en/pollen-calendar">Pollen calendar for your city</a></li>
+      <li><a href="/en/pollen-map-uk-ireland">UK and Ireland pollen map</a></li>
+      <li><a href="/en/pollen-map-usa">US pollen map</a></li>
+      <li><a href="/en/allergy-birch">Birch pollen allergy</a></li>
+      <li><a href="/en/allergy-grass">Grass pollen allergy</a></li>
+      <li><a href="/en/allergy-ragweed">Ragweed allergy</a></li>
+    </ul>
+  </section>
+</main>
+
+{%- set payload = { "pollens": CR.client, "q": "pollen", "t": T } %}
+<script type="application/json" id="cr-data">{{ payload | dump | safe }}</script>
+<script src="/assets/js/cross-reactivity.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://respiraapp.fit/en/" },
+        { "@type": "ListItem", "position": 2, "name": "Pollen food allergy", "item": "https://respiraapp.fit{{ page.url | extensionless }}" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for f in faq %}
+        { "@type": "Question", "name": {{ f.q | dump | safe }}, "acceptedAnswer": { "@type": "Answer", "text": {{ f.a | dump | safe }} } }{% if not loop.last %},{% endif %}
+        {%- endfor %}
+      ]
+    }
+  ]
+}
+</script>

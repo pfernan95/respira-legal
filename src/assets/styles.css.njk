@@ -439,6 +439,16 @@ eleventyExcludeFromCollections: true
   .legend i.hm-nodata { background: repeating-linear-gradient(135deg, var(--surface-elevated) 0 3px, var(--border) 3px 5px); }
   .heatmap abbr { text-decoration: none; }
   .season-list { display: grid; gap: var(--sp-2); padding-inline-start: var(--sp-5); }
+  /* Aviso médico y advertencias: borde de color + texto normal, nunca color solo. */
+  .notice { padding: var(--sp-4) var(--sp-5); border-radius: var(--radius-m); border: 1px solid var(--border); border-inline-start: 4px solid var(--level-high); background: var(--surface-elevated); }
+  .notice > * + * { margin-block-start: var(--sp-2); }
+  .cr-warning { padding-inline-start: var(--sp-3); border-inline-start: 3px solid var(--level-high); }
+  .food-list { display: flex; flex-wrap: wrap; gap: var(--sp-2); padding: 0; list-style: none; }
+  .food-list li { padding: var(--sp-1) var(--sp-3); border: 1px solid var(--border); border-radius: 999px; background: var(--surface); font-size: var(--fs--1); }
+  .cr-pollen[hidden] { display: none; }
+  .cr-pollen h3 { font-family: var(--font-display); font-size: var(--fs-2); }
+  .cr-pollen h4 { font-size: var(--fs-0); font-weight: 600; }
+  .sources-list { padding-inline-start: var(--sp-5); font-size: var(--fs--1); color: var(--text-secondary); }
 
   /* Calidad del aire */
   .aqi-block { display: flex; flex-wrap: wrap; gap: var(--sp-4) var(--sp-6); align-items: end; }

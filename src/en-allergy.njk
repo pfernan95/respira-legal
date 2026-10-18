@@ -46,6 +46,16 @@ eleventyComputed:
     <p><a class="button" href="{{ storeUrl }}" rel="noopener">Get Respira for iPhone</a></p>
   </section>
 
+  <section class="section flow" aria-labelledby="tools">
+    <h2 id="tools">Free tools</h2>
+    <ul class="link-grid">
+      {%- if info.id in ["birch", "alder", "grass", "ragweed"] %}
+      <li><a href="/en/pollen-food-allergy?pollen={{ info.id }}">Foods linked to {{ info.h1 | lower }}</a></li>
+      {%- endif %}
+      <li><a href="/en/pollen-calendar">Pollen calendar for your city</a></li>
+    </ul>
+  </section>
+
   <section class="section" aria-labelledby="others">
     <h2 id="others">Other allergens in the United States</h2>
     <ul class="link-grid">
