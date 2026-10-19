@@ -63,6 +63,7 @@ Pollen data for Spain and the rest of Europe comes from the CAMS atmospheric mod
 ## Pollen by city — United Kingdom and Ireland (English)
 
 - [19 UK and Ireland cities](https://respiraapp.fit/en/pollen-map-uk-ireland): today's level by type (grass, birch, alder, mugwort, ragweed) from the Copernicus CAMS model, a multi-day forecast and a 2023-2025 monthly calendar for each city, rebuilt daily.
+- [Pollen in Australia](https://respiraapp.fit/en/pollen-australia): when grass pollen season runs south and north of 28°S and when cypress pine flowers, from Respira's seasonal calendar for Australia (an estimate, labelled as such), and what the app shows there (Google Pollen API, grass and cypress pine).
 
 ## Full page index
 
