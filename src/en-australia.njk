@@ -1,0 +1,101 @@
+---
+layout: layouts/base.njk
+lang: en
+permalink: en/pollen-australia.html
+title: "Pollen Forecast for Australia: Grass Season by City | Respira"
+ogTitle: "Pollen Forecast for Australia: Grass Season by City"
+description: "When grass pollen season runs in Australia, south and north, and how to see today's level and forecast for your city on iPhone. Free."
+---
+{%- import "macros.njk" as m -%}
+{%- set us = constants.us -%}
+{#- The app's own rows (constants/seasonalCalendar.ts, ZONE_MONTHLY_INTENSITY):
+    grass austral_temperate 'ml......lhVV', grass austral_subtropical
+    'hhml....lmhh', cypress (Google's CYPRESS_PINE, Callitris) '......lmhml.'.
+    The zone line is 28°S (lib: austral zone by absolute latitude), so the
+    Gold Coast (28.02°S) is on the southern row and Brisbane (27.47°S) on the
+    northern one. Copy them here by hand if the app's rows ever change. -#}
+{%- set ROWS = [
+  { "id": "grass_south", "months": ["moderate","low","none","none","none","none","none","none","low","high","very_high","very_high"] },
+  { "id": "grass_north", "months": ["high","high","moderate","low","none","none","none","none","low","moderate","high","high"] },
+  { "id": "cypress_pine", "months": ["none","none","none","none","none","none","low","moderate","high","moderate","low","none"] }
+] -%}
+{%- set NAMES = { "grass_south": "Grass, south of Brisbane", "grass_north": "Grass, Brisbane and north", "cypress_pine": "Cypress pine" } -%}
+{%- set INTENSITY_LABELS_EN = { "none": "none", "low": "low", "moderate": "moderate", "high": "high", "very_high": "very high" } -%}
+{%- set CITIES = ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Gold Coast", "Canberra", "Newcastle", "Wollongong", "Hobart", "Geelong", "Sunshine Coast", "Toowoomba", "Ballarat", "Bendigo", "Launceston", "Albury", "Townsville", "Cairns", "Darwin"] -%}
+
+<main class="page">
+
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="/en/">Home</a> › Pollen in Australia
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1>Pollen forecast for Australia</h1>
+        <p>Grass pollen season runs from October to January across the south, and longer from Brisbane north. Respira shows today's level and the coming days for your city.</p>
+        <div class="hero-cta">
+          {{ m.storeBadge(i18nWeb.en) }}
+          <span class="hero-cta-note">{{ i18nWeb.en.badge.lead }}</span>
+        </div>
+      </div>
+      <div class="hero-shot">
+        <img src="/assets/img/app-au-map.webp" width="600" height="1223"
+             srcset="/assets/img/app-au-map-320.webp 320w, /assets/img/app-au-map-480.webp 480w, /assets/img/app-au-map.webp 600w"
+             sizes="(max-width: 56rem) min(14rem, 62vw), 19rem"
+             alt="Respira's pollen map of south-eastern Australia, with a coloured level for each city from Brisbane to Hobart."
+             decoding="async">
+      </div>
+    </div>
+  </header>
+
+  <section class="section" aria-labelledby="season">
+    <h2 id="season">When is grass pollen season in Australia?</h2>
+    <p>In Melbourne, Sydney, Adelaide, Perth, Canberra and Hobart, grass pollen starts in September, is high in October and peaks in November and December, before tailing off in January. From Brisbane north, the summer grasses keep it going from November to February and into March. Cypress pine (Callitris) comes earlier, in late winter and spring, peaking in September.</p>
+    {{ m.heatmapCalendarEn(ROWS, NAMES, us.MONTH_NAMES_EN, INTENSITY_LABELS_EN, build.month) }}
+    <p class="fine-print">Respira's seasonal calendar for Australia, by climate zone: an estimate, not a measurement. The line between the two grass rows is 28°S, between the Gold Coast and Brisbane. Seasons shift with rain and with the year's weather; the app shows the level reported for your own location each day.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="what">
+    <h2 id="what">What Respira shows in Australia</h2>
+    <p><strong>Today's level for your city.</strong> Grass and cypress pine, from the Google Pollen API, updated daily for wherever you are. When a species has no reading for your location, the app says so instead of showing a zero.</p>
+    <p><strong>The coming days.</strong> A forecast by day, so you can plan the weekend or a run before you go.</p>
+    <p><strong>A map of the whole country.</strong> The level in each city at a glance, plus air quality for the same place.</p>
+    <p><strong>A symptom diary.</strong> Note how each day went; the app pairs it with the pollen that day.</p>
+    <p><strong>Alerts and a PDF report for your GP</strong> are part of Respira Pro: set a level per allergen and get told the morning it is reached.</p>
+  </section>
+
+  <section class="section" aria-labelledby="cities">
+    <h2 id="cities">Australian cities on the map</h2>
+    <p>Respira works for any place in Australia. The map opens with these {{ CITIES.length }} cities: {% for c in CITIES %}{{ c }}{% if loop.revindex == 2 %} and {% elif not loop.last %}, {% endif %}{% endfor %}.</p>
+  </section>
+
+  <section class="section">
+    {{ m.ctaApp("Download Respira free", "Today's pollen level and forecast for your city in Australia, a map of the whole country and a symptom diary. Free, for iPhone and iPad.", i18nWeb.en) }}
+  </section>
+
+  <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
+</main>
+
+{#- App Store Connect credits a download to a campaign only when the App Store
+    link itself carries pt (our provider token) and ct. Ads land here with
+    ?ct=<campaign>; everyone else counts as this page. -#}
+<script>
+  (function () {
+    var ct = new URLSearchParams(location.search).get("ct");
+    if (!ct || !/^[a-z0-9-]{1,40}$/.test(ct)) ct = "web-pollen-australia";
+    var href = "https://apps.apple.com/app/apple-store/id6759206565?pt=128525298&ct=" + ct + "&mt=8";
+    document.querySelectorAll('a[href*="apps.apple.com"]').forEach(function (a) { a.href = href; });
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://respiraapp.fit/en/" },
+    { "@type": "ListItem", "position": 2, "name": "Pollen in Australia", "item": "https://respiraapp.fit/en/pollen-australia" }
+  ]
+}
+</script>
