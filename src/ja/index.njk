@@ -1,0 +1,198 @@
+---
+layout: layouts/base.njk
+lang: ja
+permalink: ja/index.html
+altEs: /
+altEn: /en/
+altJa: /ja/
+title: "花粉症アプリ Respira｜スギ・ヒノキの飛散予報と症状日記"
+ogTitle: "Respira｜スギ・ヒノキの飛散予報と症状日記"
+description: "スギ・ヒノキ・イネ科花粉の飛散予報を、住んでいる地域で毎日確認できるiPhoneアプリ。環境省の観測データをもとにした花粉カレンダー、5日間の予報、症状と薬の記録に対応。基本無料です。"
+---
+{%- import "macros.njk" as m -%}
+{#- Season rows: the app's own (constants/seasonalCalendar.ts on the Japan
+    release), built from the Ministry of the Environment's measured counts.
+    jp_central is below 37°N (Kanto to Kyushu, Hokuriku included), jp_north
+    37°N and up outside Hokkaido (Tohoku, most of Niigata). Copy them here by
+    hand if the app's rows change:
+      japanese_cedar   jp_central 'lmVl........'  jp_north '.lVm........'
+      japanese_cypress jp_central '..mh........'
+      grass            jp_central '...lmmlll...'
+    Hokkaido (cedar '..ll', no cypress) and Ryukyu (none) are stated in the
+    text rather than given rows of their own. -#}
+{%- set ROWS = [
+  { "name": "スギ（関東〜九州）", "months": ["low","moderate","very_high","low","none","none","none","none","none","none","none","none"] },
+  { "name": "スギ（東北など）", "months": ["none","low","very_high","moderate","none","none","none","none","none","none","none","none"] },
+  { "name": "ヒノキ（関東〜九州）", "months": ["none","none","moderate","high","none","none","none","none","none","none","none","none"] },
+  { "name": "イネ科（関東〜九州）", "months": ["none","none","none","low","moderate","moderate","low","low","low","none","none","none"] }
+] -%}
+{%- set MONTHS = ["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"] -%}
+{%- set LEVELS = { "none": "飛散なし", "low": "少ない", "moderate": "やや多い", "high": "多い", "very_high": "非常に多い" } -%}
+
+<main class="page">
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <h1><span class="phrase">スギ・ヒノキ花粉の</span><span class="phrase">飛散予報を</span><span class="phrase">毎日チェック</span></h1>
+        <p>Respiraは、スギ・ヒノキ・イネ科花粉の飛散の多さを地域ごとに毎日表示するiPhoneアプリです。登録した花粉だけを表示し、症状や薬も記録できます。</p>
+        <div class="hero-cta">
+          {{ m.storeBadge(i18nWeb.ja) }}
+          <span class="hero-cta-note">{{ i18nWeb.ja.badge.lead }}</span>
+        </div>
+      </div>
+      <div class="hero-shot">
+        <img src="/assets/img/app-ja-home.webp" width="600" height="1194"
+             srcset="/assets/img/app-ja-home-320.webp 320w, /assets/img/app-ja-home-480.webp 480w, /assets/img/app-ja-home.webp 600w"
+             sizes="(max-width: 56rem) min(14rem, 62vw), 19rem"
+             alt="横浜市を表示したRespiraのホーム画面。今日のリスク「少ない」と、登録した花粉（イネ科・スギ・ヒノキ）、空気の質が表示されています。"
+             decoding="async">
+      </div>
+    </div>
+  </header>
+
+  <section class="section" aria-labelledby="how">
+    <h2 id="how">使い方</h2>
+    <ol class="steps">
+      <li>
+        <h3>花粉を選ぶ</h3>
+        <p class="text-secondary">スギ、ヒノキ、イネ科から、症状が出るものを選びます。表示されるのは選んだ花粉だけです。</p>
+      </li>
+      <li>
+        <h3>今日と5日間の予報を見る</h3>
+        <p class="text-secondary">あなたの地域の飛散の多さを「飛散なし」から「極めて多い」までの段階で表示します。データがないときは「データなし」と表示し、ゼロとは表示しません。</p>
+      </li>
+      <li>
+        <h3>症状と薬を記録する</h3>
+        <p class="text-secondary">鼻水やくしゃみなどの症状と飲んだ薬を記録すると、その日の花粉と並べて振り返ることができます。</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section" aria-labelledby="season">
+    <h2 id="season">地域ごとの花粉シーズン</h2>
+    <p>関東から九州では、スギは2月に増え始め、3月にピークを迎えます。ヒノキは3月から増え、4月が多い時期です。東北などではスギのピークは3月で、4月まで続きます。北海道ではスギは少なく、ヒノキはほとんどありません。沖縄ではスギ・ヒノキはほとんど飛散しません。イネ科は5月から6月を中心に、初秋まで続きます。</p>
+    <div class="scroller" style="margin-block-start: var(--sp-5)">
+      <table class="heatmap">
+        <caption class="visually-hidden">地域ごとの花粉カレンダー：月別・花粉別の飛散の目安</caption>
+        <thead>
+          <tr>
+            <td></td>
+            {%- for mo in MONTHS %}
+            <th scope="col"{% if loop.index0 == build.month %} aria-current="date"{% endif %}>{{ mo }}</th>
+            {%- endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {%- for row in ROWS %}
+          <tr>
+            <th scope="row">{{ row.name }}</th>
+            {%- for lvl in row.months %}
+            <td class="hm-cell {% if lvl == "none" %}hm-none{% endif %}{% if loop.index0 == build.month %} hm-now{% endif %}"
+                {%- if lvl != "none" %} style="--_lv: var(--level-{{ m.cssLevel(lvl) }})"{% endif %}>
+              <span class="visually-hidden">{{ MONTHS[loop.index0] }}：{{ LEVELS[lvl] }}</span>
+            </td>
+            {%- endfor %}
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="fine-print">環境省の花粉飛散量調査と花粉症環境保健マニュアルをもとに、Respiraが加工して作成した目安です。「関東〜九州」はおおむね北緯37度未満、「東北など」は北緯37度以上（北海道を除く）の地域です。実際の飛散量は地域や天候、年によって変わります。<br>出典：環境省 <a href="https://www.env.go.jp/chemi/anzen/kafun/" rel="noopener">花粉飛散量調査</a>を加工して作成</p>
+  </section>
+
+  <section class="section" aria-labelledby="features">
+    <h2 id="features">主な機能</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>飛散予報</h3>
+        <p class="text-secondary">Google Pollen APIの予報をもとに、スギ・ヒノキ・イネ科の飛散の多さを毎日更新します。</p>
+      </div>
+      <div class="feature">
+        <h3>環境省の実測値</h3>
+        <p class="text-secondary">シーズン中は、近くに観測地点があれば、環境省「花粉飛散量調査」の最新の実測結果を、日付と観測地点つきで表示します。</p>
+      </div>
+      <div class="feature">
+        <h3>花粉カレンダー</h3>
+        <p class="text-secondary">環境省の観測データをもとに、地域ごとの月別の目安を表示します。</p>
+      </div>
+      <div class="feature">
+        <h3>地図と空気の質</h3>
+        <p class="text-secondary">主な都市の飛散状況を地図で確認できます。PM2.5、PM10、オゾンもあわせて表示します。</p>
+      </div>
+      <div class="feature">
+        <h3>症状日記と前夜のお知らせ</h3>
+        <p class="text-secondary">症状と薬を毎日記録できます。翌日に登録した花粉が多くなりそうなときに、前の晩にお知らせを受け取ることもできます。</p>
+      </div>
+      <div class="feature">
+        <h3>ウィジェット</h3>
+        <p class="text-secondary">アプリを開かなくても、ホーム画面で今日の飛散状況を確認できます。</p>
+      </div>
+      <div class="feature pro">
+        <h3>Respira Pro</h3>
+        <p class="text-secondary">設定したレベルに達した朝の通知、旅行先の予報がわかる旅行プラン、診察で医師に見せられるPDFレポート、広告の非表示。</p>
+      </div>
+    </div>
+    <ul class="shots" style="margin-block-start: var(--sp-7)">
+      <li><figure>
+        <img src="/assets/img/app-ja-map.webp" width="600" height="1236" loading="lazy" decoding="async"
+             srcset="/assets/img/app-ja-map-320.webp 320w, /assets/img/app-ja-map-480.webp 480w, /assets/img/app-ja-map.webp 600w"
+             sizes="13rem"
+             alt="Respiraの地図画面。本州中部の都市ごとに飛散の多さが色で表示され、東京都は「飛散なし」です。">
+        <figcaption><strong>地図</strong>都市ごとの飛散状況</figcaption>
+      </figure></li>
+      <li><figure>
+        <img src="/assets/img/app-ja-season.webp" width="600" height="1225" loading="lazy" decoding="async"
+             srcset="/assets/img/app-ja-season-320.webp 320w, /assets/img/app-ja-season-480.webp 480w, /assets/img/app-ja-season.webp 600w"
+             sizes="13rem"
+             alt="Respiraの花粉カレンダー画面。イネ科・スギ・ヒノキの月別の飛散の目安と、データの出典が表示されています。">
+        <figcaption><strong>花粉カレンダー</strong>地域ごとの月別の目安</figcaption>
+      </figure></li>
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="who">
+    <h2 id="who">こんな方に</h2>
+    <ul class="audience">
+      <li><strong>花粉症の方</strong>：外出や洗濯物、窓を開けるタイミングを決める前に、今日の飛散状況を確かめたい方に。</li>
+      <li><strong>通院中の方</strong>：症状と薬を毎日記録しておき、診察のときに医師に見せたい方に（PDFレポートはRespira Pro）。</li>
+      <li><strong>旅行や出張の多い方</strong>：日本を含む35か国に対応し、国ごとのデータで表示します。</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    {{ m.ctaApp("Respiraをダウンロード", "スギ・ヒノキ・イネ科の飛散予報、花粉カレンダー、症状日記。基本無料、iPhone・iPad対応です。", i18nWeb.ja) }}
+  </section>
+
+  <p class="fine-print">Respiraは情報提供のためのツールです。医師の診断や助言に代わるものではありません。</p>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      "@id": "https://respiraapp.fit/ja/#app",
+      "name": "Respira",
+      "operatingSystem": "iOS 16.0",
+      "applicationCategory": "HealthApplication",
+      "description": "スギ・ヒノキ・イネ科花粉の飛散予報、環境省の観測データをもとにした花粉カレンダー、症状と薬の記録ができるiPhoneアプリ。日本を含む35か国に対応。",
+      "url": "https://respiraapp.fit/ja/",
+      "downloadUrl": "https://apps.apple.com/jp/app/id6759206565",
+      "inLanguage": "ja",
+      "countriesSupported": "JP",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+      "publisher": { "@id": "https://respiraapp.fit/#org" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://respiraapp.fit/ja/#website",
+      "url": "https://respiraapp.fit/ja/",
+      "name": "Respira",
+      "inLanguage": "ja",
+      "publisher": { "@id": "https://respiraapp.fit/#org" }
+    }
+  ]
+}
+</script>

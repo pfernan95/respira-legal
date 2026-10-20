@@ -37,8 +37,15 @@ description: "Today's pollen level in 19 cities across England, Scotland, Wales,
   </section>
   {%- endfor %}
 
+  {%- set REVIEWS_T = { open: "“", close: "”", starsOf: "out of 5 stars", source: "App Store review", monthYearSep: " ",
+       months: ["January","February","March","April","May","June","July","August","September","October","November","December"] } %}
+  <section class="section" aria-labelledby="review">
+    <h2 id="review">From a user in London</h2>
+    {{ m.testimonials(appStoreReviews.quotes.gb, REVIEWS_T) }}
+  </section>
+
   <section class="section">
-    {{ m.ctaApp("Pollen where you are", "Respira shows the level for your own location, a five-day forecast and a symptom diary you can export for your GP or allergy specialist. Free for iPhone and iPad.", i18nWeb.en) }}
+    {{ m.ctaApp("Pollen where you are", "Respira shows the level for your own location, a five-day forecast and a symptom diary, with a PDF report for your GP or allergy specialist in Respira Pro. Free for iPhone and iPad.", i18nWeb.en) }}
   </section>
 
   <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>

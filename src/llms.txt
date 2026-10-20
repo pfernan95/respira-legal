@@ -11,6 +11,7 @@ Pollen data for Spain and the rest of Europe comes from the CAMS atmospheric mod
 ## Start here
 
 - [Respira in English](https://respiraapp.fit/en/): what the app does and the 35 countries it covers.
+- [Respira（日本語）](https://respiraapp.fit/ja/): スギ・ヒノキ・イネ科花粉の飛散予報（Google Pollen API）、環境省「花粉飛散量調査」をもとにした地域ごとの花粉カレンダー、症状日記。Japanese landing page: Japanese cedar (sugi), Japanese cypress (hinoki) and grass, season by region.
 - [Respira en español](https://respiraapp.fit/): today's pollen and air quality in Spain's main cities.
 
 ## Free tools

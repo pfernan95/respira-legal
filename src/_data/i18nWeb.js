@@ -116,4 +116,40 @@ export default {
       reject: "Reject",
     },
   },
+  // Japanese: one landing page (/ja/) and the privacy notice. Terms, support
+  // and deletion stay English, as in the app (lib/siteLinks.ts), and say so.
+  // No waitlist: its consent and the notice behind it are es/en only.
+  // The App Store badge is Apple's English artwork until the Japanese one is
+  // added from Apple's marketing tools (not reachable from the build).
+  ja: {
+    htmlLang: "ja",
+    ogLocale: "ja_JP",
+    home: "/ja/",
+    nav: { home: "ホーム", support: "/en/support", supportLabel: "サポート", download: "ダウンロード" },
+    footer: {
+      privacy: { href: "/ja/privacy", label: "プライバシーポリシー" },
+      terms: { href: "/en/terms", label: "利用規約（英語）" },
+      support: { href: "/en/support", label: "サポート（英語）" },
+      del: { href: "/en/delete-account", label: "アカウントの削除（英語）" },
+      contact: "お問い合わせ",
+      sourcesHtml:
+        '花粉データ：<a href="https://developers.google.com/maps/documentation/pollen" rel="noopener">Google Pollen API</a>。実測値と花粉カレンダー：環境省 <a href="https://www.env.go.jp/chemi/anzen/kafun/" rel="noopener">花粉飛散量調査</a>を加工して作成。',
+      disclaimer: "Respiraは情報提供のためのツールです。医師の診断や助言に代わるものではありません。",
+      switchLabel: "English",
+    },
+    badge: {
+      src: "/assets/app-store-badge-en.svg",
+      alt: "App Storeからダウンロード",
+      aria: "RespiraをApp Storeでダウンロード",
+      lead: "基本無料・iPhone／iPad対応",
+    },
+    legalNav: "法的情報",
+    mainNav: "メインメニュー",
+    cookieBanner: {
+      text: "ページの閲覧数と流入元を知るために、アクセス解析を使っています。同意いただくまでは動作しません。",
+      more: "プライバシーポリシー",
+      accept: "同意する",
+      reject: "同意しない",
+    },
+  },
 };

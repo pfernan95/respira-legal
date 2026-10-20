@@ -4,11 +4,14 @@ lang: en
 permalink: en/index.html
 altEs: /
 altEn: /en/
+altJa: /ja/
 title: "Respira · Pollen and air quality today, in 35 countries"
 ogTitle: "Respira · Pollen and air quality today"
 description: "Today's pollen levels and air quality for your city in the US, the UK, Australia and 31 more countries across Europe and beyond. Free for iPhone and iPad."
 ---
 {%- import "macros.njk" as m -%}
+{%- set REVIEWS_T = { open: "“", close: "”", starsOf: "out of 5 stars", source: "App Store review", monthYearSep: " ",
+     months: ["January","February","March","April","May","June","July","August","September","October","November","December"] } -%}
 
 <main class="page">
 
@@ -31,6 +34,52 @@ description: "Today's pollen levels and air quality for your city in the US, the
       </div>
     </div>
   </header>
+
+  <section class="section" aria-labelledby="how">
+    <h2 id="how">How it works</h2>
+    <ol class="steps">
+      <li>
+        <h3>Pick what you're allergic to</h3>
+        <p class="text-secondary">Grass, birch, oak, ragweed, cedar… Respira only shows you yours, and only the ones reported where you are.</p>
+      </li>
+      <li>
+        <h3>Check today and the days ahead</h3>
+        <p class="text-secondary">The level of each pollen at your location, with the source of every reading. When there is no reading, it says so instead of showing a zero.</p>
+      </li>
+      <li>
+        <h3>Log how you feel</h3>
+        <p class="text-secondary">The diary keeps your symptoms and medication next to that day's pollen, so you can see what actually sets you off.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section" aria-labelledby="where">
+    <h2 id="where">The same app, wherever you are</h2>
+    <ul class="shots">
+      <li><figure>
+        <img src="/assets/img/app-gb-home.webp" width="600" height="1204" loading="lazy" decoding="async"
+             srcset="/assets/img/app-gb-home-320.webp 320w, /assets/img/app-gb-home-480.webp 480w, /assets/img/app-gb-home.webp 600w"
+             sizes="13rem"
+             alt="Respira's home screen for London: today's risk, grass and birch levels, and when to go out.">
+        <figcaption><strong>London</strong>Copernicus CAMS model, by type</figcaption>
+      </figure></li>
+      <li><figure>
+        <img src="/assets/img/app-au-home.webp" width="600" height="1197" loading="lazy" decoding="async"
+             srcset="/assets/img/app-au-home-320.webp 320w, /assets/img/app-au-home-480.webp 480w, /assets/img/app-au-home.webp 600w"
+             sizes="13rem"
+             alt="Respira's home screen for Melbourne: today's risk with cypress and grass levels from Google, and air quality.">
+        <figcaption><strong>Melbourne</strong>Grass and cypress pine, from Google</figcaption>
+      </figure></li>
+      <li><figure>
+        <img src="/assets/img/app-ja-home.webp" width="600" height="1194" loading="lazy" decoding="async"
+             srcset="/assets/img/app-ja-home-320.webp 320w, /assets/img/app-ja-home-480.webp 480w, /assets/img/app-ja-home.webp 600w"
+             sizes="13rem"
+             alt="Respira's home screen in Japanese for Yokohama: today's risk with grass, Japanese cedar and Japanese cypress.">
+        <figcaption><strong>Yokohama</strong>In Japanese: cedar, cypress and grass</figcaption>
+      </figure></li>
+    </ul>
+    <p class="small text-secondary" style="margin-block-start: var(--sp-5)">Screenshots of the app itself, taken in each city.</p>
+  </section>
 
   <section class="section" aria-labelledby="countries">
     <h2 id="countries">35 countries, two data sources</h2>
@@ -69,10 +118,51 @@ description: "Today's pollen levels and air quality for your city in the US, the
 
   <section class="section" aria-labelledby="what">
     <h2 id="what">What the app does</h2>
-    <p><strong>Today's levels, by species.</strong> Only the allergens you have selected, only where they are actually reported.</p>
-    <p><strong>Air quality on the right scale.</strong> The EPA index in the United States, the European index elsewhere &mdash; 49 is "Moderate" on one and "Good" on the other, so showing the wrong one would be worse than showing none.</p>
-    <p><strong>A symptom diary.</strong> Record how you felt; the app pairs it with the pollen that day. Export a report for your allergist as a PDF.</p>
-    <p><strong>Smart notifications and a trip planner</strong> are part of Respira Pro. Set a threshold per allergen and get told the morning it is crossed, in any of your saved places.</p>
+    <div class="features">
+      <div class="feature">
+        <h3>Today's levels, by species</h3>
+        <p class="text-secondary">Only the allergens you have selected, only where they are actually reported.</p>
+      </div>
+      <div class="feature">
+        <h3>Map and forecast</h3>
+        <p class="text-secondary">The level in each city at a glance, and how the next days look where you are.</p>
+      </div>
+      <div class="feature">
+        <h3>Air quality on the right scale</h3>
+        <p class="text-secondary">The EPA index in the United States, the European index elsewhere &mdash; 49 is "Moderate" on one and "Good" on the other, so showing the wrong one would be worse than showing none.</p>
+      </div>
+      <div class="feature">
+        <h3>Seasonal calendar</h3>
+        <p class="text-secondary">When each pollen starts, peaks and ends in your region.</p>
+      </div>
+      <div class="feature">
+        <h3>Diary and reminders</h3>
+        <p class="text-secondary">Symptoms and medication day by day, and, if you turn it on, a heads-up the evening before when tomorrow is high for your allergens.</p>
+      </div>
+      <div class="feature">
+        <h3>Widget</h3>
+        <p class="text-secondary">Today's level on your home screen, without opening the app.</p>
+      </div>
+      <div class="feature pro">
+        <h3>With Respira Pro</h3>
+        <p class="text-secondary">Alerts the morning your allergen crosses the threshold you set, in any of your saved places; a trip planner with the destination's forecast; a PDF report for your allergist; and no ads.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="reviews">
+    <h2 id="reviews">What people say on the App Store</h2>
+    {{ m.testimonials(appStoreReviews.quotes.en, REVIEWS_T) }}
+    <p class="small text-secondary" style="margin-block-start: var(--sp-4)">Real reviews, copied word for word from the App Store, without the reviewer's name.</p>
+  </section>
+
+  <section class="section" aria-labelledby="who">
+    <h2 id="who">Who it's for</h2>
+    <ul class="audience">
+      <li><strong>People with hay fever</strong> who want to know what's in the air before going out, opening the windows or hanging the laundry outside.</li>
+      <li><strong>Anyone seeing an allergist</strong> who wants their symptoms and medication logged day by day, next to that day's pollen.</li>
+      <li><strong>People who travel or move</strong>: the same app works in 35 countries, each with its own data source.</li>
+    </ul>
   </section>
 
   <section class="section" aria-labelledby="honest">
@@ -101,7 +191,7 @@ description: "Today's pollen levels and air quality for your city in the US, the
       "url": "https://respiraapp.fit/en/",
       "downloadUrl": "https://apps.apple.com/app/6759206565",
       "inLanguage": "en",
-      "countriesSupported": "US, AU, NZ, AR, CL, ES, PT, FR, IT, DE, IE, GB",
+      "countriesSupported": "US, JP, AU, NZ, AR, CL, ES, PT, FR, IT, DE, IE, GB, AT, CH, NL, BE, LU, PL, CZ, SK, HU, SI, SE, NO, DK, FI, EE, LV, LT, GR, HR, RO, BG, RS",
       "featureList": [
         "Daily pollen levels by species for your location",
         "Multi-day pollen forecast",

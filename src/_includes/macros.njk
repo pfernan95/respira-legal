@@ -488,3 +488,22 @@
   <li><i class="hm-nodata"></i>{{ T.noData | capitalize }}</li>
 </ul>
 {% endmacro %}
+
+{# Reseñas literales de la App Store (src/_data/appStoreReviews.js): estrellas,
+   título y texto tal cual, con país y mes. Sin el apodo de quien la escribió.
+   `T` lleva lo que cambia por idioma: comillas, «de 5 estrellas», la fuente y
+   los nombres de los meses. #}
+{% macro testimonials(quotes, T) %}
+<div class="quotes">
+  {%- for q in quotes %}
+  <figure class="quote">
+    <p class="quote-stars" role="img" aria-label="{{ q.stars }} {{ T.starsOf }}">{% for i in range(0, q.stars) %}★{% endfor %}</p>
+    <blockquote>
+      <p class="quote-title">{{ q.title }}</p>
+      <p>{{ T.open }}{{ q.text }}{% if q.shortened %} […]{% endif %}{{ T.close }}</p>
+    </blockquote>
+    <figcaption>{{ T.source }} · {{ q.country }} · {{ T.months[(q.date.slice(5, 7) | int) - 1] }}{{ T.monthYearSep }}{{ q.date.slice(0, 4) }}</figcaption>
+  </figure>
+  {%- endfor %}
+</div>
+{% endmacro %}

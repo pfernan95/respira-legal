@@ -547,6 +547,45 @@ eleventyExcludeFromCollections: true
   .waitlist-actions button:disabled { opacity: .6; cursor: default; }
 }
 
+/* Portadas (/, /en/, /ja/): cómo funciona, funciones, capturas por país y
+   reseñas literales de la App Store. Tarjetas planas, sin sombra salvo las
+   reseñas, para que la jerarquía la siga marcando la captura del héroe. */
+@layer components {
+  .steps { list-style: none; padding: 0; display: grid; gap: var(--sp-4); counter-reset: step; }
+  .steps > li { counter-increment: step; padding: var(--sp-5); border: 1px solid var(--border); border-radius: var(--radius-m); background: var(--surface); }
+  .steps > li::before {
+    content: counter(step); display: grid; place-items: center; inline-size: 2rem; block-size: 2rem;
+    margin-block-end: var(--sp-3); border-radius: 50%; background: var(--primary-dark); color: #fff; font-weight: 600;
+  }
+  .steps h3, .feature h3 { margin-block-end: var(--sp-2); }
+  .features { display: grid; gap: var(--sp-4); grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr)); }
+  .feature { padding: var(--sp-5); border-radius: var(--radius-m); background: var(--surface-elevated); }
+  .feature.pro { background: var(--surface); border: 1px solid var(--primary); }
+  .shots { list-style: none; padding: 0; display: grid; gap: var(--sp-6); grid-template-columns: repeat(auto-fit, minmax(min(12rem, 100%), 1fr)); }
+  .shots figure { display: grid; gap: var(--sp-3); justify-items: center; text-align: center; }
+  .shots img { inline-size: min(13rem, 70vw); border-radius: 22px; box-shadow: var(--shadow-m); }
+  .shots figcaption { font-size: var(--fs--1); color: var(--text-secondary); max-inline-size: 22ch; }
+  .shots figcaption strong { display: block; color: var(--text-primary); font-size: var(--fs-0); }
+  .quotes { display: grid; gap: var(--sp-4); grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr)); }
+  .quote { display: grid; align-content: start; gap: var(--sp-3); padding: var(--sp-5); border: 1px solid var(--border); border-radius: var(--radius-m); background: var(--surface); box-shadow: var(--shadow-s); }
+  .quote blockquote { margin: 0; display: grid; gap: var(--sp-2); }
+  .quote-stars { color: var(--text-primary); letter-spacing: .12em; }
+  .quote-title { font-weight: 600; }
+  .quote figcaption { font-size: var(--fs--1); color: var(--text-secondary); }
+  .rating-line { font-weight: 600; margin-block-end: var(--sp-4); }
+  .audience { list-style: none; padding: 0; display: grid; gap: var(--sp-4); grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr)); }
+  .audience > li { padding-inline-start: var(--sp-4); border-inline-start: 3px solid var(--primary); }
+  @media (min-width: 48rem) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  /* Japonés: Fraunces y Plex no tienen kana ni kanji, y una cascada glifo a
+     glifo mezcla Georgia con la fuente del sistema dentro de un titular. */
+  :lang(ja) { --font-display: system-ui, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif; --font-body: var(--font-display); }
+  :lang(ja) h1, :lang(ja) h2, :lang(ja) h3 { word-break: auto-phrase; line-break: strict; }
+  /* Safari has no auto-phrase: the hero title is split into phrases by hand,
+     each kept whole, and sized so the longest (9 characters) fits at 320 px. */
+  :lang(ja) .phrase { display: inline-block; }
+  :lang(ja) .hero-copy h1 { font-size: clamp(1.75rem, 1.2rem + 2.8vw, 3.75rem); }
+}
+
 @layer utilities {
   .visually-hidden { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .text-secondary { color: var(--text-secondary); }

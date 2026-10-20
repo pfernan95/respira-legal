@@ -39,12 +39,19 @@
   <link rel="alternate" hreflang="en" href="https://respiraapp.fit{{ altEn }}">
   <link rel="alternate" hreflang="es" href="https://respiraapp.fit{{ altEs }}">
   <link rel="alternate" hreflang="x-default" href="https://respiraapp.fit{{ altEs }}">
+  {#- Japanese exists only where a page names its twin with `altJa` (the three
+      home pages today). Japan matches none of the regional values above, so
+      without this a Japanese search lands on the Spanish x-default. -#}
+  {%- if altJa %}
+  <link rel="alternate" hreflang="ja" href="https://respiraapp.fit{{ altJa }}">
+  {%- endif %}
   {%- endif %}
   {%- endif %}
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF8F5">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#16181A">
 
-  {%- set ogImage = "https://respiraapp.fit/og-image-en.png" if (lang or "es") == "en" else "https://respiraapp.fit/og-image.png" %}
+  {%- set ogImages = { "en": "https://respiraapp.fit/og-image-en.png", "ja": "https://respiraapp.fit/og-image-ja.png" } %}
+  {%- set ogImage = ogImages[lang] or "https://respiraapp.fit/og-image.png" %}
   <meta property="og:type" content="{{ ogType or "website" }}">
   <meta property="og:site_name" content="Respira">
   <meta property="og:locale" content="{{ L.ogLocale }}">
@@ -94,8 +101,11 @@
       {#- The language switch only appears where there IS a counterpart, for the
           same reason hreflang does. -#}
       {%- if altEs and altEn %}
-      <a href="{{ altEn if (lang or "es") == "es" else altEs }}" rel="alternate"
-         hreflang="{{ "en-US" if (lang or "es") == "es" else "es-ES" }}">{{ L.footer.switchLabel }}</a>
+      <a href="{{ altEs if lang == "en" else altEn }}" rel="alternate"
+         hreflang="{{ "es-ES" if lang == "en" else "en-US" }}">{{ L.footer.switchLabel }}</a>
+      {%- if altJa and lang != "ja" %}
+      <a href="{{ altJa }}" rel="alternate" hreflang="ja" lang="ja">日本語</a>
+      {%- endif %}
       {%- endif %}
     </nav>
     {%- if (lang or "es") == "es" %}
@@ -106,8 +116,12 @@
       <a href="/polen-cordoba">Córdoba</a> · <a href="/polen-bilbao">Bilbao</a>
     </p>
     {%- endif %}
+    {%- if L.footer.sourcesHtml %}
+    <p>{{ L.footer.sourcesHtml | safe }}</p>
+    {%- else %}
     <p>{{ L.footer.sourcesLead }} <a href="https://open-meteo.com/" rel="noopener">Open-Meteo</a> {{ L.footer.sourcesMid }}
       {{ L.footer.calendars }} <a href="https://www.uco.es/rea/" rel="noopener">{{ L.footer.reaName }}</a>.</p>
+    {%- endif %}
     <p>{{ L.footer.disclaimer }}</p>
     <p>&copy; 2026 Respira</p>
   </footer>
@@ -123,6 +137,10 @@
       Without JavaScript everyone gets the badge. The email goes to the
       android-waitlist Edge Function (respira-app), stored with one-purpose
       consent: a single launch notice. See privacidad.html / en/privacy.html. -#}
+  {#- Japanese pages carry no waitlist: its consent text and the privacy notice
+      that backs it exist in Spanish and English only, and the table stores
+      es/en. A Japanese visitor sees the badge alone. -#}
+  {%- if L.waitlist %}
   {%- set W = L.waitlist %}
   <dialog class="waitlist" id="android-waitlist" aria-labelledby="waitlist-title">
     <form class="flow" id="waitlist-form" novalidate>
@@ -224,6 +242,7 @@
       });
     })();
   </script>
+  {%- endif %}
 
   {#- Web analytics (PostHog Cloud EU), opt-in only — see privacidad.html §3
       / privacy.html §3. Loads posthog-js directly from PostHog's own CDN
