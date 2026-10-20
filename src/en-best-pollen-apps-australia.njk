@@ -1,0 +1,104 @@
+---
+layout: layouts/base.njk
+lang: en
+permalink: "en/best-pollen-apps-australia.html"
+title: "Best Pollen and Hay Fever Apps in Australia (2026) | Respira"
+ogTitle: "Best pollen and hay fever apps in Australia (2026)"
+description: "Melbourne, Canberra, Sydney and Perth Pollen, AirRater, IQAir and Respira compared: who counts the pollen, which cities, thunderstorm asthma alerts, prices."
+---
+{%- set A = auPollenApps -%}
+
+<main class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> › <a href="/en/pollen-australia">Australia</a> › Pollen apps</nav>
+
+  <header class="flow">
+    <h1>Best pollen and hay fever apps in Australia</h1>
+    <p>We make one of these, so read this with that in mind. This is not a ranking with Respira at the top. It is what each app is genuinely best at, taken from its Australian App Store listing and its own website on {{ A.snapshotDate }}, including the places where another app is the better answer, and in Australia that is most of the big cities.</p>
+  </header>
+
+  <section class="section flow" aria-labelledby="short-answer">
+    <h2 id="short-answer">The short answer</h2>
+    <ul>
+      <li><strong>Melbourne and Victoria:</strong> Melbourne Pollen Count. Counts from the state's pollen network, alerts for the thunderstorm asthma forecast, and more than 10,000 ratings.</li>
+      <li><strong>Canberra, Sydney and Perth:</strong> the local apps from the same team (Canberra Pollen Count, Sydney Pollen Count &amp; Forecast, Perth Pollen Count), each fed by a real pollen trap in that city.</li>
+      <li><strong>Tasmania, and bushfire smoke anywhere:</strong> AirRater.</li>
+      <li><strong>Just the Victorian thunderstorm asthma forecast:</strong> the Thunderstorm Asthma app, or VicEmergency itself.</li>
+      <li><strong>Air quality first:</strong> IQAir AirVisual.</li>
+      <li><strong>One app for anywhere in Australia, and abroad:</strong> Respira. Grass and cypress pine from the Google Pollen API for any place in the country, a symptom diary, and the same app in 34 other countries. It uses a forecast model, not local traps, and has no Australian ratings yet.</li>
+    </ul>
+  </section>
+
+  <section class="section flow" aria-labelledby="apps">
+    <h2 id="apps">The apps</h2>
+    <p class="text-secondary">The four city apps and AirRater are all made by {{ A.airhealthNote }}.</p>
+
+    {%- for c in A.list %}
+    <h3>{{ c.name }}</h3>
+    <p class="small text-secondary">{{ c.seller }} · {{ c.where }} · best for: {{ c.best }}</p>
+    <p>{{ c.body }}</p>
+    <p class="small text-secondary">{{ c.price }}. {{ c.rating }} in the Australian App Store. Sources: {% for s in c.sources %}<a href="{{ s[1] }}" rel="noopener">{{ s[0] }}</a>{% if not loop.last %}, {% endif %}{% endfor %}.</p>
+    {%- endfor %}
+
+    <h3>Respira</h3>
+    <p class="small text-secondary">Pablo Fernández Jiménez · Anywhere in Australia, and 34 other countries · best for: one app wherever you are</p>
+    <p>Respira reports grass and cypress pine (Callitris) for any place in Australia, from the Google Pollen API, updated daily, with the coming days, a map of 20 Australian cities and air quality for the same place. When there is no reading for a species, it says so instead of showing a zero. It keeps a symptom and medication diary; alerts at your own threshold, a trip planner and a PDF report for your GP are in Respira Pro. It does not offer a thunderstorm asthma forecast, and Google's forecast is a model, not a count from a local trap.</p>
+    <p class="small text-secondary">{{ A.respira.price }}. {{ A.respira.rating }}. <a href="/en/pollen-australia">When the pollen season runs in Australia</a>.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="thunderstorm">
+    <h2 id="thunderstorm">Thunderstorm asthma</h2>
+    <p>Epidemic thunderstorm asthma happens when there is a lot of grass pollen in the air and a particular kind of thunderstorm arrives, and many people develop asthma symptoms in a short time (<a href="https://www.betterhealth.vic.gov.au/health/conditionsandtreatments/thunderstorm-asthma" rel="noopener">Better Health Channel</a>). On 21 November 2016, Melbourne had the world's largest recorded event: it contributed to 10 deaths (<a href="https://www.health.vic.gov.au/environmental-health/epidemic-thunderstorm-asthma-program" rel="noopener">Victorian Department of Health</a>).</p>
+    <p>Victoria publishes an official epidemic thunderstorm asthma risk forecast every day from 1 October to 31 December, three days ahead, on <a href="https://www.health.vic.gov.au/environmental-health/epidemic-thunderstorm-asthma-risk-forecast" rel="noopener">VicEmergency</a>. Melbourne Pollen Count and the Thunderstorm Asthma app pass it on; Respira does not. If you have asthma, follow the advice of your doctor and your asthma action plan.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="honest">
+    <h2 id="honest">Where Respira is not the right answer</h2>
+    <p>If you live in Melbourne, Canberra, Sydney or Perth, the local app reads a pollen trap in your city. Respira's Australian data is Google's forecast model: useful anywhere, but not a count.</p>
+    <p>If thunderstorm asthma is your worry, use the Victorian forecast, through VicEmergency or one of the apps above. Respira does not carry it.</p>
+    <p>And if a large local user base is what makes you trust an app, Respira does not have one in Australia: it added the country in September 2026 and has no Australian ratings yet.</p>
+  </section>
+
+  <section class="section" aria-labelledby="app">
+    <h2 id="app">Try Respira</h2>
+    <p><a class="button" href="https://apps.apple.com/app/6759206565" rel="noopener">Get Respira for iPhone</a></p>
+    <p style="margin-block-start: var(--sp-4)"><a href="/en/best-pollen-apps">Pollen apps in the United States</a> · <a href="/en/pollen-australia">Pollen seasons in Australia</a></p>
+  </section>
+
+  <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional. Details of other apps are taken from their Australian App Store listings and websites on {{ A.snapshotDate }} and may have changed since.</p>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://respiraapp.fit/en/" },
+        { "@type": "ListItem", "position": 2, "name": "Australia", "item": "https://respiraapp.fit/en/pollen-australia" },
+        { "@type": "ListItem", "position": 3, "name": "Pollen apps", "item": "https://respiraapp.fit{{ page.url | extensionless }}" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the best pollen app in Melbourne?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Melbourne Pollen Count. It uses counts from Victoria's pollen monitoring network, alerts when grass pollen is high, and passes on the Victorian epidemic thunderstorm asthma forecast. It had about 10,400 ratings in the Australian App Store in October 2026." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which pollen app works anywhere in Australia?",
+          "acceptedAnswer": { "@type": "Answer", "text": "AirRater covers air quality and smoke across Australia, with pollen where it has monitors (Tasmania, the ACT and Campbelltown in NSW). Respira shows grass and cypress pine for any place in Australia from the Google Pollen API, a forecast model rather than local traps. Airmine Pollen gives model-based 15-day forecasts for Australia excluding Tasmania." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there an app for thunderstorm asthma?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Victoria publishes an official epidemic thunderstorm asthma risk forecast on VicEmergency from 1 October to 31 December. Melbourne Pollen Count and the Thunderstorm Asthma app both show it." }
+        }
+      ]
+    }
+  ]
+}
+</script>

@@ -6,12 +6,16 @@ ogTitle: "Respira · Polen en España hoy"
 description: "Polen y calidad del aire hoy en las principales ciudades de España y qué pólenes están en temporada. App gratuita para iPhone, también en Argentina y Chile."
 altEs: /
 altEn: /en/
+altJa: /ja/
 ---
 {%- import "macros.njk" as m -%}
 {%- set POLLEN_TYPES = constants.pollen.POLLEN_TYPES -%}
 {%- set cal = constants.seasonalCalendar -%}
 {%- set LEVEL_LABELS = { low: "Bajo", moderate: "Moderado", high: "Alto", very_high: "Muy alto", extreme: "Extremo" } -%}
 {%- set principales = ["madrid","barcelona","valencia","sevilla","zaragoza","malaga","bilbao","murcia"] -%}
+{%- set rating = appStoreReviews.ratings.es -%}
+{%- set REVIEWS_T = { open: "«", close: "»", starsOf: "de 5 estrellas", source: "Reseña en la App Store", monthYearSep: " de ",
+     months: ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"] } -%}
 
 <main class="page">
 
@@ -19,11 +23,14 @@ altEn: /en/
     <div class="hero-inner">
       <div class="hero-copy">
         <h1>Polen y calidad del aire en España, hoy</h1>
-        <p>Respira reúne los niveles de polen y el índice de calidad del aire de tu ciudad, con previsión de varios días y calendario polínico por especie. El dato en el HTML, actualizado a diario. La app, gratuita para iPhone y iPad, funciona en España y en otros 34 países de Europa, América, Asia y Oceanía, entre ellos Argentina, Chile y Japón.</p>
+        <p>Respira te dice cuánto polen hay hoy en tu ciudad, solo de lo que te da alergia, y cómo vienen los próximos días. Gratis para iPhone y iPad, en España y en otros 34 países, entre ellos Argentina, Chile y Japón.</p>
         <div class="hero-cta">
           {{ m.storeBadge(i18nWeb.es) }}
           <span class="hero-cta-note">{{ i18nWeb.es.badge.lead }}</span>
         </div>
+        {%- if rating and rating.count >= 10 %}
+        <p class="small"><a href="#resenas">★ {{ rating.average | round(1) | string | replace(".", ",") }} de 5 en la App Store de España · {{ rating.count }} valoraciones</a></p>
+        {%- endif %}
         {{ m.updateLine(pollenData.fetchedAt, false) }}
       </div>
       <div class="hero-shot">
@@ -65,6 +72,88 @@ altEn: /en/
     <p style="margin-block-start: var(--sp-4)"><a href="/mapa-polen-espana">Ver las 52 capitales →</a></p>
   </section>
 
+  <section class="section" aria-labelledby="como-funciona">
+    <h2 id="como-funciona">Cómo funciona</h2>
+    <ol class="steps">
+      <li>
+        <h3>Elige a qué tienes alergia</h3>
+        <p class="text-secondary">Gramíneas, olivo, cupresáceas, plátano de sombra, parietaria… Respira solo te enseña los tuyos.</p>
+      </li>
+      <li>
+        <h3>Mira hoy y los próximos días</h3>
+        <p class="text-secondary">El nivel de cada polen en tu ubicación, con la fuente de cada dato. Si no hay lectura, lo dice en vez de poner un cero.</p>
+      </li>
+      <li>
+        <h3>Apunta cómo te encuentras</h3>
+        <p class="text-secondary">El diario guarda tus síntomas y la medicación junto al polen de ese día, para ver qué te afecta de verdad.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section" aria-labelledby="funciones">
+    <h2 id="funciones">Qué hace la app</h2>
+    <div class="features">
+      <div class="feature">
+        <h3>Polen por especie</h3>
+        <p class="text-secondary">Hasta 11 especies en España, del modelo CAMS de Copernicus y de las estaciones de la Red Española de Aerobiología.</p>
+      </div>
+      <div class="feature">
+        <h3>Mapa y previsión</h3>
+        <p class="text-secondary">El nivel en cada ciudad de un vistazo y cómo evoluciona en los próximos días.</p>
+      </div>
+      <div class="feature">
+        <h3>Calidad del aire</h3>
+        <p class="text-secondary">Índice europeo de calidad del aire, partículas PM2,5 y PM10 y ozono, para el mismo sitio.</p>
+      </div>
+      <div class="feature">
+        <h3>Calendario polínico</h3>
+        <p class="text-secondary">Cuándo empieza, cuándo es más fuerte y cuándo acaba cada polen en tu zona.</p>
+      </div>
+      <div class="feature">
+        <h3>Diario y recordatorios</h3>
+        <p class="text-secondary">Síntomas y medicación día a día, y, si lo activas, un aviso la noche anterior cuando mañana viene alto tu polen.</p>
+      </div>
+      <div class="feature">
+        <h3>Widget</h3>
+        <p class="text-secondary">Tu nivel de hoy en la pantalla de inicio, sin abrir la app.</p>
+      </div>
+      <div class="feature pro">
+        <h3>Con Respira Pro</h3>
+        <p class="text-secondary">Avisos cuando tu polen llega al nivel que elijas, en todas tus ubicaciones; plan de viajes con la previsión del destino; informe en PDF para tu alergólogo; y sin anuncios.</p>
+      </div>
+    </div>
+    <ul class="shots" style="margin-block-start: var(--sp-7)">
+      <li><figure>
+        <img src="/assets/img/app-es-02.webp" width="600" height="1298" loading="lazy" decoding="async"
+             alt="Diario de Respira: calendario del mes con los días anotados y la lista de los últimos 7 días.">
+        <figcaption><strong>Diario de síntomas</strong>Cada día, con el polen que había.</figcaption>
+      </figure></li>
+      <li><figure>
+        <img src="/assets/img/app-es-03.webp" width="600" height="1298" loading="lazy" decoding="async"
+             alt="Mapa de polen de Respira con un punto de color por ciudad en toda España.">
+        <figcaption><strong>Toda España en un mapa</strong>El polen por ciudad y alérgeno.</figcaption>
+      </figure></li>
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="resenas">
+    <h2 id="resenas">Lo que dicen en la App Store</h2>
+    {%- if rating and rating.count >= 10 %}
+    <p class="rating-line">★ {{ rating.average | round(1) | string | replace(".", ",") }} de 5 en la App Store de España, con {{ rating.count }} valoraciones.</p>
+    {%- endif %}
+    {{ m.testimonials(appStoreReviews.quotes.es, REVIEWS_T) }}
+    <p class="small text-secondary" style="margin-block-start: var(--sp-4)">Reseñas reales copiadas tal cual de la App Store, sin el nombre de quien las escribió.</p>
+  </section>
+
+  <section class="section" aria-labelledby="para-quien">
+    <h2 id="para-quien">Para quién es</h2>
+    <ul class="audience">
+      <li><strong>Si tienes alergia al polen</strong> y quieres saber qué hay hoy en el aire antes de salir, ventilar o tender la ropa.</li>
+      <li><strong>Si vas al alergólogo</strong> y quieres llegar con tus síntomas y tu medicación apuntados día a día, junto al polen de cada día.</li>
+      <li><strong>Si te mueves o viajas</strong>: la misma app funciona en 35 países, de España a Japón, cada uno con su fuente de datos.</li>
+    </ul>
+  </section>
+
   <section class="section" aria-labelledby="temporada">
     <h2 id="temporada">Qué está en temporada ahora</h2>
     <p class="text-secondary">Pólenes activos en {{ cal.MONTH_NAMES_FULL[build.month] | lower }} en España, según el calendario polínico:</p>
@@ -84,7 +173,7 @@ altEn: /en/
   <section class="section flow" aria-labelledby="que-es">
     <h2 id="que-es">Una herramienta para quien lo pasa mal con el polen</h2>
     <p>Según la <a href="https://www.seaic.org/" rel="noopener">Sociedad Española de Alergología e Inmunología Clínica (SEAIC)</a>, más de 8 millones de personas en España sufren algún tipo de alergia al polen. La temporada se ha alargado en las últimas décadas: las cupresáceas arrancan en invierno, las gramíneas y el olivo dominan de la primavera al verano, y las herbáceas de zonas secas alargan los síntomas hasta el otoño.</p>
-    <p>Respira te muestra qué hay en el aire de tu ciudad hoy y en los próximos días, con niveles por especie, calidad del aire y un diario de síntomas para llevar a tu consulta. Sin anuncios y sin compartir tus datos.</p>
+    <p>Respira te muestra qué hay en el aire de tu ciudad hoy y en los próximos días, con niveles por especie, calidad del aire y un diario de síntomas para llevar a tu consulta.</p>
   </section>
 
   <section class="section" aria-labelledby="explora">
@@ -97,7 +186,7 @@ altEn: /en/
   </section>
 
   <section class="section">
-    {{ m.ctaApp("Descarga Respira gratis", "Niveles de polen de tu ubicación, previsión, calidad del aire y diario de síntomas. Sin coste y sin anuncios, para iPhone y iPad.") }}
+    {{ m.ctaApp("Descarga Respira gratis", "Niveles de polen de tu ubicación, previsión, calidad del aire y diario de síntomas. Gratis, para iPhone y iPad.") }}
   </section>
 
 </main>
@@ -112,8 +201,8 @@ altEn: /en/
       "name": "Respira",
       "operatingSystem": "iOS 16.0",
       "applicationCategory": "HealthApplication",
-      "description": "App para personas alérgicas al polen en España, Argentina, Chile y otros 32 países. Niveles de polen y calidad del aire, calendario de polinización, diario de síntomas y recordatorios.",
-      "countriesSupported": "ES, AR, CL, PT, FR, IT, DE, IE, GB, AT, CH, NL, BE, LU, PL, CZ, SK, HU, SI, SE, NO, DK, FI, EE, LV, LT, GR, HR, RO, BG, RS, US, AU, NZ",
+      "description": "App para personas alérgicas al polen en España y otros 34 países, entre ellos Argentina, Chile y Japón. Niveles de polen y calidad del aire, calendario de polinización, diario de síntomas y recordatorios.",
+      "countriesSupported": "ES, AR, CL, PT, FR, IT, DE, IE, GB, AT, CH, NL, BE, LU, PL, CZ, SK, HU, SI, SE, NO, DK, FI, EE, LV, LT, GR, HR, RO, BG, RS, US, AU, NZ, JP",
       "url": "https://respiraapp.fit/",
       "downloadUrl": "https://apps.apple.com/app/6759206565",
       "inLanguage": "es-ES",
