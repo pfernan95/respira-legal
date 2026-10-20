@@ -1,0 +1,59 @@
+# Weekly Search Console report (tools/gsc-report.mjs).
+#
+# Needs the repository secret GSC_SERVICE_ACCOUNT_JSON: the JSON key of a
+# Google Cloud service account with the Search Console API enabled, added as a
+# user (Restricted) to the respiraapp.fit property. Without it the job says so
+# and stops green. Optional variable GSC_SITE picks the property.
+#
+# Reports go to the `gsc-reports` branch, never to main: a push to main
+# redeploys the site, and these files are not part of it. Each run adds
+# reports/gsc/<date>.json and rewrites reports/gsc/latest.md; the same
+# Markdown shows in the run's summary.
+name: gsc-report
+
+on:
+  schedule:
+    - cron: "30 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gsc-report
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Query Search Console
+        env:
+          GSC_SERVICE_ACCOUNT_JSON: ${{ secrets.GSC_SERVICE_ACCOUNT_JSON }}
+          GSC_SITE: ${{ vars.GSC_SITE }}
+        run: node tools/gsc-report.mjs "$RUNNER_TEMP/gsc"
+
+      - name: Commit to the gsc-reports branch
+        run: |
+          if [ ! -f "$RUNNER_TEMP/gsc/latest.md" ]; then echo "No report written."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin gsc-reports >/dev/null; then
+            git fetch origin gsc-reports
+            git worktree add "$RUNNER_TEMP/branch" gsc-reports
+          else
+            git worktree add --detach "$RUNNER_TEMP/branch"
+            git -C "$RUNNER_TEMP/branch" checkout --orphan gsc-reports
+            git -C "$RUNNER_TEMP/branch" rm -rf --quiet .
+          fi
+          mkdir -p "$RUNNER_TEMP/branch/reports/gsc"
+          cp "$RUNNER_TEMP"/gsc/* "$RUNNER_TEMP/branch/reports/gsc/"
+          git -C "$RUNNER_TEMP/branch" add reports/gsc
+          git -C "$RUNNER_TEMP/branch" commit -m "gsc report $(date -u +%F)" || exit 0
+          git -C "$RUNNER_TEMP/branch" push origin gsc-reports
