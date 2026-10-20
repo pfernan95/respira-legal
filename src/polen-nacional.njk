@@ -8,8 +8,10 @@ pagination:
 permalink: "alergia-{{ info.slug }}.html"
 ogType: article
 eleventyComputed:
-  title: "{{ info.h1 }}: síntomas y temporada — Respira"
-  ogTitle: "{{ info.h1 }}: síntomas y temporada"
+  # info.title, when a page has one, says what people actually search for
+  # (ambrosía: "qué es ambrosía en el clima"); the rest keep the h1 pattern.
+  title: "{{ info.title if info.title else info.h1 + ': síntomas y temporada' }} — Respira"
+  ogTitle: "{{ info.title if info.title else info.h1 + ': síntomas y temporada' }}"
   description: "{{ info.metaDescription }}"
 ---
 {%- import "macros.njk" as m -%}
@@ -31,7 +33,7 @@ eleventyComputed:
 
   {%- if info.queEs %}
   <section class="section flow" aria-labelledby="que-es">
-    <h2 id="que-es">¿Qué es la {{ info.pollenName | lower }} que aparece en el tiempo?</h2>
+    <h2 id="que-es">{{ info.headings.queEs if (info.headings and info.headings.queEs) else "¿Qué es la " + (info.pollenName | lower) + " que aparece en el tiempo?" }}</h2>
     {%- for parrafo in info.queEs %}
     <p>{{ parrafo | safe }}</p>
     {%- endfor %}
