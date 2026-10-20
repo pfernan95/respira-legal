@@ -30,33 +30,11 @@ comprueba cada regla y por qué está en el skill `google-seo-starter` de
 
 ### Qué pasa en Google: informe semanal de Search Console
 
-`tools/gsc-report.mjs`, todos los lunes (`.github/workflows/gsc-report.yml`).
-Compara los últimos 28 días con datos definitivos con los 28 anteriores. Da:
-- clics, impresiones, CTR y posición por tipo de página;
-- las páginas que vigilamos y desde cuándo están publicadas;
-- las «oportunidades»: consultas en posición 5–20 con impresiones;
-- las consultas principales;
-- los países.
-
-El informe se guarda en la rama `gsc-reports` (`reports/gsc/latest.md`) y
-sale también en el resumen de cada ejecución. No va a `main` porque un push a
-`main` vuelve a desplegar la web.
-
-Configuración, una vez:
-1. En Google Cloud, crear un proyecto, activar **Google Search Console API**
-   y crear una **cuenta de servicio** con una clave JSON.
-2. En Search Console, en la propiedad respiraapp.fit: Configuración →
-   Usuarios y permisos → Añadir usuario. Pon el email de la cuenta de
-   servicio con permiso **Restringido**.
-3. En GitHub, en este repo: Settings → Secrets and variables → Actions →
-   New repository secret. Nombre `GSC_SERVICE_ACCOUNT_JSON`; valor, el JSON
-   entero.
-4. Lanzar el workflow `gsc-report` a mano la primera vez (Actions → Run
-   workflow).
-
-Sin el secreto, el job lo dice y termina en verde. Si la propiedad es de
-prefijo de URL y no de dominio, el script la prueba sola. Para fijarla, usa
-la variable `GSC_SITE`.
+El informe semanal de Search Console no vive aquí: está en el repo privado
+`pfernan95/respira-app` (`scripts/gsc-report.mjs`, workflow `gsc-report`).
+Este repo es público, y todo lo que un workflow escribe en él (ramas, logs,
+resúmenes de ejecución) lo puede leer cualquiera. El informe son nuestras
+consultas, clics, posiciones y países.
 
 ### IndexNow (Bing y, a través de Bing, ChatGPT y Copilot)
 

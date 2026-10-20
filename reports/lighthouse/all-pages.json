@@ -1,0 +1,2094 @@
+{
+ "base": "http://localhost:8091",
+ "ranAt": "2026-10-18T19:18:18.379Z",
+ "results": {
+  "/delete-account": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/allergy-oak": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/calidad-aire-y-polen": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/allergy-ragweed": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/allergy-birch": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/allergy-juniper": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/allergy-maple": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/allergy-elm": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/allergy-ash": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/allergy-pine": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/allergy-cottonwood": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/allergy-grass": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/allergy-alder": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/best-pollen-apps": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/respira-vs-pollen-com": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/respira-vs-zyrtec-allergycast": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/respira-vs-iqair-airvisual": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-new-york": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-los-angeles": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-chicago": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-dallas": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-houston": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-washington": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-philadelphia": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-atlanta": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-miami": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-phoenix": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-boston": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-san-francisco": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-riverside": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-detroit": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-seattle": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-minneapolis": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-san-diego": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-denver": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-tampa": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-st-louis": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-baltimore": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-charlotte": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-orlando": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-san-antonio": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-portland": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-sacramento": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-pittsburgh": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-las-vegas": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-austin": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-cincinnati": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-kansas-city": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-columbus": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-indianapolis": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-cleveland": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-san-jose": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-nashville": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-virginia-beach": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-providence": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-jacksonville": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-milwaukee": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-oklahoma-city": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-raleigh": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-memphis": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-richmond": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-louisville": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-new-orleans": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-salt-lake-city": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-hartford": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-buffalo": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-birmingham": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/delete-account": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/support": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-map-usa": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/terms": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/mejores-apps-alergia-espana": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/mapa-polen-espana": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-madrid": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-barcelona": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-valencia": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-zaragoza": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-sevilla": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-malaga": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-murcia": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-palma": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-las-palmas-de-gran-canaria": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-alicante": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-cordoba": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-bilbao": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-valladolid": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-vitoria-gasteiz": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-a-coruna": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-granada": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-oviedo": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-santa-cruz-de-tenerife": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-almeria": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-pamplona": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-donostia-san-sebastian": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-albacete": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-castellon-de-la-plana": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-burgos": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-santander": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-logrono": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-salamanca": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-badajoz": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-huelva": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-lleida": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-tarragona": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-leon": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-jaen": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-cadiz": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-ourense": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-girona": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-lugo": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-caceres": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-guadalajara": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-toledo": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-melilla": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-pontevedra": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-ceuta": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-palencia": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-zamora": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-ciudad-real": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-avila": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-huesca": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-cuenca": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-segovia": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-soria": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-teruel": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-jaen": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-granada": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-badajoz": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-caceres": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-toledo": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-ciudad-real": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-salamanca": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-malaga": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-sevilla": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-cordoba": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-zamora": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-huelva": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-badajoz": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-avila": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-guadalajara": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-albacete": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-ceuta": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-palencia": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-madrid": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-valladolid": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-segovia": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-caceres": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-lugo": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-murcia": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-ciudad-real": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-alicante": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-ourense": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-almeria": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-burgos": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-cuenca": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-cadiz": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-cordoba": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-palma": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-lugo": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-leon": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-melilla": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-ourense": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-valencia": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-oviedo": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-lleida": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-toledo": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-logrono": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-logrono": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-pontevedra": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-zamora": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-leon": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-santander": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-salamanca": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-segovia": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-castellon-de-la-plana": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-sevilla": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-albacete": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-vitoria-gasteiz": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-pontevedra": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-a-coruna": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-oviedo": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-guadalajara": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-huelva": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-teruel": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-pamplona": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-cuenca": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-burgos": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-bilbao": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-a-coruna": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-avila": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-palencia": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-soria": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-malaga": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-vitoria-gasteiz": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-tarragona": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-zaragoza": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-cadiz": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-valladolid": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-huesca": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-huesca": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-madrid": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-donostia-san-sebastian": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-granada": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-soria": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-girona": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-ceuta": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-jaen": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-zaragoza": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-teruel": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-donostia-san-sebastian": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-santander": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-pamplona": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-bilbao": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-barcelona": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-murcia": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-alicante": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-valencia": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-lleida": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-ambrosia-teruel": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-melilla": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-almeria": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-tarragona": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-gramineas-barcelona": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/polen-olivo-girona": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/alergia-gramineas": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/alergia-olivo": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/alergia-abedul": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/alergia-aliso": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/alergia-artemisa": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/alergia-ambrosia": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/soporte": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-london": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-birmingham": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-manchester": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-leeds": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-glasgow": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-liverpool": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-newcastle": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-sheffield": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-bristol": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-edinburgh": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-nottingham": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-leicester": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-cardiff": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-belfast": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/ireland/pollen-dublin": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/uk/pollen-brighton": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/ireland/pollen-cork": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/ireland/pollen-limerick": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/ireland/pollen-galway": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-map-uk-ireland": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/privacy": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/privacidad": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/ja/privacy": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/condiciones": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-calendar": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/alergia-cruzada-polen-alimentos": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/calendario-polen": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  },
+  "/en/pollen-food-allergy": {
+   "scores": {
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "failed": []
+  }
+ }
+}
