@@ -32,7 +32,7 @@ const respira = {
   developer: "Pablo Fernández Jiménez",
   appStoreId: "6759206565",
   price: "Free, with an optional Pro subscription",
-  rating: "4.9 from 14 ratings (Spanish App Store); not yet rated in the US",
+  rating: "4.9 from 17 ratings (Spanish App Store) and 5.0 from 2 in the US, as of 20 Oct 2026",
   features: {
     countries: { value: "yes", note: "35: the United States, Japan, Australia, New Zealand, Argentina, Chile and 29 in Europe, from Spain and the UK to the Nordics, the Baltics and Greece" },
     usSpecies: { value: "yes", note: "Eleven species, from the Google Pollen API" },
@@ -43,7 +43,7 @@ const respira = {
     doctorReport: { value: "yes", note: "PDF export of the diary (Pro)" },
     travel: { value: "yes", note: "Destination forecast and pre-trip alerts (Pro)" },
     multipleLocations: { value: "yes", note: "Saved locations, synced across devices" },
-    usTraction: { value: "no", note: "Launched in the US in August 2026. No US ratings yet" },
+    usTraction: { value: "no", note: "Launched in the US in August 2026. Two US ratings as of 20 Oct 2026" },
   },
 };
 
