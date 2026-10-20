@@ -17,8 +17,15 @@ const KEY = "f7c6ad555bb40546ca8bb5a2ecfb6661";
 const res = await fetch(`https://${HOST}/sitemap.xml`);
 if (!res.ok) throw new Error(`sitemap: ${res.status}`);
 const urls = [...(await res.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-const keyCheck = await fetch(`https://${HOST}/${KEY}.txt`);
-if (!keyCheck.ok || (await keyCheck.text()).trim() !== KEY) throw new Error("key file is not live yet");
+// The deploy job finishing does not mean the Pages CDN serves the new files
+// yet; the first run after the key file was added failed right here.
+async function keyIsLive() {
+  const r = await fetch(`https://${HOST}/${KEY}.txt`, { cache: "no-store" });
+  return r.ok && (await r.text()).trim() === KEY;
+}
+let live = false;
+for (let i = 0; i < 10 && !(live = await keyIsLive()); i++) await new Promise((r) => setTimeout(r, 30_000));
+if (!live) throw new Error("key file is not live after 5 minutes");
 
 const post = await fetch("https://api.indexnow.org/indexnow", {
   method: "POST",
