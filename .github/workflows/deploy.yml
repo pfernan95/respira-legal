@@ -77,3 +77,19 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Content pushes only: the daily data rebuild changes every city page and is
+  # not news to announce. IndexNow reaches Bing (and through it ChatGPT search
+  # and Copilot); Google reads the sitemap instead. A failure here never undoes
+  # the deploy.
+  indexnow:
+    needs: deploy
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node tools/indexnow.mjs
