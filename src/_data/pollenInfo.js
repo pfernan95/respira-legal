@@ -63,13 +63,19 @@ export default {
     // alergia a la ambrosía", "temporada de alergia a la ambrosía". The page
     // answers those three without presenting ragweed as a main Spanish
     // allergen, which it is not.
+    // 20 Oct 2026: the "en el clima" family (215 impressions from Spain over
+    // 21 Sep–17 Oct, position ~10, 0 clicks) did not move after the queEs
+    // section went live on 2 Oct, so the title and that heading now use the
+    // searchers' word, "clima". Compare in private.gsc_queries from 21 Oct.
+    title: "Ambrosía en el clima: qué es, alergia y temporada",
     metaDescription: "Qué es la ambrosía que aparece en el tiempo, qué síntomas da su alergia y cuándo es su temporada (agosto a octubre en Europa). En España está poco extendida.",
     queEs: [
-      "Si ves «ambrosía» en la previsión del tiempo o en la app del móvil, se refiere al polen de una planta, no a un fenómeno meteorológico. Muchas apps y webs del tiempo toman el polen del servicio europeo <a href=\"https://atmosphere.copernicus.eu/\" rel=\"noopener\">Copernicus (CAMS)</a>, cuyo modelo pronostica seis tipos de polen para toda Europa: aliso, abedul, gramíneas, artemisa, olivo y ambrosía. Por eso la ambrosía sale en la lista aunque no crezca cerca de ti.",
+      "Si ves «ambrosía» en la previsión del tiempo o en la app del clima, se refiere al polen de una planta, no a un fenómeno meteorológico. Muchas apps y webs del tiempo toman el polen del servicio europeo <a href=\"https://atmosphere.copernicus.eu/\" rel=\"noopener\">Copernicus (CAMS)</a>, cuyo modelo pronostica seis tipos de polen para toda Europa: aliso, abedul, gramíneas, artemisa, olivo y ambrosía. Por eso la ambrosía sale en la lista aunque no crezca cerca de ti.",
       "La planta es sobre todo <i>Ambrosia artemisiifolia</i>, una hierba anual originaria de Norteamérica que se ha extendido por Europa como especie invasora. Sus mayores focos están en Hungría, el norte de Italia, el valle del Ródano en Francia y los Balcanes. Crece en cunetas, solares y campos de cultivo, y cada planta libera mucho polen.",
       "En España está poco extendida: hay focos localizados, sobre todo en el noreste y el valle del Ebro, y en la mayor parte del país el modelo da valores bajos o nulos. Que aparezca en el tiempo no quiere decir que haya ambrosía en tu ciudad; lo que cuenta es el nivel que la acompaña, que puedes ver por ciudad más abajo.",
     ],
     headings: {
+      queEs: "¿Qué es la ambrosía que sale en el tiempo o en el clima?",
       sintomas: "Síntomas de la alergia a la ambrosía",
       temporada: "¿Cuándo es la temporada de ambrosía?",
     },
