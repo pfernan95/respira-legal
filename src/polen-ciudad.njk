@@ -157,6 +157,18 @@ eleventyComputed:
     {%- endfor %}
   </section>
 
+  {%- set porTipo = crossLinks.byCity[ciudad.slug] %}
+  {%- if porTipo and porTipo.length %}
+  <section class="section" aria-labelledby="por-tipo">
+    <h2 id="por-tipo">Previsión por tipo de polen en {{ ciudad.name }}</h2>
+    <ul class="link-grid">
+      {%- for c in porTipo %}
+      <li><a href="/{{ c.slug }}">Polen de {{ c.pollenName | lower }} en {{ ciudad.name }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
+
   <section class="section" aria-labelledby="cerca">
     <h2 id="cerca">Polen en ciudades cercanas</h2>
     <ul class="link-grid">
@@ -168,7 +180,7 @@ eleventyComputed:
   </section>
 
   <section class="section">
-    {{ m.ctaApp("Llévate el dato en el bolsillo", "Respira muestra los niveles de tu ubicación, la previsión y un diario de síntomas. Gratis y sin anuncios, para iPhone y iPad.") }}
+    {{ m.ctaApp("Llévate el dato en el bolsillo", "Respira muestra los niveles de tu ubicación, la previsión y un diario de síntomas. Gratis, para iPhone y iPad.") }}
   </section>
 
 </main>

@@ -99,6 +99,19 @@ eleventyComputed:
     </div>
   </section>
 
+  {%- set porCiudad = crossLinks.byPollen[pid] %}
+  {%- if porCiudad and porCiudad.length %}
+  <section class="section" aria-labelledby="por-ciudad">
+    <h2 id="por-ciudad">Previsión de {{ info.pollenName | lower }} por ciudad</h2>
+    <p class="text-secondary">Capitales donde el polen de {{ info.pollenName | lower }} llegó en 2026 al menos a nivel moderado, cada una con su previsión de los próximos días.</p>
+    <ul class="link-grid">
+      {%- for c in porCiudad %}
+      <li><a href="/{{ c.slug }}">Polen de {{ c.pollenName | lower }} en {{ c.cityName }}</a></li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
+
   <section class="section flow" aria-labelledby="herramientas">
     <h2 id="herramientas">Herramientas</h2>
     <ul class="link-grid">
