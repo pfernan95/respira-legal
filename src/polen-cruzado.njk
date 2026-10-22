@@ -79,6 +79,11 @@ eleventyComputed:
     <h2 id="rel">Más sobre polen en {{ cross.cityName }}</h2>
     <ul class="link-grid">
       <li><a href="/polen-{{ cross.citySlug }}">Todos los pólenes en {{ cross.cityName }}</a></li>
+      {%- for o in crossLinks.byCity[cross.citySlug] %}
+      {%- if o.slug != cross.slug %}
+      <li><a href="/{{ o.slug }}">Polen de {{ o.pollenName | lower }} en {{ cross.cityName }}</a></li>
+      {%- endif %}
+      {%- endfor %}
       <li><a href="/alergia-{{ info.slug }}">{{ info.h1 }} en España</a></li>
       <li><a href="/mapa-polen-espana">Todas las ciudades</a></li>
     </ul>
