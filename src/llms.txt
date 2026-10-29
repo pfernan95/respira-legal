@@ -6,7 +6,7 @@ Pollen data for Spain and the rest of Europe comes from the CAMS atmospheric mod
 
 ## App
 
-- [Respira on the App Store](https://apps.apple.com/app/6759206565): free, iPhone and iPad, pollen levels, forecast, symptom diary, no ads on Respira Pro.
+- [Respira on the App Store](https://apps.apple.com/app/6759206565): free, for iPhone, pollen levels, forecast, symptom diary, no ads on Respira Pro.
 
 ## Start here
 

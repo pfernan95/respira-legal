@@ -130,7 +130,7 @@ eleventyComputed:
   </section>
 
   <section class="section">
-    {{ m.ctaApp("Sigue tu polen día a día", "Respira te muestra el nivel de cada tipo de polen en tu ubicación, la previsión y un diario de síntomas. Gratis, para iPhone y iPad.") }}
+    {{ m.ctaApp("Sigue tu polen día a día", "Respira te muestra el nivel de cada tipo de polen en tu ubicación, la previsión y un diario de síntomas. Gratis, para iPhone.") }}
   </section>
 
 </main>
@@ -175,7 +175,7 @@ eleventyComputed:
         {
           "@type": "Question",
           "name": {{ ("¿Cómo puedo seguir los niveles de " + (info.pollenName | lower) + " día a día?") | dump | safe }},
-          "acceptedAnswer": { "@type": "Answer", "text": {{ ("La app Respira muestra el nivel de " + (info.pollenName | lower) + " en tu ubicación, la previsión y un diario de síntomas exportable. Gratis, para iPhone y iPad.") | dump | safe }} }
+          "acceptedAnswer": { "@type": "Answer", "text": {{ ("La app Respira muestra el nivel de " + (info.pollenName | lower) + " en tu ubicación, la previsión y un diario de síntomas exportable. Gratis, para iPhone.") | dump | safe }} }
         }
       ]
     }
