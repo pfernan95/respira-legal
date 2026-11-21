@@ -17,6 +17,7 @@ description: "Today's pollen level in 19 cities across England, Scotland, Wales,
     <h1>Pollen count today in the UK and Ireland</h1>
     <p>Today's overall pollen level in {{ ukCities.length }} cities, the highest value the Copernicus CAMS model forecasts for the day. Each city page has the level by type (grass, birch, alder, mugwort and ragweed), the forecast for the coming days and a month-by-month calendar for that city.</p>
     {{ m.updateLineGb(ukPollenData.fetchedAt, false) }}
+    <p>Used Kleenex's Your Pollen Pal app? It {{ 'closed' if build.nowIso >= '2026-12-11' else 'closes' }} on 11 December 2026: <a href="/en/kleenex-pollen-pal-alternatives">the UK alternatives to Your Pollen Pal</a>.</p>
   </header>
 
   {%- for nation in NATIONS %}
