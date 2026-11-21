@@ -1,0 +1,138 @@
+---
+layout: layouts/base.njk
+lang: en
+permalink: "en/kleenex-pollen-pal-alternatives.html"
+ogType: article
+eleventyComputed:
+  title: "{{ 'Kleenex Pollen Pal Has Closed: UK Alternatives | Respira' if build.nowIso >= '2026-12-11' else 'Kleenex Pollen Pal Is Closing: UK Alternatives | Respira' }}"
+  ogTitle: "{{ 'Kleenex Your Pollen Pal has closed: the UK alternatives' if build.nowIso >= '2026-12-11' else 'Kleenex Your Pollen Pal is closing: the UK alternatives' }}"
+  description: "{{ 'Kleenex Your Pollen Pal closed on 11 December 2026.' if build.nowIso >= '2026-12-11' else 'Kleenex Your Pollen Pal closes on 11 December 2026.' }} Four UK apps with pollen forecasts, alerts and symptom tracking, from their own listings."
+---
+{#- Every fact about another app comes from its UK App Store listing, read on
+    SNAPSHOT (iTunes lookup, country=gb). Where a listing does not say
+    something, the table says "Not stated", never "No" (same rule as
+    _data/competitors.js). The closure date and wording come from the notice at
+    the top of the Kleenex app's own listing (id6445884942). -#}
+{%- import "macros.njk" as m -%}
+{%- set SNAPSHOT = "21 November 2026" -%}
+{%- set closed = build.nowIso >= "2026-12-11" -%}
+{%- set APPS = [
+  { name: "Met Office Weather Forecast", by: "Met Office", id: "1068146838", rating: "4.7 from about 663,000 UK ratings",
+    forecast: "Regional pollen forecasts, March to September", types: "Not stated", diary: "Not stated", alerts: "Pollen notifications, March to September" },
+  { name: "My Pollen Forecast UK", by: "JRustonApps B.V.", id: "1244428929", rating: "4.7 from about 6,300 UK ratings",
+    forecast: "Up to 5 days, with a pollen map", types: "Not stated", diary: "Yes", alerts: "When the pollen count is expected to be high" },
+  { name: "klarify", by: "ALK-Abelló", id: "1380057946", rating: "4.6 from 676 UK ratings",
+    forecast: "3 days, plus a yearly allergy calendar", types: "Yes", diary: "Yes, by pollen type", alerts: "When pollen levels change" },
+  { name: "Respira", by: "Pablo Fernández Jiménez", id: "6759206565", rating: "5.0 from 1 UK rating",
+    forecast: "5 days, for your exact location", types: "Grass, birch, alder, mugwort and ragweed", diary: "Yes, with a PDF report (Pro)", alerts: "When your own allergen crosses your level (Pro)" }
+] -%}
+
+<main class="page">
+  <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/en/">Home</a> › <a href="/en/best-pollen-apps">Pollen apps</a> › Pollen Pal alternatives</nav>
+
+  <header class="flow">
+    <h1>{% if closed %}Kleenex Your Pollen Pal has closed{% else %}Kleenex Your Pollen Pal closes on 11 December 2026{% endif %}: the UK alternatives</h1>
+    <p>The notice at the top of the app's UK App Store listing says that Your Pollen Pal “is being discontinued and will close on December 11 2026”, and that existing users keep pollen forecasts and symptom tracking until then. Below are four iPhone apps that cover the UK, with what each one does according to its own listing, read on {{ SNAPSHOT }}.</p>
+    <p>We make one of them, Respira, so read this with that in mind. Respira has no connection with Kleenex or Kimberly-Clark.</p>
+  </header>
+
+  {%- if not closed %}
+  <section class="section flow" aria-labelledby="before">
+    <h2 id="before">Before it closes</h2>
+    <p>If you logged symptoms in Your Pollen Pal, check <a href="https://www.kleenex.co.uk/pollen-count/your-pollen-pal-app" rel="noopener">Kleenex's FAQ page on the closure</a> for what happens to your entries. None of the apps below can import them, Respira included, so write down anything you want to keep.</p>
+  </section>
+  {%- endif %}
+
+  <section class="section flow" aria-labelledby="short-answer">
+    <h2 id="short-answer">The short answer</h2>
+    <ul>
+      <li><strong>Already have the Met Office app?</strong> Its listing includes regional pollen forecasts and notifications between March and September, inside the weather app.</li>
+      <li><strong>The closest like-for-like:</strong> My Pollen Forecast UK. A forecast of up to 5 days, a pollen map, a symptom diary and notifications when the count is expected to be high. Its listing says it is ad-supported.</li>
+      <li><strong>Tracking which pollen sets you off:</strong> klarify. Its allergy log lets you switch between pollen types to see how each one affected you, with alerts and a yearly allergy calendar.</li>
+      <li><strong>Each pollen type for your exact location, and a diary for your GP:</strong> Respira. Levels for grass, birch, alder, mugwort and ragweed, a 5-day forecast and a symptom and medication diary you can export as a PDF. It is the newest here, with one UK rating so far, and its UK levels come from a forecast model, not a pollen trap.</li>
+    </ul>
+  </section>
+
+  <section class="section flow" aria-labelledby="table">
+    <h2 id="table">Side by side</h2>
+    <p class="text-secondary">From each app's UK App Store listing on {{ SNAPSHOT }}. “Not stated” means the listing does not say, not that the feature is missing.</p>
+    <div class="scroller">
+      <table>
+        <thead>
+          <tr><th scope="col">App</th><th scope="col">Pollen forecast</th><th scope="col">Pollen by type</th><th scope="col">Symptom diary</th><th scope="col">Alerts</th><th scope="col">UK rating</th></tr>
+        </thead>
+        <tbody>
+          {%- for a in APPS %}
+          <tr><th scope="row">{{ a.name }}</th><td>{{ a.forecast }}</td><td>{{ a.types }}</td><td>{{ a.diary }}</td><td>{{ a.alerts }}</td><td>{{ a.rating }}</td></tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section flow" aria-labelledby="apps">
+    <h2 id="apps">The apps</h2>
+
+    <h3>Met Office Weather Forecast</h3>
+    <p>The Met Office's own weather app. Pollen is one feature among many: its listing names “regional pollen forecasts and notifications between March and September”, alongside air pollution, UV and the weather itself. If you mostly checked Your Pollen Pal for the day's level, this may be all you need. Its listing does not mention a symptom diary.</p>
+    <p class="small text-secondary">By Met Office. {{ APPS[0].rating }}. <a href="https://apps.apple.com/gb/app/id1068146838" rel="noopener">Met Office Weather Forecast on the App Store</a></p>
+
+    <h3>My Pollen Forecast UK</h3>
+    <p>The nearest match to what Your Pollen Pal did: a forecast of several days with temperature, wind and humidity, a map of where the count is highest, a diary to track how you feel, and push notifications when the count is expected to be high. Its listing says this version is ad-supported and that it covers the UK and the contiguous US.</p>
+    <p class="small text-secondary">By JRustonApps B.V. {{ APPS[1].rating }}. <a href="https://apps.apple.com/gb/app/id1244428929" rel="noopener">My Pollen Forecast UK on the App Store</a></p>
+
+    <h3>klarify</h3>
+    <p>Built around an allergy log: you record how you feel each day, then switch between pollen types to see how each one affected you. It adds pollen, weather and air quality for any location, a three-day forecast, alerts when pollen levels change, a yearly allergy calendar and articles about allergy. It is made by ALK-Abelló, an allergy company.</p>
+    <p class="small text-secondary">By ALK-Abelló. {{ APPS[2].rating }}. <a href="https://apps.apple.com/gb/app/id1380057946" rel="noopener">klarify on the App Store</a></p>
+
+    <h3>Respira</h3>
+    <p>Ours. You pick the pollens you are allergic to and see the level of each one where you are, today and over a 5-day forecast: grass, birch, alder, mugwort and ragweed in the UK and Ireland, from the Copernicus CAMS model. That is a forecast model, not a pollen trap, so it shows levels, never grain counts. The diary records symptoms, severity and medication next to each day's levels, and Respira Pro exports it as a PDF report for your GP or allergy specialist and sends an alert the morning your allergen crosses the level you set. It also has Home and Lock Screen widgets, and works in 35 countries if you travel. iPhone only.</p>
+    <p class="small text-secondary">{{ APPS[3].rating }} (4.9 from 18 in Spain). <a href="/en/best-pollen-apps">How Respira compares with other pollen apps</a></p>
+  </section>
+
+  <section class="section" aria-labelledby="cities">
+    <h2 id="cities">Today's pollen count in your city</h2>
+    <p>Without any app, each UK and Ireland city page here shows today's level by type, the forecast for the coming days and the city's own pollen calendar, rebuilt every day.</p>
+    <ul class="link-grid">
+      {%- for c in ukCities %}{% if loop.index <= 8 %}
+      <li><a href="{{ c.url }}">{{ c.name }} pollen count</a></li>
+      {%- endif %}{% endfor %}
+    </ul>
+    <p><a href="/en/pollen-map-uk-ireland">Pollen count today in all UK and Ireland cities</a></p>
+  </section>
+
+  <section class="section">
+    <div class="cta-app">
+      <h2>Try Respira</h2>
+      <p class="text-secondary">Pollen by type for your exact location, a five-day forecast and a symptom diary, on iPhone.</p>
+      {{ m.storeBadge(i18nWeb.en, "https://apps.apple.com/app/apple-store/id6759206565?pt=128525298&ct=web-pollen-pal&mt=8") }}
+    </div>
+  </section>
+
+  <p class="fine-print">Your Pollen Pal and Kleenex are trademarks of Kimberly-Clark. Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
+</main>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://respiraapp.fit/en/" },
+        { "@type": "ListItem", "position": 2, "name": "Pollen apps", "item": "https://respiraapp.fit/en/best-pollen-apps" },
+        { "@type": "ListItem", "position": 3, "name": "Pollen Pal alternatives", "item": "https://respiraapp.fit{{ page.url | extensionless }}" }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "UK alternatives to Kleenex Your Pollen Pal",
+      "itemListElement": [
+        {%- for a in APPS %}
+        { "@type": "ListItem", "position": {{ loop.index }}, "name": {{ a.name | dump | safe }}, "url": "https://apps.apple.com/gb/app/id{{ a.id }}" }{% if not loop.last %},{% endif %}
+        {%- endfor %}
+      ]
+    }
+  ]
+}
+</script>
