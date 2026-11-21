@@ -105,7 +105,7 @@ eleventyComputed:
     <h2 id="nearby">Pollen in nearby cities</h2>
     <ul class="link-grid">
       {%- for n in city.nearby %}
-      <li><a href="{{ n.url }}">Pollen in {{ n.name }}</a></li>
+      <li><a href="{{ n.url }}">{{ n.name }} pollen count</a></li>
       {%- endfor %}
     </ul>
     <p><a href="/en/pollen-map-uk-ireland">All UK and Ireland cities</a></p>
