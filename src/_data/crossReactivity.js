@@ -162,7 +162,7 @@ const POLLENS = [
     sources: ["enberg1987", "anderson1970", "popescu2015"],
   },
   {
-    id: "cypress", es: "Ciprés", en: "Cypress", page: { es: null, en: null }, stable: true,
+    id: "cypress", es: "Ciprés", en: "Cypress", page: { es: "/alergia-cipres", en: null }, stable: true,
     foods: { w: ["peach", "citrus"], r: ["cherry", "apricot", "pomegranate"] },
     cause: {
       es: "Una proteína regulada por giberelinas del ciprés (Cup s 7), que reacciona con sus parecidas del melocotón (Pru p 7) y de la naranja (Cit s 7). No es la profilina.",
@@ -179,7 +179,7 @@ const POLLENS = [
     sources: ["maug", "klingebiel2019", "iizuka2022"],
   },
   {
-    id: "plane_tree", es: "Plátano de sombra", en: "Plane tree", page: { es: null, en: null }, stable: true,
+    id: "plane_tree", es: "Plátano de sombra", en: "Plane tree", page: { es: "/alergia-platano-de-sombra", en: null }, stable: true,
     foods: { w: [], r: ["hazelnut", "peach", "apple", "peanut", "maize", "chickpea", "lettuce"] },
     cause: {
       es: "La LTP del plátano de sombra (Pla a 3). Ni su profilina ni la proteína Pla a 1 explican las reacciones a alimentos.",

@@ -142,7 +142,11 @@ eleventyComputed:
     <p>{{ ciudad.name }} ({{ ciudad.provincia }}, {{ ciudad.ccaa }}) tiene su propio calendario polínico. El dato de esta página es el máximo previsto para hoy en la ciudad, con la previsión de los próximos días y el calendario mes a mes para anticipar los picos.</p>
     {%- endif %}
     {%- if predomNames.length %}
-    <p>Los pólenes de mayor relevancia local son {{ predomNames | join(", ") }}. Consulta también las páginas de <a href="/alergia-gramineas">gramíneas</a> y <a href="/alergia-olivo">olivo</a> para saber más sobre cada alérgeno.</p>
+    {%- set predomLinks = [] %}
+    {%- for id in ciudad.predominantes %}
+      {%- if pollenInfo[id] %}{% set _ = predomLinks.push('<a href="/alergia-' + pollenInfo[id].slug + '">' + POLLEN_TYPES[id].nameEs | lower + '</a>') %}{% else %}{% set _ = predomLinks.push(POLLEN_TYPES[id].nameEs | lower) %}{% endif %}
+    {%- endfor %}
+    <p>Los pólenes de mayor relevancia local son {% for l in predomLinks %}{% if not loop.first %}{% if loop.last %} y {% else %}, {% endif %}{% endif %}{{ l | safe }}{% endfor %}. Cada enlace lleva a su temporada y a sus síntomas.</p>
     {%- endif %}
   </section>
 

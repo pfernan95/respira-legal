@@ -86,4 +86,89 @@ export default {
     donde:
       "En España se concentra en focos del valle del Ebro y zonas del noreste, más que de forma generalizada.",
   },
+  // ── Species CAMS does not model (added 24 Nov 2026) ──────────────────────
+  // There is no daily level by city for these on the website, so the pages
+  // give the zone calendars (the app's own, from zoneCalendars.json) and say
+  // where the measured level is published. Every fact below comes from the
+  // sources listed in `fuentes`, read on 24 Nov 2026.
+  cypress: {
+    slug: "cipres",
+    h1: "Alergia al ciprés y la arizónica",
+    title: "Alergia al ciprés y la arizónica: temporada y síntomas",
+    estimado: true,
+    calRows: ["cypress", "arizona_cypress"],
+    lead: "El ciprés y la arizónica son de la misma familia, las cupresáceas, y polinizan en invierno. Según la Comunidad de Madrid, en invierno su polen es el más frecuente en el aire y «prácticamente el único en esta estación que causa alergias».",
+    metaDescription: "El ciprés y la arizónica polinizan en invierno, con el máximo en enero y febrero. Calendario por zonas, síntomas y dónde ver el nivel de hoy de tu ciudad.",
+    queEs: [
+      "Las cupresáceas son una familia de árboles y arbustos que incluye los cipreses y las arizónicas. Son especies plantadas: en parques, jardines y setos. La Comunidad de Madrid destaca entre las más habituales «las arizónicas utilizadas como setos en jardines en algunas urbanizaciones».",
+      "La SEAIC las cuenta entre los pólenes que causan alergia «con un carácter más local», y nombra a Madrid y Barcelona.",
+    ],
+    headings: {
+      queEs: "¿Qué son el ciprés y la arizónica?",
+      sintomas: "Síntomas de la alergia al ciprés",
+      temporada: "¿Cuándo es la temporada del ciprés y la arizónica?",
+      hoy: "¿Cómo está hoy el polen de ciprés en tu ciudad?",
+    },
+    sintomas:
+      "Los síntomas habituales son los de cualquier alergia al polen: rinitis (estornudos, congestión, picor y goteo nasal) y conjuntivitis (picor y lagrimeo de ojos), en este caso en pleno invierno. En algunas personas, esta alergia se asocia también a reacciones al melocotón y a los cítricos, por una proteína del polen (Cup s 7) que resiste la cocción; la herramienta de alergia cruzada lo explica con sus fuentes.",
+    temporadaEuropa:
+      "Las cupresáceas polinizan en invierno. En el calendario de Respira, la arizónica empieza a finales de otoño y el ciprés común sigue hasta marzo; los dos están altos en enero y febrero.",
+    donde:
+      "Se plantan en ciudades y urbanizaciones. La SEAIC sitúa esta alergia sobre todo en Madrid y Barcelona.",
+    nivelHoy: [
+      "El nivel diario de las páginas de cada ciudad viene del modelo europeo de polen (CAMS de Copernicus), y ese modelo no incluye el ciprés. El nivel medido lo publican las redes de aerobiología: la <a href=\"https://www.uco.es/rea/\" rel=\"noopener\">Red Española de Aerobiología (REA)</a>, cada semana, y la <a href=\"https://www.polenes.com/\" rel=\"noopener\">red de la SEAIC (polenes.com)</a>. En la Comunidad de Madrid, la <a href=\"https://www.madrid.org/polen\" rel=\"noopener\">red Palinocam</a> publica cada día laborable el dato del día anterior y una previsión a 48 horas.",
+      "La app Respira muestra el nivel semanal de la REA en la estación más cercana a ti, si hay una a menos de 100 km. Si no la hay, muestra una estimación por calendario, marcada como estimación.",
+    ],
+    seguirFaq: "El nivel medido lo publican la Red Española de Aerobiología (REA) cada semana y, en la Comunidad de Madrid, la red Palinocam cada día laborable. La app Respira muestra el nivel semanal de la REA en la estación más cercana, si hay una a menos de 100 km, o una estimación por calendario.",
+    fuentes: ["<a href=\"https://www.comunidad.madrid/node/68045\" rel=\"noopener\">Comunidad de Madrid: «La Comunidad de Madrid activa su sistema de información diaria sobre el polen invernal en la atmósfera» (27 de enero de 2024)</a>", "<a href=\"https://www.seaic.org/download/6212\" rel=\"noopener\">Comité de Aerobiología de la SEAIC: «La alergia al polen. Claves para sobrevivir esta primavera» (2015)</a>", "<a href=\"/alergia-cruzada-polen-alimentos\">Herramienta de alergia cruzada de Respira</a>, con sus estudios citados"],
+  },
+  plane_tree: {
+    slug: "platano-de-sombra",
+    h1: "Alergia al plátano de sombra",
+    estimado: true,
+    lead: "El plátano de sombra se usa como árbol de alineación en las grandes ciudades españolas. Según la SEAIC, en Madrid hay 73.000 (el 25 % del arbolado) y en Barcelona 57.471 (el 33 %). Su polinización es «explosiva» y no suele pasar de un mes.",
+    metaDescription: "El plátano de sombra poliniza de golpe entre la segunda quincena de marzo y la primera de abril. Dónde, síntomas, calendario y cómo ver el nivel de hoy.",
+    headings: {
+      sintomas: "Síntomas de la alergia al plátano de sombra",
+      temporada: "¿Cuándo poliniza el plátano de sombra?",
+      hoy: "¿Cómo está hoy el polen de plátano de sombra?",
+    },
+    sintomas:
+      "Los síntomas son los de la rinitis y la conjuntivitis alérgicas, concentrados en unas pocas semanas de primavera. Según la SEAIC, en Madrid los pacientes alérgicos al polen que lo son al plátano de sombra pasaron de un 2 % en los años 80 a un 40 % en 2015, cuando lo publicó. En algunas personas se asocia a alergia a alimentos vegetales, como frutos secos, cacahuete o melocotón, por una proteína (Pla a 3) que no se destruye al cocinar; la herramienta de alergia cruzada lo explica con sus fuentes.",
+    temporadaEuropa:
+      "Según la SEAIC, poliniza en la segunda quincena de marzo y la primera de abril, y no suele pasar de un mes. Avanza de sur a norte: se detecta antes en ciudades como Málaga, Jaén, Sevilla o Murcia, y los niveles altos de Madrid, Barcelona y Zaragoza llegan a finales de marzo y principios de abril.",
+    donde:
+      "Es un árbol plantado, de calles y parques. La SEAIC lo destaca en Madrid, Barcelona y Zaragoza.",
+    nivelHoy: [
+      "El nivel diario de las páginas de cada ciudad viene del modelo europeo de polen (CAMS de Copernicus), y ese modelo no incluye el plátano de sombra. El nivel medido lo publican la <a href=\"https://www.uco.es/rea/\" rel=\"noopener\">Red Española de Aerobiología (REA)</a>, cada semana, y la <a href=\"https://www.polenes.com/\" rel=\"noopener\">red de la SEAIC (polenes.com)</a>. En la Comunidad de Madrid, la <a href=\"https://www.madrid.org/polen\" rel=\"noopener\">red Palinocam</a> publica cada día laborable los datos de polen del día anterior.",
+      "La app Respira muestra el nivel semanal de la REA en la estación más cercana a ti, si hay una a menos de 100 km. Si no la hay, muestra una estimación por calendario, marcada como estimación.",
+    ],
+    seguirFaq: "El nivel medido lo publican la Red Española de Aerobiología (REA) cada semana y la red de la SEAIC. La app Respira muestra el nivel semanal de la REA en la estación más cercana, si hay una a menos de 100 km, o una estimación por calendario.",
+    fuentes: ["<a href=\"https://www.seaic.org/download/6178/\" rel=\"noopener\">SEAIC: «La contaminación y la plantación de especies alergénicas pueden contribuir al aumento de la alergia al polen en las ciudades» (nota de prensa, 25 de marzo de 2015)</a>", "<a href=\"https://www.seaic.org/download/6212\" rel=\"noopener\">Comité de Aerobiología de la SEAIC: «La alergia al polen. Claves para sobrevivir esta primavera» (2015)</a>", "<a href=\"/alergia-cruzada-polen-alimentos\">Herramienta de alergia cruzada de Respira</a>, con sus estudios citados"],
+  },
+  parietaria: {
+    slug: "parietaria",
+    h1: "Alergia a la parietaria",
+    estimado: true,
+    sinCruzada: true,
+    lead: "La parietaria es una hierba de la familia de las ortigas que crece en los muros. Según la SEAIC, en el litoral mediterráneo es la que predomina en la alergia al polen, por delante de las gramíneas.",
+    metaDescription: "La parietaria, hierba de muros, domina la alergia al polen en el litoral mediterráneo, con temporada de primavera a otoño. Calendario por zonas y síntomas.",
+    headings: {
+      sintomas: "Síntomas de la alergia a la parietaria",
+      temporada: "¿Cuándo es la temporada de parietaria?",
+      hoy: "¿Cómo está hoy el polen de parietaria?",
+    },
+    sintomas:
+      "Una revisión médica de 2018 señala que la rinitis y el asma acompañan con frecuencia a la alergia a la parietaria. Las especies que más alergia causan son Parietaria judaica y Parietaria officinalis.",
+    temporadaEuropa:
+      "Su temporada es larga. En un estudio de diez años en Italia duró de media de 6 a 7 meses, con un pico principal en primavera y otro menor a principios de otoño. No dura todo el año, aunque muchos médicos lo creen, según esa revisión.",
+    donde:
+      "Según la SEAIC, predomina en el litoral mediterráneo y en ciertas zonas de las Islas Canarias. Crece con facilidad a la sombra de los muros viejos.",
+    nivelHoy: [
+      "El nivel diario de las páginas de cada ciudad viene del modelo europeo de polen (CAMS de Copernicus), y ese modelo no incluye la parietaria. La <a href=\"https://www.uco.es/rea/\" rel=\"noopener\">Red Española de Aerobiología (REA)</a> publica cada semana el nivel de ortigas y parietarias juntas, porque al microscopio su polen no se distingue. También lo cuenta la <a href=\"https://www.polenes.com/\" rel=\"noopener\">red de la SEAIC (polenes.com)</a>.",
+      "La app Respira muestra el nivel semanal de la REA en la estación más cercana a ti, si hay una a menos de 100 km. Si no la hay, muestra una estimación por calendario, marcada como estimación.",
+    ],
+    seguirFaq: "La Red Española de Aerobiología (REA) publica cada semana el nivel de ortigas y parietarias. La app Respira muestra ese nivel semanal en la estación más cercana, si hay una a menos de 100 km, o una estimación por calendario.",
+    fuentes: ["<a href=\"https://www.seaic.org/download/6212\" rel=\"noopener\">Comité de Aerobiología de la SEAIC: «La alergia al polen. Claves para sobrevivir esta primavera» (2015)</a>", "<a href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC6306946/\" rel=\"noopener\">Ciprandi G. y otros: «Parietaria Allergy: An Intriguing Challenge for the Allergist», Medicina, 2018</a>"],
+  },
 };

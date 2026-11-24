@@ -40,6 +40,9 @@ Pollen data for Spain and the rest of Europe comes from the CAMS atmospheric mod
 - [Aliso](https://respiraapp.fit/alergia-aliso)
 - [Artemisa](https://respiraapp.fit/alergia-artemisa)
 - [Ambrosía](https://respiraapp.fit/alergia-ambrosia)
+- [Ciprés y arizónica](https://respiraapp.fit/alergia-cipres): winter pollen (Cupressaceae), calendar by zone and where the measured level is published (REA, SEAIC, Palinocam).
+- [Plátano de sombra](https://respiraapp.fit/alergia-platano-de-sombra): street tree, pollinates late March to mid April.
+- [Parietaria](https://respiraapp.fit/alergia-parietaria): the main pollen allergy on the Mediterranean coast, spring to autumn.
 
 ## Pollen by city — Spain (Spanish)
 
