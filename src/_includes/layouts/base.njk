@@ -115,6 +115,32 @@
       <a href="/polen-zaragoza">Zaragoza</a> · <a href="/polen-malaga">Málaga</a> ·
       <a href="/polen-cordoba">Córdoba</a> · <a href="/polen-bilbao">Bilbao</a>
     </p>
+    {#- Guides: every one of these pages is in the sitemap, but until Nov 2026
+        the comparison and air-quality pages had no link from any other
+        section, and the ones nothing links to never got an impression. -#}
+    <p>Guías:
+      <a href="/calendario-polen">Calendario del polen</a> ·
+      <a href="/mapa-polen-espana">Mapa del polen en España</a> ·
+      <a href="/alergia-cruzada-polen-alimentos">Alergia cruzada con alimentos</a> ·
+      <a href="/calidad-aire-y-polen">Calidad del aire y polen</a> ·
+      <a href="/mejores-apps-alergia-espana">Mejores apps para la alergia</a>
+    </p>
+    {%- elif lang == "en" %}
+    <p>Pollen count by city:
+      <a href="/en/uk/pollen-london">London</a> · <a href="/en/uk/pollen-manchester">Manchester</a> ·
+      <a href="/en/uk/pollen-birmingham">Birmingham</a> · <a href="/en/uk/pollen-glasgow">Glasgow</a> ·
+      <a href="/en/ireland/pollen-dublin">Dublin</a> · <a href="/en/pollen-austin">Austin</a> ·
+      <a href="/en/pollen-dallas">Dallas</a> · <a href="/en/pollen-houston">Houston</a> ·
+      <a href="/en/pollen-atlanta">Atlanta</a>
+    </p>
+    <p>Guides:
+      <a href="/en/pollen-calendar">Pollen calendar</a> ·
+      <a href="/en/pollen-map-uk-ireland">UK and Ireland pollen map</a> ·
+      <a href="/en/pollen-map-usa">US pollen map</a> ·
+      <a href="/en/pollen-food-allergy">Pollen and food allergy</a> ·
+      <a href="/en/best-pollen-apps">Best pollen apps for iPhone</a> ·
+      <a href="/en/kleenex-pollen-pal-alternatives">Kleenex Pollen Pal alternatives</a>
+    </p>
     {%- endif %}
     {%- if L.footer.sourcesHtml %}
     <p>{{ L.footer.sourcesHtml | safe }}</p>

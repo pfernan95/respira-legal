@@ -115,6 +115,11 @@ eleventyComputed:
     <h2 id="app">Track pollen where you are</h2>
     <p>This page is rebuilt once a day for {{ city.name }}. Respira shows the level for your own location, a five-day forecast, alerts the morning your allergen crosses your threshold, and a symptom diary you can export as a PDF for your GP or allergy specialist.</p>
     {{ m.storeBadge(i18nWeb.en) }}
+    {%- if build.nowIso >= "2026-12-11" %}
+    <p>Kleenex Your Pollen Pal closed on 11 December 2026: <a href="/en/kleenex-pollen-pal-alternatives">the UK pollen apps that replace it</a>.</p>
+    {%- else %}
+    <p>Kleenex Your Pollen Pal closes on 11 December 2026: <a href="/en/kleenex-pollen-pal-alternatives">the UK pollen apps that replace it</a>.</p>
+    {%- endif %}
   </section>
 
   <p class="fine-print">Respira is an informational tool. It does not replace diagnosis or advice from a medical professional.</p>
