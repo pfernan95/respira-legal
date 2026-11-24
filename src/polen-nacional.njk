@@ -19,6 +19,11 @@ eleventyComputed:
 {%- set cal = constants.seasonalCalendar -%}
 {%- set pid = info.id -%}
 {%- set months = cal.MONTHLY_POLLEN_INTENSITY[pid] -%}
+{#- calRows: species shown together on one page (ciprés + arizónicas). estimado:
+    a species CAMS does not model, so there is no daily level by city to show;
+    the page gives the zone calendars instead and says where the measured
+    level is published. -#}
+{%- set calRows = info.calRows if info.calRows else [pid] -%}
 
 <main class="page">
 
@@ -62,18 +67,65 @@ eleventyComputed:
         <thead><tr><td></td>
           {%- for mo in cal.MONTH_NAMES_SHORT %}<th scope="col"{% if loop.index0 == build.month %} aria-current="date"{% endif %}>{{ mo }}</th>{% endfor %}
         </tr></thead>
-        <tbody><tr>
-          <th scope="row">{{ info.pollenName }}</th>
-          {%- for lvl in months %}
+        <tbody>
+          {%- for rid in calRows %}
+          <tr>
+          <th scope="row">{{ POLLEN_TYPES[rid].nameEs }}</th>
+          {%- for lvl in cal.MONTHLY_POLLEN_INTENSITY[rid] %}
           <td class="hm-cell {% if lvl == 'none' %}hm-none{% endif %}{% if loop.index0 == build.month %} hm-now{% endif %}"{% if lvl != 'none' %} style="--_lv: var(--level-{{ lvl | replace('_','-') }})"{% endif %}>
             <span class="visually-hidden">{{ cal.MONTH_NAMES_SHORT[loop.index0] }}: {{ cal.INTENSITY_LABELS[lvl] }}</span>
           </td>
           {%- endfor %}
-        </tr></tbody>
+          </tr>
+          {%- endfor %}
+        </tbody>
       </table>
     </div>
   </section>
 
+  {%- if info.estimado %}
+  {%- set zonas = [
+    { key: "ES:mediterranean", label: "Mediterránea e interior" },
+    { key: "ES:atlantic", label: "Atlántica (norte)" }
+  ] %}
+  {%- set atlanticas = [] %}
+  {%- for c in zoneCalendars.cities.es %}{% if c.cal == "ES:atlantic" %}{% set _ = atlanticas.push(c.name) %}{% endif %}{% endfor %}
+  <section class="section flow" aria-labelledby="zonas">
+    <h2 id="zonas">Calendario por zonas</h2>
+    <p>El calendario cambia con el clima. En el calendario de Respira, en la zona atlántica ({{ atlanticas | join(", ") }}) la temporada empieza y acaba más tarde que en el resto del país.</p>
+    <div class="scroller">
+      <table class="heatmap" style="min-inline-size: 36rem">
+        <caption class="visually-hidden">Intensidad mensual por zona</caption>
+        <thead><tr><td></td>
+          {%- for mo in cal.MONTH_NAMES_SHORT %}<th scope="col"{% if loop.index0 == build.month %} aria-current="date"{% endif %}>{{ mo }}</th>{% endfor %}
+        </tr></thead>
+        <tbody>
+          {%- for rid in calRows %}{% for z in zonas %}
+          {%- set serie = zoneCalendars.calendars[z.key].rows[rid] %}
+          {%- if serie %}
+          <tr>
+          <th scope="row">{{ POLLEN_TYPES[rid].nameEs }} · {{ z.label }}</th>
+          {%- for lvl in serie %}
+          <td class="hm-cell {% if lvl == 'none' %}hm-none{% endif %}{% if loop.index0 == build.month %} hm-now{% endif %}"{% if lvl != 'none' %} style="--_lv: var(--level-{{ lvl | replace('_','-') }})"{% endif %}>
+            <span class="visually-hidden">{{ cal.MONTH_NAMES_SHORT[loop.index0] }}: {{ cal.INTENSITY_LABELS[lvl] }}</span>
+          </td>
+          {%- endfor %}
+          </tr>
+          {%- endif %}
+          {%- endfor %}{% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="small text-secondary">Es un calendario orientativo, el mismo que usa la app Respira: dice cuándo suele haber polen, no cuánto hay hoy.</p>
+  </section>
+
+  <section class="section flow" aria-labelledby="hoy">
+    <h2 id="hoy">{{ info.headings.hoy if (info.headings and info.headings.hoy) else "Dónde ver el nivel de hoy" }}</h2>
+    {%- for parrafo in info.nivelHoy %}
+    <p>{{ parrafo | safe }}</p>
+    {%- endfor %}
+  </section>
+  {%- else %}
   <section class="section" aria-labelledby="mapa">
     <h2 id="mapa">Niveles de {{ info.pollenName | lower }} por ciudad hoy</h2>
     <p class="text-secondary">Máximo previsto para hoy en cada capital de provincia. Ordenado de mayor a menor.</p>
@@ -98,6 +150,7 @@ eleventyComputed:
       </table>
     </div>
   </section>
+  {%- endif %}
 
   {%- set porCiudad = crossLinks.byPollen[pid] %}
   {%- if porCiudad and porCiudad.length %}
@@ -115,7 +168,9 @@ eleventyComputed:
   <section class="section flow" aria-labelledby="herramientas">
     <h2 id="herramientas">Herramientas</h2>
     <ul class="link-grid">
+      {%- if not info.sinCruzada %}
       <li><a href="/alergia-cruzada-polen-alimentos?polen={{ pid }}">Alimentos que se relacionan con la {{ info.h1 | lower }}</a></li>
+      {%- endif %}
       <li><a href="/calendario-polen">Calendario polínico de tu ciudad</a></li>
     </ul>
   </section>
@@ -128,6 +183,17 @@ eleventyComputed:
       {%- endfor %}
     </ul>
   </section>
+
+  {%- if info.fuentes %}
+  <section class="section flow" aria-labelledby="fuentes">
+    <h2 id="fuentes">Fuentes</h2>
+    <ul>
+      {%- for f in info.fuentes %}
+      <li>{{ f | safe }}</li>
+      {%- endfor %}
+    </ul>
+  </section>
+  {%- endif %}
 
   <section class="section">
     {{ m.ctaApp("Sigue tu polen día a día", "Respira te muestra el nivel de cada tipo de polen en tu ubicación, la previsión y un diario de síntomas. Gratis, para iPhone.") }}
@@ -175,7 +241,7 @@ eleventyComputed:
         {
           "@type": "Question",
           "name": {{ ("¿Cómo puedo seguir los niveles de " + (info.pollenName | lower) + " día a día?") | dump | safe }},
-          "acceptedAnswer": { "@type": "Answer", "text": {{ ("La app Respira muestra el nivel de " + (info.pollenName | lower) + " en tu ubicación, la previsión y un diario de síntomas exportable. Gratis, para iPhone.") | dump | safe }} }
+          "acceptedAnswer": { "@type": "Answer", "text": {{ (info.seguirFaq if info.seguirFaq else ("La app Respira muestra el nivel de " + (info.pollenName | lower) + " en tu ubicación, la previsión y un diario de síntomas exportable. Gratis, para iPhone.")) | dump | safe }} }
         }
       ]
     }
