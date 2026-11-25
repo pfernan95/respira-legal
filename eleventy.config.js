@@ -342,6 +342,24 @@ export default function (eleventyConfig) {
       todayA = `For ${new Intl.DateTimeFormat("en-GB", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(`${today.date}T12:00:00Z`))}, the overall pollen level forecast for ${city.name} is ${LEVEL_EN[today.overallLevel].toLowerCase()}${dom}. By type: ${parts.join(", ")}. These are the highest hourly values the Copernicus CAMS model forecasts for the day, updated every morning.`;
     }
 
+    // "is pollen high today" and its variants are the largest question cluster on the UK and Ireland
+    // pages (Search Console, Aug–Nov 2026), so the first answer is a yes or no.
+    let highA;
+    if (!today || today.overallLevel == null) {
+      highA = `There is no pollen forecast for ${city.name} today, so this page cannot say. It shows no level rather than a zero.`;
+    } else {
+      const lv = today.overallLevel;
+      const word = LEVEL_EN[lv].toLowerCase();
+      const dom = today.dominant ? `, led by ${name(today.dominant)}` : "";
+      const lead = lv === "high" || lv === "very_high" || lv === "extreme"
+        ? "Yes."
+        : lv === "moderate"
+          ? "Not high: moderate."
+          : "No.";
+      const day = new Intl.DateTimeFormat("en-GB", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(`${today.date}T12:00:00Z`));
+      highA = `${lead} For ${day}, the overall pollen level forecast for ${city.name} is ${word}${dom}, the highest level the Copernicus CAMS model forecasts for any pollen type during the day. The levels by type and the next days are at the top of this page.`;
+    }
+
     const spans = [];
     for (const id of types) {
       const span = seasonSpanEn(levelSeries(clima[id]));
@@ -370,6 +388,7 @@ export default function (eleventyConfig) {
 
     return {
       faq: [
+        { q: `Is the pollen count high in ${city.name} today?`, a: highA },
         { q: `What is the pollen count in ${city.name} today?`, a: todayA },
         { q: `When is pollen season in ${city.name}?`, a: seasonA },
         { q: `When does grass pollen season start in ${city.name}?`, a: grassA },
